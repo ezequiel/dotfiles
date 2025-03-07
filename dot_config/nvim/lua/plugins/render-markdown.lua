@@ -11,6 +11,7 @@ return {
     },
     "echasnovski/mini.nvim",
   },
+  ft = { "markdown", "Avante" }, -- Load plugin only for these file types
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
