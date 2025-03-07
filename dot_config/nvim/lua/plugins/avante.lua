@@ -6,8 +6,8 @@ return {
   -- config = function()
   --   require("avante").open_sidebar()
   -- end,
-  -- event = "VeryLazy",
-  keys = { "<leader>aa" },
+  -- keys = { "<leader>aa" },
+  event = "VeryLazy",
   version = false,
   opts = {
     provider = "copilot",
