@@ -6,7 +6,6 @@ return {
   opts = {
     provider = "copilot",
     behaviour = {
-
       enable_token_counting = false,
       support_paste_from_clipboard = true,
     },
@@ -16,9 +15,6 @@ return {
         enabled = false,
       },
       width = 50,
-      ask = {
-        start_insert = false,
-      },
     },
   },
   build = "make",
