@@ -1,7 +1,6 @@
 return {
   "yetone/avante.nvim",
-  event = "VeryLazy",
-  lazy = false,
+  cmd = "AvanteStart",
   version = false,
   opts = {
     provider = "copilot",
