@@ -17,7 +17,7 @@ return {
       typescriptreact = { "eslint_d" },
       typescriptreact = { "eslint_d" },
     }
-    vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
+    vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
       callback = function()
         require("lint").try_lint()
       end,
