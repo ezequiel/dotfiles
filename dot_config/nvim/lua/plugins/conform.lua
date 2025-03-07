@@ -12,7 +12,7 @@ return {
       typescript = { "prettierd" },
       javascriptreact = { "prettierd" },
       typescriptreact = { "prettierd" },
-      ["*"] = { "trim_whitespace", "remove_trailing_lines" },
+      ["*"] = { "trim_whitespace" },
     },
     formatters = {
       prettierd = {
