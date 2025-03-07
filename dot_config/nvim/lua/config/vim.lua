@@ -70,3 +70,4 @@ vim.diagnostic.config({
     spacing = 1,
   },
 })
+vim.cmd("colorscheme habamax")
