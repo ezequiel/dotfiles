@@ -4,14 +4,66 @@ return {
     {
       "<leader>e",
       function()
-        Snacks.explorer({ hidden = true })
+        Snacks.explorer({
+          hidden = true,
+          win = {
+            list = {
+              keys = {
+                ["<ESC>"] = "",
+              },
+            },
+          },
+        })
       end,
       desc = "File Explorer",
+    },
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.files({
+          hidden = true,
+          frecency = true,
+          cwd_bonus = true,
+        })
+      end,
+      desc = "Find Files",
+    },
+    {
+      "<leader>fb",
+      function()
+        Snacks.picker.buffers({
+          frecency = true,
+          cwd_bonus = true,
+        })
+      end,
+      desc = "Buffers",
+    },
+    {
+      "<leader>/",
+      function()
+        Snacks.picker.grep({
+          hidden = true,
+          frecency = true,
+          cwd_bonus = true,
+        })
+      end,
+      desc = "Grep",
+    },
+    {
+      "<leader>fr",
+      function()
+        Snacks.picker.recent({
+          frecency = true,
+          cwd_bonus = true,
+        })
+      end,
+      desc = "Recent",
     },
   },
   ---@type snacks.Config
   opts = {
     explorer = { enabled = true },
+    picker = { enabled = true },
     animate = { enabled = false },
     bigfile = { enabled = false },
     bufdelete = { enabled = false },
@@ -27,7 +79,6 @@ return {
     lazygit = { enabled = false },
     notifier = { enabled = false },
     notify = { enabled = false },
-    picker = { enabled = false },
     profiler = { enabled = false },
     quickfile = { enabled = false },
     rename = { enabled = false },
