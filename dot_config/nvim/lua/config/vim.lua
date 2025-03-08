@@ -80,8 +80,6 @@ vim.diagnostic.config({
   },
 })
 
-vim.cmd("colorscheme habamax")
-
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
@@ -92,7 +90,11 @@ vim.keymap.set("n", "<C-s>", ":w<CR>")
 vim.keymap.set("n", "<leader>1", ":bp<CR>")
 vim.keymap.set("n", "<leader>2", ":bn<CR>")
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
+vim.keymap.set("n", "q", "<nop>", { silent = true })
 vim.keymap.set("n", "<leader>x", ":nohlsearch<cr>", { silent = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 local commands = {
   E = "e",
