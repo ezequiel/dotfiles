@@ -1,61 +1,39 @@
 return {
   "folke/snacks.nvim",
+  lazy = false,
   keys = {
     {
       "<leader>e",
       function()
-        Snacks.explorer({
-          hidden = true,
-          win = {
-            list = {
-              keys = {
-                ["<ESC>"] = "",
-              },
-            },
-          },
-        })
+        Snacks.explorer()
       end,
       desc = "File Explorer",
     },
     {
       "<leader>ff",
       function()
-        Snacks.picker.files({
-          hidden = true,
-          frecency = true,
-          cwd_bonus = true,
-        })
+        Snacks.picker.files()
       end,
       desc = "Find Files",
     },
     {
       "<leader>fb",
       function()
-        Snacks.picker.buffers({
-          frecency = true,
-          cwd_bonus = true,
-        })
+        Snacks.picker.buffers()
       end,
       desc = "Buffers",
     },
     {
       "<leader>/",
       function()
-        Snacks.picker.grep({
-          hidden = true,
-          frecency = true,
-          cwd_bonus = true,
-        })
+        Snacks.picker.grep()
       end,
       desc = "Grep",
     },
     {
       "<leader>fr",
       function()
-        Snacks.picker.recent({
-          frecency = true,
-          cwd_bonus = true,
-        })
+        Snacks.picker.recent()
       end,
       desc = "Recent",
     },
@@ -69,18 +47,32 @@ return {
   },
   ---@type snacks.Config
   opts = {
-    explorer = { enabled = true },
-    picker = { enabled = true },
+    explorer = {
+      enabled = true,
+      hidden = true,
+      win = {
+        list = {
+          keys = {
+            ["<ESC>"] = "",
+          },
+        },
+      },
+    },
+    picker = { enabled = true, hidden = true, frecency = true, cwd_bonus = true },
     bufdelete = { enabled = true },
+    indent = {
+      enabled = true,
+      only_current = true,
+    },
     animate = { enabled = false },
     bigfile = { enabled = false },
     dashboard = { enabled = false },
     debug = { enabled = false },
+    scope = { enabled = false },
     dim = { enabled = false },
     git = { enabled = false },
     gitbrowse = { enabled = false },
     image = { enabled = false },
-    indent = { enabled = false },
     input = { enabled = false },
     layout = { enabled = false },
     lazygit = { enabled = false },
@@ -89,15 +81,15 @@ return {
     profiler = { enabled = false },
     quickfile = { enabled = false },
     rename = { enabled = false },
-    scope = { enabled = false },
     scratch = { enabled = false },
     scroll = { enabled = false },
-    statuscolumn = { enabled = false },
     terminal = { enabled = false },
     toggle = { enabled = false },
     util = { enabled = false },
     win = { enabled = false },
     words = { enabled = false },
     zen = { enabled = false },
+    statuscolumn = { enabled = false },
   },
+  end,
 }
