@@ -59,6 +59,14 @@ vim.opt.visualbell = false
 vim.opt.foldenable = false
 vim.opt.guicursor = ""
 
+vim.opt.backup = true
+local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
+vim.opt.backupdir = backup_dir
+vim.opt.directory = backup_dir
+if not vim.fn.isdirectory(backup_dir) then
+  vim.fn.mkdir(backup_dir, "p")
+end
+
 vim.diagnostic.config({
   underline = false,
   severity_sort = true,
