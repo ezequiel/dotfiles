@@ -34,10 +34,8 @@ return {
         end
 
         local function find_eslint_root(dir)
-          local uv = vim.loop
           while dir do
-            local eslint_path = dir .. "/node_modules/eslint"
-            if uv.fs_stat(eslint_path) then
+            if vim.loop.fs_stat(dir .. "/node_modules/eslint") then
               return dir
             end
             local parent_dir = vim.fs.dirname(dir)
