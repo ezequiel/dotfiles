@@ -132,3 +132,5 @@ for cmd, action in pairs(commands) do
     complete = "file",
   })
 end
+
+vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = "#404040" })
