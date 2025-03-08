@@ -69,11 +69,11 @@ return {
       desc = "Goto Implementation",
     },
     {
-      "gy",
+      "gt",
       function()
         Snacks.picker.lsp_type_definitions()
       end,
-      desc = "Goto T[y]pe Definition",
+      desc = "Goto Type Definition",
     },
   },
   ---@type snacks.Config
@@ -93,7 +93,7 @@ return {
     bufdelete = { enabled = true },
     indent = {
       enabled = true,
-      only_current = true,
+      -- only_current = true,
     },
     animate = { enabled = false },
     bigfile = { enabled = false },
