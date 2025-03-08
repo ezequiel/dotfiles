@@ -9,7 +9,6 @@ return {
       filter = { buf = 0 },
     },
   },
-  cmd = "Trouble",
   keys = {
     {
       "<leader>tt",
