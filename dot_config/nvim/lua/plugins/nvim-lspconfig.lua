@@ -4,7 +4,7 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local filetype = vim.bo.filetype
-    if filetype == "typescript" or filetype == "typescriptreact" then
+    if filetype == "javascript" or filetype == "typescript" or filetype == "typescriptreact" then
       lspconfig.ts_ls.setup({})
       return
     end

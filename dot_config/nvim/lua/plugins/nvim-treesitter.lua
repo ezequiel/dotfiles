@@ -20,7 +20,17 @@ return {
       matchup = {
         enable = true,
       },
-      ensure_installed = { "typescript", "tsx", "vimdoc", "lua", "markdown", "markdown_inline", "json", "jsonc" },
+      ensure_installed = {
+        "javascript",
+        "typescript",
+        "tsx",
+        "vimdoc",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "json",
+        "jsonc",
+      },
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
