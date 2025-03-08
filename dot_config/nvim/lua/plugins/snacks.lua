@@ -91,5 +91,4 @@ return {
     zen = { enabled = false },
     statuscolumn = { enabled = false },
   },
-  end,
 }
