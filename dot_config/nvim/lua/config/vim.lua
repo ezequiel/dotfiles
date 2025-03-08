@@ -77,3 +77,37 @@ vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-x>", "<Esc>:bd<CR>")
+vim.keymap.set("n", "<leader>1", ":bp<CR>")
+vim.keymap.set("n", "<leader>2", ":bn<CR>")
+vim.keymap.set("n", "Q", "<nop>", { silent = true })
+vim.keymap.set("n", "<leader>x", ":nohlsearch<cr>", { silent = true })
+
+local commands = {
+  E = "e",
+  W = "w",
+  Wq = "wq",
+  WQ = "wq",
+  Wa = "wa",
+  WA = "wa",
+  WAq = "waq",
+  WAQ = "waq",
+  Waq = "waq",
+  WQa = "wqa",
+  Wqa = "wqa",
+  WQA = "wqa",
+  Q = "q",
+  QA = "qa",
+  Qa = "qa",
+}
+
+for cmd, action in pairs(commands) do
+  vim.api.nvim_create_user_command(cmd, action .. "<bang> <args>", {
+    bang = true,
+    nargs = "?",
+    complete = "file",
+  })
+end
