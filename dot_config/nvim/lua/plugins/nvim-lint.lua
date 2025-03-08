@@ -1,12 +1,14 @@
 return {
   "mfussenegger/nvim-lint",
-  event = "BufReadPre",
+  -- keep this in sync with linters_by_ft
+  ft = { "css", "html", "javascript", "javascriptreact", "json", "jsonc", "scss", "typescript", "typescriptreact" },
   config = function()
     vim.env.ESLINT_D_MISS = "fail"
     vim.env.ESLINT_D_PPID = vim.fn.getpid()
     vim.env.ESLINT_D_IDLE = "1337"
 
-    require("lint").linters_by_ft = {
+    local lint = require("lint")
+    lint.linters_by_ft = {
       css = { "eslint_d" },
       html = { "eslint_d" },
       javascript = { "eslint_d" },
@@ -16,11 +18,10 @@ return {
       scss = { "eslint_d" },
       typescript = { "eslint_d" },
       typescriptreact = { "eslint_d" },
-      typescriptreact = { "eslint_d" },
     }
+
     vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
       callback = function()
-        local lint = require("lint")
         local current_dir = vim.fn.expand("%:h")
 
         if current_dir == "" then
