@@ -96,6 +96,12 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.cmd("syntax off")
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "Avante" },
+  callback = function()
+    vim.opt.conceallevel = 3
+  end,
+})
 
 local commands = {
   E = "e",
