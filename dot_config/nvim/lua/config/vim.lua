@@ -102,6 +102,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.conceallevel = 3
   end,
 })
+vim.api.nvim_create_autocmd("VimResized", {
+  pattern = "*",
+  command = "wincmd =",
+})
 
 local commands = {
   E = "e",
