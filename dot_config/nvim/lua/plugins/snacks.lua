@@ -84,7 +84,6 @@ return {
       desc = "Goto Type Definition",
     },
   },
-  ---@type snacks.Config
   opts = {
     explorer = {
       enabled = true,
