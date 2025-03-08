@@ -1,13 +1,8 @@
 return {
   "yetone/avante.nvim",
-  -- keys = {
-  --   { "<leader>aa", mode = { "n", "v" } },
-  -- },
-  -- config = function()
-  --   require("avante").open_sidebar()
-  -- end,
-  -- keys = { "<leader>aa" },
-  event = "VeryLazy",
+  keys = {
+    { "<leader>aa", "<cmd>AvanteAsk<cr>", mode = { "n", "v" } },
+  },
   version = false,
   opts = {
     provider = "copilot",
