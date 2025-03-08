@@ -59,14 +59,21 @@ return {
       end,
       desc = "Recent",
     },
+    {
+      "<leader>bd",
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = "Delete Buffer",
+    },
   },
   ---@type snacks.Config
   opts = {
     explorer = { enabled = true },
     picker = { enabled = true },
+    bufdelete = { enabled = true },
     animate = { enabled = false },
     bigfile = { enabled = false },
-    bufdelete = { enabled = false },
     dashboard = { enabled = false },
     debug = { enabled = false },
     dim = { enabled = false },
