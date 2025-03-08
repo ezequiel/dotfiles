@@ -58,6 +58,7 @@ vim.opt.errorbells = false
 vim.opt.visualbell = false
 vim.opt.foldenable = false
 vim.opt.guicursor = ""
+
 vim.diagnostic.config({
   underline = false,
   severity_sort = true,
@@ -69,4 +70,10 @@ vim.diagnostic.config({
     spacing = 1,
   },
 })
+
 vim.cmd("colorscheme habamax")
+
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
