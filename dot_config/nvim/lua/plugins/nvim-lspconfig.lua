@@ -5,7 +5,13 @@ return {
     local lspconfig = require("lspconfig")
     local filetype = vim.bo.filetype
     if filetype == "javascript" or filetype == "typescript" or filetype == "typescriptreact" then
-      lspconfig.ts_ls.setup({})
+      lspconfig.ts_ls.setup({
+        init_options = {
+          preferences = {
+            disableSuggestions = true,
+          },
+        },
+      })
       return
     end
     if filetype == "lua" then
