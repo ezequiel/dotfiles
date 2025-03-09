@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  ft = { "typescript", "typescriptreact", "lua" },
+  ft = { "javascript", "json", "jsonc", "typescript", "typescriptreact", "lua" },
   config = function()
     local lspconfig = require("lspconfig")
     local filetype = vim.bo.filetype
@@ -10,6 +10,10 @@ return {
     end
     if filetype == "lua" then
       lspconfig.lua_ls.setup({})
+      return
+    end
+    if filetype == "json" or filetype == "jsonc" then
+      lspconfig.jsonls.setup({})
       return
     end
   end,
