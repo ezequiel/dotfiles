@@ -9,7 +9,25 @@ return {
       return
     end
     if filetype == "lua" then
-      lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+              path = vim.split(package.path, ";"),
+            },
+            diagnostics = {
+              globals = { "vim", "Snacks" },
+            },
+            workspace = {
+              library = { vim.api.nvim_get_runtime_file("", true), vim.env.VIMRUNTIME },
+            },
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      })
       return
     end
     if filetype == "json" or filetype == "jsonc" then
