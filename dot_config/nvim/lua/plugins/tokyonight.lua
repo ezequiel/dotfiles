@@ -6,6 +6,7 @@ return {
     require("tokyonight").setup({
       plugins = {
         "gitsigns",
+        "blink",
       },
     })
     vim.cmd("colorscheme tokyonight-night")
