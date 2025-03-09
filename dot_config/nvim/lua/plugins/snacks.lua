@@ -11,43 +11,37 @@ return {
       desc = "File Explorer",
     },
     {
-      "<leader>ff",
+      "<leader>t",
       function()
         Snacks.picker.files()
       end,
       desc = "Find Files",
     },
     {
-      "<leader>fb",
+      "<leader>b",
       function()
         Snacks.picker.buffers()
       end,
       desc = "Buffers",
     },
     {
-      "<leader>sg",
+      "<leader>rg",
       function()
         Snacks.picker.grep()
       end,
+      mode = { "n" },
       desc = "Grep",
     },
     {
-      "<leader>sw",
+      "<leader>rg",
       function()
         Snacks.picker.grep_word()
       end,
       desc = "Visual selection or word",
-      mode = { "n", "x" },
+      mode = { "x", "v" },
     },
     {
-      "<leader>fr",
-      function()
-        Snacks.picker.recent()
-      end,
-      desc = "Recent",
-    },
-    {
-      "<leader>bd",
+      "<C-x>",
       function()
         Snacks.bufdelete()
       end,
@@ -83,6 +77,13 @@ return {
       end,
       desc = "Goto Type Definition",
     },
+    {
+      "<leader>m",
+      function()
+        Snacks.rename.rename_file()
+      end,
+      desc = "Rename File",
+    },
   },
   opts = {
     explorer = {
@@ -98,6 +99,7 @@ return {
     },
     picker = { enabled = true, hidden = true, frecency = true, cwd_bonus = true },
     bufdelete = { enabled = true },
+    rename = { enabled = true },
     indent = {
       enabled = true,
       -- only_current = true,
@@ -118,7 +120,6 @@ return {
     notify = { enabled = false },
     profiler = { enabled = false },
     quickfile = { enabled = false },
-    rename = { enabled = false },
     scratch = { enabled = false },
     scroll = { enabled = false },
     terminal = { enabled = false },

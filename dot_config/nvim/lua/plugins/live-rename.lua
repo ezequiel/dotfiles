@@ -7,11 +7,5 @@ return {
         require("live-rename").rename({ insert = true })
       end,
     },
-    {
-      "<leader>m",
-      function()
-        require("live-rename").rename({ insert = true })
-      end,
-    },
   },
 }
