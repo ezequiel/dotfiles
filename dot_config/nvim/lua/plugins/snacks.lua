@@ -11,7 +11,7 @@ return {
       desc = "File Explorer",
     },
     {
-      "<leader>t",
+      "<leader>f",
       function()
         Snacks.picker.files()
       end,
@@ -47,7 +47,6 @@ return {
       end,
       desc = "Delete Buffer",
     },
-    -- LSP
     {
       "gd",
       function()
