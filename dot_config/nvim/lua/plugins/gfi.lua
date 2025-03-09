@@ -1,4 +1,4 @@
 return {
   "kkoomen/gfi.vim",
-  event = "VeryLazy",
+  cmd = "GFI",
 }
