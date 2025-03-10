@@ -7,6 +7,7 @@ return {
     completion = {
       documentation = { auto_show = true, treesitter_highlighting = true },
       ghost_text = { enabled = true },
+      accept = { auto_brackets = { enabled = true } },
     },
     signature = { enabled = true, window = { show_documentation = true } },
     appearance = {
