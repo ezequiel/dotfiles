@@ -59,6 +59,7 @@ vim.opt.visualbell = false
 vim.opt.foldenable = false
 vim.opt.guicursor = ""
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 5
 
 vim.opt.backup = true
 local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
