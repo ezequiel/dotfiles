@@ -1,6 +1,10 @@
 return {
   "folke/snacks.nvim",
+  lazy = false,
   priority = 1000,
+  dependencies = {
+    "tpope/vim-sleuth",
+  },
   keys = {
     {
       "<leader>e",
