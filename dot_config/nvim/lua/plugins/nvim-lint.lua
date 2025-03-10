@@ -21,6 +21,10 @@ return {
     }
 
     local function callback()
+      if not vim.opt_local.modifiable:get() then
+        return
+      end
+
       local current_dir = vim.fn.expand("%:h")
 
       if current_dir == "" then
@@ -57,7 +61,7 @@ return {
       end, linters))
     end
 
-    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
       callback = callback,
     })
 
