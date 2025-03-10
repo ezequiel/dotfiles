@@ -3,11 +3,23 @@ return {
   keys = {
     {
       "<leader>gf",
-      "<cmd>GrugFar<cr>",
+      function()
+        require("grug-far").open()
+      end,
+      mode = { "n", "v", "x", "o" },
     },
   },
+  config = function(_, opts)
+    require("grug-far").setup(opts)
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "grug-far",
+      callback = function()
+        vim.keymap.set({ "n" }, "<Esc>", "<Cmd>stopinsert | bd!<CR>", { buffer = true })
+        vim.keymap.set({ "i" }, "<Enter>", "<Esc>")
+      end,
+    })
+  end,
   opts = {
-    debounceMs = 0,
     resultLocation = {
       showNumberLabel = false,
     },
