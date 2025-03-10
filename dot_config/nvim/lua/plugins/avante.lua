@@ -12,9 +12,9 @@ return {
     },
     hints = { enabled = false },
     windows = {
-      sidebar_header = {
-        enabled = false,
-      },
+      -- sidebar_header = {
+      --   enabled = false,
+      -- },
       width = 50,
     },
   },
@@ -32,4 +32,8 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
+  config = function(_, opts)
+    require("avante").setup(opts)
+    vim.keymap.set({ "n" }, "<Esc>", "<Cmd>stopinsert | bd!<CR>")
+  end,
 }
