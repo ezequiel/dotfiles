@@ -136,4 +136,3 @@ end
 vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = "#404040" })
 
 vim.keymap.set("n", "gf", ":GFI<CR>")
-vim.keymap.set("n", ";", ":")
