@@ -61,7 +61,7 @@ return {
       end, linters))
     end
 
-    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = callback,
     })
 
