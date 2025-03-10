@@ -1,8 +1,5 @@
 return {
   "MagicDuck/grug-far.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
   keys = {
     {
       "<leader>gf",
@@ -10,10 +7,6 @@ return {
     },
   },
   opts = {
-    icons = {
-      enabled = true,
-      fileIconsProvider = "nvim-web-devicons",
-    },
     debounceMs = 0,
     resultLocation = {
       showNumberLabel = false,
