@@ -29,6 +29,7 @@ return {
         "markdown_inline",
         "json",
         "jsonc",
+        "regex",
       },
     },
     config = function(_, opts)
