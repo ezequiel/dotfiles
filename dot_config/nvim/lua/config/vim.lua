@@ -60,8 +60,9 @@ vim.opt.foldenable = false
 vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 5
-
+vim.opt.shortmess:append("I")
 vim.opt.backup = true
+
 local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
 vim.opt.backupdir = backup_dir
 vim.opt.directory = backup_dir
@@ -96,13 +97,17 @@ vim.keymap.set("n", "<leader>x", ":nohlsearch<cr>", { silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("n", "gf", ":GFI<CR>")
+
 vim.cmd("syntax off")
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "Avante" },
   callback = function()
     vim.opt.conceallevel = 3
   end,
 })
+
 vim.api.nvim_create_autocmd("VimResized", {
   pattern = "*",
   command = "wincmd =",
@@ -133,8 +138,3 @@ for cmd, action in pairs(commands) do
     complete = "file",
   })
 end
-
-vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = "#404040" })
-
-vim.keymap.set("n", "gf", ":GFI<CR>")
-vim.opt.shortmess:append("I")
