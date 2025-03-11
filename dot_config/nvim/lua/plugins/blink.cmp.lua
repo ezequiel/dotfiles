@@ -26,7 +26,7 @@ return {
       enabled = true,
       window = {
         border = "single",
-        show_documentation = true,
+        show_documentation = false,
       },
     },
     appearance = {
@@ -35,7 +35,7 @@ return {
     },
     fuzzy = { implementation = "rust" },
     sources = {
-      default = { "lsp" },
+      default = { "lsp", "buffer" },
     },
   },
   opts_extend = { "sources.default" },
