@@ -93,6 +93,13 @@ return {
       end,
       desc = "Rename File",
     },
+    {
+      "<leader>:",
+      function()
+        Snacks.picker.command_history()
+      end,
+      desc = "Command History",
+    },
   },
   opts = {
     explorer = {
