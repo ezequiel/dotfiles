@@ -14,7 +14,6 @@ return {
     windows = {
       -- sidebar_header = {
       --   enabled = false,
-      -- },
       width = 50,
     },
   },
@@ -34,6 +33,6 @@ return {
   },
   config = function(_, opts)
     require("avante").setup(opts)
-    vim.keymap.set({ "n" }, "<Esc>", "<Cmd>stopinsert | bd!<CR>")
+    -- vim.keymap.set({ "n" }, "<Esc>", "<Cmd>stopinsert | bd!<CR>", { buffer = true })
   end,
 }
