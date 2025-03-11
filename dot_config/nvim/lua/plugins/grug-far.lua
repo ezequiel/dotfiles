@@ -30,7 +30,10 @@ return {
     resultLocation = {
       showNumberLabel = false,
     },
+    startInInsertMode = false,
     transient = true,
+    wrap = false,
+
     -- engines = {
     --   ripgrep = {
     --     extraArgs = "",
