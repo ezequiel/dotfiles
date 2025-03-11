@@ -1,44 +1,46 @@
 return {
   "neovim/nvim-lspconfig",
-  ft = { "javascript", "json", "jsonc", "typescript", "typescriptreact", "lua" },
   config = function()
     local lspconfig = require("lspconfig")
     local filetype = vim.bo.filetype
-    if filetype == "javascript" or filetype == "typescript" or filetype == "typescriptreact" then
-      lspconfig.ts_ls.setup({
-        init_options = {
-          preferences = {
-            disableSuggestions = true,
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+    lspconfig.gopls.setup({
+      capabilities = capabilities,
+    })
+
+    lspconfig.ts_ls.setup({
+      capabilities = capabilities,
+      init_options = {
+        preferences = {
+          disableSuggestions = true,
+        },
+      },
+    })
+
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+            path = vim.split(package.path, ";"),
+          },
+          diagnostics = {
+            globals = { "vim", "Snacks" },
+          },
+          workspace = {
+            library = { vim.api.nvim_get_runtime_file("", true), vim.env.VIMRUNTIME },
+          },
+          telemetry = {
+            enable = false,
           },
         },
-      })
-      return
-    end
-    if filetype == "lua" then
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            runtime = {
-              version = "LuaJIT",
-              path = vim.split(package.path, ";"),
-            },
-            diagnostics = {
-              globals = { "vim", "Snacks" },
-            },
-            workspace = {
-              library = { vim.api.nvim_get_runtime_file("", true), vim.env.VIMRUNTIME },
-            },
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      })
-      return
-    end
-    if filetype == "json" or filetype == "jsonc" then
-      lspconfig.jsonls.setup({})
-      return
-    end
+      },
+    })
+
+    lspconfig.jsonls.setup({
+      capabilities = capabilities,
+    })
   end,
 }
