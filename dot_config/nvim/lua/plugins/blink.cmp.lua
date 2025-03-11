@@ -15,6 +15,7 @@ return {
       menu = {
         border = "single",
         draw = {
+          treesitter = { "lsp" },
           columns = {
             -- kind, source_id, source_name, kind_icon, label, label_description
             { "kind_icon", "label", "label_description", gap = 1 },
