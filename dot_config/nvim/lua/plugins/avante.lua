@@ -1,7 +1,7 @@
 return {
   "yetone/avante.nvim",
   keys = {
-    { "<leader>aa", "<cmd>AvanteAsk<cr>", mode = { "n", "v" } },
+    { "<leader>av", "<cmd>AvanteToggle<cr>", mode = { "n", "v" } },
   },
   version = false,
   opts = {
@@ -12,6 +12,9 @@ return {
     },
     hints = { enabled = false },
     windows = {
+      ask = {
+        start_insert = false,
+      },
       -- sidebar_header = {
       --   enabled = false,
       width = 50,
