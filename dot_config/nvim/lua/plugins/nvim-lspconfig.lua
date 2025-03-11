@@ -11,11 +11,19 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig.ts_ls.setup({
+    lspconfig.vtsls.setup({
       capabilities = capabilities,
-      init_options = {
-        preferences = {
-          disableSuggestions = true,
+      settings = {
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+        },
+        javascript = {
+          updateImportsOnFileMove = { enabled = "always" },
+          validate = { enable = false },
+        },
+        typescript = {
+          updateImportsOnFileMove = { enabled = "always" },
+          validate = { enable = false },
         },
       },
     })
