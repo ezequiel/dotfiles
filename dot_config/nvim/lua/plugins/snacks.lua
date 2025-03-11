@@ -7,6 +7,13 @@ return {
   },
   keys = {
     {
+      "<leader>gs",
+      function()
+        Snacks.picker.git_status()
+      end,
+      desc = "Git Status",
+    },
+    {
       "<leader>e",
       function()
         Snacks.explorer()
