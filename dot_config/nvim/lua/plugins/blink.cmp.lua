@@ -4,7 +4,7 @@ return {
   version = "*",
   -- opts_extend = { "sources.default" },
   opts = {
-    keymap = { preset = "enter" },
+    keymap = { preset = "super-tab" },
     -- opts_extend = { "sources.default" },
     completion = {
       documentation = {
