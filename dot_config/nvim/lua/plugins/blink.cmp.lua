@@ -7,10 +7,15 @@ return {
     keymap = { preset = "enter" },
     -- opts_extend = { "sources.default" },
     completion = {
-      documentation = { auto_show = true, treesitter_highlighting = true },
+      documentation = {
+        window = { border = "single" },
+        auto_show = true,
+        treesitter_highlighting = true,
+      },
       ghost_text = { enabled = true },
       accept = { auto_brackets = { enabled = true } },
       menu = {
+        border = "single",
         draw = {
           columns = {
             -- kind, source_id, source_name, kind_icon, label, label_description
@@ -19,7 +24,13 @@ return {
         },
       },
     },
-    signature = { enabled = true, window = { show_documentation = true } },
+    signature = {
+      enabled = true,
+      window = {
+        border = "single",
+        show_documentation = true,
+      },
+    },
     appearance = {
       use_nvim_cmp_as_default = false,
       nerd_font_variant = "Nerd Font Mono",
