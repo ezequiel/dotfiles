@@ -30,6 +30,8 @@ return {
         "json",
         "jsonc",
         "regex",
+        "bash",
+        "go",
       },
     },
     config = function(_, opts)
