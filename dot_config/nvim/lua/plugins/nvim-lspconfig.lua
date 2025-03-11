@@ -1,5 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
+  lazy = false,
+  dependencies = { "saghen/blink.cmp" },
   config = function()
     local lspconfig = require("lspconfig")
     local filetype = vim.bo.filetype
