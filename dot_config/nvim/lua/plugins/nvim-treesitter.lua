@@ -32,6 +32,7 @@ return {
         "regex",
         "bash",
         "go",
+        "gomod",
         "vim",
       },
     },
