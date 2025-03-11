@@ -32,6 +32,7 @@ return {
         "regex",
         "bash",
         "go",
+        "vim",
       },
     },
     config = function(_, opts)
