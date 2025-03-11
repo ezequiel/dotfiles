@@ -2,10 +2,8 @@ return {
   "saghen/blink.cmp",
   event = "InsertEnter",
   version = "*",
-  -- opts_extend = { "sources.default" },
   opts = {
     keymap = { preset = "super-tab" },
-    -- opts_extend = { "sources.default" },
     completion = {
       documentation = {
         window = { border = "single" },
@@ -33,11 +31,12 @@ return {
     },
     appearance = {
       use_nvim_cmp_as_default = false,
-      nerd_font_variant = "Nerd Font Mono",
+      nerd_font_variant = "mono",
     },
     fuzzy = { implementation = "rust" },
     sources = {
       default = { "lsp" },
     },
   },
+  opts_extend = { "sources.default" },
 }
