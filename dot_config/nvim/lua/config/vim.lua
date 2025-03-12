@@ -94,10 +94,11 @@ vim.keymap.set("n", "<leader>2", "<cmd>bn<CR>")
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
 vim.keymap.set("n", "q", "<nop>", { silent = true })
 vim.keymap.set("n", "<leader>x", ":nohlsearch<cr>", { silent = true })
-vim.keymap.set("v", "J", "<cmd>m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", "<cmd>m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "gf", "<cmd>GFI<CR>")
+vim.keymap.set("n", "vv", "^vg_", { noremap = true, silent = true })
 
 vim.cmd("syntax off")
 
