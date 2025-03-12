@@ -4,6 +4,11 @@ return {
     -- auto_jump = true,
     focus = true,
     auto_close = true,
+    win = {
+      wo = {
+        wrap = true,
+      },
+    },
   },
   keys = {
     {
