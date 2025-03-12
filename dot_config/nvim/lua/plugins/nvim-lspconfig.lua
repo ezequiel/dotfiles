@@ -13,6 +13,20 @@ return {
 
     lspconfig.vtsls.setup({
       capabilities = capabilities,
+      on_attach = function()
+        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+          callback = function()
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = { only = { "source.removeUnusedImports.ts" } },
+            })
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = { only = { "source.addMissingImports.ts" } },
+            })
+          end,
+        })
+      end,
       settings = {
         vtsls = {
           autoUseWorkspaceTsdk = true,
