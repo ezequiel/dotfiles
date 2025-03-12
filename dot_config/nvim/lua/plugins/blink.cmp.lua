@@ -3,7 +3,10 @@ return {
   event = "InsertEnter",
   version = "*",
   opts = {
-    keymap = { preset = "super-tab" },
+    keymap = {
+      preset = "super-tab",
+      ["<cr>"] = { "select_and_accept" },
+    },
     completion = {
       documentation = {
         window = { border = "single" },
