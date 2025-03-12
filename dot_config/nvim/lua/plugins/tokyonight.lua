@@ -13,6 +13,7 @@ return {
         "yanky",
         "illuminate",
         "grug-far",
+        "noice",
       },
     })
     vim.cmd("colorscheme tokyonight-night")
