@@ -19,11 +19,9 @@ return {
         },
         javascript = {
           updateImportsOnFileMove = { enabled = "always" },
-          validate = { enable = false },
         },
         typescript = {
           updateImportsOnFileMove = { enabled = "always" },
-          validate = { enable = false },
         },
       },
     })
