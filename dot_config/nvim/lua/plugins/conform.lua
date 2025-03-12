@@ -3,7 +3,7 @@ return {
   event = "BufWritePre",
   opts = {
     formatters_by_ft = {
-      ["*"] = { "trim_whitespace" },
+      ["*"] = { "trim_newlines", "trim_whitespace" },
       css = { "prettierd" },
       go = { "goimports", "gofmt" },
       html = { "prettierd" },
