@@ -100,6 +100,13 @@ return {
       end,
       desc = "Command History",
     },
+    {
+      "<leader>lg",
+      function()
+        Snacks.lazygit()
+      end,
+      desc = "Lazygit",
+    },
   },
   opts = {
     explorer = {
@@ -127,6 +134,7 @@ return {
       -- only_current = true,
     },
     animate = { enabled = false },
+    lazygit = { enabled = true },
     bigfile = { enabled = false },
     dashboard = { enabled = false },
     debug = { enabled = false },
@@ -137,7 +145,6 @@ return {
     image = { enabled = false },
     input = { enabled = false },
     layout = { enabled = false },
-    lazygit = { enabled = false },
     notifier = { enabled = false },
     notify = { enabled = false },
     profiler = { enabled = false },
