@@ -104,7 +104,6 @@ return {
   opts = {
     explorer = {
       enabled = true,
-      hidden = true,
       win = {
         list = {
           keys = {
@@ -113,7 +112,14 @@ return {
         },
       },
     },
-    picker = { enabled = true, hidden = true, frecency = true, cwd_bonus = true },
+    picker = {
+      enabled = true,
+      sources = {
+        explorer = { hidden = true },
+        files = { hidden = true },
+      },
+      matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
+    },
     bufdelete = { enabled = true },
     rename = { enabled = true },
     indent = {
