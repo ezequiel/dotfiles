@@ -21,13 +21,18 @@ return {
             { "kind_icon", "label", "label_description", gap = 1 },
           },
         },
+        scrollbar = false,
       },
     },
     signature = {
       enabled = true,
       window = {
+        min_width = 1,
+        max_width = 100,
+        max_height = 10,
         border = "single",
-        show_documentation = false,
+        show_documentation = true,
+        scrollbar = true,
       },
     },
     appearance = {
