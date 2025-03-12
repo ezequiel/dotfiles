@@ -6,14 +6,14 @@ return {
       function()
         require("grug-far").open()
       end,
-      mode = { "n", "v", "x", "o" },
+      mode = { "n", "v" },
     },
     {
       "<leader>gb",
       function()
         require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
       end,
-      mode = { "n", "v", "x", "o" },
+      mode = { "n", "v" },
     },
   },
   config = function(_, opts)
