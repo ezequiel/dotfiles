@@ -15,6 +15,14 @@ return {
       capabilities = capabilities,
       on_attach = function()
         vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+          pattern = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+          },
           callback = function()
             vim.lsp.buf.code_action({
               apply = true,

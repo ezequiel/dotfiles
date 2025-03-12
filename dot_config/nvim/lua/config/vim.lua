@@ -103,7 +103,7 @@ vim.keymap.set("n", "vv", "^vg_", { noremap = true, silent = true })
 vim.cmd("syntax off")
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "Avante" },
+  pattern = { "markdown", "Avante", "trouble" },
   callback = function()
     vim.opt.conceallevel = 3
   end,
