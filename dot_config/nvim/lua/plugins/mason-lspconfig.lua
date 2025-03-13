@@ -1,8 +1,17 @@
 return {
-  "neovim/nvim-lspconfig",
+  "williamboman/mason-lspconfig.nvim",
   lazy = false,
-  dependencies = { "saghen/blink.cmp" },
+  dependencies = {
+    "neovim/nvim-lspconfig",
+    "saghen/blink.cmp",
+    "williamboman/mason.nvim",
+  },
   config = function()
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = { "lua_ls", "gopls", "vtsls", "jsonls", "eslint" },
+    })
+
     local lspconfig = require("lspconfig")
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
@@ -12,28 +21,6 @@ return {
 
     lspconfig.vtsls.setup({
       capabilities = capabilities,
-      on_attach = function()
-        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-          pattern = {
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx",
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-          },
-          callback = function()
-            vim.lsp.buf.code_action({
-              apply = true,
-              context = { only = { "source.removeUnusedImports.ts" } },
-            })
-            vim.lsp.buf.code_action({
-              apply = true,
-              context = { only = { "source.addMissingImports.ts" } },
-            })
-          end,
-        })
-      end,
       settings = {
         vtsls = {
           autoUseWorkspaceTsdk = true,
@@ -59,7 +46,13 @@ return {
             globals = { "vim", "Snacks" },
           },
           workspace = {
-            library = { vim.api.nvim_get_runtime_file("", true), vim.env.VIMRUNTIME },
+            library = {
+              vim.api.nvim_get_runtime_file("", true),
+              vim.env.VIMRUNTIME,
+              vim.fn.expand("$VIMRUNTIME/lua"),
+              vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+              vim.fn.expand("~/.local/share/nvim/lazy"),
+            },
           },
           telemetry = {
             enable = false,
@@ -70,6 +63,29 @@ return {
 
     lspconfig.jsonls.setup({
       capabilities = capabilities,
+    })
+
+    require("lspconfig").eslint.setup({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "vue",
+        "svelte",
+        "astro",
+        "json",
+        "jsonc",
+      },
+
+      -- experimental = {
+      --   useFlatConfig = true,
+      -- },
+      -- workingDirectory = {
+      --   mode = "auto",
+      -- },
     })
   end,
 }
