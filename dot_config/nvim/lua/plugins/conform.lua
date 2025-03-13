@@ -1,6 +1,6 @@
 return {
   "stevearc/conform.nvim",
-  event = "BufWritePre",
+  event = { { event = "User", pattern = "AutoSaveWritePost" } },
   opts = {
     formatters_by_ft = {
       ["*"] = { "trim_newlines", "trim_whitespace" },
@@ -27,15 +27,20 @@ return {
     default_format_opts = {
       lsp_format = "fallback",
     },
-    format_on_save = {
-      lsp_format = "fallback",
-      timeout_ms = 500,
-    },
-    format_after_save = {
-      lsp_format = "fallback",
-    },
     log_level = vim.log.levels.ERROR,
     notify_on_error = true,
     notify_no_formatters = true,
   },
+  config = function(_, opts)
+    local conform = require("conform")
+    conform.setup(opts)
+    conform.format({ bufnr = vim.api.nvim_get_current_buf() })
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "AutoSaveWritePost",
+      group = vim.api.nvim_create_augroup("autosave", {}),
+      callback = function(stuff)
+        conform.format({ bufnr = stuff.data.saved_buffer })
+      end,
+    })
+  end,
 }
