@@ -8,6 +8,6 @@ return {
       defer_save = {},
       cancel_deferred_save = {},
     },
-    write_all_buffers = true
+    write_all_buffers = true,
   },
 }
