@@ -9,7 +9,7 @@ return {
   },
   config = function()
     require("tsc").setup({
-      auto_start_watch_mode = false,
+      auto_start_watch_mode = true,
       use_trouble_qflist = true,
       use_diagnostics = true,
       auto_open_qflist = false,
@@ -17,7 +17,6 @@ return {
       enable_progress_notifications = true,
 
       -- bin_path = require("tsc.utils").find_tsc_bin(),
-      -- auto_start_watch_mode = true,
       -- pretty_errors = true,
       -- run_as_monorepo = true,
       flags = {
@@ -28,7 +27,13 @@ return {
         -- end,
       },
     })
-    -- todo:  set the cwd before doing this
-    vim.cmd("TSC")
+
+    -- local function callback()
+    --   vim.cmd("TSC")
+    -- end
+    -- vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
+    --   callback = callback,
+    -- })
+    -- callback()
   end,
 }
