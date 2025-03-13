@@ -5,9 +5,9 @@ return {
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
-      go = "golangcilint",
+      go = { "golangcilint" },
     }
-
+    lint.try_lint()
     vim.api.nvim_create_autocmd("User", {
       pattern = "AutoSaveWritePost",
       group = vim.api.nvim_create_augroup("autosave", {}),
