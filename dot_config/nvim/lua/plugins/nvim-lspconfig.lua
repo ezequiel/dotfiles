@@ -4,7 +4,6 @@ return {
   dependencies = { "saghen/blink.cmp" },
   config = function()
     local lspconfig = require("lspconfig")
-    local filetype = vim.bo.filetype
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     lspconfig.gopls.setup({
