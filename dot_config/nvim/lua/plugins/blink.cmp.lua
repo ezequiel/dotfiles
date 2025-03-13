@@ -24,7 +24,6 @@ return {
         treesitter_highlighting = true,
       },
       ghost_text = { enabled = true },
-      accept = { auto_brackets = { enabled = true } },
       menu = {
         border = "single",
         draw = {
