@@ -29,6 +29,9 @@ return {
       defer_save = {},
       cancel_deferred_save = {},
     },
+    condition = function()
+      return vim.bo.filetype ~= "qf"
+    end,
     write_all_buffers = true,
   },
 }
