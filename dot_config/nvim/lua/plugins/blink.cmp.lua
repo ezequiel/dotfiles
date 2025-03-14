@@ -4,7 +4,9 @@ return {
   version = "*",
   opts = {
     enabled = function()
-      return not string.match(vim.bo.filetype, "^Avante")
+      -- print(vim.bo.filetype)
+      -- print(vim.bo.buftype)
+      return vim.bo.buftype ~= 'prompt' and vim.b.completion ~= false and not string.match(vim.bo.filetype, "(^Avante)|grug-far")
     end,
     keymap = {
       preset = "super-tab",
