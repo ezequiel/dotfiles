@@ -10,7 +10,6 @@ return {
     lint.try_lint()
     vim.api.nvim_create_autocmd("User", {
       pattern = "AutoSaveWritePost",
-      group = vim.api.nvim_create_augroup("autosave", {}),
       callback = function()
         lint.try_lint()
       end,

@@ -21,17 +21,25 @@ return {
 
     lspconfig.vtsls.setup({
       capabilities = capabilities,
-      settings = {
-        vtsls = {
-          autoUseWorkspaceTsdk = true,
-        },
-        javascript = {
-          updateImportsOnFileMove = { enabled = "always" },
-        },
-        typescript = {
-          updateImportsOnFileMove = { enabled = "always" },
-        },
-      },
+      on_attach = function()
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "AutoSaveWritePost",
+          callback = function()
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = {
+                only = {
+                  ---@diagnostic disable-next-line: assign-type-mismatch
+                  "source.addMissingImports.ts",
+                  ---@diagnostic disable-next-line: assign-type-mismatch
+                  "source.removeUnusedImports.ts",
+                },
+                diagnostics = {},
+              },
+            })
+          end,
+        })
+      end,
     })
 
     lspconfig.lua_ls.setup({

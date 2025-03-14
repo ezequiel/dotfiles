@@ -37,7 +37,6 @@ return {
     conform.format({ bufnr = vim.api.nvim_get_current_buf() })
     vim.api.nvim_create_autocmd("User", {
       pattern = "AutoSaveWritePost",
-      group = vim.api.nvim_create_augroup("autosave", {}),
       callback = function(stuff)
         conform.format({ bufnr = stuff.data.saved_buffer })
       end,
