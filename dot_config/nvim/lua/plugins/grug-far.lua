@@ -22,7 +22,9 @@ return {
       pattern = "grug-far",
       callback = function()
         vim.keymap.set({ "n" }, "<Esc>", "<Cmd>stopinsert | bd!<CR>", { buffer = true })
-        vim.keymap.set({ "i" }, "<Enter>", "<Esc>")
+        vim.keymap.set({ "i" }, "<Enter>", "<Esc>", { buffer = true })
+        -- vim.keymap.set({ "n" }, "o", "<Nop>", { noremap = true, buffer = true })
+        -- vim.keymap.set({ "n" }, "O", "<Nop>", { noremap = true, buffer = true })
       end,
     })
   end,
