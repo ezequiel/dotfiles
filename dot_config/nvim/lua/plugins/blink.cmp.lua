@@ -6,7 +6,10 @@ return {
     enabled = function()
       -- print(vim.bo.filetype)
       -- print(vim.bo.buftype)
-      return vim.bo.buftype ~= 'prompt' and vim.b.completion ~= false and vim.bo.filetype ~= "grug-far" and not string.match(vim.bo.filetype, "^Avante")
+      return vim.bo.buftype ~= "prompt"
+        and vim.b.completion ~= false
+        and vim.bo.filetype ~= "grug-far"
+        and not string.match(vim.bo.filetype, "^Avante")
     end,
     keymap = {
       preset = "super-tab",
