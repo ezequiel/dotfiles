@@ -9,7 +9,27 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "gopls", "vtsls", "jsonls", "eslint" },
+      automatic_installation = true,
+      ensure_installed = {
+        "angularls",
+        "bashls",
+        "css_variables",
+        "cssls",
+        "cssmodules_ls",
+        "docker_compose_language_service",
+        "dockerls",
+        "eslint",
+        "gopls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "marksman",
+        "nginx_language_server",
+        "somesass_ls",
+        "stylelint_lsp",
+        "vtsls",
+        "yamlls",
+      },
     })
 
     local lspconfig = require("lspconfig")
