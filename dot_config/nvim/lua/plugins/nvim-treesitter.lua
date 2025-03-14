@@ -1,7 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = "VeryLazy",
   opts = {
     auto_install = true,
     highlight = {
@@ -35,6 +34,10 @@ return {
       "go",
       "gomod",
       "vim",
+      "groovy",
+      "ini",
+      "gitignore",
+      "yaml",
     },
   },
   config = function(_, opts)
