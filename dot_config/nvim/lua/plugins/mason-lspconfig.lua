@@ -1,6 +1,7 @@
 return {
   "williamboman/mason-lspconfig.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = false,
   dependencies = {
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
@@ -56,8 +57,6 @@ return {
               context = {
                 only = {
                   ---@diagnostic disable-next-line: assign-type-mismatch
-                  "source.addMissingImports.ts",
-                  ---@diagnostic disable-next-line: assign-type-mismatch
                   "source.removeUnusedImports.ts",
                 },
                 diagnostics = {},
@@ -65,6 +64,18 @@ return {
             })
           end,
         })
+        vim.keymap.set({ "n" }, "<leader>ca", function()
+          vim.lsp.buf.code_action({
+            apply = true,
+            context = {
+              only = {
+                ---@diagnostic disable-next-line: assign-type-mismatch
+                "source.addMissingImports.ts",
+              },
+              diagnostics = {},
+            },
+          })
+        end)
       end,
     })
 
