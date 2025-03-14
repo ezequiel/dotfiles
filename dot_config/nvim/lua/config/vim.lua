@@ -99,7 +99,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>nohlsearch<cr><cmd>Noice dismiss<cr>", { 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "gf", "<cmd>GFI<CR>")
 vim.keymap.set("n", "vv", "^vg_", { noremap = true, silent = true })
 
 vim.cmd("syntax off")
