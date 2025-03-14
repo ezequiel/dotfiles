@@ -1,1 +1,1 @@
-return { "nvim-tree/nvim-web-devicons", opts = {} }
+return { event = "VeryLazy", "nvim-tree/nvim-web-devicons", opts = {} }

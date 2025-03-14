@@ -1,6 +1,6 @@
 return {
   "williamboman/mason-lspconfig.nvim",
-  lazy = false,
+  event = "VeryLazy",
   dependencies = {
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
