@@ -1,4 +1,4 @@
 return {
   "numToStr/Comment.nvim",
-  event = "VeryLazy",
+  event = "InsertEnter",
 }
