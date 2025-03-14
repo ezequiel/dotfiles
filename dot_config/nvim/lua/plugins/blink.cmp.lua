@@ -3,6 +3,9 @@ return {
   event = "InsertEnter",
   version = "*",
   opts = {
+    enabled = function()
+      return not string.match(vim.bo.filetype, "^Avante")
+    end,
     keymap = {
       preset = "super-tab",
       ["<CR>"] = {
