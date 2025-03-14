@@ -8,37 +8,42 @@ return {
   },
   config = function()
     require("mason").setup()
+    local ensure_installed = {
+      "angularls",
+      "bashls",
+      "css_variables",
+      "cssls",
+      "cssmodules_ls",
+      "docker_compose_language_service",
+      "dockerls",
+      "eslint",
+      "gopls",
+      "groovyls",
+      "html",
+      "jsonls",
+      "lua_ls",
+      "marksman",
+      "nginx_language_server",
+      "somesass_ls",
+      "stylelint_lsp",
+      "vtsls",
+      "yamlls",
+    }
     require("mason-lspconfig").setup({
       automatic_installation = true,
-      ensure_installed = {
-        "angularls",
-        "bashls",
-        "css_variables",
-        "cssls",
-        "cssmodules_ls",
-        "docker_compose_language_service",
-        "dockerls",
-        "eslint",
-        "gopls",
-        "groovyls",
-        "html",
-        "jsonls",
-        "lua_ls",
-        "marksman",
-        "nginx_language_server",
-        "somesass_ls",
-        "stylelint_lsp",
-        "vtsls",
-        "yamlls",
-      },
+      ensure_installed = ensure_installed,
     })
 
     local lspconfig = require("lspconfig")
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    lspconfig.gopls.setup({
-      capabilities = capabilities,
-    })
+    for _, server in ipairs(ensure_installed) do
+      if not vim.tbl_contains({ "vtsls", "lua_ls", "eslint" }, server) then
+        lspconfig[server].setup({
+          capabilities = capabilities,
+        })
+      end
+    end
 
     lspconfig.vtsls.setup({
       capabilities = capabilities,
@@ -88,10 +93,6 @@ return {
           },
         },
       },
-    })
-
-    lspconfig.jsonls.setup({
-      capabilities = capabilities,
     })
 
     require("lspconfig").eslint.setup({
