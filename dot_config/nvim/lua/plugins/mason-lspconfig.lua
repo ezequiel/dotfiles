@@ -20,6 +20,7 @@ return {
         "dockerls",
         "eslint",
         "gopls",
+        "groovyls",
         "html",
         "jsonls",
         "lua_ls",
