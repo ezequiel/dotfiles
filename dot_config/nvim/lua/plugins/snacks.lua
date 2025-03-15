@@ -48,7 +48,7 @@ return {
         Snacks.picker.grep_word()
       end,
       desc = "Visual selection or word",
-      mode = { "v" },
+      mode = { "x" },
     },
     {
       "<C-x>",

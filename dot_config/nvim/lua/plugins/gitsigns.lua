@@ -34,8 +34,8 @@ return {
           gs.nav_hunk("first")
         end, "First Hunk")
 
-        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+        map({ "n", "x" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        map({ "n", "x" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
         map("n", "<leader>hu", gs.undo_stage_hunk, "Undo Stage Hunk")
       end,
     })

@@ -1,7 +1,7 @@
 return {
   "yetone/avante.nvim",
   keys = {
-    { "<leader>av", "<cmd>AvanteToggle<cr>", mode = { "n", "v" } },
+    { "<leader>av", "<cmd>AvanteToggle<cr>", mode = { "n", "x" } },
   },
   version = false,
   opts = {

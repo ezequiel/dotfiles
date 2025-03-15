@@ -8,7 +8,7 @@ return {
         return ":IncRename " .. vim.fn.expand("<cword>")
       end,
       desc = "Incremental Rename",
-      mode = { "n", "v" },
+      mode = { "n", "x" },
       noremap = true,
       expr = true,
     },
