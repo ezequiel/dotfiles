@@ -39,31 +39,21 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     for _, server in ipairs(ensure_installed) do
-      if not vim.tbl_contains({ "vtsls", "lua_ls", "eslint" }, server) then
+      if not vim.tbl_contains({ "vtsls", "lua_ls", "eslint", "stylelint_lsp" }, server) then
         lspconfig[server].setup({
           capabilities = capabilities,
         })
       end
     end
 
+    lspconfig.stylelint_lsp.setup({
+      capabilities = capabilities,
+      root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+    })
+
     lspconfig.vtsls.setup({
       capabilities = capabilities,
       on_attach = function()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "AutoSaveWritePost",
-          callback = function()
-            vim.lsp.buf.code_action({
-              apply = true,
-              context = {
-                only = {
-                  ---@diagnostic disable-next-line: assign-type-mismatch
-                  "source.removeUnusedImports.ts",
-                },
-                diagnostics = {},
-              },
-            })
-          end,
-        })
         vim.keymap.set({ "n" }, "<leader>ca", function()
           vim.lsp.buf.code_action({
             apply = true,
@@ -71,6 +61,8 @@ return {
               only = {
                 ---@diagnostic disable-next-line: assign-type-mismatch
                 "source.addMissingImports.ts",
+                ---@diagnostic disable-next-line: assign-type-mismatch
+                "source.removeUnusedImports.ts",
               },
               diagnostics = {},
             },

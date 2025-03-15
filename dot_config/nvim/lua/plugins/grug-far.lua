@@ -6,14 +6,28 @@ return {
       function()
         require("grug-far").open()
       end,
-      mode = { "n", "v" },
+      mode = { "n", "x" },
     },
     {
       "<leader>gb",
       function()
         require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
       end,
-      mode = { "n", "v" },
+      mode = { "n", "x" },
+    },
+    {
+      "<leader>gw",
+      function()
+        require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
+      end,
+      mode = { "n" },
+    },
+    {
+      "<leader>gv",
+      function()
+        require("grug-far").open({ visualSelectionUsage = "operate-within-range" })
+      end,
+      mode = { "x" },
     },
   },
   config = function(_, opts)
@@ -21,7 +35,6 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "grug-far",
       callback = function()
-        vim.keymap.set({ "n" }, "<Esc>", "<Cmd>stopinsert | bd!<CR>", { buffer = true })
         vim.keymap.set({ "i" }, "<Enter>", "<Esc>", { buffer = true })
         -- vim.keymap.set({ "n" }, "o", "<Nop>", { noremap = true, buffer = true })
         -- vim.keymap.set({ "n" }, "O", "<Nop>", { noremap = true, buffer = true })
@@ -35,6 +48,29 @@ return {
     startInInsertMode = false,
     transient = true,
     wrap = false,
+    keymaps = {
+      abort = false,
+      applyNext = false,
+      applyPrev = false,
+      close = { n = "<Esc>" },
+      gotoLocation = { n = "<enter>" },
+      help = { n = "g?" },
+      historyAdd = false,
+      historyOpen = false,
+      openLocation = false,
+      openNextLocation = false,
+      openPrevLocation = false,
+      pickHistoryEntry = false,
+      previewLocation = false,
+      qflist = { n = "<C-q>" },
+      refresh = { n = "R" },
+      replace = false,
+      swapEngine = false,
+      swapReplacementInterpreter = false,
+      syncLine = { n = "<localleader>l" },
+      syncLocations = { n = "<localleader>s" },
+      toggleShowCommand = false,
+    },
 
     -- engines = {
     --   ripgrep = {

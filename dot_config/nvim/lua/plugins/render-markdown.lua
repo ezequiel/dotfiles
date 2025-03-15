@@ -1,7 +1,8 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  ft = { "markdown", "Avante", "trouble" },
+  -- keep this in sync with file_types below
+  ft = { "markdown", "Avante", "trouble", "qf" },
   opts = {
-    file_types = { "markdown", "Avante", "trouble" },
+    file_types = { "markdown", "Avante", "trouble", "qf" },
   },
 }
