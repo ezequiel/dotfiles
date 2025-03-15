@@ -6,6 +6,7 @@ return {
       ["*"] = { "trim_newlines", "trim_whitespace" },
       css = { "prettierd" },
       go = { "goimports", "gofmt" },
+      htmlangular = { "prettierd" },
       html = { "prettierd" },
       javascript = { "prettierd" },
       javascriptreact = { "prettierd" },
