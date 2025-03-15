@@ -48,7 +48,7 @@ return {
 
     lspconfig.stylelint_lsp.setup({
       capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+      root_dir = lspconfig.util.root_pattern("package.json"),
     })
 
     lspconfig.vtsls.setup({

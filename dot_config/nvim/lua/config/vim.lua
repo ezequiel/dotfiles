@@ -88,6 +88,8 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
+vim.keymap.set({ "n" }, "u", "u<cmd>doautocmd FocusLost<CR>")
+vim.keymap.set({ "n" }, "U", "U<cmd>doautocmd FocusLost<CR>")
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc><cmd>doautocmd FocusLost<CR>")
 vim.keymap.set({ "n", "i", "v" }, "<Esc>", "<Esc><cmd>doautocmd FocusLost<CR>")
 vim.keymap.set({ "n", "i", "v" }, "<C-c>", "<C-c><cmd>doautocmd FocusLost<CR>")
@@ -140,3 +142,6 @@ for cmd, action in pairs(commands) do
     complete = "file",
   })
 end
+
+vim.keymap.set("x", "/", "<Esc>/\\%V")
+vim.keymap.set("x", "r", [[:s/\%V]])

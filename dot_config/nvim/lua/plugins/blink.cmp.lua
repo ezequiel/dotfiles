@@ -9,7 +9,7 @@ return {
       return vim.bo.buftype ~= "prompt"
         and vim.b.completion ~= false
         and vim.bo.filetype ~= "grug-far"
-        and vim.bo.filetype ~= "qf"
+        -- and vim.bo.filetype ~= "qf"
         and not string.match(vim.bo.filetype, "^Avante")
     end,
     keymap = {
@@ -27,35 +27,27 @@ return {
       },
     },
     completion = {
-      documentation = {
-        window = { border = "single" },
-        auto_show = true,
-        treesitter_highlighting = true,
-      },
       ghost_text = { enabled = true },
       menu = {
         border = "single",
         draw = {
           treesitter = { "lsp" },
           columns = {
-            -- kind, source_id, source_name, kind_icon, label, label_description
             { "kind_icon", "label", "label_description", gap = 1 },
           },
         },
         scrollbar = false,
       },
+      accept = { auto_brackets = { enabled = true } },
     },
-    signature = {
-      enabled = true,
-      window = {
-        min_width = 1,
-        max_width = 100,
-        max_height = 10,
-        border = "single",
-        show_documentation = true,
-        scrollbar = true,
-      },
-    },
+    -- signature = {
+    --   enabled = false,
+    --   window = {
+    --     border = "single",
+    --     show_documentation = false,
+    --     scrollbar = true,
+    --   },
+    -- },
     appearance = {
       use_nvim_cmp_as_default = false,
       nerd_font_variant = "mono",
