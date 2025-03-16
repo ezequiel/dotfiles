@@ -142,5 +142,7 @@ for cmd, action in pairs(commands) do
   })
 end
 
+vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+
 vim.keymap.set("x", "/", "<Esc>/\\%V")
-vim.keymap.set("x", "r", [[:s/\%V]])
+-- vim.keymap.set("x", "r", [[:s/\%V]])

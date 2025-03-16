@@ -3,6 +3,7 @@ return {
   ft = "qf",
   opts = {
     opts = { wrap = true },
+    wrap = true,
     borders = {
       vert = "|",
       strong_header = "-",
@@ -12,6 +13,9 @@ return {
       soft_cross = "|",
       soft_end = "|",
     },
-    trim_leading_whitespace = "all",
+    trim_leading_whitespace = false,
+    max_filename_width = function()
+      return 24
+    end,
   },
 }

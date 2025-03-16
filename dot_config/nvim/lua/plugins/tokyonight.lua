@@ -4,16 +4,10 @@ return {
   priority = 1000,
   config = function()
     require("tokyonight").setup({
+      style = "night",
+      lualine_bold = true,
       plugins = {
-        "gitsigns",
-        "blink",
-        "snacks",
-        "render-markdown",
-        "trouble",
-        "yanky",
-        "illuminate",
-        "grug-far",
-        "noice",
+        auto = true,
       },
     })
     vim.cmd("colorscheme tokyonight-night")

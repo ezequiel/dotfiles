@@ -119,19 +119,25 @@ return {
   opts = {
     explorer = {
       enabled = true,
-      win = {
-        list = {
-          keys = {
-            ["<ESC>"] = "",
-          },
-        },
-      },
+      replace_netrw = false,
     },
     picker = {
       enabled = true,
       hidden = true,
       cwd = get_cwd(),
       sources = {
+        explorer = {
+          win = {
+            list = {
+              keys = {
+                ["R"] = "explorer_update",
+                ["<ESC>"] = "",
+                ["<c-c>"] = "close",
+                ["q"] = "",
+              },
+            },
+          },
+        },
         files = {
           hidden = true,
         },

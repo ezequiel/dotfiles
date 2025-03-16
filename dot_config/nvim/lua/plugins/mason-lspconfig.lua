@@ -18,6 +18,7 @@ return {
       "docker_compose_language_service",
       "dockerls",
       "eslint",
+      "golangci_lint_ls",
       "gopls",
       "groovyls",
       "html",
@@ -39,12 +40,31 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     for _, server in ipairs(ensure_installed) do
-      if not vim.tbl_contains({ "vtsls", "lua_ls", "eslint", "stylelint_lsp" }, server) then
+      if not vim.tbl_contains({ "vtsls", "lua_ls", "eslint", "stylelint_lsp", "golangci_lint_ls" }, server) then
         lspconfig[server].setup({
           capabilities = capabilities,
         })
       end
     end
+
+    lspconfig.golangci_lint_ls.setup({
+      capabilities = capabilities,
+      -- cmd = { "golangci-lint-langserver" },
+      -- root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
+      -- init_options = {
+      --   cmd = {
+      --     "golangci-lint",
+      --     "run",
+      --     "--enable-all",
+      --     "--disable",
+      --     "lll",
+      --     "--out-format",
+      --     "json",
+      --     "--issues-exit-code=1",
+      --   },
+      -- },
+      -- filetypes = { "go", "gomod" },
+    })
 
     lspconfig.stylelint_lsp.setup({
       capabilities = capabilities,
@@ -54,20 +74,20 @@ return {
     lspconfig.vtsls.setup({
       capabilities = capabilities,
       on_attach = function()
-        vim.keymap.set({ "n" }, "<leader>ca", function()
-          vim.lsp.buf.code_action({
-            apply = true,
-            context = {
-              only = {
-                ---@diagnostic disable-next-line: assign-type-mismatch
-                "source.addMissingImports.ts",
-                ---@diagnostic disable-next-line: assign-type-mismatch
-                "source.removeUnusedImports.ts",
-              },
-              diagnostics = {},
-            },
-          })
-        end)
+        -- vim.keymap.set({ "n" }, "<leader>ca", function()
+        --   vim.lsp.buf.code_action({
+        --     apply = true,
+        --     context = {
+        --       only = {
+        --         ---@diagnostic disable-next-line: assign-type-mismatch
+        --         "source.addMissingImports.ts",
+        --         ---@diagnostic disable-next-line: assign-type-mismatch
+        --         "source.removeUnusedImports.ts",
+        --       },
+        --       diagnostics = {},
+        --     },
+        --   })
+        -- end)
       end,
     })
 

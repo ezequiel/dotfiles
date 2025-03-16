@@ -1,7 +1,7 @@
 return {
   "yetone/avante.nvim",
   keys = {
-    { "<leader>av", "<cmd>AvanteToggle<cr>", mode = { "n", "x" } },
+    { "<leader>aa", "<cmd>AvanteAsk<cr>", mode = { "n", "x" } },
   },
   version = false,
   opts = {
@@ -19,6 +19,7 @@ return {
       --   enabled = false,
       width = 50,
     },
+    mappings = { sidebar = { close = "<c-c>", close_from_input = { normal = "<c-c>" } } },
   },
   build = "make",
   dependencies = {

@@ -7,6 +7,7 @@ return {
 
     vim.keymap.set({ "n" }, "<c-a>", multicursor.toggleCursor)
     vim.keymap.set("n", "<leader>A", multicursor.searchAllAddCursors)
+    vim.keymap.set("x", "M", multicursor.matchCursors)
 
     multicursor.addKeymapLayer(function(layerSet)
       layerSet("n", "<esc>", function()

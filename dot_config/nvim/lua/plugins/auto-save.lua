@@ -20,7 +20,7 @@ return {
       cancel_deferred_save = {},
     },
     condition = function()
-      return vim.bo.filetype ~= "qf"
+      return vim.bo.filetype ~= "qf" and vim.bo.filetype ~= "oil"
     end,
     write_all_buffers = true,
   },
