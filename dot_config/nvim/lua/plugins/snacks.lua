@@ -1,3 +1,11 @@
+local function get_cwd()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel 2>/dev/null")[1]
+  if vim.v.shell_error ~= 0 then
+    return vim.fn.getcwd()
+  end
+  return git_root
+end
+
 return {
   "folke/snacks.nvim",
   lazy = false,
@@ -121,9 +129,12 @@ return {
     },
     picker = {
       enabled = true,
+      hidden = true,
+      cwd = get_cwd(),
       sources = {
-        explorer = { hidden = true },
-        files = { hidden = true },
+        files = {
+          hidden = true,
+        },
       },
       matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
     },
