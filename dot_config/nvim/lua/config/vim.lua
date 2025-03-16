@@ -89,9 +89,9 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
-vim.keymap.set({ "n", "i", "x" }, "<C-s>", "<Esc><cmd>doautocmd FocusLost<CR>")
-vim.keymap.set({ "n", "i", "x" }, "<Esc>", "<Esc><cmd>doautocmd FocusLost<CR>")
-vim.keymap.set({ "n", "i", "x" }, "<C-c>", "<C-c><cmd>doautocmd FocusLost<CR>")
+vim.keymap.set({ "n", "i", "x" }, "<C-s>", "<Esc><cmd>doautocmd FocusLost<CR>", { noremap = true })
+vim.keymap.set({ "n", "i", "x" }, "<Esc>", "<Esc><cmd>doautocmd FocusLost<CR>", { noremap = true })
+vim.keymap.set({ "n", "i", "x" }, "<C-c>", "<C-c><cmd>doautocmd FocusLost<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>1", "<cmd>bp<CR>")
 vim.keymap.set("n", "<leader>2", "<cmd>bn<CR>")
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
@@ -144,5 +144,3 @@ end
 
 vim.keymap.set("x", "/", "<Esc>/\\%V")
 vim.keymap.set("x", "r", [[:s/\%V]])
-vim.keymap.set("n", "u", "g,u")
-vim.keymap.set("n", "<C-r>", "g,<c-r>")
