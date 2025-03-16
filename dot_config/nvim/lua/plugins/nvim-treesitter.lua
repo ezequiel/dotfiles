@@ -24,6 +24,7 @@ return {
       "bash",
       "dockerfile",
       "git_config",
+      "gitcommit",
       "gitignore",
       "go",
       "gomod",
