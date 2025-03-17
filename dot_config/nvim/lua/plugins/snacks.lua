@@ -143,6 +143,14 @@ return {
         },
       },
       matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
+      win = {
+        list = {
+          wo = {
+            conceallevel = 0,
+            -- concealcursor = "",
+          },
+        },
+      },
     },
     bufdelete = { enabled = true },
     rename = { enabled = true },

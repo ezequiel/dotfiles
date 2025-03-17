@@ -8,10 +8,14 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
+      hover = {
+        silent = true,
+      },
     },
     presets = {
       lsp_doc_border = true,
       inc_rename = true,
+      long_message_to_split = true,
     },
   },
   dependencies = {

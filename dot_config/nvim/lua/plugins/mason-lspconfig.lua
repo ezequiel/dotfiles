@@ -6,6 +6,7 @@ return {
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
     "williamboman/mason.nvim",
+    "yioneko/nvim-vtsls",
   },
   config = function()
     require("mason").setup()
@@ -73,22 +74,42 @@ return {
 
     lspconfig.vtsls.setup({
       capabilities = capabilities,
-      on_attach = function()
-        -- vim.keymap.set({ "n" }, "<leader>ca", function()
-        --   vim.lsp.buf.code_action({
-        --     apply = true,
-        --     context = {
-        --       only = {
-        --         ---@diagnostic disable-next-line: assign-type-mismatch
-        --         "source.addMissingImports.ts",
-        --         ---@diagnostic disable-next-line: assign-type-mismatch
-        --         "source.removeUnusedImports.ts",
-        --       },
-        --       diagnostics = {},
-        --     },
-        --   })
-        -- end)
-      end,
+      settings = {
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+          enableMoveToFileCodeAction = true,
+        },
+        typescript = {
+          updateImportsOnFileMove = {
+            enabled = "always",
+          },
+          preferences = {
+            includePackageJsonAutoImports = true,
+            preferTypeOnlyAutoImports = true,
+          },
+        },
+        javascript = {
+          updateImportsOnFileMove = {
+            enabled = "always",
+          },
+        },
+      },
+      -- on_attach = function()
+      -- vim.keymap.set({ "n" }, "<leader>ca", function()
+      --   vim.lsp.buf.code_action({
+      --     apply = true,
+      --     context = {
+      --       only = {
+      --         ---@diagnostic disable-next-line: assign-type-mismatch
+      --         "source.addMissingImports.ts",
+      --         ---@diagnostic disable-next-line: assign-type-mismatch
+      --         "source.removeUnusedImports.ts",
+      --       },
+      --       diagnostics = {},
+      --     },
+      --   })
+      -- end)
+      -- end,
     })
 
     lspconfig.lua_ls.setup({
@@ -132,13 +153,12 @@ return {
         "json",
         "jsonc",
       },
-
       -- experimental = {
       --   useFlatConfig = true,
       -- },
-      -- workingDirectory = {
-      --   mode = "auto",
-      -- },
+      workingDirectory = {
+        mode = "auto",
+      },
     })
   end,
 }

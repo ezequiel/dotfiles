@@ -49,19 +49,23 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.wildoptions = "pum"
 vim.opt.wildignorecase = true
 vim.opt.wildignore = "*/node_modules,*/vendor,.git"
-vim.opt.foldmethod = "marker"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.errorbells = false
 vim.opt.visualbell = false
-vim.opt.foldenable = false
 vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 5
 vim.opt.shortmess:append("I")
 vim.opt.backup = true
+vim.opt.foldcolumn = "0"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 1337
+vim.opt.foldlevelstart = 1337
 
 local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
 vim.opt.backupdir = backup_dir
