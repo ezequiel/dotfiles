@@ -143,6 +143,11 @@ return {
         },
       },
       matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
+      formatters = {
+        file = {
+          filename_first = true,
+        },
+      },
       win = {
         list = {
           wo = {
