@@ -4,8 +4,6 @@ return {
     enabled = true,
     trigger_events = {
       immediate_save = {
-        "TextChanged",
-        -- "TextChangedP",
         "BufLeave",
         "BufWinLeave",
         "CmdlineLeave",
@@ -16,7 +14,10 @@ return {
         "VimSuspend",
         "WinLeave",
       },
-      defer_save = {},
+      defer_save = {
+        "TextChanged",
+        "TextChangedP",
+      },
       cancel_deferred_save = {},
     },
     condition = function()

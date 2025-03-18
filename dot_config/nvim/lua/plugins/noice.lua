@@ -13,7 +13,6 @@ return {
     },
     presets = {
       lsp_doc_border = true,
-      inc_rename = true,
       long_message_to_split = true,
     },
   },
