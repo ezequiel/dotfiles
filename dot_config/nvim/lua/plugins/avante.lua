@@ -33,7 +33,6 @@ return {
         panel = { enabled = false },
       },
     },
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
