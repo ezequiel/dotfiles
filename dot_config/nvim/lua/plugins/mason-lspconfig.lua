@@ -88,6 +88,7 @@ return {
         local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = "angularls" })
         if client and client.name == "vtsls" and #angularLsClients > 0 then
           client.server_capabilities.renameProvider = false
+          client.server_capabilities.referencesProvider = false
         end
       end,
     })
