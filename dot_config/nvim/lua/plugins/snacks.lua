@@ -119,7 +119,6 @@ return {
   opts = {
     explorer = {
       enabled = true,
-      replace_netrw = false,
     },
     picker = {
       enabled = true,

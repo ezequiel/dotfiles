@@ -30,7 +30,7 @@ return {
       lsp_format = "fallback",
     },
     log_level = vim.log.levels.ERROR,
-    notify_on_error = true,
+    notify_on_error = false,
     notify_no_formatters = true,
   },
   config = function(_, opts)

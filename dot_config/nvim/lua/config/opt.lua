@@ -65,7 +65,7 @@ vim.opt.foldtext = ""
 vim.opt.foldlevel = 1337
 vim.opt.foldlevelstart = 1337
 
-local backup_dir = "~/.vim/swap//,."
+local backup_dir = vim.fn.expand("/tmp/nvim/backups//,.")
 vim.opt.backupdir = backup_dir
 vim.opt.directory = backup_dir
 if not vim.fn.isdirectory(backup_dir) then
