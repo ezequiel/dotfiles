@@ -3,7 +3,10 @@ return {
   event = "VeryLazy",
   configure = function()
     require("illuminate").configure({
-      delay = 0,
+      providers = {
+        "lsp",
+        "treesitter",
+      },
       disable_keymaps = true,
     })
   end,

@@ -143,11 +143,11 @@ return {
         },
       },
       matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
-      formatters = {
-        file = {
-          filename_first = true,
-        },
-      },
+      -- formatters = {
+      --   file = {
+      --     filename_first = true,
+      --   },
+      -- },
       win = {
         list = {
           wo = {
@@ -162,6 +162,9 @@ return {
     indent = {
       enabled = true,
       -- only_current = true,
+      animate = {
+        enabled = false,
+      },
     },
     terminal = {
       enabled = false,

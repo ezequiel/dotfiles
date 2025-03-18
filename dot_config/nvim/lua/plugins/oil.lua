@@ -1,8 +1,6 @@
 return {
   "stevearc/oil.nvim",
   opts = {
-    -- default_file_explorer = true,
-    --
     watch_for_changes = true,
     view_options = {
       show_hidden = true,
@@ -29,8 +27,6 @@ return {
     use_default_keymaps = false,
   },
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  lazy = false,
-  -- event = "VeryLazy",
   keys = {
     {
       "<leader>o",

@@ -13,7 +13,7 @@ return {
       use_diagnostics = true,
       auto_open_qflist = false,
       auto_close_qflist = false,
-      enable_progress_notifications = true,
+      enable_progress_notifications = false,
 
       -- use_trouble_qflist = true,
       -- bin_path = require("lspconfig").util.root_pattern("package.json", ".git"),

@@ -1,13 +1,31 @@
 return {
   "jake-stewart/multicursor.nvim",
-  event = "VeryLazy",
+  keys = {
+    {
+      "<c-a>",
+      function()
+        require("multicursor-nvim").toggleCursor()
+      end,
+      mode = { "n" },
+    },
+    {
+      "<leader>A",
+      function()
+        require("multicursor-nvim").searchAllAddCursors()
+      end,
+      mode = { "x" },
+    },
+    {
+      "M",
+      function()
+        require("multicursor-nvim").matchCursors()
+      end,
+      mode = { "x" },
+    },
+  },
   config = function()
     local multicursor = require("multicursor-nvim")
     multicursor.setup()
-
-    vim.keymap.set({ "n" }, "<c-a>", multicursor.toggleCursor)
-    vim.keymap.set("n", "<leader>A", multicursor.searchAllAddCursors)
-    vim.keymap.set("x", "M", multicursor.matchCursors)
 
     multicursor.addKeymapLayer(function(layerSet)
       layerSet("n", "<esc>", function()

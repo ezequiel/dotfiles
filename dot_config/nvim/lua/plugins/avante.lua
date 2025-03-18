@@ -2,6 +2,7 @@ return {
   "yetone/avante.nvim",
   keys = {
     { "<leader>aa", "<cmd>AvanteAsk<cr>", mode = { "n", "x" } },
+    { "<leader>ae", "<cmd>AvanteEdit<cr>", mode = { "n", "x" } },
   },
   version = false,
   opts = {
@@ -17,6 +18,7 @@ return {
       },
       -- sidebar_header = {
       --   enabled = false,
+      --   }
       width = 50,
     },
     mappings = { sidebar = { close = "<c-c>", close_from_input = { normal = "<c-c>" } } },

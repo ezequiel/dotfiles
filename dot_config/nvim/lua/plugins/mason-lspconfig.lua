@@ -1,7 +1,5 @@
 return {
   "williamboman/mason-lspconfig.nvim",
-  -- event = "VeryLazy",
-  lazy = false,
   dependencies = {
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
@@ -37,7 +35,10 @@ return {
       ensure_installed = ensure_installed,
     })
 
+    -- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+
     local lspconfig = require("lspconfig")
+
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     for _, server in ipairs(ensure_installed) do
@@ -50,21 +51,6 @@ return {
 
     lspconfig.golangci_lint_ls.setup({
       capabilities = capabilities,
-      -- cmd = { "golangci-lint-langserver" },
-      -- root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
-      -- init_options = {
-      --   cmd = {
-      --     "golangci-lint",
-      --     "run",
-      --     "--enable-all",
-      --     "--disable",
-      --     "lll",
-      --     "--out-format",
-      --     "json",
-      --     "--issues-exit-code=1",
-      --   },
-      -- },
-      -- filetypes = { "go", "gomod" },
     })
 
     lspconfig.stylelint_lsp.setup({
@@ -94,22 +80,16 @@ return {
           },
         },
       },
-      -- on_attach = function()
-      -- vim.keymap.set({ "n" }, "<leader>ca", function()
-      --   vim.lsp.buf.code_action({
-      --     apply = true,
-      --     context = {
-      --       only = {
-      --         ---@diagnostic disable-next-line: assign-type-mismatch
-      --         "source.addMissingImports.ts",
-      --         ---@diagnostic disable-next-line: assign-type-mismatch
-      --         "source.removeUnusedImports.ts",
-      --       },
-      --       diagnostics = {},
-      --     },
-      --   })
-      -- end)
-      -- end,
+    })
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = "angularls" })
+        if client and client.name == "vtsls" and #angularLsClients > 0 then
+          client.server_capabilities.renameProvider = false
+        end
+      end,
     })
 
     lspconfig.lua_ls.setup({
