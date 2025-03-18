@@ -150,3 +150,4 @@ vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<C
 
 vim.keymap.set("x", "/", "<Esc>/\\%V")
 -- vim.keymap.set("x", "r", [[:s/\%V]])
+-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
