@@ -48,7 +48,6 @@ vim.opt.wildoptions = "pum"
 vim.opt.wildignorecase = true
 vim.opt.wildignore = "*/node_modules,*/vendor,.git"
 vim.opt.backspace = "indent,eol,start"
--- vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.errorbells = false

@@ -6,6 +6,8 @@ local function get_cwd()
   return git_root
 end
 
+-- credit: https://github.com/MaJinjie
+-- https://github.com/MaJinjie/nvim/blob/main/lua/util/keymap.lua#L8
 local function buf_delete(opts)
   opts = opts or {}
   opts = type(opts) == "number" and { buf = opts } or opts
