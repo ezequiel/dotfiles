@@ -48,7 +48,7 @@ vim.opt.wildoptions = "pum"
 vim.opt.wildignorecase = true
 vim.opt.wildignore = "*/node_modules,*/vendor,.git"
 vim.opt.backspace = "indent,eol,start"
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.errorbells = false
@@ -64,8 +64,9 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
 vim.opt.foldlevel = 1337
 vim.opt.foldlevelstart = 1337
+vim.opt.smoothscroll = true
 
-local backup_dir = vim.fn.expand("/tmp/nvim/backups//,.")
+local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
 vim.opt.backupdir = backup_dir
 vim.opt.directory = backup_dir
 if not vim.fn.isdirectory(backup_dir) then
