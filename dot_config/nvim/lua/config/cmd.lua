@@ -37,3 +37,20 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.conceallevel = 3
   end,
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+  desc = "Highlight the cursor line in the active window",
+  pattern = "*",
+  command = "setlocal cursorline",
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+  desc = "Clear the cursor line highlight when leaving a window",
+  pattern = "*",
+  command = "if &bt != 'quickfix' | setlocal nocursorline | endif",
+})
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "VimEnter", "WinEnter", "BufWinEnter" }, {
+  command = "checktime",
+  pattern = "*",
+})
