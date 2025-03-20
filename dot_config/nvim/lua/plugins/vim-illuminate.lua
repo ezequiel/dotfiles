@@ -1,13 +1,14 @@
 return {
   "RRethy/vim-illuminate",
   event = "VeryLazy",
-  configure = function()
+  config = function()
     require("illuminate").configure({
       providers = {
         "lsp",
         "treesitter",
       },
       disable_keymaps = true,
+      filetypes_denylist = { "oil" },
     })
   end,
 }
