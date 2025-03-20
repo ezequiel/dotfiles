@@ -9,6 +9,7 @@ return {
       return vim.bo.buftype ~= "prompt"
         and vim.b.completion ~= false
         and vim.bo.filetype ~= "grug-far"
+        and vim.bo.filetype ~= "oil"
         -- and vim.bo.filetype ~= "qf"
         and not string.match(vim.bo.filetype, "^Avante")
     end,

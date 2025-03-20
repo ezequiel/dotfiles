@@ -15,9 +15,11 @@ return {
       ["<BS>"] = { "actions.parent", mode = "n" },
     },
     use_default_keymaps = false,
-    skip_confirm_for_simple_edits = true,
+    skip_confirm_for_simple_edits = false,
     constrain_cursor = "name",
     lsp_file_methods = {
+      enabled = true,
+      timeout_ms = 9999,
       autosave_changes = true,
     },
     preview_split = "right",
@@ -27,16 +29,7 @@ return {
     {
       "<leader>o",
       function()
-        local oil = require("oil")
-        oil.toggle_float()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "OilEnter",
-          callback = vim.schedule_wrap(function(args)
-            if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
-              oil.open_preview()
-            end
-          end),
-        })
+        require("oil").toggle_float()
       end,
     },
   },
