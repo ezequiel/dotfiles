@@ -131,9 +131,6 @@ return {
         "json",
         "jsonc",
       },
-      -- experimental = {
-      --   useFlatConfig = true,
-      -- },
       workingDirectory = {
         mode = "auto",
       },

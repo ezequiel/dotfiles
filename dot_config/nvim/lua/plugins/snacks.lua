@@ -148,13 +148,6 @@ return {
       desc = "Goto Type Definition",
     },
     {
-      "<leader>m",
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = "Rename File",
-    },
-    {
       "<leader>:",
       function()
         Snacks.picker.command_history()
