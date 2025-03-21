@@ -65,6 +65,9 @@ vim.opt.foldlevelstart = 1337
 vim.opt.smoothscroll = true
 vim.opt.swapfile = false
 vim.opt.backup = false
+-- vim.opt.backupdir=~/.vim/backup//
+-- vim.opt.directory=~/.vim/swap//
+-- vim.opt.undodir=~/.vim/undo//
 
 -- local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
 -- vim.opt.backupdir = backup_dir
