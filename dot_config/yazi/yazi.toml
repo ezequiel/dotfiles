@@ -1,15 +1,14 @@
 [manager]
-linemode = "none"
 show_hidden = true
 show_symlink = true
 scrolloff = 200
 
 [[plugin.prepend_fetchers]]
-id   = "git"
+id = "git"
 name = "*"
-run  = "git"
+run = "git"
 
 [[plugin.prepend_fetchers]]
-id   = "git"
+id = "git"
 name = "*/"
-run  = "git"
+run = "git"
