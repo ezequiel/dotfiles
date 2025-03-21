@@ -56,7 +56,6 @@ vim.opt.guicursor = ""
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 5
 vim.opt.shortmess:append("I")
-vim.opt.backup = true
 vim.opt.foldcolumn = "0"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -65,6 +64,7 @@ vim.opt.foldlevel = 1337
 vim.opt.foldlevelstart = 1337
 vim.opt.smoothscroll = true
 vim.opt.swapfile = false
+vim.opt.backup = false
 
 -- local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
 -- vim.opt.backupdir = backup_dir

@@ -8,7 +8,7 @@ return {
         "treesitter",
       },
       disable_keymaps = true,
-      filetypes_denylist = { "oil" },
+      -- filetypes_denylist = {},
     })
   end,
 }

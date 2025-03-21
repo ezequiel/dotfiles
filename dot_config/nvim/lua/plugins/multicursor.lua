@@ -13,7 +13,7 @@ return {
       function()
         require("multicursor-nvim").searchAllAddCursors()
       end,
-      mode = { "x" },
+      mode = { "n" },
     },
     {
       "M",

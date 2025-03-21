@@ -22,7 +22,7 @@ return {
       cancel_deferred_save = { "InsertEnter" },
     },
     condition = function()
-      return vim.bo.filetype ~= "qf" and vim.bo.filetype ~= "oil"
+      return vim.bo.filetype ~= "qf"
     end,
     write_all_buffers = true,
   },

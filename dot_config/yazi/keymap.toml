@@ -1,0 +1,39 @@
+[manager]
+
+keymap = [
+            { on = [ "<c-c>" ], run = "quit"},
+            { on = [ "<q>" ], run = "quit"},
+             { on = [ "h" ], run = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+             { on = [ "<Backspace>" ], run = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+ { on = [ "l" ], run = [ "enter", "escape --visual --select" ], desc = "Enter the child directory" },
+             { on = [ "<left>" ], run = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+ { on = [ "<right>" ], run = [ "enter", "escape --visual --select" ], desc = "Enter the child directory" },
+                { on = [ "<Enter>" ],   run = ["plugin smart-enter", "escape --visual --select" ]},
+                { on = [ "?" ], run = "help"},
+                { on = [ "r" ],         run = "rename"},
+                { on = [ "p" ],         run = "paste"},
+                { on = [ "c" ],         run = [ "yank", "escape --visual --select" ]},
+                { on = [ "y", "y" ],         run = [ "yank", "escape --visual --select" ]},
+                { on = [ "y", "p" ], run = "copy path",             desc = "Copy the absolute path" },
+    { on = [ "y", "f" ], run = "copy filename",         desc = "Copy the name of the file" },
+
+    { on = [ "x" ],         run = [ "yank --cut", "escape --visual --select" ]},
+                { on = [ "d" ],         run = [ "remove", "escape --visual --select" ]},
+                { on = [ "a" ],         run = "create"},
+
+
+    { on = [ "k" ], run = "arrow -1", desc = "Move cursor up" },
+    { on = [ "j" ], run = "arrow 1",  desc = "Move cursor down" },
+
+    { on = [ "<up>" ], run = "arrow -1", desc = "Move cursor up" },
+    { on = [ "<down>" ], run = "arrow 1",  desc = "Move cursor down" },
+
+    { on = [ "<c-n>" ], run = "arrow -1", desc = "Move cursor up" },
+    { on = [ "<c-p>" ], run = "arrow 1",  desc = "Move cursor down" },
+
+    { on = [ "<C-u>" ], run = "arrow -50%",  desc = "Move cursor up half page" },
+    { on = [ "<C-d>" ], run = "arrow 50%",   desc = "Move cursor down half page" },
+                { on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+    { on = [ "G" ],      run = "arrow bot",  desc = "Move cursor to the bottom" },
+
+]

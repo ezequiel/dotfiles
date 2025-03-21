@@ -3,33 +3,29 @@ return {
   ft = { "typescript", "typescriptreact" },
   keys = {
     {
-      "<leader>ts",
-      "<cmd>TSCOpen<cr>",
+      "tsc",
+      function()
+        local tsc = require("tsc")
+        tsc.stop()
+        tsc.run()
+      end,
     },
   },
   config = function()
     require("tsc").setup({
-      auto_start_watch_mode = false,
-      use_diagnostics = true,
-      auto_open_qflist = false,
+      use_trouble_qflist = true,
+      use_diagnostics = false,
+      auto_open_qflist = true,
       auto_close_qflist = false,
-      enable_progress_notifications = false,
-      -- use_trouble_qflist = true,
+      enable_progress_notifications = true,
+      -- auto_start_watch_mode = true,
       -- bin_path = require("lspconfig").util.root_pattern("package.json", ".git"),
       -- bin_path = require("tsc.utils").find_tsc_bin(),
       -- pretty_errors = true,
       flags = {
-        -- watch = true,
+        watch = true,
         noEmit = true,
       },
-    })
-
-    vim.cmd("TSC")
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "AutoSaveWritePost",
-      callback = function()
-        vim.cmd("TSC")
-      end,
     })
   end,
 }
