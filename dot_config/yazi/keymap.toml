@@ -105,10 +105,10 @@ keymap = [
   ], run = "arrow 1", desc = "Move cursor down" },
 
   { on = [
-    "<c-n>",
+    "<c-p>",
   ], run = "arrow -1", desc = "Move cursor up" },
   { on = [
-    "<c-p>",
+    "<c-n>",
   ], run = "arrow 1", desc = "Move cursor down" },
   { on = [
     "<C-u>",

@@ -20,4 +20,18 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "vv", "^vg_", { noremap = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("x", "/", "<Esc>/\\%V")
--- vim.keymap.set("x", "r", [[:s/\%V]])
+vim.keymap.set("x", "r", [[:s/\%V]])
+vim.keymap.set({ "n", "x" }, "*", function()
+	vim.fn.setreg("/", "")
+	local search_text
+	if vim.fn.mode() == "v" or vim.fn.mode() == "x" then
+		vim.cmd('normal! "zy')
+		search_text = "\\<" .. vim.fn.getreg("z") .. "\\>"
+	else
+		search_text = "\\<" .. vim.fn.expand("<cword>") .. "\\>"
+	end
+	vim.fn.setreg("/", search_text)
+	-- vim.cmd("let @/ = '" .. search_text .. "'")
+	vim.opt.hlsearch = true
+	vim.cmd("normal! nN")
+end, { silent = true })

@@ -65,6 +65,9 @@ vim.opt.foldlevelstart = 1337
 vim.opt.smoothscroll = true
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+
 -- vim.opt.backupdir=~/.vim/backup//
 -- vim.opt.directory=~/.vim/swap//
 -- vim.opt.undodir=~/.vim/undo//

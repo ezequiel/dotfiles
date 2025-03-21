@@ -1,4 +1,4 @@
 return {
-  "ezequiel/vim-slash",
-  event = "VeryLazy",
+	"ezequiel/vim-slash",
+	event = "VeryLazy",
 }
