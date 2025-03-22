@@ -38,5 +38,5 @@ vim.keymap.set({ "n", "x" }, "*", function()
 
   vim.fn.setreg("/", search_text)
   vim.opt.hlsearch = true
-  vim.cmd("normal! nn")
+  vim.cmd("normal! nN")
 end, { silent = true })
