@@ -19,7 +19,6 @@ return {
       typescriptreact = { "prettierd" },
       yaml = { "prettierd" },
       toml = { "taplo" },
-      docker = { "prettierd" },
     },
     formatters = {
       prettierd = {
