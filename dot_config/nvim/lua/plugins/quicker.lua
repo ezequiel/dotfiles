@@ -2,7 +2,6 @@ return {
   "stevearc/quicker.nvim",
   ft = "qf",
   opts = {
-    opts = { wrap = false },
     wrap = false,
     borders = {
       vert = "|",
