@@ -9,3 +9,9 @@ vim.diagnostic.config({
     spacing = 1,
   },
 })
+
+vim.filetype.add({
+  pattern = {
+    [".env.*"] = "sh",
+  },
+})

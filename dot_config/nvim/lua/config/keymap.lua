@@ -22,16 +22,21 @@ vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<C
 vim.keymap.set("x", "/", "<Esc>/\\%V")
 vim.keymap.set("x", "r", [[:s/\%V]])
 vim.keymap.set({ "n", "x" }, "*", function()
-	vim.fn.setreg("/", "")
-	local search_text
-	if vim.fn.mode() == "v" or vim.fn.mode() == "x" then
-		vim.cmd('normal! "zy')
-		search_text = "\\<" .. vim.fn.getreg("z") .. "\\>"
-	else
-		search_text = "\\<" .. vim.fn.expand("<cword>") .. "\\>"
-	end
-	vim.fn.setreg("/", search_text)
-	-- vim.cmd("let @/ = '" .. search_text .. "'")
-	vim.opt.hlsearch = true
-	vim.cmd("normal! nN")
+  vim.fn.setreg("/", "")
+  local search_text
+  if vim.fn.mode() == "v" or vim.fn.mode() == "x" then
+    vim.cmd('normal! "zy')
+    search_text = vim.fn.getreg("z")
+  else
+    search_text = vim.fn.expand("<cword>")
+  end
+  search_text = vim.fn.escape(search_text, "\\^$.*[]")
+
+  if search_text:match("^%w+$") then
+    search_text = "\\<" .. search_text .. "\\>"
+  end
+
+  vim.fn.setreg("/", search_text)
+  vim.opt.hlsearch = true
+  vim.cmd("normal! nn")
 end, { silent = true })
