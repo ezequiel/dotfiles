@@ -1,4 +1,4 @@
 return {
-	event = "VeryLazy",
-	"farmergreg/vim-lastplace",
+  event = "VeryLazy",
+  "farmergreg/vim-lastplace",
 }

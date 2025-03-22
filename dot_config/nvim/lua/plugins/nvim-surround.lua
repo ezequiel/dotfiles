@@ -1,6 +1,6 @@
 return {
-	"kylechui/nvim-surround",
-	version = "*",
-	event = "InsertEnter",
-	opts = {},
+  "kylechui/nvim-surround",
+  version = "*",
+  event = "InsertEnter",
+  opts = {},
 }
