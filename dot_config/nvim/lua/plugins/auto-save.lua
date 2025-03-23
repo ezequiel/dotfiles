@@ -6,13 +6,13 @@ return {
       immediate_save = {
         "BufLeave",
         "BufWinLeave",
-        "FocusLost",
         "QuitPre",
         "VimLeave",
         "VimSuspend",
         "WinLeave",
       },
       defer_save = {
+        "FocusLost",
         "TextChanged",
         "TextChangedP",
         "InsertLeave",
