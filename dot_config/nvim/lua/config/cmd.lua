@@ -55,14 +55,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(event)
-    vim.keymap.set("n", "H", function()
-      vim.lsp.buf.hover()
-    end, { buffer = event.buf })
-  end,
-})
-
 vim.api.nvim_create_autocmd("ModeChanged", {
   pattern = { "*:[vV\x16]*" },
   callback = function()
@@ -74,5 +66,23 @@ vim.api.nvim_create_autocmd("ModeChanged", {
   pattern = { "[vV\x16]*:*" },
   callback = function()
     vim.api.nvim_exec_autocmds("User", { pattern = "VisualLeave" })
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = "angularls" })
+    if client and client.name == "vtsls" and #angularLsClients > 0 then
+      client.server_capabilities.referencesProvider = false
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    vim.keymap.set("n", "H", function()
+      vim.lsp.buf.hover()
+    end, { buffer = event.buf })
   end,
 })
