@@ -4,6 +4,9 @@ return {
     options = {
       theme = "tokyonight",
       icons_enabled = true,
+      fmt = string.lower,
+      component_separators = "",
+      section_separators = { left = "", right = "" },
     },
     sections = {
       lualine_a = { "mode" },
