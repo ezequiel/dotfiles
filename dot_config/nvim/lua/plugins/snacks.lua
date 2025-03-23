@@ -47,12 +47,28 @@ return {
       desc = "Grep",
     },
     {
-      "<leader>rg",
+      "<leader>rgw",
       function()
         Snacks.picker.grep_word()
       end,
       desc = "Visual selection or word",
+      mode = { "n" },
+    },
+    {
+      "<leader>rgv",
+      function()
+        Snacks.picker.grep_word()
+      end,
+      desc = "Visual selection",
       mode = { "x" },
+    },
+    {
+      "<leader>rgb",
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = "Buffer lines",
+      mode = { "n" },
     },
     {
       "<C-x>",
