@@ -37,8 +37,8 @@ return {
       end)
     end)
 
-    multicursor.onSafeState(function(info)
-      if info.wasMode == "i" or info.wasMode == "R" then
+    multicursor.onSafeState(function(event)
+      if event.wasMode == "i" or event.wasMode == "R" then
         multicursor.clearCursors()
       end
     end)
