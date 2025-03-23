@@ -37,6 +37,12 @@ return {
       end)
     end)
 
+    multicursor.onSafeState(function(info)
+      if info.wasMode == "i" or info.wasMode == "R" then
+        multicursor.clearCursors()
+      end
+    end)
+
     vim.api.nvim_set_hl(4, "MultiCursorCursor", { link = "Visual" })
     vim.api.nvim_set_hl(0, "MultiCursorVisual", { link = "Visual" })
     vim.api.nvim_set_hl(0, "MultiCursorSign", { link = "SignColumn" })
