@@ -18,32 +18,50 @@ return {
     {
       "<leader>gw",
       function()
-        require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
+        require("grug-far").open({
+          prefills = { flags = "--case-sensitive", search = "\\b" .. vim.fn.expand("<cword>") .. "\\b" },
+        })
+      end,
+      mode = { "n" },
+    },
+    {
+      "<leader>gwb",
+      function()
+        require("grug-far").open({
+          prefills = {
+            flags = "--case-sensitive",
+            search = "\\b" .. vim.fn.expand("<cword>") .. "\\b",
+            paths = vim.fn.expand("%"),
+          },
+        })
       end,
       mode = { "n" },
     },
     {
       "<leader>gv",
       function()
-        require("grug-far").open({ visualSelectionUsage = "operate-within-range" })
+        require("grug-far").open({
+          prefills = {
+            search = vim.fn.getreg("/"),
+            flags = "--case-sensitive",
+            paths = vim.fn.expand("%"),
+          },
+        })
       end,
       mode = { "x" },
     },
     {
-      "<leader>g/",
+      "<leader>gvb",
       function()
-        local search = vim.fn.getreg("/")
-        -- surround with \b if "word" search (such as when pressing `*`)
-        if search and vim.startswith(search, "\\<") and vim.endswith(search, "\\>") then
-          search = "\\b" .. search:sub(3, -3) .. "\\b"
-        end
         require("grug-far").open({
           prefills = {
-            search = search,
+            search = vim.fn.getreg("/"),
+            flags = "--case-sensitive",
+            paths = vim.fn.expand("%"),
           },
         })
       end,
-      mode = { "n" },
+      mode = { "x" },
     },
   },
   config = function(_, opts)
