@@ -25,7 +25,7 @@ return {
     {
       "<leader>f",
       function()
-        Snacks.picker.files()
+        Snacks.picker.files({ cwd = get_cwd() })
       end,
       mode = { "n", "x" },
       desc = "Find Files",
@@ -41,7 +41,7 @@ return {
     {
       "<leader>rg",
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep({ cwd = get_cwd() })
       end,
       mode = { "n" },
       desc = "Grep",
@@ -50,6 +50,7 @@ return {
       "<leader>rgw",
       function()
         Snacks.picker.grep_word({
+          cwd = get_cwd(),
           matcher = {
             fuzzy = false,
           },
@@ -62,6 +63,7 @@ return {
       "<leader>rgv",
       function()
         Snacks.picker.grep_word({
+          cwd = get_cwd(),
           matcher = {
             fuzzy = false,
           },
@@ -133,7 +135,6 @@ return {
     picker = {
       enabled = true,
       hidden = true,
-      cwd = get_cwd(),
       sources = {
         files = {
           hidden = true,
@@ -152,7 +153,6 @@ return {
     rename = { enabled = true },
     indent = {
       enabled = true,
-      -- only_current = true,
       animate = {
         enabled = false,
       },
