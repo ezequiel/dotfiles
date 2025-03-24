@@ -8,7 +8,9 @@ return {
   },
   init = function()
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-      pattern = { os.getenv("HOME") .. "/.local/share/chezmoi/*" },
+      pattern = {
+        (vim.fn.expand("~")):gsub("\\", "/") .. "/.local/share/chezmoi/*",
+      },
       callback = function(ev)
         local bufnr = ev.buf
         local edit_watch = function()
