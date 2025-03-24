@@ -123,4 +123,13 @@ keymap = [
   { on = [
     "G",
   ], run = "arrow bot", desc = "Move cursor to the bottom" },
+  { on = [
+    "u",
+  ], run = "undo", desc = "Undo the last operation" },
+  { on = [
+    "<C-r>",
+  ], run = "redo", desc = "Redo the last operation" },
+  { on = [
+    "P",
+  ], run = "paste --before", desc = "Paste the copied characters before the cursor" },
 ]
