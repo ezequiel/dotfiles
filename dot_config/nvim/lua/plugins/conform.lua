@@ -19,6 +19,7 @@ return {
       typescriptreact = { "prettierd" },
       yaml = { "prettierd" },
       toml = { "taplo" },
+      sh = { "shfmt" },
     },
     formatters = {
       prettierd = {
