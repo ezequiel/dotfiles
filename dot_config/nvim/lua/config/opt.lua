@@ -70,14 +70,4 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.timeoutlen = 750
 vim.opt.cmdheight = 0
-
--- vim.opt.backupdir=~/.vim/backup//
--- vim.opt.directory=~/.vim/swap//
--- vim.opt.undodir=~/.vim/undo//
-
--- local backup_dir = vim.fn.expand("/tmp/nvim/backups/")
--- vim.opt.backupdir = backup_dir
--- vim.opt.directory = backup_dir
--- if not vim.fn.isdirectory(backup_dir) then
---   vim.fn.mkdir(backup_dir, "p")
--- end
+vim.o.undofile = true
