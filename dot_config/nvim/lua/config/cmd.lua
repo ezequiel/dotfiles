@@ -31,11 +31,6 @@ for cmd, action in pairs(commands) do
   })
 end
 
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "VimEnter", "WinEnter", "BufWinEnter" }, {
-  command = "checktime",
-  pattern = "*",
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
   callback = function()

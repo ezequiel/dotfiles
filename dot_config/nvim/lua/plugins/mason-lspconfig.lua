@@ -103,7 +103,6 @@ return {
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = "angularls" })
         if client and client.name == "vtsls" and #angularLsClients > 0 then
-          print("removing")
           client.server_capabilities.referencesProvider = false
         end
       end,
