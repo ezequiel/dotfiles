@@ -47,6 +47,7 @@ keymap = [
   ], run = "help" },
   { on = [
     "r",
+    "n",
   ], run = "rename" },
   { on = [
     "p",
@@ -132,4 +133,14 @@ keymap = [
   { on = [
     "P",
   ], run = "paste --before", desc = "Paste the copied characters before the cursor" },
+  { on = [
+    "<Esc>",
+  ], run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
+  { on = [
+    "f",
+  ], run = "search fd", desc = "Search files by name using fd" },
+  { on = [
+    "r",
+    "g",
+  ], run = "search rg", desc = "Search files by content using ripgrep" },
 ]
