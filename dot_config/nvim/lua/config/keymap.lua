@@ -38,3 +38,6 @@ vim.keymap.set({ "n", "x" }, "*", function()
   vim.opt.hlsearch = true
   vim.cmd("normal! nN")
 end, { silent = true })
+
+vim.keymap.set("n", "<C-W>|", "<C-W>v", { noremap = true })
+vim.keymap.set("n", "<C-W>-", "<C-W>s", { noremap = true })
