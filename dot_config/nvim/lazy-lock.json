@@ -3,6 +3,7 @@
   "auto-save.nvim": { "branch": "main", "commit": "29f793a3a7f98129387590269ffe3ad61ab5e509" },
   "avante.nvim": { "branch": "main", "commit": "4749e4ea1aff653a9e6f6e542d390e3c7560d161" },
   "blink.cmp": { "branch": "main", "commit": "4607923f60029f8cb28e6950a078f93fd33e1288" },
+  "chezmoi.nvim": { "branch": "main", "commit": "3f72cffa2d18aaec884502443bae37226f3decd2" },
   "conform.nvim": { "branch": "master", "commit": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5" },
   "copilot.lua": { "branch": "master", "commit": "865f40fb4e9dfe037ab01b144e6448bfd13f4bb0" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
