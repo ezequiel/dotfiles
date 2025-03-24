@@ -1,19 +1,3 @@
--- credit: https://github.com/fightingdreamer
--- https://github.com/neovim/neovim/discussions/24121#discussioncomment-9557420
-
-local lsp_priority = {
-  rename = {
-    "angularls",
-    "vtsls",
-  },
-}
-
-local lsp_have_feature = {
-  rename = function(client)
-    return client.supports_method("textDocument/rename")
-  end,
-}
-
 local function get_lsp_client_names(have_feature)
   local client_names = {}
   local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -30,7 +14,9 @@ local function lsp_buf_rename(client_name)
 end
 
 local function lsp_buf_rename_use_one(fallback)
-  local client_names = get_lsp_client_names(lsp_have_feature.rename)
+  local client_names = get_lsp_client_names(function(client)
+    return client.supports_method("textDocument/rename")
+  end)
   if #client_names == 1 then
     lsp_buf_rename(client_names[1])
     return
@@ -41,8 +27,10 @@ local function lsp_buf_rename_use_one(fallback)
 end
 
 local function lsp_buf_rename_use_select(fallback)
-  local client_names = get_lsp_client_names(lsp_have_feature.rename)
-  local prompt = "Select lsp client for rename operation"
+  local client_names = get_lsp_client_names(function(client)
+    return client.supports_method("textDocument/rename")
+  end)
+  local prompt = "Select LSP client for rename operation"
   local function on_choice(client_name)
     if client_name then
       lsp_buf_rename(client_name)
@@ -55,9 +43,11 @@ local function lsp_buf_rename_use_select(fallback)
   vim.ui.select(client_names, { prompt = prompt }, on_choice)
 end
 
-local function lsp_buf_rename_use_priority(fallback)
-  local client_names = get_lsp_client_names(lsp_have_feature.rename)
-  for _, client_priority_name in ipairs(lsp_priority.rename) do
+local function lsp_buf_rename_use_priority(lsp_priority, fallback)
+  local client_names = get_lsp_client_names(function(client)
+    return client.supports_method("textDocument/rename")
+  end)
+  for _, client_priority_name in ipairs(lsp_priority) do
     for _, client_name in ipairs(client_names) do
       if client_priority_name == client_name then
         lsp_buf_rename(client_priority_name)
@@ -70,12 +60,14 @@ local function lsp_buf_rename_use_priority(fallback)
   end
 end
 
-local function lsp_buf_rename_use_priority_or_select()
+local function lsp_buf_rename_use_priority_or_select(lsp_priority)
   lsp_buf_rename_use_one(function()
-    lsp_buf_rename_use_priority(function()
+    lsp_buf_rename_use_priority(lsp_priority, function()
       lsp_buf_rename_use_select()
     end)
   end)
 end
 
-vim.keymap.set("n", "<leader>rn", lsp_buf_rename_use_priority_or_select)
+vim.keymap.set("n", "<leader>rn", function()
+  lsp_buf_rename_use_priority_or_select({ "angularls", "vtsls" })
+end)
