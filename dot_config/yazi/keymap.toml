@@ -137,10 +137,10 @@ keymap = [
     "<Esc>",
   ], run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
   { on = [
-    "f",
-  ], run = "search fd", desc = "Search files by name using fd" },
-  { on = [
-    "r",
-    "g",
-  ], run = "search rg", desc = "Search files by content using ripgrep" },
+    "<Space>",
+  ], run = [
+    "toggle --state=none",
+    "arrow 1",
+  ], desc = "Toggle the current selection state" },
+
 ]
