@@ -49,7 +49,11 @@ return {
     {
       "<leader>rgw",
       function()
-        Snacks.picker.grep_word()
+        Snacks.picker.grep_word({
+          matcher = {
+            fuzzy = false,
+          },
+        })
       end,
       desc = "Visual selection or word",
       mode = { "n" },
@@ -57,7 +61,11 @@ return {
     {
       "<leader>rgv",
       function()
-        Snacks.picker.grep_word()
+        Snacks.picker.grep_word({
+          matcher = {
+            fuzzy = false,
+          },
+        })
       end,
       desc = "Visual selection",
       mode = { "x" },
@@ -65,7 +73,11 @@ return {
     {
       "<leader>rgb",
       function()
-        Snacks.picker.lines()
+        Snacks.picker.lines({
+          matcher = {
+            fuzzy = false,
+          },
+        })
       end,
       desc = "Buffer lines",
       mode = { "n" },
@@ -128,16 +140,10 @@ return {
         },
       },
       matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
-      -- formatters = {
-      --   file = {
-      --     filename_first = true,
-      --   },
-      -- },
       win = {
         list = {
           wo = {
             conceallevel = 0,
-            -- concealcursor = "",
           },
         },
       },
