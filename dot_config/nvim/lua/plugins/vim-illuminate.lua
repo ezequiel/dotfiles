@@ -7,6 +7,7 @@ return {
         "lsp",
         "treesitter",
       },
+      under_cursor = false,
       delay = 350,
       disable_keymaps = true,
       should_enable = function()
