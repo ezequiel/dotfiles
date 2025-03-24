@@ -17,13 +17,3 @@ vim.filetype.add({
     [".env.*"] = "sh",
   },
 })
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover,
-  { silent = true, wrap = false, title = "", focusable = false, border = "single" }
-)
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help,
-  { silent = true, wrap = false, title = "", focusable = false, border = "single" }
-)
