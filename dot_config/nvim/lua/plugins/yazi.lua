@@ -19,8 +19,8 @@ return {
     yazi_floating_window_border = "single",
     keymaps = {
       show_help = "?",
-      open_file_in_vertical_split = "|",
-      open_file_in_horizontal_split = "-",
+      open_file_in_vertical_split = "<c-v>",
+      open_file_in_horizontal_split = "<c-h>",
       send_to_quickfix_list = "<c-q>",
       open_file_in_tab = false,
       grep_in_directory = "<c-s>",
