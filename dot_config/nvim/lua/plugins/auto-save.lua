@@ -32,4 +32,18 @@ return {
     end,
     write_all_buffers = true,
   },
+  init = function()
+    vim.api.nvim_create_autocmd("ModeChanged", {
+      pattern = { "*:[vV\x16]*" },
+      callback = function()
+        vim.api.nvim_exec_autocmds("User", { pattern = "VisualEnter" })
+      end,
+    })
+    vim.api.nvim_create_autocmd("ModeChanged", {
+      pattern = { "[vV\x16]*:*" },
+      callback = function()
+        vim.api.nvim_exec_autocmds("User", { pattern = "VisualLeave" })
+      end,
+    })
+  end,
 }
