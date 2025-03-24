@@ -7,17 +7,6 @@ return {
     "yioneko/nvim-vtsls",
   },
   config = function()
-    vim.api.nvim_create_autocmd("LspAttach", {
-      callback = function(event)
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
-        local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = "angularls" })
-        if client and client.name == "vtsls" and #angularLsClients > 0 then
-          print("removing")
-          client.server_capabilities.referencesProvider = false
-        end
-      end,
-    })
-
     require("mason").setup()
     local ensure_installed = {
       "angularls",
@@ -33,7 +22,6 @@ return {
       "groovyls",
       "html",
       "jsonls",
-      "lua_ls",
       "marksman",
       "nginx_language_server",
       "somesass_ls",
@@ -51,7 +39,7 @@ return {
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     for _, server in ipairs(ensure_installed) do
-      if not vim.tbl_contains({ "vtsls", "lua_ls", "eslint", "stylelint_lsp", "golangci_lint_ls" }, server) then
+      if not vim.tbl_contains({ "vtsls", "eslint", "stylelint_lsp", "golangci_lint_ls" }, server) then
         lspconfig[server].setup({
           capabilities = capabilities,
         })
@@ -91,33 +79,6 @@ return {
       },
     })
 
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          runtime = {
-            version = "LuaJIT",
-            path = vim.split(package.path, ";"),
-          },
-          diagnostics = {
-            globals = { "vim", "Snacks" },
-          },
-          workspace = {
-            library = {
-              vim.api.nvim_get_runtime_file("", true),
-              vim.env.VIMRUNTIME,
-              vim.fn.expand("$VIMRUNTIME/lua"),
-              vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-              vim.fn.expand("~/.local/share/nvim/lazy"),
-            },
-          },
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    })
-
     require("lspconfig").eslint.setup({
       filetypes = {
         "javascript",
@@ -135,6 +96,17 @@ return {
       workingDirectory = {
         mode = "auto",
       },
+    })
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = "angularls" })
+        if client and client.name == "vtsls" and #angularLsClients > 0 then
+          print("removing")
+          client.server_capabilities.referencesProvider = false
+        end
+      end,
     })
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
