@@ -45,6 +45,7 @@ return {
       "vim",
       "vimdoc",
       "yaml",
+      "tmux",
     },
   },
   config = function(_, opts)
