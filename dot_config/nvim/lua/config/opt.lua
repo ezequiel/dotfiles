@@ -68,6 +68,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.timeoutlen = 750
+vim.opt.timeoutlen = 800
 vim.opt.cmdheight = 0
 vim.o.undofile = true
