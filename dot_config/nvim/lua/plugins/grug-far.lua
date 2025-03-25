@@ -9,14 +9,14 @@ return {
       mode = { "n", "x" },
     },
     {
-      "<leader>gb",
+      "<leader>gfb",
       function()
         require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
       end,
       mode = { "n", "x" },
     },
     {
-      "<leader>gw",
+      "<leader>gfw",
       function()
         require("grug-far").open({
           prefills = { flags = "--case-sensitive", search = "\\b" .. vim.fn.expand("<cword>") .. "\\b" },
@@ -25,7 +25,7 @@ return {
       mode = { "n" },
     },
     {
-      "<leader>gwb",
+      "<leader>gfwb",
       function()
         require("grug-far").open({
           prefills = {
@@ -38,7 +38,7 @@ return {
       mode = { "n" },
     },
     {
-      "<leader>gv",
+      "<leader>gfv",
       function()
         require("grug-far").open({
           prefills = {
@@ -51,7 +51,7 @@ return {
       mode = { "x" },
     },
     {
-      "<leader>gvb",
+      "<leader>gfvb",
       function()
         require("grug-far").open({
           prefills = {
