@@ -3,7 +3,7 @@ return {
   dependencies = {
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
-    "williamboman/mason.nvim",
+    { "williamboman/mason.nvim", build = ":MasonUpdate" },
     "yioneko/nvim-vtsls",
   },
   config = function()
@@ -36,19 +36,19 @@ return {
 
     local lspconfig = require("lspconfig")
 
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    local capabilities = vim.tbl_deep_extend(
+      "force",
+      vim.lsp.protocol.make_client_capabilities(),
+      require("blink.cmp").get_lsp_capabilities()
+    )
 
     for _, server in ipairs(ensure_installed) do
-      if not vim.tbl_contains({ "vtsls", "eslint", "stylelint_lsp", "golangci_lint_ls" }, server) then
+      if not vim.tbl_contains({ "vtsls", "eslint", "stylelint_lsp" }, server) then
         lspconfig[server].setup({
           capabilities = capabilities,
         })
       end
     end
-
-    lspconfig.golangci_lint_ls.setup({
-      capabilities = capabilities,
-    })
 
     lspconfig.stylelint_lsp.setup({
       capabilities = capabilities,
@@ -79,7 +79,7 @@ return {
       },
     })
 
-    require("lspconfig").eslint.setup({
+    lspconfig.eslint.setup({
       filetypes = {
         "javascript",
         "javascriptreact",
@@ -87,9 +87,6 @@ return {
         "typescript",
         "typescriptreact",
         "typescript.tsx",
-        "vue",
-        "svelte",
-        "astro",
         "json",
         "jsonc",
       },
@@ -97,6 +94,8 @@ return {
         mode = "auto",
       },
     })
+
+    vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(event)
