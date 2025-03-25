@@ -34,6 +34,8 @@ end
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
   callback = function()
+    vim.keymap.set("n", "<C-n>", "j", { buffer = true })
+    vim.keymap.set("n", "<C-p>", "k", { buffer = true })
     vim.keymap.set("n", "<C-C>", "<cmd>q<CR>", { buffer = true, silent = true })
   end,
 })

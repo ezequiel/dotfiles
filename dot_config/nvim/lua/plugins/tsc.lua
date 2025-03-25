@@ -11,7 +11,7 @@ return {
     },
   },
   opt = {
-    use_trouble_qflist = true,
+    use_trouble_qflist = false,
     use_diagnostics = false,
     auto_open_qflist = true,
     auto_close_qflist = false,
