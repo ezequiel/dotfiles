@@ -40,3 +40,5 @@ end, { silent = true })
 
 vim.keymap.set("n", "<C-W>|", "<C-W>v", { noremap = true })
 vim.keymap.set("n", "<C-W>-", "<C-W>s", { noremap = true })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Move to next match" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Move to previous match" })
