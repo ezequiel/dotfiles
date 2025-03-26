@@ -1,14 +1,14 @@
 return {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
+    "WhoIsSethDaniel/mason-tool-installer",
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
-    { "williamboman/mason.nvim", build = ":MasonUpdate" },
+    "williamboman/mason.nvim",
     "yioneko/nvim-vtsls",
   },
   config = function()
-    require("mason").setup()
-    local ensure_installed = {
+    local lsps = {
       "angularls",
       "bashls",
       "css_variables",
@@ -29,12 +29,56 @@ return {
       "vtsls",
       "yamlls",
     }
-    require("mason-lspconfig").setup({
-      automatic_installation = true,
-      ensure_installed = ensure_installed,
+    local other = { "prettierd", "goimports", "stylua", "shfmt", "shellcheck" }
+    require("mason-tool-installer").setup({
+      ensure_installed = vim.list_extend(lsps, other),
+      auto_update = true,
     })
 
-    local lspconfig = require("lspconfig")
+    require("mason").setup()
+
+    local lsp_opts = {
+      eslint = {
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx",
+          "json",
+          "jsonc",
+        },
+        workingDirectory = {
+          mode = "auto",
+        },
+      },
+      stylelint = {
+        root_dir = require("lspconfig").util.root_pattern("package.json"),
+      },
+      vtsls = {
+        settings = {
+          vtsls = {
+            autoUseWorkspaceTsdk = true,
+            enableMoveToFileCodeAction = true,
+          },
+          typescript = {
+            updateImportsOnFileMove = {
+              enabled = "always",
+            },
+            preferences = {
+              includePackageJsonAutoImports = true,
+              preferTypeOnlyAutoImports = true,
+            },
+          },
+          javascript = {
+            updateImportsOnFileMove = {
+              enabled = "always",
+            },
+          },
+        },
+      },
+    }
 
     local capabilities = vim.tbl_deep_extend(
       "force",
@@ -42,56 +86,13 @@ return {
       require("blink.cmp").get_lsp_capabilities()
     )
 
-    for _, server in ipairs(ensure_installed) do
-      if not vim.tbl_contains({ "vtsls", "eslint", "stylelint_lsp" }, server) then
-        lspconfig[server].setup({
-          capabilities = capabilities,
-        })
-      end
-    end
-
-    lspconfig.stylelint_lsp.setup({
-      capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern("package.json"),
-    })
-
-    lspconfig.vtsls.setup({
-      capabilities = capabilities,
-      settings = {
-        vtsls = {
-          autoUseWorkspaceTsdk = true,
-          enableMoveToFileCodeAction = true,
-        },
-        typescript = {
-          updateImportsOnFileMove = {
-            enabled = "always",
-          },
-          preferences = {
-            includePackageJsonAutoImports = true,
-            preferTypeOnlyAutoImports = true,
-          },
-        },
-        javascript = {
-          updateImportsOnFileMove = {
-            enabled = "always",
-          },
-        },
-      },
-    })
-
-    lspconfig.eslint.setup({
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx",
-        "typescript",
-        "typescriptreact",
-        "typescript.tsx",
-        "json",
-        "jsonc",
-      },
-      workingDirectory = {
-        mode = "auto",
+    require("mason-lspconfig").setup({
+      handlers = {
+        function(name)
+          local opts = lsp_opts[name] or {}
+          opts.capabilities = vim.tbl_deep_extend("force", {}, capabilities, opts.capabilities or {})
+          require("lspconfig")[name].setup(opts)
+        end,
       },
     })
 
