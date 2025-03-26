@@ -1,10 +1,19 @@
+local function get_cwd()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel 2>/dev/null")[1]
+  if vim.v.shell_error ~= 0 then
+    return ""
+  end
+  local slash_count = select(2, vim.fn.getcwd():gsub("^" .. vim.pesc(git_root), ""):gsub("/", "/"))
+  return slash_count > 0 and (".." .. ("/.."):rep(slash_count - 1)) or ""
+end
+
 return {
   "MagicDuck/grug-far.nvim",
   keys = {
     {
       "<leader>gf",
       function()
-        require("grug-far").open()
+        require("grug-far").open({ prefills = { paths = get_cwd() } })
       end,
       mode = { "n", "x" },
     },
@@ -19,7 +28,11 @@ return {
       "<leader>gfw",
       function()
         require("grug-far").open({
-          prefills = { flags = "--case-sensitive", search = "\\b" .. vim.fn.expand("<cword>") .. "\\b" },
+          prefills = {
+            paths = get_cwd(),
+            flags = "--case-sensitive",
+            search = "\\b" .. vim.fn.expand("<cword>") .. "\\b",
+          },
         })
       end,
       mode = { "n" },
@@ -44,7 +57,7 @@ return {
           prefills = {
             search = vim.fn.getreg("/"),
             flags = "--case-sensitive",
-            paths = vim.fn.expand("%"),
+            paths = get_cwd(),
           },
         })
       end,
@@ -101,7 +114,7 @@ return {
       previewLocation = false,
       qflist = { n = "<C-q>" },
       refresh = { n = "R" },
-      replace = { n = "r" },
+      replace = { n = "<localleader>r" },
       swapEngine = false,
       swapReplacementInterpreter = false,
       syncLine = { n = "<localleader>l" },
