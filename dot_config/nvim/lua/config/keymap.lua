@@ -1,5 +1,3 @@
-require("config.lsp-rename-keymap")
-
 vim.keymap.set({ "n", "x" }, "<C-h>", "<C-w>h")
 vim.keymap.set({ "n", "x" }, "<C-l>", "<C-w>l")
 vim.keymap.set({ "n", "x" }, "<C-j>", "<C-w>j")

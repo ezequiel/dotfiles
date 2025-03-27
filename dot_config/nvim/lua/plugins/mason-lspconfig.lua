@@ -8,34 +8,35 @@ return {
     "yioneko/nvim-vtsls",
   },
   config = function()
-    local lsps = {
-      "angularls",
-      "bashls",
-      "css_variables",
-      "cssls",
-      "cssmodules_ls",
-      "docker_compose_language_service",
-      "dockerls",
-      "eslint",
-      "golangci_lint_ls",
-      "gopls",
-      "groovyls",
-      "html",
-      "jsonls",
-      "marksman",
-      "nginx_language_server",
-      "somesass_ls",
-      "stylelint_lsp",
-      "vtsls",
-      "yamlls",
-    }
-    local other = { "prettierd", "goimports", "stylua", "shfmt", "shellcheck" }
     require("mason-tool-installer").setup({
-      ensure_installed = vim.list_extend(lsps, other),
+      ensure_installed = {
+        "angularls",
+        "bashls",
+        "css_variables",
+        "cssls",
+        "cssmodules_ls",
+        "docker_compose_language_service",
+        "dockerls",
+        "eslint",
+        "golangci_lint_ls",
+        "gopls",
+        "groovyls",
+        "html",
+        "jsonls",
+        "marksman",
+        "nginx_language_server",
+        "somesass_ls",
+        "stylelint_lsp",
+        "vtsls",
+        "yamlls",
+        "prettierd",
+        "goimports",
+        "stylua",
+        "shfmt",
+        "shellcheck",
+      },
       auto_update = true,
     })
-
-    require("mason").setup()
 
     local lsp_opts = {
       eslint = {
@@ -86,6 +87,7 @@ return {
       require("blink.cmp").get_lsp_capabilities()
     )
 
+    require("mason").setup()
     require("mason-lspconfig").setup({
       handlers = {
         function(name)
@@ -98,6 +100,16 @@ return {
 
     vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+      vim.lsp.handlers.hover,
+      { silent = true, wrap = false, title = "", focusable = false, border = "single" }
+    )
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      { silent = true, wrap = false, title = "", focusable = false, border = "single" }
+    )
+
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(event)
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -108,14 +120,44 @@ return {
       end,
     })
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover,
-      { silent = true, wrap = false, title = "", focusable = false, border = "single" }
-    )
+    local function lsp_rename()
+      local rename_clients = {}
 
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help,
-      { silent = true, wrap = false, title = "", focusable = false, border = "single" }
-    )
+      for _, client in ipairs(vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })) do
+        if client.supports_method("textDocument/rename") then
+          table.insert(rename_clients, client.name)
+        end
+      end
+
+      if vim.tbl_contains(rename_clients, "vtsls") and vim.tbl_contains(rename_clients, "angularls") then
+        local new_rename_clients = {}
+        for _, client_name in ipairs(rename_clients) do
+          if client_name ~= "vtsls" then
+            table.insert(new_rename_clients, client_name)
+          end
+        end
+        rename_clients = new_rename_clients
+      end
+
+      if #rename_clients == 0 then
+        vim.notify("No available LSP client for renaming.")
+        return
+      end
+
+      if #rename_clients == 1 then
+        vim.lsp.buf.rename(nil, { name = rename_clients[1] })
+        return
+      end
+
+      table.sort(rename_clients, function(a, b)
+        return a > b
+      end)
+
+      vim.ui.select(rename_clients, { prompt = "Select LSP client:" }, function(name)
+        vim.lsp.buf.rename(nil, { name = name })
+      end)
+    end
+
+    vim.keymap.set("n", "<leader>rn", lsp_rename)
   end,
 }
