@@ -34,6 +34,7 @@ return {
         "stylua",
         "shfmt",
         "shellcheck",
+        "copilot-language-server",
       },
       auto_update = true,
     })
