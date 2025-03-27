@@ -82,6 +82,7 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "grug-far",
       callback = function()
+        vim.opt.signcolumn = "no"
         vim.keymap.set({ "i" }, "<Enter>", "<Esc>", { buffer = true })
         vim.keymap.set({ "n", "x" }, "q", function()
           require("grug-far").close_instance()
@@ -92,6 +93,7 @@ return {
     })
   end,
   opts = {
+    icons = { enabled = false },
     resultLocation = {
       showNumberLabel = false,
     },
@@ -121,6 +123,18 @@ return {
       syncLocations = { n = "<localleader>s" },
       toggleShowCommand = false,
     },
+    filePathConceal = function(params)
+      local len = #params.file_path
+      local window_width = params.window_width - 2
+      if len < params.window_width then
+        return
+      end
+
+      local first_part_len = math.floor(window_width / 3)
+      local delta = (len - window_width)
+
+      return first_part_len, first_part_len + delta
+    end,
 
     -- engines = {
     --   ripgrep = {
