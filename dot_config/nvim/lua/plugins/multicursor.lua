@@ -15,13 +15,6 @@ return {
       end,
       mode = { "n" },
     },
-    {
-      "M",
-      function()
-        require("multicursor-nvim").matchCursors()
-      end,
-      mode = { "x" },
-    },
   },
   config = function()
     local multicursor = require("multicursor-nvim")
