@@ -2,11 +2,10 @@ return {
   lazy = false,
   "shortcuts/no-neck-pain.nvim",
   opts = {
+    autocmds = {
+      skipEnteringNoNeckPainBuffer = true,
+    },
     buffers = {
-      scratchPad = {
-        enabled = true,
-        pathToFile = "~/Desktop/vim-notes__" .. os.date("%m-%d-%Y") .. ".txt",
-      },
       left = {
         enabled = true,
       },
