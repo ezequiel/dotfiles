@@ -28,6 +28,9 @@ return {
     multicursor.setup()
 
     multicursor.addKeymapLayer(function(layerSet)
+      layerSet("n", "<c-c>", function()
+        multicursor.clearCursors()
+      end)
       layerSet("n", "<esc>", function()
         if not multicursor.cursorsEnabled() then
           multicursor.enableCursors()
@@ -37,11 +40,11 @@ return {
       end)
     end)
 
-    multicursor.onSafeState(function(event)
-      if event.wasMode == "i" or event.wasMode == "R" then
-        multicursor.clearCursors()
-      end
-    end)
+    -- multicursor.onSafeState(function(event)
+    --   if event.wasMode == "i" or event.wasMode == "R" then
+    --     multicursor.clearCursors()
+    --   end
+    -- end)
 
     vim.api.nvim_set_hl(4, "MultiCursorCursor", { link = "Visual" })
     vim.api.nvim_set_hl(0, "MultiCursorVisual", { link = "Visual" })
