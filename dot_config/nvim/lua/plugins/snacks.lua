@@ -20,7 +20,6 @@ return {
         Snacks.picker.git_status()
       end,
       mode = { "n", "x" },
-      desc = "Git Status",
     },
     {
       "<leader>f",
@@ -28,7 +27,6 @@ return {
         Snacks.picker.files({ cwd = get_cwd() })
       end,
       mode = { "n", "x" },
-      desc = "Find Files",
     },
     {
       "<leader>b",
@@ -36,7 +34,6 @@ return {
         Snacks.picker.buffers()
       end,
       mode = { "n", "x" },
-      desc = "Buffers",
     },
     {
       "<leader>rg",
@@ -44,7 +41,15 @@ return {
         Snacks.picker.grep({ cwd = get_cwd() })
       end,
       mode = { "n" },
-      desc = "Grep",
+    },
+    {
+      "<leader>rgb",
+      function()
+        Snacks.picker.grep({
+          dirs = { vim.fn.expand("%") },
+        })
+      end,
+      mode = { "n" },
     },
     {
       "<leader>rgw",
@@ -56,7 +61,18 @@ return {
           },
         })
       end,
-      desc = "Visual selection or word",
+      mode = { "n" },
+    },
+    {
+      "<leader>rgwb",
+      function()
+        Snacks.picker.grep_word({
+          dirs = { vim.fn.expand("%") },
+          matcher = {
+            fuzzy = false,
+          },
+        })
+      end,
       mode = { "n" },
     },
     {
@@ -69,11 +85,22 @@ return {
           },
         })
       end,
-      desc = "Visual selection",
       mode = { "x" },
     },
     {
-      "<leader>rgb",
+      "<leader>rgvb",
+      function()
+        Snacks.picker.grep_word({
+          dirs = { vim.fn.expand("%") },
+          matcher = {
+            fuzzy = false,
+          },
+        })
+      end,
+      mode = { "x" },
+    },
+    {
+      "<leader>rgbl",
       function()
         Snacks.picker.lines({
           matcher = {
@@ -81,7 +108,6 @@ return {
           },
         })
       end,
-      desc = "Buffer lines",
       mode = { "n" },
     },
     {
@@ -89,14 +115,12 @@ return {
       function()
         Snacks.bufdelete()
       end,
-      desc = "Delete Buffer",
     },
     {
       "gd",
       function()
         Snacks.picker.lsp_definitions()
       end,
-      desc = "Goto Definition",
     },
     {
       "gr",
@@ -104,28 +128,24 @@ return {
         Snacks.picker.lsp_references()
       end,
       nowait = true,
-      desc = "References",
     },
     {
       "gi",
       function()
         Snacks.picker.lsp_implementations()
       end,
-      desc = "Goto Implementation",
     },
     {
       "gt",
       function()
         Snacks.picker.lsp_type_definitions()
       end,
-      desc = "Goto Type Definition",
     },
     {
       "<leader>:",
       function()
         Snacks.picker.command_history()
       end,
-      desc = "Command History",
     },
   },
   opts = {
