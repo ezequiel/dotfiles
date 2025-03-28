@@ -40,7 +40,7 @@ return {
       function()
         Snacks.picker.grep({ cwd = get_cwd() })
       end,
-      mode = { "n" },
+      mode = { "n", "x" },
     },
     {
       "<leader>rgb",
@@ -49,7 +49,7 @@ return {
           dirs = { vim.fn.expand("%") },
         })
       end,
-      mode = { "n" },
+      mode = { "n", "x" },
     },
     {
       "<leader>rgw",
@@ -108,7 +108,7 @@ return {
           },
         })
       end,
-      mode = { "n" },
+      mode = { "n", "x" },
     },
     {
       "<C-x>",
