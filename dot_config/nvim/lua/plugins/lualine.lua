@@ -4,7 +4,6 @@ return {
     options = {
       theme = "tokyonight",
       icons_enabled = false,
-      fmt = string.lower,
       section_separators = { left = "", right = "" },
     },
     sections = {
