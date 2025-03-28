@@ -2,6 +2,12 @@ return {
   "stevearc/quicker.nvim",
   ft = "qf",
   opts = {
+    opts = {
+      signcolumn = "no",
+    },
+    edit = {
+      enabled = false,
+    },
     wrap = false,
     borders = {
       vert = "|",
