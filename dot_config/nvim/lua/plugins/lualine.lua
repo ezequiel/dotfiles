@@ -3,24 +3,26 @@ return {
   opts = {
     options = {
       theme = "tokyonight",
-      icons_enabled = true,
+      icons_enabled = false,
       fmt = string.lower,
-      component_separators = "",
       section_separators = { left = "", right = "" },
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = {
-        "branch",
+      lualine_c = {
+        "diff",
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },
           symbols = { error = " ", warn = " ", info = " ", hint = " " },
         },
+        "searchcount",
       },
-      lualine_c = {},
+      lualine_b = {},
       lualine_x = {},
-      lualine_y = {},
+      lualine_y = {
+        "branch",
+      },
       lualine_z = { "lsp_status" },
     },
   },
