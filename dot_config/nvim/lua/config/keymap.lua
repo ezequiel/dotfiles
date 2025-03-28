@@ -2,8 +2,22 @@ vim.keymap.set({ "n", "x" }, "<C-h>", "<C-w>h")
 vim.keymap.set({ "n", "x" }, "<C-l>", "<C-w>l")
 vim.keymap.set({ "n", "x" }, "<C-j>", "<C-w>j")
 vim.keymap.set({ "n", "x" }, "<C-k>", "<C-w>k")
-vim.keymap.set({ "n", "x" }, "<C-n>", "<cmd>cnext<CR>zz")
-vim.keymap.set({ "n", "x" }, "<C-p>", "<cmd>cprev<CR>zz")
+vim.keymap.set({ "n", "x" }, "<C-n>", function()
+  local qf = vim.fn.getqflist({ idx = 0, size = 0 })
+  if qf.idx >= qf.size then
+    return
+  end
+  vim.cmd("cnext")
+end, { silent = true })
+vim.keymap.set({ "n", "x" }, "<C-p>", function()
+  local qf = vim.fn.getqflist({ idx = 0, size = 0 })
+  if qf.idx <= 1 then
+    return
+  end
+  vim.cmd("cprev")
+end, { silent = true })
+-- vim.keymap.set({ "n", "x" }, "<C-n>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set({ "n", "x" }, "<C-p>", "<cmd>cprev<CR>zz")
 -- vim.keymap.set("n", "j", "gj")
 -- vim.keymap.set("n", "k", "gk")
 vim.keymap.set({ "n", "i", "x" }, "<Esc>", "<Esc><cmd>doautocmd FocusLost<CR>", { noremap = true })
