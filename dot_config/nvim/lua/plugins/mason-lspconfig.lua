@@ -99,7 +99,8 @@ return {
       },
     })
 
-    vim.keymap.set({ "n", "x" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+    vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action)
+    vim.keymap.set("n", "H", vim.lsp.buf.hover, { silent = true })
 
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
       vim.lsp.handlers.hover,
@@ -121,44 +122,17 @@ return {
       end,
     })
 
-    local function lsp_rename()
-      local rename_clients = {}
+    vim.keymap.set("n", "<leader>rn", function()
+      local current_buf = vim.api.nvim_get_current_buf()
+      local is_angularls_attached = #(vim.lsp.get_active_clients({ name = "angularls", bufnr = current_buf })) > 0
+      local is_vtsls_attached = #(vim.lsp.get_active_clients({ name = "vtsls", bufnr = current_buf })) > 0
 
-      for _, client in ipairs(vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })) do
-        if client.supports_method("textDocument/rename") then
-          table.insert(rename_clients, client.name)
-        end
-      end
-
-      if vim.tbl_contains(rename_clients, "vtsls") and vim.tbl_contains(rename_clients, "angularls") then
-        local new_rename_clients = {}
-        for _, client_name in ipairs(rename_clients) do
-          if client_name ~= "vtsls" then
-            table.insert(new_rename_clients, client_name)
-          end
-        end
-        rename_clients = new_rename_clients
-      end
-
-      if #rename_clients == 0 then
-        vim.notify("No available LSP client for renaming.")
+      if is_angularls_attached and is_vtsls_attached then
+        vim.lsp.buf.rename(nil, { name = "angularls" })
         return
       end
 
-      if #rename_clients == 1 then
-        vim.lsp.buf.rename(nil, { name = rename_clients[1] })
-        return
-      end
-
-      table.sort(rename_clients, function(a, b)
-        return a > b
-      end)
-
-      vim.ui.select(rename_clients, { prompt = "Select LSP client:" }, function(name)
-        vim.lsp.buf.rename(nil, { name = name })
-      end)
-    end
-
-    vim.keymap.set("n", "<leader>rn", lsp_rename)
+      vim.lsp.buf.rename()
+    end)
   end,
 }
