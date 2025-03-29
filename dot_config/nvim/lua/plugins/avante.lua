@@ -25,14 +25,7 @@ return {
   },
   build = "make",
   dependencies = {
-    {
-      "zbirenbaum/copilot.lua",
-      event = nil,
-      opts = {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      },
-    },
+    "zbirenbaum/copilot.lua",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },

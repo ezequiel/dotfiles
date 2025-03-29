@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  dependencies = { "fang2hou/blink-copilot" },
   event = "InsertEnter",
   version = "*",
   opts = {
@@ -55,7 +56,15 @@ return {
     },
     fuzzy = { implementation = "rust" },
     sources = {
-      default = { "lsp", "buffer" },
+      default = { "copilot", "lsp", "buffer" },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+        },
+      },
     },
   },
   opts_extend = { "sources.default" },
