@@ -15,6 +15,13 @@ return {
   },
   keys = {
     {
+      "<leader>r",
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = "Resume",
+    },
+    {
       "<leader>gs",
       function()
         Snacks.picker.git_status()
