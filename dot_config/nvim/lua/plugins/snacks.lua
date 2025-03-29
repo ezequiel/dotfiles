@@ -161,10 +161,10 @@ return {
     },
     picker = {
       enabled = true,
-      hidden = true,
       sources = {
         files = {
           hidden = true,
+          follow = true,
         },
       },
       matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
