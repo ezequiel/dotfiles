@@ -4,7 +4,7 @@ vim.diagnostic.config({
   float = {
     border = "single",
     focusable = false,
-    wrap = false,
+    wrap = true,
   },
   virtual_lines = {
     only_current_line = true,
