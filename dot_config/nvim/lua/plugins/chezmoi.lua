@@ -12,12 +12,10 @@ return {
       pattern = {
         (vim.fn.expand("~")):gsub("\\", "/") .. "/.local/share/chezmoi/*",
       },
-      callback = function(ev)
-        local bufnr = ev.buf
-        local edit_watch = function()
-          require("chezmoi.commands.__edit").watch(bufnr)
-        end
-        vim.schedule(edit_watch)
+      callback = function(event)
+        vim.schedule(function()
+          require("chezmoi.commands.__edit").watch(event.buf)
+        end)
       end,
     })
   end,
