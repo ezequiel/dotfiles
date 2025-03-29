@@ -98,7 +98,8 @@ return {
         end,
       },
     })
-
+  end,
+  init = function()
     vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action)
     vim.keymap.set("n", "H", vim.lsp.buf.hover, { silent = true })
 
