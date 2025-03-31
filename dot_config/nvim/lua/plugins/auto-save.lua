@@ -24,11 +24,7 @@ return {
       },
     },
     condition = function()
-      local mode = vim.fn.mode()
-      if mode == "i" then
-        return false
-      end
-      return vim.bo.filetype ~= "qf"
+      return not (vim.fn.mode() == "i" or vim.bo.filetype == "qf")
     end,
     write_all_buffers = true,
   },
