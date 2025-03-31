@@ -101,17 +101,14 @@ return {
   end,
   init = function()
     vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action)
-    vim.keymap.set("n", "H", vim.lsp.buf.hover, { silent = true })
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover,
-      { silent = true, wrap = false, title = "", focusable = false, border = "single" }
-    )
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help,
-      { silent = true, wrap = false, title = "", focusable = false, border = "single" }
-    )
+    vim.keymap.set("n", "K", function()
+      vim.lsp.buf.hover({
+        focusable = false,
+        silent = true,
+        wrap = false,
+        border = "single",
+      })
+    end)
 
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(event)
