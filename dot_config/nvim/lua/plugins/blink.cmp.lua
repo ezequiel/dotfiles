@@ -27,6 +27,17 @@ return {
         "snippet_forward",
         "fallback",
       },
+      ["<Right>"] = {
+        function(cmp)
+          if cmp.snippet_active() then
+            return cmp.accept()
+          else
+            return cmp.select_and_accept()
+          end
+        end,
+        "snippet_forward",
+        "fallback",
+      },
       ["<c-c>"] = {
         function(cmp)
           if cmp.cancel() then
@@ -73,7 +84,7 @@ return {
     },
     fuzzy = { implementation = "rust" },
     sources = {
-      default = { "copilot", "lsp", "buffer" },
+      default = { "lsp", "buffer", "copilot" },
       providers = {
         copilot = {
           name = "copilot",
