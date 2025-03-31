@@ -2,8 +2,8 @@ return {
   "echasnovski/mini.move",
   version = "*",
   keys = {
-    { "<S-j>", "<cmd>lua MiniMove.move_line('down')<cr>", mode = { "n" } },
-    { "<S-k>", "<cmd>lua MiniMove.move_line('up')<cr>", mode = { "n" } },
+    -- { "<S-j>", "<cmd>lua MiniMove.move_line('down')<cr>", mode = { "n" } },
+    -- { "<S-k>", "<cmd>lua MiniMove.move_line('up')<cr>", mode = { "n" } },
     { "<S-j>", "<cmd>lua MiniMove.move_selection('down')<cr>", mode = { "x" } },
     { "<S-k>", "<cmd>lua MiniMove.move_selection('up')<cr>", mode = { "x" } },
   },
