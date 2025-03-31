@@ -20,6 +20,7 @@ vim.keymap.set({ "n", "i", "x" }, "<Esc>", "<Esc><cmd>doautocmd FocusLost<CR><cm
 vim.keymap.set({ "n", "i", "x" }, "<C-c>", "<C-c><cmd>doautocmd FocusLost<CR><cmd>nohlsearch<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>1", "<cmd>bp<CR>")
 vim.keymap.set("n", "<leader>2", "<cmd>bn<CR>")
+vim.keymap.set("n", "J", "<nop>", { silent = true })
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
 vim.keymap.set("n", "q", "<nop>", { silent = true })
 vim.keymap.set("n", "vv", "V", { noremap = true, silent = true })
