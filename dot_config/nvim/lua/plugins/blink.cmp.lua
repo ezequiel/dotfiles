@@ -1,6 +1,5 @@
 return {
   "saghen/blink.cmp",
-  dependencies = { "fang2hou/blink-copilot" },
   event = "InsertEnter",
   version = "*",
   opts = {
@@ -58,7 +57,7 @@ return {
       },
       ghost_text = { enabled = true },
       menu = {
-        auto_show = true,
+        auto_show = false,
         border = "single",
         draw = {
           treesitter = { "lsp" },
@@ -84,16 +83,23 @@ return {
     },
     fuzzy = { implementation = "rust" },
     sources = {
-      default = { "lsp", "buffer", "copilot" },
-      providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          score_offset = 100,
-          async = true,
-        },
-      },
+      default = { "lsp", "buffer" },
     },
   },
   opts_extend = { "sources.default" },
+  init = function()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "BlinkCmpMenuOpen",
+      callback = function()
+        vim.b.copilot_suggestion_hidden = true
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "BlinkCmpMenuClose",
+      callback = function()
+        vim.b.copilot_suggestion_hidden = false
+      end,
+    })
+  end,
 }
