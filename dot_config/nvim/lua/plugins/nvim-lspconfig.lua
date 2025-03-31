@@ -1,9 +1,9 @@
 return {
-  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
   dependencies = {
     "WhoIsSethDaniel/mason-tool-installer",
-    "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
+    "williamboman/mason-lspconfig.nvim",
     "williamboman/mason.nvim",
     "yioneko/nvim-vtsls",
   },
