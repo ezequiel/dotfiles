@@ -179,7 +179,7 @@ return {
             ["/"] = false,
             ["<C-Down>"] = false,
             ["<C-Up>"] = false,
-            ["<C-c>"] = { "close", mode = { "i", "n" } },
+            ["<C-c>"] = { "close", mode = { "i", "x", "n" } },
             ["<C-w>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
             ["<a-BS>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
             ["<CR>"] = { "confirm", mode = { "n", "i" } },
