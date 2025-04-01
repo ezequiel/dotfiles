@@ -37,16 +37,16 @@ return {
         "snippet_forward",
         "fallback",
       },
-      ["<c-c>"] = {
-        function(cmp)
-          if cmp.cancel() then
-            vim.schedule(function()
-              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "n", true)
-            end)
-            return true
-          end
-        end,
-      },
+      -- ["<c-c>"] = {
+      --   function(cmp)
+      --     if cmp.cancel() then
+      --       vim.schedule(function()
+      --         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "n", true)
+      --       end)
+      --       return true
+      --     end
+      --   end,
+      -- },
     },
     completion = {
       list = {
