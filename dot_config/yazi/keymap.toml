@@ -142,5 +142,8 @@ keymap = [
     "toggle --state=none",
     "arrow 1",
   ], desc = "Toggle the current selection state" },
+  { on = [
+    "f",
+  ], run = "filter --smart", desc = "Filter the files" },
 
 ]
