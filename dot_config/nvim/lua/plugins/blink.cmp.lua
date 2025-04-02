@@ -10,11 +10,14 @@ return {
         and vim.b.completion ~= false
         and vim.bo.filetype ~= "grug-far"
         and vim.bo.filetype ~= "norg"
-        -- and vim.bo.filetype ~= "qf"
-        and not string.match(vim.bo.filetype, "^Avante")
+      -- and vim.bo.filetype ~= "qf"
     end,
     keymap = {
       preset = "super-tab",
+      ["<C-space>"] = { "show", "hide" },
+      ["<C-d>"] = { "select_next" },
+      ["<C-u>"] = { "select_prev" },
+      ["<C-e>"] = {},
       ["<CR>"] = {
         function(cmp)
           if cmp.snippet_active() then
@@ -37,25 +40,30 @@ return {
         "snippet_forward",
         "fallback",
       },
-      -- ["<c-c>"] = {
-      --   function(cmp)
-      --     if cmp.cancel() then
-      --       vim.schedule(function()
-      --         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<ESC>", true, false, true), "n", true)
-      --       end)
-      --       return true
-      --     end
-      --   end,
-      -- },
+      ["<c-c>"] = {
+        function(cmp)
+          cmp.cancel()
+          vim.schedule(function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "n", true)
+          end)
+        end,
+      },
     },
     completion = {
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 500,
+        window = {
+          border = "single",
+        },
+      },
       list = {
         selection = {
           preselect = false,
           auto_insert = false,
         },
       },
-      ghost_text = { enabled = true },
+      ghost_text = { enabled = false },
       menu = {
         auto_show = false,
         border = "single",

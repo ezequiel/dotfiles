@@ -24,7 +24,12 @@ return {
       },
     },
     condition = function()
-      return not (vim.fn.mode() == "i" or vim.bo.filetype == "qf")
+      return not (
+        vim.fn.mode() == "i"
+        or vim.bo.filetype == "qf"
+        or vim.bo.filetype == "codecompanion"
+        or vim.bo.buftype == "nofile"
+      )
     end,
     write_all_buffers = true,
   },
