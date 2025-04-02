@@ -160,7 +160,12 @@ return {
       enabled = false,
     },
     picker = {
+      layout = {
+        cycle = false,
+      },
       enabled = true,
+      hidden = true,
+      follow = true,
       sources = {
         files = {
           hidden = true,
@@ -227,6 +232,8 @@ return {
             ["<c-n>"] = { "list_down", mode = { "i", "n" } },
             ["<c-p>"] = { "list_up", mode = { "i", "n" } },
             ["q"] = "close",
+            ["<S-Up>"] = { "select_and_prev", mode = { "i", "n" } },
+            ["<S-Down>"] = { "select_and_next", mode = { "i", "n" } },
           },
         },
       },
