@@ -1,6 +1,6 @@
 return {
   "saghen/blink.cmp",
-  dependencies = { "zbirenbaum/copilot.lua" },
+  dependencies = { "zbirenbaum/copilot.lua", "nvim-tree/nvim-web-devicons", "onsails/lspkind.nvim" },
   event = "InsertEnter",
   version = "*",
   opts = {
@@ -74,7 +74,42 @@ return {
         draw = {
           treesitter = { "lsp" },
           columns = {
-            { "kind_icon", "label", "label_description", gap = 1 },
+            { "label" },
+            { "kind_icon", "kind", "label_description", gap = 1 },
+          },
+          components = {
+            label = { ellipsis = true, width = { max = 16, fill = false } },
+            kind = { width = { fill = true } },
+            label_description = { ellipsis = true, width = { max = 16, fill = false } },
+            kind_icon = {
+              width = { fill = false },
+              text = function(ctx)
+                local lspkind = require("lspkind")
+                local icon = ctx.kind_icon
+                if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+                  if dev_icon then
+                    icon = dev_icon
+                  end
+                else
+                  icon = require("lspkind").symbolic(ctx.kind, {
+                    mode = "symbol",
+                  })
+                end
+
+                return icon .. ctx.icon_gap
+              end,
+              highlight = function(ctx)
+                local hl = ctx.kind_hl
+                if vim.tbl_contains({ "Path" }, ctx.source_name) then
+                  local dev_icon, dev_hl = require("nvim-web-devicons").get_icon(ctx.label)
+                  if dev_icon then
+                    hl = dev_hl
+                  end
+                end
+                return hl
+              end,
+            },
           },
         },
         scrollbar = false,
