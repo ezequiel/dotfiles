@@ -51,7 +51,7 @@ vim.keymap.set("n", "<C-W>-", "<C-W>s", { noremap = true })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Move to next match" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Move to previous match" })
 vim.keymap.set("n", "<leader>ds", vim.diagnostic.setqflist, { desc = "Open diagnostics in quickfix list" })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, { noremap = true, silent = true })
 
 local MID = "^=======$"
 vim.keymap.set("n", "[x", function()
