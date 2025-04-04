@@ -15,7 +15,7 @@ return {
   },
   keys = {
     {
-      "<leader>r",
+      "<leader>re",
       function()
         Snacks.picker.resume()
       end,
@@ -29,14 +29,14 @@ return {
       mode = { "n", "x" },
     },
     {
-      "<leader>f",
+      "<leader>ff",
       function()
         Snacks.picker.files({ cwd = get_cwd() })
       end,
       mode = { "n", "x" },
     },
     {
-      "<leader>b",
+      "<leader>bb",
       function()
         Snacks.picker.buffers()
       end,
@@ -146,12 +146,6 @@ return {
       "gt",
       function()
         Snacks.picker.lsp_type_definitions()
-      end,
-    },
-    {
-      "<leader>:",
-      function()
-        Snacks.picker.command_history()
       end,
     },
   },
