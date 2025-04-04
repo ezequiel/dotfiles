@@ -57,6 +57,8 @@ vim.opt.guicursor =
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 5
 vim.opt.shortmess:append("I")
+vim.opt.shortmess:append("F")
+vim.opt.shortmess:append("T")
 vim.opt.foldcolumn = "0"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
