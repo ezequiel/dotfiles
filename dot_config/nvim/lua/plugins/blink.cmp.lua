@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  dependencies = { "zbirenbaum/copilot.lua" },
   event = "InsertEnter",
   version = "*",
   opts = {
@@ -18,26 +19,29 @@ return {
       ["<C-d>"] = { "select_next" },
       ["<C-u>"] = { "select_prev" },
       ["<C-e>"] = {},
-      ["<CR>"] = {
+      ["<tab>"] = {
         function(cmp)
-          if cmp.snippet_active() then
-            return cmp.accept()
-          else
-            return cmp.select_and_accept()
+          if cmp.accept() then
+            return true
+          end
+          local copilotSuggestion = require("copilot.suggestion")
+          if copilotSuggestion.is_visible() then
+            copilotSuggestion.accept()
+            return true
           end
         end,
-        "snippet_forward",
+        "fallback",
+      },
+      ["<CR>"] = {
+        function(cmp)
+          return cmp.accept()
+        end,
         "fallback",
       },
       ["<Right>"] = {
         function(cmp)
-          if cmp.snippet_active() then
-            return cmp.accept()
-          else
-            return cmp.select_and_accept()
-          end
+          return cmp.accept()
         end,
-        "snippet_forward",
         "fallback",
       },
       ["<c-c>"] = {
@@ -65,7 +69,7 @@ return {
       },
       ghost_text = { enabled = false },
       menu = {
-        auto_show = false,
+        auto_show = true,
         border = "single",
         draw = {
           treesitter = { "lsp" },
