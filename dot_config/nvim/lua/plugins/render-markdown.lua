@@ -1,5 +1,6 @@
 local file_types = { "norg", "markdown", "qf", "codecompanion" }
 return {
+  ft = file_types,
   "MeanderingProgrammer/render-markdown.nvim",
   opts = {
     file_types = file_types,
