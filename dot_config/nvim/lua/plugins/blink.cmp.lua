@@ -62,6 +62,7 @@ return {
         },
       },
       list = {
+        cycle = { from_top = false, from_bottom = false },
         selection = {
           preselect = false,
           auto_insert = true,
