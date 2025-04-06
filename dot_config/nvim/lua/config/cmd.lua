@@ -57,3 +57,21 @@ vim.api.nvim_create_autocmd("FileType", {
             set nobuflisted
         ]],
 })
+
+vim.api.nvim_create_autocmd("WinEnter", {
+  callback = function()
+    local function is_floating_win(win)
+      return vim.api.nvim_win_get_config(win).relative ~= ""
+    end
+    local win = vim.api.nvim_get_current_win()
+    if is_floating_win(win) then
+      local buffer = vim.api.nvim_win_get_buf(win)
+      vim.keymap.set("n", "<left>", "zh", { buffer = buffer })
+      vim.keymap.set("n", "<right>", "zl", { buffer = buffer })
+      vim.keymap.set("n", "<up>", "<c-y>", { buffer = buffer })
+      vim.keymap.set("n", "<down>", "<c-e>", { buffer = buffer })
+      vim.keymap.set("n", "<s-left>", "zH", { buffer = buffer })
+      vim.keymap.set("n", "<s-right>", "zL", { buffer = buffer })
+    end
+  end,
+})
