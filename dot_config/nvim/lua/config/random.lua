@@ -1,13 +1,22 @@
 vim.diagnostic.config({
+  signs = {
+    active = true,
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+    },
+  },
   float = {
     border = "single",
-    style = "minimal",
+    source = "always",
+    header = "",
+    prefix = "",
+    wrap = false,
   },
   underline = false,
   severity_sort = true,
-  virtual_lines = {
-    current_line = true,
-  },
 })
 
 vim.filetype.add({
