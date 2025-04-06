@@ -103,7 +103,7 @@ return {
     vim.keymap.set({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action)
     vim.keymap.set("n", "K", function()
       vim.lsp.buf.hover({
-        focusable = false,
+        focusable = true,
         silent = true,
         wrap = false,
         border = "single",
