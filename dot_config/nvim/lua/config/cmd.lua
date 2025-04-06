@@ -40,6 +40,20 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<C-p>", "k^", { buffer = true })
     vim.keymap.set("n", "<Down>", "j^", { buffer = true })
     vim.keymap.set("n", "<Up>", "k^", { buffer = true })
-    vim.keymap.set("n", "<C-C>", "<cmd>q<CR>", { buffer = true, silent = true })
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "help",
+    "startuptime",
+    "qf",
+    "lspinfo",
+    "man",
+    "checkhealth",
+  },
+  command = [[
+            nnoremap <buffer><silent> <C-c> :close<CR>
+            set nobuflisted
+        ]],
 })
