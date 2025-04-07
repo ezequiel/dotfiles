@@ -6,6 +6,11 @@ return {
     edit = {
       watch = true,
     },
+    notification = {
+      on_open = false,
+      on_apply = false,
+      on_watch = false,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
