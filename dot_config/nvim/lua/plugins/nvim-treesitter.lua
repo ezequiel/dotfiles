@@ -1,6 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
   opts = {
     auto_install = true,
     ignore_install = { "norg" },
@@ -19,33 +22,6 @@ return {
     },
     matchup = {
       enable = true,
-    },
-    ensure_installed = {
-      "angular",
-      "bash",
-      "dockerfile",
-      "git_config",
-      "gitcommit",
-      "gitignore",
-      "go",
-      "gomod",
-      "groovy",
-      "ini",
-      "javascript",
-      "json",
-      "jsonc",
-      "lua",
-      "markdown",
-      "markdown_inline",
-      "regex",
-      "scss",
-      "toml",
-      "tsx",
-      "typescript",
-      "vim",
-      "vimdoc",
-      "yaml",
-      "tmux",
     },
   },
   config = function(_, opts)
