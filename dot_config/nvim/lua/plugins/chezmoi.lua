@@ -5,6 +5,7 @@ return {
   opts = {
     edit = {
       watch = true,
+      force = true,
     },
     notification = {
       on_open = false,
