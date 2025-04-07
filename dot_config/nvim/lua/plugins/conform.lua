@@ -33,7 +33,7 @@ return {
     },
     log_level = vim.log.levels.ERROR,
     notify_on_error = false,
-    notify_no_formatters = true,
+    notify_no_formatters = false,
   },
   config = function(_, opts)
     local conform = require("conform")
