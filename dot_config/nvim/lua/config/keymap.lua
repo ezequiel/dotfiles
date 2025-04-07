@@ -28,8 +28,8 @@ vim.keymap.set(
   "<C-c><cmd>doautocmd FocusLost<CR><cmd>nohlsearch<CR><cmd>fclose!<cr>",
   { noremap = true }
 )
-vim.keymap.set("n", "<leader>1", "<cmd>bp<CR>")
-vim.keymap.set("n", "<leader>2", "<cmd>bn<CR>")
+vim.keymap.set("n", "<s-tab>", "<cmd>bp<CR>")
+vim.keymap.set("n", "<tab>", "<cmd>bn<CR>")
 vim.keymap.set("n", "J", "<nop>", { silent = true })
 vim.keymap.set("n", "Q", "<nop>", { silent = true })
 vim.keymap.set("n", "q", "<nop>", { silent = true })
