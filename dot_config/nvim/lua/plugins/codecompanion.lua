@@ -1,27 +1,27 @@
 return {
-  "olimorris/codecompanion.nvim",
+  'olimorris/codecompanion.nvim',
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-lua/plenary.nvim',
+    'nvim-treesitter/nvim-treesitter',
   },
   keys = {
     {
-      "<leader>ccc",
-      "<cmd>CodeCompanionChat<cr>",
-      desc = "CodeCompanion Chat",
-      mode = { "n", "x" },
+      '<leader>ccc',
+      '<cmd>CodeCompanionChat<cr>',
+      desc = 'CodeCompanion Chat',
+      mode = { 'n', 'x' },
     },
     {
-      "<leader>cct",
-      "<cmd>CodeCompanionChat Toggle<cr>",
-      desc = "CodeCompanion Toggle",
-      mode = { "n", "x" },
+      '<leader>cct',
+      '<cmd>CodeCompanionChat Toggle<cr>',
+      desc = 'CodeCompanion Toggle',
+      mode = { 'n', 'x' },
     },
     {
-      "<leader>cc",
-      "<cmd>CodeCompanion<cr>",
-      desc = "CodeCompanion Inline",
-      mode = { "n", "x" },
+      '<leader>cc',
+      '<cmd>CodeCompanion<cr>',
+      desc = 'CodeCompanion Inline',
+      mode = { 'n', 'x' },
     },
   },
   opts = {
@@ -29,44 +29,32 @@ return {
       chat = {
         auto_scroll = false,
         show_token_count = false,
-        separator = "─",
-        intro_message = "",
+        separator = '─',
+        intro_message = '',
         start_in_insert_mode = true,
       },
     },
     strategies = {
       chat = {
-        adapter = "copilot",
-        slash_commands = {
-          ["file"] = {
-            opts = {
-              provider = "snacks",
-            },
-          },
-          ["buffer"] = {
-            opts = {
-              provider = "snacks",
-            },
-          },
-        },
+        adapter = 'copilot',
       },
       inline = {
-        adapter = "copilot",
+        adapter = 'copilot',
       },
       cmd = {
-        adapter = "copilot",
+        adapter = 'copilot',
       },
     },
   },
   config = function(_, opts)
-    require("codecompanion").setup(opts)
+    require('codecompanion').setup(opts)
   end,
   init = function()
     vim.cmd([[cab cc CodeCompanion]])
     vim.cmd([[cab ccc CodeCompanionChat]])
 
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "CodeCompanionChatOpened",
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'CodeCompanionChatOpened',
       callback = function()
         vim.defer_fn(function()
           if not vim.bo.modifiable then
@@ -74,7 +62,7 @@ return {
           end
 
           local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-          vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "", "", "#buffer", "", "" })
+          vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { '', '', '#buffer', '', '' })
 
           local last_row = vim.api.nvim_buf_line_count(0)
           vim.api.nvim_win_set_cursor(0, { last_row, 0 })
