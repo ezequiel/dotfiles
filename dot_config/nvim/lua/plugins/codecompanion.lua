@@ -3,6 +3,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
+    'j-hui/fidget.nvim',
   },
   keys = {
     {
@@ -31,7 +32,7 @@ return {
         show_token_count = false,
         separator = '─',
         intro_message = '',
-        start_in_insert_mode = true,
+        start_in_insert_mode = false,
       },
     },
     strategies = {
@@ -50,6 +51,8 @@ return {
     require('codecompanion').setup(opts)
   end,
   init = function()
+    require('plugins.extras.codecompanion-fidget-spinner'):init()
+
     vim.cmd([[cab cc CodeCompanion]])
     vim.cmd([[cab ccc CodeCompanionChat]])
 
