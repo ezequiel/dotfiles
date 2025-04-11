@@ -71,4 +71,4 @@ vim.opt.softtabstop = 2
 vim.opt.timeoutlen = 800
 vim.opt.cmdheight = 0
 vim.opt.swapfile = true
-vim.opt.fillchars:append({ diff = '/' })
+vim.opt.fillchars:append({ diff = ' ' })
