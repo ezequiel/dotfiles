@@ -4,11 +4,8 @@ vim.keymap.set({ 'n', 'x' }, '<C-j>', '<C-w>j')
 vim.keymap.set({ 'n', 'x' }, '<C-k>', '<C-w>k')
 vim.keymap.set({ 'n', 'x' }, '<C-n>', function()
   local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
-  if qf.idx >= qf.size then
-    return
-  end
-
   local item = qf.items[qf.idx]
+
   if not item then
     return
   end
@@ -21,7 +18,9 @@ vim.keymap.set({ 'n', 'x' }, '<C-n>', function()
   local same_line = current_line == item.lnum
 
   if same_file and same_line then
-    vim.cmd('cnext')
+    if qf.idx < qf.size then
+      vim.cmd('cnext')
+    end
   else
     vim.api.nvim_set_current_buf(item.bufnr)
     vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
@@ -58,24 +57,26 @@ vim.keymap.set({ 'n', 'x' }, '<C-p>', function()
     vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
   end
 end, { silent = true })
-vim.keymap.set(
-  { 'n', 'i', 'x' },
-  '<Esc>',
-  '<Esc><cmd>doautocmd FocusLost<CR><cmd>nohlsearch<CR><cmd>fclose!<cr>',
-  { noremap = true }
-)
-vim.keymap.set(
-  { 'n', 'i', 'x' },
-  '<C-c>',
-  '<C-c><cmd>doautocmd FocusLost<CR><cmd>nohlsearch<CR><cmd>fclose!<cr>',
-  { noremap = true }
-)
+local function escape_handler(key)
+  vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+  vim.cmd('nohlsearch')
+  vim.schedule(function()
+    vim.cmd('fclose!')
+  end)
+  return key
+end
+vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
+  return escape_handler('<Esc>')
+end, { noremap = true, expr = true })
+vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
+  return escape_handler('<c-c>')
+end, { noremap = true, expr = true })
 vim.keymap.set('n', '<s-tab>', '<cmd>bp<CR>')
 vim.keymap.set('n', '<tab>', '<cmd>bn<CR>')
 vim.keymap.set('n', 'J', '<nop>', { silent = true })
 vim.keymap.set('n', 'Q', '<nop>', { silent = true })
 vim.keymap.set('n', 'q', '<nop>', { silent = true })
-vim.keymap.set('n', 'vv', 'V', { noremap = true, silent = true })
+vim.keymap.set('n', 'vv', '^vg_', { noremap = true, silent = true })
 vim.keymap.set('x', '/', '<Esc>/\\%V')
 vim.keymap.set('x', 'r', [[:s/\%V]])
 vim.keymap.set({ 'n', 'x' }, '*', function()
@@ -102,13 +103,38 @@ vim.keymap.set('n', '<C-W>|', '<C-W>v', { noremap = true })
 vim.keymap.set('n', '<C-W>-', '<C-W>s', { noremap = true })
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Move to next match' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Move to previous match' })
-vim.keymap.set('n', '<leader>ds', vim.diagnostic.setqflist, { desc = 'Open diagnostics in quickfix list' })
+vim.keymap.set('n', '<leader>ds', function()
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+end, { desc = 'Open error diagnostics in quickfix list' })
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { noremap = true, silent = true })
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_prev)
 
 local MID = '^=======$'
 vim.keymap.set('n', '[x', function()
-  vim.cmd('?' .. MID)
-end)
+  pcall(function()
+    vim.cmd('?' .. MID)
+  end)
+end, { silent = true })
 vim.keymap.set('n', ']x', function()
-  vim.cmd('/' .. MID)
-end)
+  pcall(function()
+    vim.cmd('/' .. MID)
+  end)
+end, { silent = true })
+
+vim.keymap.set('i', '<CR>', function()
+  local line = vim.api.nvim_get_current_line()
+  local _, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+  local before_cursor = line:sub(1, col)
+  local after_cursor = line:sub(col + 1)
+
+  local open_tag = before_cursor:match('<([%w:-]+)>%s*$')
+  local close_tag = after_cursor:match('^%s*</([%w:-]+)>')
+
+  if open_tag and close_tag and open_tag == close_tag then
+    return '<CR><Esc>O'
+  else
+    return '<CR>'
+  end
+end, { expr = true, silent = true })

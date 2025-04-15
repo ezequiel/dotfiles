@@ -1,6 +1,10 @@
 return {
   'saghen/blink.cmp',
-  dependencies = { 'zbirenbaum/copilot.lua', 'nvim-tree/nvim-web-devicons', 'onsails/lspkind.nvim' },
+  dependencies = {
+    'zbirenbaum/copilot.lua',
+    'nvim-tree/nvim-web-devicons',
+    'onsails/lspkind.nvim',
+  },
   event = 'InsertEnter',
   version = '*',
   opts = {
@@ -16,6 +20,7 @@ return {
     keymap = {
       preset = 'super-tab',
       ['<C-space>'] = { 'show', 'hide' },
+      ['K'] = { 'show_documentation', 'hide_documentation' },
       ['<C-d>'] = { 'select_next' },
       ['<C-u>'] = { 'select_prev' },
       ['<C-e>'] = {},
@@ -50,18 +55,16 @@ return {
       ['<c-c>'] = {
         function(cmp)
           cmp.cancel()
-          vim.schedule(function()
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
-          end)
         end,
+        'fallback',
       },
     },
     completion = {
       documentation = {
-        auto_show = true,
+        auto_show = false,
         auto_show_delay_ms = 500,
         window = {
-          border = "single",
+          border = 'single',
         },
       },
       list = {
@@ -88,7 +91,6 @@ return {
             kind_icon = {
               width = { fill = false },
               text = function(ctx)
-                local lspkind = require('lspkind')
                 local icon = ctx.kind_icon
                 if vim.tbl_contains({ 'Path' }, ctx.source_name) then
                   local dev_icon, _ = require('nvim-web-devicons').get_icon(ctx.label)
@@ -118,7 +120,7 @@ return {
         },
         scrollbar = false,
       },
-      accept = { auto_brackets = { enabled = false } },
+      accept = { auto_brackets = { enabled = true } },
     },
     signature = {
       enabled = true,

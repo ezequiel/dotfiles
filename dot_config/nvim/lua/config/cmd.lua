@@ -34,8 +34,6 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'qf',
   callback = function()
-    vim.keymap.set('n', 'j', 'j^', { noremap = true, buffer = true })
-    vim.keymap.set('n', 'k', 'k^', { noremap = true, buffer = true })
     vim.keymap.set('n', '<C-n>', 'j^', { buffer = true })
     vim.keymap.set('n', '<C-p>', 'k^', { buffer = true })
     vim.keymap.set('n', '<Down>', 'j^', { buffer = true })
@@ -73,18 +71,5 @@ vim.api.nvim_create_autocmd('WinEnter', {
       vim.keymap.set('n', '<s-left>', 'zHg0', { buffer = buffer })
       vim.keymap.set('n', '<s-right>', 'zL', { buffer = buffer })
     end
-  end,
-})
-
-vim.api.nvim_create_autocmd('ExitPre', {
-  callback = function()
-    vim.fn.jobstart('killall prettierd', { detach = true })
-  end,
-})
-
-vim.api.nvim_create_autocmd('ColorScheme', {
-  pattern = '*',
-  callback = function()
-    vim.api.nvim_set_hl(0, 'Folded', { link = 'Normal' })
   end,
 })

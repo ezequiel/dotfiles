@@ -83,7 +83,7 @@ return {
       pattern = 'grug-far',
       callback = function()
         vim.opt.signcolumn = 'no'
-        -- vim.keymap.set({ 'i' }, '<Enter>', '<Esc>', { buffer = true })
+        vim.keymap.set({ 'i' }, '<Enter>', '<Esc>', { buffer = true })
       end,
     })
   end,
@@ -114,8 +114,8 @@ return {
       replace = { n = '<localleader>rr' },
       swapEngine = { n = '<localleader>ee' },
       swapReplacementInterpreter = false,
-      syncLine = false,
-      syncLocations = false,
+      syncLine = { n = '<localleader>sl' },
+      syncLocations = { n = '<localleader>sa' },
       toggleShowCommand = false,
     },
     filePathConceal = function(params)
@@ -131,11 +131,5 @@ return {
       return first_part_len, first_part_len + delta
     end,
     filePathConcealChar = '…',
-    enabledEngines = { 'ripgrep', 'astgrep-rules' },
-    -- engines = {
-    --   ripgrep = {
-    --     extraArgs = "",
-    --   },
-    -- },
   },
 }
