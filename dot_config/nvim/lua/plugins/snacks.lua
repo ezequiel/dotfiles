@@ -15,6 +15,28 @@ return {
   },
   keys = {
     {
+      '<leader>qf',
+      function()
+        Snacks.picker.qflist()
+      end,
+      desc = 'Quickfix List',
+    },
+    {
+      '<leader>gB',
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = 'Git Browse',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>mm',
+      function()
+        Snacks.picker.marks()
+      end,
+      desc = 'Marks',
+    },
+    {
       '<leader>re',
       function()
         Snacks.picker.resume()
@@ -34,6 +56,13 @@ return {
         Snacks.picker.files({ cwd = get_cwd() })
       end,
       mode = { 'n', 'x' },
+    },
+    {
+      '<leader>fr',
+      function()
+        Snacks.picker.recent()
+      end,
+      desc = 'Recent',
     },
     {
       '<leader>bb',
@@ -235,10 +264,43 @@ return {
     },
     bufdelete = { enabled = true },
     rename = { enabled = true },
-    indent = {
+    dim = {
       enabled = true,
       animate = {
         enabled = false,
+      },
+      scope = {
+        siblings = false,
+      },
+      -- filter = function(buf)
+      --   return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ''
+      -- end,
+    },
+    gitbrowse = {
+      enabled = true,
+      url_patterns = {
+        ['.*github.*%..+'] = {
+          branch = '/tree/{branch}',
+          file = '/blob/{branch}/{file}#L{line_start}-L{line_end}',
+          permalink = '/blob/{commit}/{file}#L{line_start}-L{line_end}',
+          commit = '/commit/{commit}',
+        },
+      },
+    },
+    indent = {
+      enabled = true,
+      indent = { enabled = true },
+      scope = { enabled = false },
+      animate = { enabled = false },
+      chunk = {
+        enabled = true,
+        char = {
+          horizontal = '',
+          arrow = '',
+          corner_top = '╭ ',
+          corner_bottom = '╰ ',
+          vertical = '│ ',
+        },
       },
     },
     terminal = {
@@ -250,9 +312,7 @@ return {
     dashboard = { enabled = false },
     debug = { enabled = false },
     scope = { enabled = false },
-    dim = { enabled = false },
     git = { enabled = false },
-    gitbrowse = { enabled = false },
     image = { enabled = false },
     input = { enabled = false },
     layout = { enabled = false },
@@ -269,4 +329,13 @@ return {
     zen = { enabled = false },
     statuscolumn = { enabled = false },
   },
+  init = function()
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'VeryLazy',
+      callback = function()
+        Snacks.toggle.line_number():map('<leader>nu')
+        Snacks.toggle.dim():map('<leader>di')
+      end,
+    })
+  end,
 }
