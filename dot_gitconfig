@@ -8,8 +8,8 @@
 	ca = commit --amend
 	co = checkout
 	s = status
-	show = show --no-prefix
-	d = "diff --no-prefix"
+	sh = show --no-prefix
+	d = "diff --no-prefix --relative"
 [push]
 	default = current
 	autoSetupRemote = true
