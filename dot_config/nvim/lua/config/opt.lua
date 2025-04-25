@@ -1,9 +1,7 @@
-vim.opt.laststatus = 0
-vim.opt.wrapscan = true
+vim.opt.wrapscan = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.scrolloff = 9999999
-vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -48,13 +46,12 @@ vim.opt.wildoptions = 'pum'
 vim.opt.wildignorecase = true
 vim.opt.wildignore = '*/node_modules,*/vendor,.git'
 vim.opt.backspace = 'indent,eol,start'
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes:2'
 vim.opt.wrap = false
 vim.opt.errorbells = false
 vim.opt.visualbell = false
 vim.opt.guicursor =
   'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
-vim.opt.relativenumber = true
 vim.opt.numberwidth = 5
 vim.opt.shortmess:append('I')
 vim.opt.shortmess:append('F')
@@ -73,3 +70,5 @@ vim.opt.cmdheight = 0
 vim.opt.swapfile = true
 vim.opt.fillchars:append({ diff = ' ' })
 vim.opt.isfname:append('@-@')
+vim.opt.stl = "%{repeat('─',winwidth('.'))}"
+vim.opt.jumpoptions = 'stack,view'
