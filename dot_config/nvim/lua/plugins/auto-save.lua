@@ -29,6 +29,7 @@ return {
         vim.fn.mode() == 'i'
         or vim.bo.filetype == 'qf'
         or vim.bo.buftype == 'nofile'
+        or vim.bo.filetype == 'harpoon'
       )
     end,
     write_all_buffers = true,
