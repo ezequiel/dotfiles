@@ -16,6 +16,6 @@ return {
       },
     },
     panel = { enabled = false },
-    copilot_model = 'gemini-2.5-pro',
+    -- copilot_model = 'gemini-2.5-pro',
   },
 }
