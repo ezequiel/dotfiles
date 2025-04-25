@@ -30,13 +30,6 @@ return {
       mode = { 'n', 'v' },
     },
     {
-      '<leader>mm',
-      function()
-        Snacks.picker.marks()
-      end,
-      desc = 'Marks',
-    },
-    {
       '<leader>re',
       function()
         Snacks.picker.resume()
@@ -53,7 +46,7 @@ return {
     {
       '<leader>ff',
       function()
-        Snacks.picker.files({ cwd = get_cwd() })
+        Snacks.picker.smart({ cwd = get_cwd() })
       end,
       mode = { 'n', 'x' },
     },
