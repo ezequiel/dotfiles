@@ -1,6 +1,6 @@
 return {
   lazy = false,
-  "shortcuts/no-neck-pain.nvim",
+  'shortcuts/no-neck-pain.nvim',
   opts = {
     autocmds = {
       skipEnteringNoNeckPainBuffer = true,
@@ -15,11 +15,11 @@ return {
     },
   },
   init = function()
-    vim.api.nvim_create_autocmd({ "VimEnter" }, {
-      pattern = "*",
+    vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+      pattern = '*',
       once = true,
       callback = function()
-        require("no-neck-pain.main").enable("")
+        require('no-neck-pain.main').enable('')
       end,
     })
   end,
