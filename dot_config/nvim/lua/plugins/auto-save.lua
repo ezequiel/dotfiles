@@ -28,7 +28,6 @@ return {
       return not (
         vim.fn.mode() == 'i'
         or vim.bo.filetype == 'qf'
-        or vim.bo.filetype == 'codecompanion'
         or vim.bo.buftype == 'nofile'
       )
     end,

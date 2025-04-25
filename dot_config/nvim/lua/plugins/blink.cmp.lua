@@ -142,9 +142,6 @@ return {
         },
       },
       default = { 'lsp', 'buffer' },
-      per_filetype = {
-        codecompanion = { 'codecompanion', 'lsp', 'buffer' },
-      },
     },
   },
   opts_extend = { 'sources.default' },

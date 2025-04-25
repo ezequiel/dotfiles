@@ -1,4 +1,4 @@
-local file_types = { 'norg', 'markdown', 'qf', 'codecompanion' }
+local file_types = { 'norg', 'markdown', 'qf' }
 return {
   ft = file_types,
   'MeanderingProgrammer/render-markdown.nvim',
