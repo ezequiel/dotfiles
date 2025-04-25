@@ -23,5 +23,6 @@ vim.diagnostic.config({
 vim.filetype.add({
   pattern = {
     ['.env.*'] = 'sh',
+    ['.gitconfig.*'] = 'gitconfig',
   },
 })
