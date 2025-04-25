@@ -124,7 +124,7 @@ return {
         },
         scrollbar = false,
       },
-      accept = { auto_brackets = { enabled = true } },
+      accept = { auto_brackets = { enabled = false } },
     },
     signature = {
       enabled = true,
