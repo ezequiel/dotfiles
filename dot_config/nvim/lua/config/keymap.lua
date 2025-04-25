@@ -1,7 +1,3 @@
-vim.keymap.set({ 'n', 'x' }, '<C-h>', '<C-w>h')
-vim.keymap.set({ 'n', 'x' }, '<C-l>', '<C-w>l')
-vim.keymap.set({ 'n', 'x' }, '<C-j>', '<C-w>j')
-vim.keymap.set({ 'n', 'x' }, '<C-k>', '<C-w>k')
 vim.keymap.set({ 'n', 'x' }, ']q', function()
   local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
   local item = qf.items[qf.idx]
