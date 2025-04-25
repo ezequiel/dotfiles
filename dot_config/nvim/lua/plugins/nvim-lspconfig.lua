@@ -22,9 +22,9 @@ return {
         -- document_color = {
         --   enabled = false,
         -- },
-        conceal = {
-          enabled = true,
-        },
+        -- conceal = {
+        --   enabled = true,
+        -- },
       },
     },
   },
@@ -85,6 +85,11 @@ return {
         settings = {
           vtsls = {
             autoUseWorkspaceTsdk = true,
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
+            },
           },
           typescript = {
             reportStyleChecksAsWarnings = false,
@@ -99,7 +104,7 @@ return {
             preferences = {
               includePackageJsonAutoImports = true,
               importModuleSpecifier = 'non-relative',
-              preferTypeOnlyAutoImports = true,
+              preferTypeOnlyAutoImports = false,
             },
             updateImportsOnFileMove = {
               enabled = 'always',
@@ -131,6 +136,7 @@ return {
     require('mason-lspconfig').setup({
       handlers = {
         function(name)
+          -- vim.lsp.enable(name)
           local opts = lsp_opts[name] or {}
           opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, opts.capabilities or {})
           require('lspconfig')[name].setup(opts)
