@@ -7,6 +7,7 @@ return {
       function()
         require('buffer_browser').next()
       end,
+      mode = { 'n', 'x' },
       desc = 'Next Buffer',
     },
     {
@@ -15,6 +16,31 @@ return {
         require('buffer_browser').prev()
       end,
       desc = 'Previous Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<c-i>',
+      function()
+        require('buffer_browser').next()
+      end,
+      desc = 'Next Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<c-o>',
+      function()
+        require('buffer_browser').prev()
+      end,
+      desc = 'Previous Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<BackSpace>',
+      function()
+        require('buffer_browser').prev()
+      end,
+      desc = 'Previous Buffer',
+      mode = { 'n', 'x' },
     },
   },
   opts = {
