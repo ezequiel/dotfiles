@@ -1,4 +1,4 @@
-vim.opt.wrapscan = false
+vim.opt.wrapscan = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.scrolloff = 9999999

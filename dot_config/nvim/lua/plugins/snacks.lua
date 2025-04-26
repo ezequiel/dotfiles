@@ -46,7 +46,7 @@ return {
     {
       '<leader>ff',
       function()
-        Snacks.picker.smart({ cwd = get_cwd() })
+        Snacks.picker.files({ cwd = get_cwd() })
       end,
       mode = { 'n', 'x' },
     },
