@@ -6,7 +6,7 @@ return {
       signcolumn = 'no',
     },
     edit = {
-      enabled = true,
+      enabled = false,
     },
     wrap = false,
     borders = {
