@@ -34,14 +34,6 @@ return {
       desc = 'Previous Buffer',
       mode = { 'n', 'x' },
     },
-    {
-      '<BackSpace>',
-      function()
-        require('buffer_browser').prev()
-      end,
-      desc = 'Previous Buffer',
-      mode = { 'n', 'x' },
-    },
   },
   opts = {
     -- filetype_filters = {'gitcommit', 'TelescopePrompt'}
