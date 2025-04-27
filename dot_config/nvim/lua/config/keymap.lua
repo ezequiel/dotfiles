@@ -62,10 +62,17 @@ local function escape_handler(key)
   return key
 end
 vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
-  return escape_handler('<Esc>')
+  vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+  vim.cmd('nohlsearch')
+  return '<Esc>'
 end, { noremap = true, expr = true })
 vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
-  return escape_handler('<c-c>')
+  vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+  vim.cmd('nohlsearch')
+  vim.schedule(function()
+    vim.cmd('fclose!')
+  end)
+  return '<C-c>'
 end, { noremap = true, expr = true })
 vim.keymap.set('n', 'J', '<nop>', { silent = true })
 vim.keymap.set('n', 'Q', '<nop>', { silent = true })
