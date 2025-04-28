@@ -164,6 +164,8 @@ keybinds clear-defaults=true {
     // }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl b" { SwitchToMode "tmux"; }
+        bind "Ctrl tab" { GoToNextTab; SwitchToMode "normal"; }
+        bind "Ctrl shift tab" { GoToPreviousTab; SwitchToMode "normal"; }
     }
     // shared_except "locked" "scroll" "search" {
     //     bind "Ctrl s" { SwitchToMode "scroll"; }
