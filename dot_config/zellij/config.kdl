@@ -163,6 +163,8 @@ keybinds clear-defaults=true {
     //     bind "Alt l" { MoveFocusOrTab "right"; }
     // }
     shared_except "locked" "scroll" "search" "tmux" {
+        bind "Ctrl w" { CloseTab; SwitchToMode "normal"; }
+        bind "Ctrl t" { NewTab; SwitchToMode "normal"; }
         bind "Ctrl b" { SwitchToMode "tmux"; }
         bind "Ctrl tab" { GoToNextTab; SwitchToMode "normal"; }
         bind "Ctrl shift tab" { GoToPreviousTab; SwitchToMode "normal"; }
