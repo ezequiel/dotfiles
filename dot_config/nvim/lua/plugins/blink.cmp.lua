@@ -43,11 +43,12 @@ return {
       },
       ['<CR>'] = {
         function(cmp)
-          cmp.accept()
-          vim.schedule(function()
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
-          end)
-          return true
+          if cmp.accept() then
+            vim.schedule(function()
+              vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
+            end)
+            return true
+          end
         end,
         'fallback',
       },
