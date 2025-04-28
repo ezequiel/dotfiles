@@ -3,22 +3,6 @@ return {
   lazy = false,
   keys = {
     {
-      ']b',
-      function()
-        require('buffer_browser').next()
-      end,
-      mode = { 'n', 'x' },
-      desc = 'Next Buffer',
-    },
-    {
-      '[b',
-      function()
-        require('buffer_browser').prev()
-      end,
-      desc = 'Previous Buffer',
-      mode = { 'n', 'x' },
-    },
-    {
       '<c-i>',
       function()
         require('buffer_browser').next()
@@ -28,6 +12,38 @@ return {
     },
     {
       '<c-o>',
+      function()
+        require('buffer_browser').prev()
+      end,
+      desc = 'Previous Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<D-Right>',
+      function()
+        require('buffer_browser').next()
+      end,
+      desc = 'Next Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<D-Left>',
+      function()
+        require('buffer_browser').prev()
+      end,
+      desc = 'Previous Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<D-]>',
+      function()
+        require('buffer_browser').next()
+      end,
+      desc = 'Next Buffer',
+      mode = { 'n', 'x' },
+    },
+    {
+      '<D-[>',
       function()
         require('buffer_browser').prev()
       end,
