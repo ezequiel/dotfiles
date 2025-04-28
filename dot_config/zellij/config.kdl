@@ -190,7 +190,7 @@ keybinds clear-defaults=true {
     // }
     shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
         bind "esc" { SwitchToMode "normal"; }
-        bind "Ctrl c" { SwitchToMode "normal"; }
+        bind "Ctrl c" { CloseFocus; SwitchToMode "normal"; }
     }
     shared_among "pane" "tmux" {
         bind "x" { CloseFocus; SwitchToMode "normal"; }
