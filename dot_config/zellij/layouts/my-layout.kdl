@@ -1,6 +1,6 @@
 layout {
-    swap_floating_layout{
-        floating_panes {
+    swap_floating_layout {
+        floating_panes max_panes=2 {
             pane x="5%" y="5%" width="90%" height="90%"
         }
     }
