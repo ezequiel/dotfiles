@@ -1,30 +1,30 @@
 return {
-  "jake-stewart/multicursor.nvim",
+  'jake-stewart/multicursor.nvim',
   keys = {
     {
-      "<c-a>",
+      '<c-a>',
       function()
-        require("multicursor-nvim").toggleCursor()
+        require('multicursor-nvim').toggleCursor()
       end,
-      mode = { "n" },
+      mode = { 'n' },
     },
     {
-      "<leader>A",
+      '<leader>A',
       function()
-        require("multicursor-nvim").searchAllAddCursors()
+        require('multicursor-nvim').searchAllAddCursors()
       end,
-      mode = { "n" },
+      mode = { 'n' },
     },
   },
   config = function()
-    local multicursor = require("multicursor-nvim")
+    local multicursor = require('multicursor-nvim')
     multicursor.setup()
 
     multicursor.addKeymapLayer(function(layerSet)
-      layerSet("n", "<c-c>", function()
+      layerSet('n', '<c-c>', function()
         multicursor.clearCursors()
       end)
-      layerSet("n", "<esc>", function()
+      layerSet('n', '<esc>', function()
         if not multicursor.cursorsEnabled() then
           multicursor.enableCursors()
         elseif multicursor.hasCursors() then
@@ -33,18 +33,15 @@ return {
       end)
     end)
 
+    multicursor.onModeChanged(function(cursor, oldMode, newMode)
+      if oldMode and string.find('iR', oldMode) and newMode == 'n' then
+        cursor:feedkeys('`^')
+      end
+    end)
     -- multicursor.onSafeState(function(event)
     --   if event.wasMode == "i" or event.wasMode == "R" then
     --     multicursor.clearCursors()
     --   end
     -- end)
-
-    vim.api.nvim_set_hl(4, "MultiCursorCursor", { link = "Visual" })
-    vim.api.nvim_set_hl(0, "MultiCursorVisual", { link = "Visual" })
-    vim.api.nvim_set_hl(0, "MultiCursorSign", { link = "SignColumn" })
-    vim.api.nvim_set_hl(0, "MultiCursorMatchPreview", { link = "Search" })
-    vim.api.nvim_set_hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
-    vim.api.nvim_set_hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
-    vim.api.nvim_set_hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
   end,
 }

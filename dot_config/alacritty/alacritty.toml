@@ -9,6 +9,9 @@ decorations = "None"
 startup_mode = "Maximized"
 option_as_alt = "Both"
 
+[cursor.style]
+blinking = "Always"
+
 [font]
 size = 15
 
