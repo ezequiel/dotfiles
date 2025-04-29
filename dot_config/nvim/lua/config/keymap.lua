@@ -151,3 +151,5 @@ vim.keymap.set('i', '<CR>', function()
     return '<CR>'
   end
 end, { expr = true, silent = true })
+vim.keymap.set('n', '<C-^>', '<Nop>', { noremap = true })
+vim.keymap.set('n', '<C-6>', '<Nop>', { noremap = true })
