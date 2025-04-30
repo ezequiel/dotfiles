@@ -1,3 +1,7 @@
+vim.keymap.set({ 'n', 'x' }, '<C-h>', '<C-w>h')
+vim.keymap.set({ 'n', 'x' }, '<C-l>', '<C-w>l')
+vim.keymap.set({ 'n', 'x' }, '<C-j>', '<C-w>j')
+vim.keymap.set({ 'n', 'x' }, '<C-k>', '<C-w>k')
 vim.keymap.set({ 'n', 'x' }, ']q', function()
   local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
   local item = qf.items[qf.idx]
@@ -22,13 +26,6 @@ vim.keymap.set({ 'n', 'x' }, ']q', function()
     vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
   end
 end, { silent = true })
--- vim.keymap.set({ 'n', 'x' }, '<C-p>', function()
---   local qf = vim.fn.getqflist({ idx = 0, size = 0 })
---   if qf.idx <= 1 then
---     return
---   end
---   vim.cmd('cprev')
--- end, { silent = true })
 vim.keymap.set({ 'n', 'x' }, '[q', function()
   local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
   local item = qf.items[qf.idx]
