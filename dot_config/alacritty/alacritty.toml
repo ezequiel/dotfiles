@@ -1,5 +1,4 @@
 [general]
-working_directory = "~"
 import = [
   "~/.local/share/nvim/lazy/tokyonight.nvim/extras/alacritty/tokyonight_night.toml",
 ]
