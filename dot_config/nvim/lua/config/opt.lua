@@ -70,5 +70,3 @@ vim.opt.fillchars:append({ diff = ' ' })
 vim.opt.isfname:append('@-@')
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.jumpoptions = 'stack,view'
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
