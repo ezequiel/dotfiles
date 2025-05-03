@@ -3,13 +3,14 @@
 	email = ezequiel@yahoo.com
 [alias]
 	a = add -A
-	b = branch -v
+	b = branch -vv
 	c = commit
 	ca = commit --amend
 	co = checkout
 	s = status
 	sh = show --no-prefix
 	d = "diff --no-prefix --relative"
+	fa = fetch --all
 [push]
 	default = current
 	autoSetupRemote = true
