@@ -92,6 +92,14 @@ return {
             },
           },
           typescript = {
+            inlayHints = {
+              parameterNames = { enabled = 'all', suppressWhenArgumentMatchesName = false },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
+            },
             reportStyleChecksAsWarnings = false,
             format = {
               enable = false,
@@ -111,6 +119,14 @@ return {
             },
           },
           javascript = {
+            inlayHints = {
+              parameterNames = { enabled = 'all', suppressWhenArgumentMatchesName = false },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
+            },
             format = {
               enable = false,
             },
@@ -162,20 +178,26 @@ return {
         if client and client.name == 'vtsls' and #angularLsClients > 0 then
           client.server_capabilities.referencesProvider = false
         end
+
+        vim.keymap.set('n', 'rn', function()
+          local current_buf = vim.api.nvim_get_current_buf()
+          local is_angularls_attached = #(vim.lsp.get_active_clients({ name = 'angularls', bufnr = current_buf })) > 0
+          local is_vtsls_attached = #(vim.lsp.get_active_clients({ name = 'vtsls', bufnr = current_buf })) > 0
+
+          if is_angularls_attached and is_vtsls_attached then
+            vim.lsp.buf.rename(nil, { name = 'angularls' })
+            return
+          end
+
+          vim.lsp.buf.rename()
+        end)
+
+        if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+          vim.keymap.set('n', 'th', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+          end)
+        end
       end,
     })
-
-    vim.keymap.set('n', '<leader>rn', function()
-      local current_buf = vim.api.nvim_get_current_buf()
-      local is_angularls_attached = #(vim.lsp.get_active_clients({ name = 'angularls', bufnr = current_buf })) > 0
-      local is_vtsls_attached = #(vim.lsp.get_active_clients({ name = 'vtsls', bufnr = current_buf })) > 0
-
-      if is_angularls_attached and is_vtsls_attached then
-        vim.lsp.buf.rename(nil, { name = 'angularls' })
-        return
-      end
-
-      vim.lsp.buf.rename()
-    end)
   end,
 }
