@@ -9,7 +9,6 @@ vim.diagnostic.config({
     },
   },
   float = {
-    border = 'single',
     source = 'always',
     header = '',
     prefix = '',

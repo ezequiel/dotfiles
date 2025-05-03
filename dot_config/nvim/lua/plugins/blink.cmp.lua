@@ -72,9 +72,6 @@ return {
       documentation = {
         auto_show = false,
         auto_show_delay_ms = 500,
-        window = {
-          border = 'single',
-        },
       },
       list = {
         cycle = { from_top = false, from_bottom = false },
@@ -86,7 +83,6 @@ return {
       ghost_text = { enabled = false },
       menu = {
         auto_show = true,
-        border = 'single',
         draw = {
           treesitter = { 'lsp' },
           columns = {
@@ -134,7 +130,6 @@ return {
     signature = {
       enabled = true,
       window = {
-        border = 'single',
         show_documentation = false,
         scrollbar = true,
       },

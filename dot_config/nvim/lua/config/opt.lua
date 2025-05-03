@@ -70,3 +70,4 @@ vim.opt.fillchars:append({ diff = ' ' })
 vim.opt.isfname:append('@-@')
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.jumpoptions = 'stack,view'
+vim.opt.winborder = 'single'
