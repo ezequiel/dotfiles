@@ -76,8 +76,8 @@ vim.api.nvim_create_autocmd('WinEnter', {
 
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
-    if require('lazy.status').has_updates() then
-      require('lazy').update({ show = false })
-    end
+    -- if require('lazy.status').has_updates() then
+    require('lazy').update({ show = false })
+    -- end
   end,
 })
