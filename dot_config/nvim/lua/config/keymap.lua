@@ -17,14 +17,14 @@ vim.keymap.set({ 'n', 'x' }, ']q', function()
   local same_file = current_path == qf_path
   local same_line = current_line == item.lnum
 
-  if same_file and same_line then
-    if qf.idx < qf.size then
-      vim.cmd('cnext')
-    end
-  else
-    vim.api.nvim_set_current_buf(item.bufnr)
-    vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
+  -- if same_file and same_line then
+  if qf.idx < qf.size then
+    vim.cmd('cnext')
   end
+  -- else
+  --   vim.api.nvim_set_current_buf(item.bufnr)
+  --   vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
+  -- end
 end, { silent = true })
 vim.keymap.set({ 'n', 'x' }, '[q', function()
   local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
@@ -41,14 +41,14 @@ vim.keymap.set({ 'n', 'x' }, '[q', function()
   local same_file = current_path == qf_path
   local same_line = current_line == item.lnum
 
-  if same_file and same_line then
-    if qf.idx > 1 then
-      vim.cmd('cprev')
-    end
-  else
-    vim.api.nvim_set_current_buf(item.bufnr)
-    vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
+  -- if same_file and same_line then
+  if qf.idx > 1 then
+    vim.cmd('cprev')
   end
+  -- else
+  --   vim.api.nvim_set_current_buf(item.bufnr)
+  --   vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
+  -- end
 end, { silent = true })
 local function escape_handler(key)
   vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
