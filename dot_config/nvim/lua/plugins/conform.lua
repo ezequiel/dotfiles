@@ -4,29 +4,22 @@ return {
   opts = {
     formatters_by_ft = {
       ['*'] = { 'trim_newlines', 'trim_whitespace' },
-      css = { 'prettierd' },
+      css = { 'prettier' },
       go = { 'goimports', 'gofmt' },
-      html = { 'prettierd' },
-      htmlangular = { 'prettierd' },
-      javascript = { 'prettierd' },
-      javascriptreact = { 'prettierd' },
-      json = { 'prettierd' },
-      jsonc = { 'prettierd' },
+      html = { 'prettier' },
+      htmlangular = { 'prettier' },
+      javascript = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      json = { 'prettier' },
+      jsonc = { 'prettier' },
       lua = { 'stylua' },
-      markdown = { 'prettierd' },
-      scss = { 'prettierd' },
-      typescript = { 'prettierd' },
-      typescriptreact = { 'prettierd' },
-      yaml = { 'prettierd' },
+      markdown = { 'prettier' },
+      scss = { 'prettier' },
+      typescript = { 'prettier' },
+      typescriptreact = { 'prettier' },
+      yaml = { 'prettier' },
       toml = { 'taplo' },
       sh = { 'shfmt' },
-    },
-    formatters = {
-      prettierd = {
-        env = {
-          PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-        },
-      },
     },
     default_format_opts = {
       lsp_format = 'fallback',
@@ -43,13 +36,6 @@ return {
       pattern = 'AutoSaveWritePost',
       callback = function(event)
         conform.format({ bufnr = event.data.saved_buffer })
-      end,
-    })
-  end,
-  init = function()
-    vim.api.nvim_create_autocmd('ExitPre', {
-      callback = function()
-        vim.fn.jobstart('killall prettierd', { detach = true })
       end,
     })
   end,
