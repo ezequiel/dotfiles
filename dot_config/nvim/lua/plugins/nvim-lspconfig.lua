@@ -3,8 +3,8 @@ return {
   dependencies = {
     'WhoIsSethDaniel/mason-tool-installer',
     'saghen/blink.cmp',
-    'williamboman/mason-lspconfig.nvim',
-    'williamboman/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
+    'mason-org/mason.nvim',
     {
       'yioneko/nvim-vtsls',
       config = function()
@@ -19,12 +19,9 @@ return {
         'nvim-treesitter/nvim-treesitter',
       },
       opts = {
-        -- document_color = {
-        --   enabled = false,
-        -- },
-        -- conceal = {
-        --   enabled = true,
-        -- },
+        document_color = {
+          enabled = false,
+        },
       },
     },
   },
@@ -48,11 +45,9 @@ return {
         'jsonls',
         'marksman',
         'nginx_language_server',
-        'prettierd',
         'shellcheck',
         'shfmt',
         'somesass_ls',
-        'stylelint_lsp',
         'stylua',
         'vtsls',
         'yamlls',
@@ -63,27 +58,27 @@ return {
 
     local lsp_opts = {
       eslint = {
-        filetypes = {
-          'javascript',
-          'javascriptreact',
-          'javascript.jsx',
-          'typescript',
-          'typescriptreact',
-          'typescript.tsx',
-          'json',
-          'jsonc',
-        },
-        workingDirectory = {
-          mode = 'auto',
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'jsonc' },
+        settings = {
+          experimental = {
+            useFlatConfig = true,
+          },
+          workingDirectory = {
+            mode = 'auto',
+          },
         },
       },
-      stylelint = {
-        root_dir = require('lspconfig').util.root_pattern('package.json'),
+      angularls = {
+        root_dir = function(fname)
+          local util = require('lspconfig.util')
+          return util.root_pattern('angular.json', 'nx.json')(fname)
+        end,
       },
       vtsls = {
-        refactor_auto_rename = true,
         settings = {
+          refactor_auto_rename = true,
           vtsls = {
+            enableMoveToFileCodeActions = true,
             autoUseWorkspaceTsdk = true,
             experimental = {
               completion = {
@@ -112,11 +107,13 @@ return {
             preferences = {
               includePackageJsonAutoImports = true,
               importModuleSpecifier = 'non-relative',
+              importModuleSpecifierPreference = 'non-relative',
               preferTypeOnlyAutoImports = false,
             },
-            updateImportsOnFileMove = {
-              enabled = 'always',
-            },
+            updateImportsOnFileMove = 'always',
+            -- updateImportsOnFileMove = {
+            --   enabled = 'always',
+            -- },
           },
           javascript = {
             inlayHints = {
@@ -133,10 +130,12 @@ return {
             preferences = {
               includePackageJsonAutoImports = true,
               importModuleSpecifier = 'non-relative',
+              importModuleSpecifierPreference = 'non-relative',
             },
-            updateImportsOnFileMove = {
-              enabled = 'always',
-            },
+            updateImportsOnFileMove = 'always',
+            -- updateImportsOnFileMove = {
+            --   enabled = 'always',
+            -- },
           },
         },
       },
@@ -148,17 +147,14 @@ return {
       require('blink.cmp').get_lsp_capabilities()
     )
 
+    for name, opts in pairs(lsp_opts) do
+      opts = opts or {}
+      opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, opts.capabilities or {})
+      vim.lsp.config(name, opts)
+    end
+
     require('mason').setup()
-    require('mason-lspconfig').setup({
-      handlers = {
-        function(name)
-          -- vim.lsp.enable(name)
-          local opts = lsp_opts[name] or {}
-          opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, opts.capabilities or {})
-          require('lspconfig')[name].setup(opts)
-        end,
-      },
-    })
+    require('mason-lspconfig').setup()
   end,
   init = function()
     vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action)
@@ -178,7 +174,7 @@ return {
           client.server_capabilities.referencesProvider = false
         end
 
-        vim.keymap.set('n', 'rn', function()
+        vim.keymap.set('n', '<leader>rn', function()
           local current_buf = vim.api.nvim_get_current_buf()
           local is_angularls_attached = #(vim.lsp.get_active_clients({ name = 'angularls', bufnr = current_buf })) > 0
           local is_vtsls_attached = #(vim.lsp.get_active_clients({ name = 'vtsls', bufnr = current_buf })) > 0
@@ -187,7 +183,6 @@ return {
             vim.lsp.buf.rename(nil, { name = 'angularls' })
             return
           end
-
           vim.lsp.buf.rename()
         end)
 
