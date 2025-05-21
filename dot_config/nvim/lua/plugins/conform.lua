@@ -31,11 +31,11 @@ return {
   config = function(_, opts)
     local conform = require('conform')
     conform.setup(opts)
-    conform.format({ bufnr = vim.api.nvim_get_current_buf() })
+    conform.format({ async = true, bufnr = vim.api.nvim_get_current_buf() })
     vim.api.nvim_create_autocmd('User', {
       pattern = 'AutoSaveWritePost',
       callback = function(event)
-        conform.format({ bufnr = event.data.saved_buffer })
+        conform.format({ async = true, bufnr = event.data.saved_buffer })
       end,
     })
   end,
