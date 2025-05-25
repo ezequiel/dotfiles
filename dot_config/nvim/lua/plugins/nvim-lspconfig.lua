@@ -57,6 +57,18 @@ return {
     })
 
     local lsp_opts = {
+      golangci_lint_ls = {
+        init_options = {
+          command = {
+            'golangci-lint',
+            'run',
+            '--fast',
+            '--out-format=json',
+            '--show-stats=false',
+            '--issues-exit-code=1',
+          },
+        },
+      },
       eslint = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'jsonc' },
         settings = {
