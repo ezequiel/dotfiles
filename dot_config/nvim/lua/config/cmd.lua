@@ -38,6 +38,10 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', '<C-p>', 'k^', { buffer = true })
     vim.keymap.set('n', '<Down>', 'j^', { buffer = true })
     vim.keymap.set('n', '<Up>', 'k^', { buffer = true })
+
+    local line_count = vim.fn.line('$')
+    local height = math.max(math.min(line_count, 10), 0)
+    vim.cmd(height .. 'wincmd _')
   end,
 })
 
