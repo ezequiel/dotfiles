@@ -5,7 +5,7 @@ return {
     formatters_by_ft = {
       ['*'] = { 'trim_newlines', 'trim_whitespace' },
       css = { 'prettier' },
-      go = { 'goimports', 'gofmt' },
+      go = { 'goimports' },
       html = { 'prettier' },
       htmlangular = { 'prettier' },
       javascript = { 'prettier' },
@@ -17,7 +17,7 @@ return {
       scss = { 'prettier' },
       typescript = { 'prettier' },
       typescriptreact = { 'prettier' },
-      yaml = { 'prettier' },
+      yaml = { 'yamlfmt' },
       toml = { 'taplo' },
       sh = { 'shfmt' },
     },
