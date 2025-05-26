@@ -3,7 +3,6 @@ return {
   dependencies = {
     'WhoIsSethDaniel/mason-tool-installer',
     'saghen/blink.cmp',
-    'mason-org/mason-lspconfig.nvim',
     'mason-org/mason.nvim',
     {
       'yioneko/nvim-vtsls',
@@ -28,35 +27,39 @@ return {
   config = function()
     require('mason-tool-installer').setup({
       ensure_installed = {
-        'angularls',
-        'bashls',
-        'copilot-language-server',
-        'css_variables',
-        'cssls',
-        'cssmodules_ls',
-        'docker_compose_language_service',
-        'dockerls',
-        'eslint',
+        'angular-language-server',
+        'docker-compose-language-service',
+        'dockerfile-language-server',
+        'eslint-lsp',
         'goimports',
-        'golangci_lint_ls',
+        'golangci-lint-langserver',
         'gopls',
-        'groovyls',
-        'html',
-        'jsonls',
+        'html-lsp',
+        'json-lsp',
+        'lua-language-server',
         'marksman',
-        'nginx_language_server',
-        'shellcheck',
         'shfmt',
-        'somesass_ls',
         'stylua',
-        'vtsls',
-        'yamlls',
         'tailwindcss-language-server',
+        'vtsls',
+        'yaml-language-server',
+        'yamlfmt',
       },
       auto_update = true,
     })
+    require('mason').setup()
+
+    vim.lsp.config('*', {
+      capabilities = vim.tbl_deep_extend(
+        'force',
+        vim.lsp.protocol.make_client_capabilities(),
+        require('blink.cmp').get_lsp_capabilities()
+      ),
+    })
 
     local lsp_opts = {
+      gopls = {},
+      yamlls = {},
       golangci_lint_ls = {
         init_options = {
           command = {
@@ -69,6 +72,31 @@ return {
           },
         },
       },
+      -- angularls = {
+      --   root_markers = { 'angular.json', '.git' },
+      -- },
+      marksman = {},
+      lua_ls = {
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              globals = { 'vim', 'Snacks' },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('lua', true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
+          },
+        },
+      },
+      docker_compose_language_service = {},
+      dockerls = {},
+      jsonls = { init_options = { provideFormatter = false } },
+      html = { init_options = { provideFormatter = false } },
       eslint = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'jsonc' },
         settings = {
@@ -80,12 +108,7 @@ return {
           },
         },
       },
-      angularls = {
-        root_dir = function(fname)
-          local util = require('lspconfig.util')
-          return util.root_pattern('angular.json', 'nx.json')(fname)
-        end,
-      },
+      tailwindcss = {},
       vtsls = {
         settings = {
           refactor_auto_rename = true,
@@ -153,20 +176,10 @@ return {
       },
     }
 
-    local capabilities = vim.tbl_deep_extend(
-      'force',
-      vim.lsp.protocol.make_client_capabilities(),
-      require('blink.cmp').get_lsp_capabilities()
-    )
-
     for name, opts in pairs(lsp_opts) do
-      opts = opts or {}
-      opts.capabilities = vim.tbl_deep_extend('force', {}, capabilities, opts.capabilities or {})
       vim.lsp.config(name, opts)
+      vim.lsp.enable(name)
     end
-
-    require('mason').setup()
-    require('mason-lspconfig').setup()
   end,
   init = function()
     vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action)
