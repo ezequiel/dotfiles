@@ -1,11 +1,11 @@
 return {
-  "RRethy/vim-illuminate",
-  event = "VeryLazy",
+  'RRethy/vim-illuminate',
+  event = 'VeryLazy',
   config = function()
-    require("illuminate").configure({
+    require('illuminate').configure({
       providers = {
-        "lsp",
-        "treesitter",
+        'lsp',
+        'treesitter',
       },
       under_cursor = false,
       delay = 350,
