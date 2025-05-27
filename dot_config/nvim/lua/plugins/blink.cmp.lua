@@ -15,7 +15,6 @@ return {
         and vim.b.completion ~= false
         and vim.bo.filetype ~= 'grug-far'
         and vim.bo.filetype ~= 'norg'
-        and vim.bo.filetype ~= 'copilot-chat'
       -- and vim.bo.filetype ~= "qf"
     end,
     keymap = {
@@ -45,9 +44,9 @@ return {
         function(cmp)
           return cmp.accept()
           -- if cmp.accept() then
-            -- vim.schedule(function()
-            --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
-            -- end)
+          -- vim.schedule(function()
+          --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
+          -- end)
           --   return true
           -- end
         end,
