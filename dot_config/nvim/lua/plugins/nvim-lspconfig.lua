@@ -2,14 +2,9 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     'WhoIsSethDaniel/mason-tool-installer',
-    'saghen/blink.cmp',
     'mason-org/mason.nvim',
-    {
-      'yioneko/nvim-vtsls',
-      config = function()
-        require('lspconfig.configs').vtsls = require('vtsls').lspconfig
-      end,
-    },
+    'saghen/blink.cmp',
+    'yioneko/nvim-vtsls',
     {
       'luckasRanarison/tailwind-tools.nvim',
       name = 'tailwind-tools',
@@ -109,7 +104,7 @@ return {
         },
       },
       tailwindcss = {},
-      vtsls = {
+      vtsls = vim.tbl_deep_extend('force', require('vtsls').lspconfig, {
         settings = {
           refactor_auto_rename = true,
           vtsls = {
@@ -173,7 +168,7 @@ return {
             -- },
           },
         },
-      },
+      }),
     }
 
     for name, opts in pairs(lsp_opts) do
