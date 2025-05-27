@@ -1,7 +1,8 @@
 return {
   event = 'VeryLazy',
   'jake-stewart/multicursor.nvim',
-  branch = '1.0',
+  -- branch = '1.0',
+  commit = 'c117b3fc537cda262a06638ca88fe6de1b53ab59',
   config = function()
     local mc = require('multicursor-nvim')
     mc.setup()
@@ -85,46 +86,3 @@ return {
     -- hl(0, 'MultiCursorDisabledSign', { link = 'SignColumn' })
   end,
 }
--- return {
---   'jake-stewart/multicursor.nvim',
---   branch = '1.0',
---   keys = {
---     {
---       '<c-a>',
---       function()
---         require('multicursor-nvim').toggleCursor()
---       end,
---       mode = { 'n' },
---     },
---     {
---       '<leader>A',
---       function()
---         require('multicursor-nvim').searchAllAddCursors()
---       end,
---       mode = { 'n' },
---     },
---   },
---   config = function()
---     local multicursor = require('multicursor-nvim')
---     multicursor.setup()
---
---     multicursor.addKeymapLayer(function(layerSet)
---       layerSet('n', '<c-c>', function()
---         multicursor.clearCursors()
---       end)
---       layerSet('n', '<esc>', function()
---         if not multicursor.cursorsEnabled() then
---           multicursor.enableCursors()
---         elseif multicursor.hasCursors() then
---           multicursor.clearCursors()
---         end
---       end)
---     end)
---
---     -- multicursor.onSafeState(function(event)
---     --   if event.wasMode == "i" or event.wasMode == "R" then
---     --     multicursor.clearCursors()
---     --   end
---     -- end)
---   end,
--- }
