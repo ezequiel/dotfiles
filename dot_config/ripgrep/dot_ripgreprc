@@ -1,6 +1,10 @@
 --glob=!{.git,node_modules,vendor}
 --glob=!*.{lock}
 --glob=!{package-lock.json}
+--glob=!*.svg
+--glob=!*.patch
+--glob=!**/*.min.js
+--glob=!**/*-min.js
 --glob=!dist/**
 --hidden
 --smart-case
