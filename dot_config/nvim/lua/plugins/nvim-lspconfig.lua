@@ -67,9 +67,9 @@ return {
           },
         },
       },
-      -- angularls = {
-      --   root_markers = { 'angular.json', '.git' },
-      -- },
+      angularls = {
+        -- root_markers = { 'angular.json', '.git' },
+      },
       marksman = {},
       lua_ls = {
         settings = {
@@ -93,7 +93,16 @@ return {
       jsonls = { init_options = { provideFormatter = false } },
       html = { init_options = { provideFormatter = false } },
       eslint = {
-        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'jsonc' },
+        filetypes = {
+          'html',
+          'htmlangular',
+          'javascript',
+          'javascriptreact',
+          'json',
+          'jsonc',
+          'typescript',
+          'typescriptreact',
+        },
         settings = {
           experimental = {
             useFlatConfig = true,
