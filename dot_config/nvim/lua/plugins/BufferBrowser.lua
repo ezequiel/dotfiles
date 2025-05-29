@@ -43,6 +43,8 @@ return {
       'grug-far',
       'norg',
       'snacks_picker_input',
+      'no-neck-pain',
+      'yazi',
     },
   },
   init = function()
