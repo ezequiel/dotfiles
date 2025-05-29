@@ -5,6 +5,9 @@ return {
     autocmds = {
       skipEnteringNoNeckPainBuffer = true,
     },
+    mappings = {
+      enabled = false,
+    },
     buffers = {
       left = {
         enabled = true,
