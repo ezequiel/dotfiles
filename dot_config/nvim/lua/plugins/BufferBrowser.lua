@@ -36,7 +36,14 @@ return {
     },
   },
   opts = {
-    -- filetype_filters = {'gitcommit', 'TelescopePrompt'}
+    filetype_filters = {
+      'netrw',
+      'help',
+      'qf',
+      'grug-far',
+      'norg',
+      'snacks_picker_input',
+    },
   },
   init = function()
     vim.g.netrw_fastbrowse = 0
