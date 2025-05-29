@@ -328,7 +328,7 @@ return {
       callback = function()
         Snacks.toggle.line_number():map('<leader>nu')
         Snacks.toggle.dim():map('<leader>di')
-        Snacks.toggle.zoom():map('<leader>zz')
+        Snacks.toggle.zoom():map('<leader>zo')
       end,
     })
   end,
