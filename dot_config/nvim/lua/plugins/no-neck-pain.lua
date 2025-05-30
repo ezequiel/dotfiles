@@ -1,9 +1,12 @@
 return {
   lazy = false,
   'shortcuts/no-neck-pain.nvim',
+  commit = 'c824c54d837160ac32d0f877574ccfa2ecce9947',
   opts = {
     autocmds = {
-      skipEnteringNoNeckPainBuffer = true,
+      -- enableOnTabEnter = true,
+      -- enableOnVimEnter = true,
+      -- skipEnteringNoNeckPainBuffer = true,
     },
     mappings = {
       enabled = false,
