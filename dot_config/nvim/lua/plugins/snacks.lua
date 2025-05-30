@@ -189,7 +189,7 @@ return {
           follow = true,
         },
       },
-      matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
+      -- matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
       win = {
         list = {
           wo = {
