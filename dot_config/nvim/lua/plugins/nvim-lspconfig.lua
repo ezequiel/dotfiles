@@ -68,7 +68,7 @@ return {
         },
       },
       angularls = {
-        -- root_markers = { 'angular.json', '.git' },
+        root_markers = { 'angular.json' },
       },
       marksman = {},
       lua_ls = {
