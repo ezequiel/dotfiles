@@ -24,8 +24,13 @@ return {
         { 'User', pattern = 'VisualEnter' },
       },
     },
-    condition = function(buf)
-      return not (vim.fn.mode() == 'i' or vim.bo.filetype == 'qf' or vim.bo.buftype == 'nofile')
+    condition = function()
+      return not (
+        vim.fn.mode() == 'i'
+        or vim.bo.filetype == 'qf'
+        or vim.bo.buftype == 'nofile'
+        or vim.bo.buftype == 'ssr'
+      )
     end,
     write_all_buffers = true,
   },
