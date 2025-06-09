@@ -157,4 +157,10 @@ keymap = [
   { on = [
     "<C-a>",
   ], run = "toggle_all --state=true", desc = "Select all files" },
+  { on = [
+    "<D-[>",
+  ], run = "back", desc = "Go back to the previous directory" },
+  { on = [
+    "<D-]>",
+  ], run = "forward", desc = "Go forward to the next directory" },
 ]
