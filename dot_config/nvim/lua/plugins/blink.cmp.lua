@@ -15,7 +15,8 @@ return {
         and vim.b.completion ~= false
         and vim.bo.filetype ~= 'grug-far'
         and vim.bo.filetype ~= 'norg'
-      -- and vim.bo.filetype ~= "qf"
+        and vim.bo.filetype ~= 'markdown'
+        and vim.bo.filetype ~= 'ssr'
     end,
     keymap = {
       preset = 'super-tab',
