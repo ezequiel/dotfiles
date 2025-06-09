@@ -9,9 +9,7 @@ vim.diagnostic.config({
     },
   },
   float = {
-    source = 'always',
-    header = '',
-    prefix = '',
+    source = true,
     wrap = false,
   },
   underline = false,
