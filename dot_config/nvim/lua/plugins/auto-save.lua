@@ -25,12 +25,7 @@ return {
       },
     },
     condition = function()
-      return not (
-        vim.fn.mode() == 'i'
-        or vim.bo.filetype == 'qf'
-        or vim.bo.buftype == 'nofile'
-        or vim.bo.buftype == 'ssr'
-      )
+      return not (vim.fn.mode() == 'i' or vim.bo.filetype == 'qf' or vim.bo.buftype == 'nofile')
     end,
     write_all_buffers = true,
   },
