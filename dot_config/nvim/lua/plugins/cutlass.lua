@@ -1,6 +1,6 @@
 return {
   'gbprod/cutlass.nvim',
   opts = {
-    cut_key = nil,
+    cut_key = 'm',
   },
 }
