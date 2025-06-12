@@ -54,12 +54,6 @@ vim.opt.numberwidth = 5
 vim.opt.shortmess:append('I')
 vim.opt.shortmess:append('F')
 vim.opt.shortmess:append('T')
-vim.opt.foldcolumn = '0'
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldtext = ''
-vim.opt.foldlevel = 1337
-vim.opt.foldlevelstart = 1337
 vim.opt.smoothscroll = false
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -71,3 +65,7 @@ vim.opt.isfname:append('@-@')
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.jumpoptions = 'stack,view'
 vim.opt.winborder = 'single'
+vim.opt.foldmethod = "manual"
+vim.opt.foldexpr = nil
+vim.opt.foldlevel = 999
+vim.opt.foldenable = true
