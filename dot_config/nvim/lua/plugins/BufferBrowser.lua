@@ -45,6 +45,7 @@ return {
       'snacks_picker_input',
       'no-neck-pain',
       'yazi',
+      '',
     },
   },
   init = function()
