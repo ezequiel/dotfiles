@@ -1,7 +1,7 @@
 local file_types = { 'norg', 'markdown', 'qf' }
 return {
   ft = file_types,
-  'MeanderingProgrammer/render-markdown.nvim',
+  'OXY2DEV/markview.nvim',
   opts = {
     file_types = file_types,
   },
