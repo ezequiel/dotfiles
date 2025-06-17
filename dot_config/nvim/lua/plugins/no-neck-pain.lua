@@ -18,5 +18,11 @@ return {
         enabled = false,
       },
     },
+    integrations = {
+      outline = {
+        position = 'left',
+        reopen = false,
+      },
+    },
   },
 }

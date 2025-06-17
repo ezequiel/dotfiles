@@ -1,7 +1,17 @@
 return {
   'hedyhli/outline.nvim',
   keys = {
-    { '<leader>ol', '<cmd>Outline<CR>', desc = 'Toggle outline' },
+    {
+      '<leader>ol',
+      function()
+        local outline = require('outline')
+        outline.toggle_outline()
+        vim.defer_fn(function()
+          outline.focus_outline()
+        end, 500)
+      end,
+      desc = 'Toggle outline',
+    },
   },
   opts = {
     outline_window = {
@@ -22,11 +32,11 @@ return {
       restore_location = {},
       hover_symbol = { 'K' },
       toggle_preview = {},
-      rename_symbol = {},
-      code_actions = {},
+      rename_symbol = { '<leader>rn' },
+      code_actions = { '<leader>ca' },
       fold = { '<Left>', '<Backspace>' },
       unfold = { '<Right>' },
-      fold_toggle = {},
+      fold_toggle = { '<Space>' },
       fold_toggle_all = {},
       fold_all = {},
       unfold_all = {},
