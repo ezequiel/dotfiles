@@ -20,11 +20,6 @@ return {
       desc = 'Close all folds',
     },
   },
-  opts = {
-    provider_selector = function()
-      return { 'treesitter', 'indent' }
-    end,
-  },
   config = function(_, opts)
     require('ufo').setup(opts)
   end,
