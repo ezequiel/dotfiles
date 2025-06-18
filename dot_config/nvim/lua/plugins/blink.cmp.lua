@@ -9,8 +9,6 @@ return {
   version = '*',
   opts = {
     enabled = function()
-      -- print(vim.bo.filetype)
-      -- print(vim.bo.buftype)
       return vim.bo.buftype ~= 'prompt'
         and vim.b.completion ~= false
         and vim.bo.filetype ~= 'grug-far'
@@ -32,9 +30,6 @@ return {
           local copilotSuggestion = require('copilot.suggestion')
           if copilotSuggestion.is_visible() then
             copilotSuggestion.accept()
-            -- vim.schedule(function()
-            --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
-            -- end)
             return true
           end
         end,
@@ -43,12 +38,6 @@ return {
       ['<CR>'] = {
         function(cmp)
           return cmp.accept()
-          -- if cmp.accept() then
-          -- vim.schedule(function()
-          --   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<esc>', true, false, true), 'n', true)
-          -- end)
-          --   return true
-          -- end
         end,
         'fallback',
       },
