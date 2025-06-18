@@ -21,7 +21,7 @@ return {
     integrations = {
       outline = {
         position = 'left',
-        reopen = false,
+        reopen = true,
       },
     },
   },
