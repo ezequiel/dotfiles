@@ -25,4 +25,9 @@ return {
       },
     },
   },
+  init = function()
+    vim.keymap.set('n', '<leader>np', function()
+      require('no-neck-pain').toggle()
+    end, { desc = 'Toggle No Neck Pain' })
+  end,
 }
