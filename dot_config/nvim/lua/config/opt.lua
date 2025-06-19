@@ -64,7 +64,7 @@ vim.opt.fillchars:append({ diff = ' ' })
 vim.opt.isfname:append('@-@')
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.jumpoptions = 'stack,view'
-vim.opt.winborder = 'single'
+-- vim.opt.winborder = 'single'
 vim.opt.foldmethod = "manual"
 vim.opt.foldexpr = nil
 vim.opt.foldlevel = 999

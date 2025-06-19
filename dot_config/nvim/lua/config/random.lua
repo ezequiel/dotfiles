@@ -11,6 +11,7 @@ vim.diagnostic.config({
   float = {
     source = true,
     wrap = false,
+    border = 'single',
   },
   underline = false,
   severity_sort = true,

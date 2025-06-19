@@ -59,6 +59,7 @@ return {
     },
     completion = {
       documentation = {
+        window = { border = 'single' },
         auto_show = false,
         auto_show_delay_ms = 500,
       },
@@ -71,6 +72,7 @@ return {
       },
       ghost_text = { enabled = false },
       menu = {
+        border = 'single',
         auto_show = true,
         draw = {
           treesitter = { 'lsp' },
@@ -121,6 +123,7 @@ return {
       window = {
         show_documentation = false,
         scrollbar = true,
+        border = 'single',
       },
     },
     appearance = {

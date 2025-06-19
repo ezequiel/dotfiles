@@ -192,6 +192,7 @@ return {
         focusable = true,
         silent = true,
         wrap = false,
+        border = 'single',
       })
     end)
 
