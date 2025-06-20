@@ -5,7 +5,7 @@ return {
   config = true,
   init = function()
     vim.keymap.set('n', '<leader>gc', function()
-      require('treesitter-context').go_to_context(vim.v.count1)
+      require('treesitter-context').go_to_context()
     end, { silent = true })
   end,
 }
