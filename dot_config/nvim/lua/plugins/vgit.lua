@@ -33,9 +33,6 @@ return {
           GitAppBar = 'QuickfixLine',
           GitHeader = 'Keyword',
         },
-        live_blame = {
-          enabled = false,
-        },
         signs = {
           priority = 1337,
         },
