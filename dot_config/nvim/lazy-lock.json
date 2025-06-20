@@ -35,7 +35,7 @@
   "tailwind-tools": { "branch": "master", "commit": "fbe982901d4508b0dcd80e07addf0fcb6dab6c49" },
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
   "vgit.nvim": { "branch": "main", "commit": "a7be45a2726ade74c4c669c56c36310d840c85a8" },
-  "viedit": { "branch": "main", "commit": "3522e6dd83ca3560e4bd02737a5987cefbbe98fe" },
+  "viedit": { "branch": "main", "commit": "dcc220da36420f47838c397271787e6166129a94" },
   "vim-autoread": { "branch": "master", "commit": "24061f84652d768bfb85d222c88580b3af138dab" },
   "vim-illuminate": { "branch": "master", "commit": "0d1e93684da00ab7c057410fecfc24f434698898" },
   "vim-lastplace": { "branch": "master", "commit": "e58cb0df716d3c88605ae49db5c4741db8b48aa9" },

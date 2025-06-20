@@ -69,6 +69,7 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.schedule(function()
     vim.cmd('fclose!')
   end)
+  require('viedit').disable()
   return '<C-c>'
 end, { noremap = true, expr = true })
 vim.keymap.set('n', 'J', '<nop>', { silent = true })
