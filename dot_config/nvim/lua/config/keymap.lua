@@ -10,12 +10,12 @@ vim.keymap.set({ 'n', 'x' }, ']q', function()
     return
   end
 
-  local current_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p')
-  local qf_path = vim.fn.fnamemodify(vim.fn.bufname(item.bufnr), ':p')
-  local current_line = vim.api.nvim_win_get_cursor(0)[1]
+  -- local current_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p')
+  -- local qf_path = vim.fn.fnamemodify(vim.fn.bufname(item.bufnr), ':p')
+  -- local current_line = vim.api.nvim_win_get_cursor(0)[1]
 
-  local same_file = current_path == qf_path
-  local same_line = current_line == item.lnum
+  -- local same_file = current_path == qf_path
+  -- local same_line = current_line == item.lnum
 
   -- if same_file and same_line then
   if qf.idx < qf.size then
@@ -34,12 +34,12 @@ vim.keymap.set({ 'n', 'x' }, '[q', function()
     return
   end
 
-  local current_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p')
-  local qf_path = vim.fn.fnamemodify(vim.fn.bufname(item.bufnr), ':p')
-  local current_line = vim.api.nvim_win_get_cursor(0)[1]
+  -- local current_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p')
+  -- local qf_path = vim.fn.fnamemodify(vim.fn.bufname(item.bufnr), ':p')
+  -- local current_line = vim.api.nvim_win_get_cursor(0)[1]
 
-  local same_file = current_path == qf_path
-  local same_line = current_line == item.lnum
+  -- local same_file = current_path == qf_path
+  -- local same_line = current_line == item.lnum
 
   -- if same_file and same_line then
   if qf.idx > 1 then
@@ -50,14 +50,6 @@ vim.keymap.set({ 'n', 'x' }, '[q', function()
   --   vim.api.nvim_win_set_cursor(0, { item.lnum, item.col > 0 and item.col - 1 or 0 })
   -- end
 end, { silent = true })
-local function escape_handler(key)
-  vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
-  vim.cmd('nohlsearch')
-  vim.schedule(function()
-    vim.cmd('fclose!')
-  end)
-  return key
-end
 vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
   vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
   vim.cmd('nohlsearch')
