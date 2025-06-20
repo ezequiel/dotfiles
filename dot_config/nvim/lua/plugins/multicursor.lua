@@ -23,23 +23,6 @@ return {
       mc.lineSkipCursor(1, { skipEmpty = false })
     end)
 
-    -- Add or skip adding a new cursor by matching word/selection
-    -- set({ 'n', 'x' }, '<leader>ma', function()
-    --   mc.matchAddCursor(1)
-    -- end)
-    -- set({ 'n', 'x' }, '<leader>ms', function()
-    --   mc.matchSkipCursor(1)
-    -- end)
-    -- set({ 'n', 'x' }, '<leader>mA', function()
-    --   mc.matchAddCursor(-1)
-    -- end)
-    -- set({ 'n', 'x' }, '<leader>mS', function()
-    --   mc.matchSkipCursor(-1)
-    -- end)
-    -- set({ 'n', 'x' }, '<leader>A', function()
-    --   mc.searchAllAddCursors()
-    -- end)
-
     -- Disable and enable cursors.
     set({ 'n', 'x' }, '<c-a>', function()
       mc.toggleCursor()
@@ -69,20 +52,5 @@ return {
         end
       end)
     end)
-
-    -- mc.onModeChanged(function(cursor, oldMode, newMode)
-    --   if oldMode and string.find('iR', oldMode) and newMode == 'n' then
-    --     cursor:feedkeys('`^')
-    --   end
-    -- end)
-
-    -- local hl = vim.api.nvim_set_hl
-    -- hl(0, 'MultiCursorCursor', { reverse = true })
-    -- hl(0, 'MultiCursorVisual', { link = 'Visual' })
-    -- hl(0, 'MultiCursorSign', { link = 'SignColumn' })
-    -- hl(0, 'MultiCursorMatchPreview', { link = 'Search' })
-    -- hl(0, 'MultiCursorDisabledCursor', { reverse = true })
-    -- hl(0, 'MultiCursorDisabledVisual', { link = 'Visual' })
-    -- hl(0, 'MultiCursorDisabledSign', { link = 'SignColumn' })
   end,
 }
