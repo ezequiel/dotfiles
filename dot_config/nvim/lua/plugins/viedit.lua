@@ -11,14 +11,24 @@ return {
       desc = 'Toggle all with viedit',
     },
     {
-      '<leader>rie',
+      '<leader>vie',
       function()
         require('viedit').restrict_to_visual_selection()
-        require('viedit').step({back = true})
+        require('viedit').step({ back = true })
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', false)
       end,
       mode = 'x',
       desc = 'Restrict viedit to visual selection',
+    },
+    {
+      '<leader>fie',
+      function()
+        require('viedit').restrict_to_function()
+        require('viedit').step({ back = true })
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', false)
+      end,
+      mode = 'n',
+      desc = 'Restrict viedit to function',
     },
   },
 }
