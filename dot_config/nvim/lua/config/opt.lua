@@ -68,5 +68,3 @@ vim.opt.foldmethod = 'manual'
 vim.opt.foldexpr = nil
 vim.opt.foldlevel = 999
 vim.opt.foldenable = true
-vim.opt.relativenumber = true
-vim.opt.number = true
