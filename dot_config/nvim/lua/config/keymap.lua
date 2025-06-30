@@ -37,6 +37,7 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.cmd('nohlsearch')
   vim.schedule(function()
     vim.cmd('fclose!')
+    vim.cmd('TSContext enable')
   end)
   require('viedit').disable()
   return '<C-c>'
