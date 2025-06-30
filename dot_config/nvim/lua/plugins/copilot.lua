@@ -1,11 +1,14 @@
 return {
   'zbirenbaum/copilot.lua',
-  event = 'VeryLazy',
+  event = 'InsertEnter',
   opts = {
     server_opts_overrides = {
       settings = {
         telemetry = {
           telemetryLevel = 'off',
+        },
+        advanced = {
+          inlineSuggestCount = 1,
         },
       },
     },
