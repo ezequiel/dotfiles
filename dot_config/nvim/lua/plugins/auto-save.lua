@@ -1,5 +1,6 @@
 return {
   'okuuva/auto-save.nvim',
+  lazy = false,
   opts = {
     enabled = true,
     trigger_events = {
@@ -10,9 +11,9 @@ return {
         'VimLeave',
         'VimSuspend',
         'WinLeave',
+        'FocusLost',
       },
       defer_save = {
-        'FocusLost',
         'TextChanged',
         'TextChangedP',
         'InsertLeave',
@@ -25,11 +26,12 @@ return {
       },
     },
     condition = function()
-      return not (
-        vim.fn.mode() == 'i'
-        or vim.bo.filetype == 'qf'
-        or vim.bo.filetype == ''
-        or vim.bo.buftype == 'nofile'
+      return (
+        vim.fn.mode() ~= 'i'
+        and vim.bo.filetype ~= 'qf'
+        and vim.bo.filetype ~= ''
+        and vim.bo.buftype ~= 'nofile'
+        and vim.bo.buftype ~= 'norg'
       )
     end,
     write_all_buffers = true,
