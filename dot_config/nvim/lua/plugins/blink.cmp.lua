@@ -36,21 +36,15 @@ return {
         'fallback',
       },
       ['<CR>'] = {
-        function(cmp)
-          return cmp.accept()
-        end,
+        'accept',
         'fallback',
       },
       ['<Right>'] = {
-        function(cmp)
-          return cmp.accept()
-        end,
+        'accept',
         'fallback',
       },
       ['<c-c>'] = {
-        function(cmp)
-          return cmp.cancel()
-        end,
+        'accept',
         'fallback',
       },
     },
