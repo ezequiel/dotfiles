@@ -1,4 +1,4 @@
 return {
-  event = "VeryLazy",
-  "djoshea/vim-autoread",
+  lazy = false,
+  'djoshea/vim-autoread',
 }
