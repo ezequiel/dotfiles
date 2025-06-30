@@ -21,10 +21,6 @@ return {
       toml = { 'taplo' },
       sh = { 'shfmt' },
     },
-    default_format_opts = {
-      lsp_format = 'fallback',
-    },
-    log_level = vim.log.levels.ERROR,
     notify_on_error = false,
     notify_no_formatters = false,
   },
