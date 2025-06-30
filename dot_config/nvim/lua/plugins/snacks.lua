@@ -15,13 +15,6 @@ return {
   },
   keys = {
     {
-      '<leader>qf',
-      function()
-        Snacks.picker.qflist()
-      end,
-      desc = 'Quickfix List',
-    },
-    {
       '<leader>gB',
       function()
         Snacks.gitbrowse()
