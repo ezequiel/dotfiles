@@ -11,7 +11,7 @@ return {
       desc = 'Toggle all with viedit',
     },
     {
-      '<leader>vie',
+      '<leader>rv',
       function()
         require('viedit').restrict_to_visual_selection()
         require('viedit').step({ back = true })
@@ -21,7 +21,7 @@ return {
       desc = 'Restrict viedit to visual selection',
     },
     {
-      '<leader>fie',
+      '<leader>rf',
       function()
         require('viedit').restrict_to_function()
         require('viedit').step({ back = true })
