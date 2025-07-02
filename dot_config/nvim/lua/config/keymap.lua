@@ -109,3 +109,6 @@ vim.keymap.set('i', '<CR>', function()
     return '<CR>'
   end
 end, { expr = true, silent = true })
+
+vim.keymap.set('n', '[z', '[z^', { noremap = true, silent = true })
+vim.keymap.set('n', ']z', ']z^', { noremap = true, silent = true })
