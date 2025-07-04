@@ -89,8 +89,6 @@ keymap = [
   { on = [
     "a",
   ], run = "create" },
-
-
   { on = [
     "k",
   ], run = "arrow -1", desc = "Move cursor up" },
@@ -137,11 +135,17 @@ keymap = [
     "<Esc>",
   ], run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
   { on = [
-    "<Space>",
+    "<Tab>",
   ], run = [
     "toggle --state=none",
     "arrow 1",
   ], desc = "Toggle the current selection state" },
+  { on = [
+    "<BackTab>",
+  ], run = [
+    "toggle --state=none",
+    "arrow -1",
+  ], desc = "Toggle the current selection state and move up" },
   { on = [
     "f",
     "r",
