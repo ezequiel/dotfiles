@@ -67,9 +67,10 @@ return {
           },
         },
       },
-      -- angularls = {
-      --   root_markers = { 'angular.json' },
-      -- },
+      angularls = {
+        root_markers = { 'angular.json' },
+        workspace_required = true,
+      },
       marksman = {},
       lua_ls = {
         settings = {
