@@ -164,6 +164,13 @@ return {
         Snacks.picker.lsp_type_definitions()
       end,
     },
+    {
+      '<leader>lg',
+      function()
+        Snacks.lazygit()
+      end,
+      desc = 'Lazygit',
+    },
   },
   opts = {
     explorer = {
@@ -291,7 +298,7 @@ return {
     terminal = {
       enabled = false,
     },
-    lazygit = { enabled = false },
+    lazygit = { enabled = true },
     animate = { enabled = false },
     bigfile = { enabled = false },
     dashboard = { enabled = false },
