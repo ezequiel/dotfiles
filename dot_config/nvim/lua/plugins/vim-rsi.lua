@@ -1,4 +1,4 @@
 return {
-  "tpope/vim-rsi",
-  event = "VeryLazy",
+  'tpope/vim-rsi',
+  event = 'InsertEnter',
 }

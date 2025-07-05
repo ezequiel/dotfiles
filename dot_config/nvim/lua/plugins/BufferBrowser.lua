@@ -1,6 +1,6 @@
 return {
   'https://git.sr.ht/~marcc/BufferBrowser',
-  lazy = false,
+  event = 'VeryLazy',
   keys = {
     {
       '<D-Right>',

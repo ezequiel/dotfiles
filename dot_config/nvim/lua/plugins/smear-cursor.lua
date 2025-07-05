@@ -1,5 +1,6 @@
 return {
   'sphamba/smear-cursor.nvim',
+  event = 'CursorMoved',
   opts = {
     smear_vertically = false,
     smear_diagonally = false,
