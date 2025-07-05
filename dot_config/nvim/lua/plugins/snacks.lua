@@ -133,7 +133,7 @@ return {
       mode = { 'n', 'x' },
     },
     {
-      '<C-x>',
+      '<leader>bd',
       function()
         Snacks.bufdelete()
         vim.cmd('close')
