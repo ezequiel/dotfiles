@@ -113,3 +113,5 @@ end, { expr = true, silent = true })
 
 vim.keymap.set('n', '[z', '[z^', { noremap = true, silent = true })
 vim.keymap.set('n', ']z', ']z^', { noremap = true, silent = true })
+
+vim.keymap.set('n', '0', '^', { noremap = true, silent = true })
