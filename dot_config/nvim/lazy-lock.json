@@ -42,5 +42,5 @@
   "vim-rsi": { "branch": "master", "commit": "45540637ead22f011e8215f1c90142e49d946a54" },
   "vim-sleuth": { "branch": "master", "commit": "be69bff86754b1aa5adcbb527d7fcd1635a84080" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
-  "yazi.nvim": { "branch": "main", "commit": "e5241a2967ea8bd6d6563ff46afb4a50c72c002b" }
+  "yazi.nvim": { "branch": "main", "commit": "45f7bdf1f13bc0f193f2bd6f608e8c00f5561ee9" }
 }
