@@ -4,8 +4,6 @@ return {
   dependencies = {
     'WhoIsSethDaniel/mason-tool-installer',
     'mason-org/mason.nvim',
-    'saghen/blink.cmp',
-    'yioneko/nvim-vtsls',
     {
       'luckasRanarison/tailwind-tools.nvim',
       name = 'tailwind-tools',
@@ -44,14 +42,6 @@ return {
       auto_update = true,
     })
     require('mason').setup()
-
-    vim.lsp.config('*', {
-      capabilities = vim.tbl_deep_extend(
-        'force',
-        vim.lsp.protocol.make_client_capabilities(),
-        require('blink.cmp').get_lsp_capabilities()
-      ),
-    })
 
     local lsp_opts = {
       gopls = {},
@@ -115,7 +105,7 @@ return {
         },
       },
       tailwindcss = {},
-      vtsls = vim.tbl_deep_extend('force', require('vtsls').lspconfig, {
+      vtsls = {
         settings = {
           refactor_auto_rename = true,
           vtsls = {
@@ -179,7 +169,7 @@ return {
             -- },
           },
         },
-      }),
+      },
     }
 
     for name, opts in pairs(lsp_opts) do
