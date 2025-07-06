@@ -59,7 +59,6 @@ return {
         },
       },
       angularls = {
-        root_markers = { 'angular.json' },
         workspace_required = true,
       },
       marksman = {},
