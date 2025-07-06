@@ -8,7 +8,7 @@ return {
         outline.toggle_outline()
         vim.defer_fn(function()
           outline.focus_outline()
-        end, 500)
+        end, 200)
       end,
       desc = 'Toggle outline',
     },
