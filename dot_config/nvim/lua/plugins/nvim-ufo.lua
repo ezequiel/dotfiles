@@ -1,6 +1,6 @@
 return {
   'kevinhwang91/nvim-ufo',
-  event = 'VeryLazy',
+  lazy = false,
   dependencies = {
     'kevinhwang91/promise-async',
   },
@@ -27,5 +27,12 @@ return {
       desc = 'Close all folds',
     },
   },
-  opts = {},
+  opts = {
+    provider_selector = function()
+      return { 'treesitter', 'indent' }
+    end,
+  },
+  config = function(_, opts)
+    require('ufo').setup(opts)
+  end,
 }
