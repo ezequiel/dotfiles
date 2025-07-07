@@ -1,6 +1,6 @@
 return {
   'RRethy/vim-illuminate',
-  event = 'CursorMoved',
+  event = 'VeryLazy',
   config = function()
     require('illuminate').configure({
       providers = {
