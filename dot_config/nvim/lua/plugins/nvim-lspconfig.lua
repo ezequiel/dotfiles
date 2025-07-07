@@ -6,6 +6,12 @@ return {
     'mason-org/mason.nvim',
     {
       'luckasRanarison/tailwind-tools.nvim',
+      ft = {
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+      },
       name = 'tailwind-tools',
       build = ':UpdateRemotePlugins',
       dependencies = {

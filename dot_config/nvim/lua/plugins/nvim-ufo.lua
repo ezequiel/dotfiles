@@ -6,6 +6,13 @@ return {
   },
   keys = {
     {
+      'zm',
+      function()
+        require('ufo').closeFoldsWith()
+      end,
+      desc = 'Close folds with',
+    },
+    {
       'zR',
       function()
         require('ufo').openAllFolds()
@@ -20,7 +27,5 @@ return {
       desc = 'Close all folds',
     },
   },
-  config = function(_, opts)
-    require('ufo').setup(opts)
-  end,
+  opts = {},
 }
