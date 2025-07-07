@@ -123,14 +123,6 @@ return {
             },
           },
           typescript = {
-            inlayHints = {
-              parameterNames = { enabled = 'all', suppressWhenArgumentMatchesName = false },
-              parameterTypes = { enabled = true },
-              variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
-              propertyDeclarationTypes = { enabled = true },
-              functionLikeReturnTypes = { enabled = true },
-              enumMemberValues = { enabled = true },
-            },
             reportStyleChecksAsWarnings = false,
             format = {
               enable = false,
@@ -152,14 +144,6 @@ return {
             -- },
           },
           javascript = {
-            inlayHints = {
-              parameterNames = { enabled = 'all', suppressWhenArgumentMatchesName = false },
-              parameterTypes = { enabled = true },
-              variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
-              propertyDeclarationTypes = { enabled = true },
-              functionLikeReturnTypes = { enabled = true },
-              enumMemberValues = { enabled = true },
-            },
             format = {
               enable = false,
             },
@@ -212,12 +196,6 @@ return {
           end
           vim.lsp.buf.rename()
         end)
-
-        if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-          vim.keymap.set('n', 'th', function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-          end)
-        end
       end,
     })
   end,
