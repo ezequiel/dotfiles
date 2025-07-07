@@ -1,5 +1,6 @@
 return {
   'tanvirtin/vgit.nvim',
+  lazy = false,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
@@ -85,6 +86,27 @@ return {
           require('no-neck-pain').disable()
         end
         require('vgit').project_diff_preview()
+      end,
+    },
+    {
+      '<leader>ab',
+      mode = 'n',
+      function()
+        require('vgit').buffer_conflict_accept_both()
+      end,
+    },
+    {
+      '<leader>cc',
+      mode = 'n',
+      function()
+        require('vgit').buffer_conflict_accept_current()
+      end,
+    },
+    {
+      '<leader>ic',
+      mode = 'n',
+      function()
+        require('vgit').buffer_conflict_accept_incoming()
       end,
     },
     -- { '<leader>bdp', mode = 'n', function() require('vgit').buffer_diff_preview() end },
