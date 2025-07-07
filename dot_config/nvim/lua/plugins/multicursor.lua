@@ -31,7 +31,7 @@ return {
       end,
     },
     {
-      '<C-a>',
+      '<leader>tc',
       mode = { 'n', 'x' },
       function()
         require('multicursor-nvim').toggleCursor()
