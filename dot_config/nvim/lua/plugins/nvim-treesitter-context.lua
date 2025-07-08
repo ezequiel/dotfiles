@@ -1,7 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter-context',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  event = 'VeryLazy',
+  lazy = false,
   config = true,
   init = function()
     vim.keymap.set('n', '<leader>gc', function()

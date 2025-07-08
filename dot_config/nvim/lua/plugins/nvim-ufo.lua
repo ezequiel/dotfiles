@@ -8,7 +8,7 @@ return {
     {
       'zm',
       function()
-        require('ufo').closeFoldsWith()
+        require('ufo').closeFoldsWith(1)
       end,
       desc = 'Close folds with',
     },

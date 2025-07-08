@@ -5,7 +5,6 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
   },
-  event = 'VeryLazy',
   keys = {
     {
       '[h',
@@ -109,9 +108,6 @@ return {
         require('vgit').buffer_conflict_accept_incoming()
       end,
     },
-    -- { '<leader>bdp', mode = 'n', function() require('vgit').buffer_diff_preview() end },
-    -- { '<leader>bhp', mode = 'n', function() require('vgit').buffer_history_preview() end },
-    -- { '<leader>gx', mode = 'n', function() require('vgit').toggle_diff_preference() end },
   },
   opts = {
     settings = {
