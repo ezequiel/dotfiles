@@ -171,7 +171,7 @@ return {
             end
           end
 
-          return string.format('%s, %s, %s', time_string, string.match(blame.committer_mail, '([^@]+)'), commit_message)
+          return string.format('%s, %s, %s', time_string, string.match(blame.author_mail, '([^@]+)'), commit_message)
         end,
       },
     },
