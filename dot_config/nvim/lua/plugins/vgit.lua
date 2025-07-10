@@ -1,11 +1,36 @@
+local function git_blame_current_line()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local line = cursor[1]
+  local file = vim.api.nvim_buf_get_name(0)
+  local root = Snacks.git.get_root()
+  local cmd = {
+    'git',
+    '-C',
+    root,
+    'blame',
+    '-L',
+    line .. ',' .. line,
+    '--porcelain',
+    file,
+  }
+  return vim.fn.system(cmd):match('^([a-f0-9]+)')
+end
+
 return {
   'tanvirtin/vgit.nvim',
   lazy = false,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
+    'folke/snacks.nvim',
   },
   keys = {
+    {
+      '<leader>cp',
+      function()
+        require('vgit').project_commits_preview(git_blame_current_line())
+      end,
+    },
     {
       '[h',
       mode = 'n',
