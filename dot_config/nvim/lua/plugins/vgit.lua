@@ -118,6 +118,37 @@ return {
       signs = {
         priority = 1337,
       },
+      live_blame = {
+        format = function(blame)
+          local commit_message = blame.commit_message
+          if not blame.committed then
+            return 'Uncommitted'
+          end
+
+          local seconds = os.difftime(os.time(), blame.author_time)
+          local divisions = {
+            { 60 * 60 * 24 * 365, 'y' }, -- years
+            { 60 * 60 * 24 * 30, 'mo' }, -- months
+            { 60 * 60 * 24 * 7, 'w' }, -- weeks
+            { 60 * 60 * 24, 'd' }, -- days
+            { 60 * 60, 'h' }, -- hours
+            { 60, 'm' }, -- minutes
+            { 1, 's' }, -- seconds
+          }
+
+          local time_string = 'now'
+          for _, division in ipairs(divisions) do
+            local unit_seconds, suffix = unpack(division)
+            if seconds >= unit_seconds then
+              local value = math.floor(seconds / unit_seconds + 0.5)
+              time_string = string.format('%d%s', value, suffix)
+              break
+            end
+          end
+
+          return string.format('%s, %s, %s', time_string, string.match(blame.committer_mail, '([^@]+)'), commit_message)
+        end,
+      },
     },
   },
 }
