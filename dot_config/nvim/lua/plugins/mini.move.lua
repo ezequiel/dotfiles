@@ -19,7 +19,4 @@ return {
       line_up = '',
     },
   },
-  config = function(_, opts)
-    require('mini.move').setup(opts)
-  end,
 }
