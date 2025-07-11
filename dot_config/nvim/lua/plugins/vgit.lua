@@ -1,6 +1,17 @@
-local function git_blame_current_line()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local line = cursor[1]
+local function git_blame_current_line_or_selection()
+  local mode = vim.fn.mode()
+  local start_line, end_line
+
+  if mode == 'v' or mode == 'V' or mode == '\22' then
+    local _, start_lnum = unpack(vim.fn.getpos('v'))
+    local _, end_lnum = unpack(vim.fn.getpos('.'))
+    start_line = math.min(start_lnum, end_lnum)
+    end_line = math.max(start_lnum, end_lnum)
+  else
+    start_line = vim.api.nvim_win_get_cursor(0)[1]
+    end_line = start_line
+  end
+
   local file = vim.api.nvim_buf_get_name(0)
   local root = Snacks.git.get_root()
   local cmd = {
@@ -9,11 +20,22 @@ local function git_blame_current_line()
     root,
     'blame',
     '-L',
-    line .. ',' .. line,
+    start_line .. ',' .. end_line,
     '--porcelain',
     file,
   }
-  return vim.fn.system(cmd):match('^([a-f0-9]+)')
+
+  local output = vim.fn.system(cmd)
+  local commit_hashes = {}
+
+  for line in output:gmatch('[^\r\n]+') do
+    local hash = line:match('^([a-f0-9]+)%s+%d+%s+%d+%s+%d+')
+    if hash then
+      table.insert(commit_hashes, hash)
+    end
+  end
+
+  return commit_hashes
 end
 
 return {
@@ -28,8 +50,10 @@ return {
     {
       '<leader>cp',
       function()
-        require('vgit').project_commits_preview(git_blame_current_line())
+        local commit_hashes = git_blame_current_line_or_selection()
+        require('vgit').project_commits_preview(table.unpack(commit_hashes))
       end,
+      mode = { 'n', 'x' },
     },
     {
       '[h',
@@ -113,7 +137,7 @@ return {
       end,
     },
     {
-      '<leader>ab',
+      '<leader>bc',
       mode = 'n',
       function()
         require('vgit').buffer_conflict_accept_both()
