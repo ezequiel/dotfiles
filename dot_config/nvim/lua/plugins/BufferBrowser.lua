@@ -8,7 +8,6 @@ return {
         require('buffer_browser').next()
       end,
       desc = 'Next Buffer',
-      mode = { 'n', 'x' },
     },
     {
       '<D-Left>',
@@ -16,7 +15,6 @@ return {
         require('buffer_browser').prev()
       end,
       desc = 'Previous Buffer',
-      mode = { 'n', 'x' },
     },
     {
       '<D-]>',
@@ -24,7 +22,6 @@ return {
         require('buffer_browser').next()
       end,
       desc = 'Next Buffer',
-      mode = { 'n', 'x' },
     },
     {
       '<D-[>',
@@ -32,7 +29,6 @@ return {
         require('buffer_browser').prev()
       end,
       desc = 'Previous Buffer',
-      mode = { 'n', 'x' },
     },
   },
   opts = {
