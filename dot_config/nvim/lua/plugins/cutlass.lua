@@ -3,7 +3,7 @@ return {
   keys = {
     { 'C', mode = { 'n', 'x' } },
     { 's', mode = { 'n', 'x' } },
-    { 'S', mode = { 'n' } },
+    { 'S' },
     { 'd', mode = { 'n', 'x' } },
     { 'D', mode = { 'n', 'x' } },
     { 'x', mode = { 'n', 'x' } },

@@ -4,35 +4,30 @@ return {
   keys = {
     {
       '<D-Up>',
-      mode = { 'n', 'x' },
       function()
         require('multicursor-nvim').lineAddCursor(-1, { skipEmpty = false })
       end,
     },
     {
       '<D-Down>',
-      mode = { 'n', 'x' },
       function()
         require('multicursor-nvim').lineAddCursor(1, { skipEmpty = false })
       end,
     },
     {
       '<D-S-Up>',
-      mode = { 'n', 'x' },
       function()
         require('multicursor-nvim').lineSkipCursor(-1, { skipEmpty = false })
       end,
     },
     {
       '<D-S-Down>',
-      mode = { 'n', 'x' },
       function()
         require('multicursor-nvim').lineSkipCursor(1, { skipEmpty = false })
       end,
     },
     {
       '<leader>tc',
-      mode = { 'n', 'x' },
       function()
         require('multicursor-nvim').toggleCursor()
       end,

@@ -20,7 +20,6 @@ return {
         Snacks.gitbrowse()
       end,
       desc = 'Git Browse',
-      mode = { 'n', 'v' },
     },
     {
       '<leader>re',
@@ -34,14 +33,12 @@ return {
       function()
         Snacks.picker.git_status()
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>ff',
       function()
         Snacks.picker.files({ cwd = get_cwd() })
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>fr',
@@ -55,14 +52,12 @@ return {
       function()
         Snacks.picker.buffers()
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>rg',
       function()
         Snacks.picker.grep({ cwd = get_cwd() })
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>rgb',
@@ -71,7 +66,6 @@ return {
           dirs = { vim.fn.expand('%') },
         })
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>rgw',
@@ -83,7 +77,6 @@ return {
           },
         })
       end,
-      mode = { 'n' },
     },
     {
       '<leader>rgwb',
@@ -95,7 +88,6 @@ return {
           },
         })
       end,
-      mode = { 'n' },
     },
     {
       '<leader>rgv',
@@ -107,7 +99,7 @@ return {
           },
         })
       end,
-      mode = { 'x' },
+      mode = 'x',
     },
     {
       '<leader>rgvb',
@@ -119,7 +111,7 @@ return {
           },
         })
       end,
-      mode = { 'x' },
+      mode = 'x',
     },
     {
       '<leader>rgbl',

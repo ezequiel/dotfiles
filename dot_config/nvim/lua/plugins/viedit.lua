@@ -7,7 +7,7 @@ return {
       function()
         require('viedit').toggle_all()
       end,
-      mode = { 'n', 'v' },
+      mode = { 'n', 'x' },
       desc = 'Toggle all with viedit',
     },
     {
@@ -27,7 +27,6 @@ return {
         require('viedit').step({ back = true })
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', false)
       end,
-      mode = 'n',
       desc = 'Restrict viedit to function',
     },
   },

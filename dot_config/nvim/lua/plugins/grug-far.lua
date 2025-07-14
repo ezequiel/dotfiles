@@ -15,14 +15,12 @@ return {
       function()
         require('grug-far').open({ prefills = { paths = get_cwd() } })
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>gfb',
       function()
         require('grug-far').open({ prefills = { paths = vim.fn.expand('%') } })
       end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>gfw',
@@ -35,7 +33,6 @@ return {
           },
         })
       end,
-      mode = { 'n' },
     },
     {
       '<leader>gfwb',
@@ -48,7 +45,6 @@ return {
           },
         })
       end,
-      mode = { 'n' },
     },
     {
       '<leader>gfv',
@@ -61,7 +57,7 @@ return {
           },
         })
       end,
-      mode = { 'x' },
+      mode = 'x',
     },
     {
       '<leader>gfvb',
@@ -74,7 +70,7 @@ return {
           },
         })
       end,
-      mode = { 'x' },
+      mode = 'x',
     },
   },
   config = function(_, opts)
