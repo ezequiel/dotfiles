@@ -5,7 +5,7 @@ return {
     'nvim-tree/nvim-web-devicons',
     'onsails/lspkind.nvim',
   },
-  event = 'InsertEnter',
+  lazy = false,
   version = '*',
   opts = {
     enabled = function()

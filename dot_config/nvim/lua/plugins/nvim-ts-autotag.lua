@@ -1,6 +1,6 @@
 return {
   'windwp/nvim-ts-autotag',
-  event = 'InsertEnter',
+  lazy = false,
   opts = {
     disable_filetype = { 'snacks_picker_input', 'grug-far' },
     enabled = function()

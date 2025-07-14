@@ -13,7 +13,6 @@ return {
       function()
         Snacks.picker.yanky()
       end,
-      mode = { 'n', 'x' },
       desc = 'Open Yank History',
     },
   },

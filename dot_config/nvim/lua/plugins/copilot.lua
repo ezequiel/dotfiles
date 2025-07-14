@@ -1,6 +1,6 @@
 return {
   'zbirenbaum/copilot.lua',
-  event = 'InsertEnter',
+  lazy = false,
   opts = {
     server_opts_overrides = {
       settings = {

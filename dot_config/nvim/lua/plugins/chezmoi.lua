@@ -1,5 +1,5 @@
 return {
-  event = 'InsertEnter',
+  lazy = false,
   'xvzc/chezmoi.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
   opts = {
