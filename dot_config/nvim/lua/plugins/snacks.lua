@@ -54,6 +54,12 @@ return {
       end,
     },
     {
+      '<leader>bs',
+      function()
+        Snacks.picker.buffers()
+      end,
+    },
+    {
       '<leader>rg',
       function()
         Snacks.picker.grep({ cwd = get_cwd() })
