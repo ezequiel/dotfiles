@@ -29,3 +29,8 @@ chars = "\u001bb"
 key = "Right"
 mods = "Alt"
 chars = "\u001bf"
+
+[[keyboard.bindings]]
+key = 'Enter'
+mods = 'Super'
+action = 'ToggleMaximized'
