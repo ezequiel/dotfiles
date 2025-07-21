@@ -167,7 +167,7 @@ return {
     end
   end,
   init = function()
-    vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
     vim.keymap.set('n', 'K', function()
       vim.lsp.buf.hover({
         focusable = true,
