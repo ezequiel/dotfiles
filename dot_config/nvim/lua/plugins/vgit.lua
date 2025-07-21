@@ -124,6 +124,11 @@ return {
     {
       '<leader>dp',
       function()
+        local output = vim.fn.system('git status --porcelain')
+        if output == '' then
+          vim.notify('[VGit] No changes found', vim.log.levels.INFO)
+          return
+        end
         local state = require('no-neck-pain.state')
         if state.has_tabs(state) and state.is_active_tab_registered(state) then
           require('no-neck-pain').disable()
