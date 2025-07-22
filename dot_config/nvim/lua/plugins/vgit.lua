@@ -168,7 +168,7 @@ return {
         format = function(blame)
           local commit_message = blame.commit_message
           if not blame.committed then
-            return 'Uncommitted'
+            return
           end
 
           local seconds = os.difftime(os.time(), blame.author_time)
