@@ -4,8 +4,12 @@ return {
   build = 'make',
   version = false,
   opts = {
+    behaviour = { auto_set_keymaps = false, enable_token_counting = false },
     provider = 'copilot',
     windows = {
+      sidebar_header = {
+        enabled = false,
+      },
       edit = {
         border = 'single',
       },
@@ -18,6 +22,12 @@ return {
     selector = {
       provider = 'snacks',
       provider_opts = {},
+    },
+    diff = {
+      autojump = false,
+    },
+    prompt_logger = {
+      enabled = false,
     },
     mappings = {
       diff = {
