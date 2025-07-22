@@ -92,13 +92,13 @@ return {
       end,
     },
     {
-      '<leader>hb',
+      '<leader>bp',
       function()
         require('vgit').buffer_blame_preview()
       end,
     },
     {
-      '<leader>bp',
+      '<leader>hp',
       function()
         require('vgit').buffer_history_preview()
       end,
