@@ -27,7 +27,7 @@ return {
       end,
     },
     {
-      '<leader>tc',
+      '@@',
       function()
         require('multicursor-nvim').toggleCursor()
       end,
@@ -46,6 +46,13 @@ return {
         require('multicursor-nvim').appendVisual()
       end,
     },
+    {
+      '<leader>ma',
+      mode = { 'n', 'x' },
+      function()
+        require('multicursor-nvim').matchAllAddCursors()
+      end,
+    },
   },
   opts = {},
   config = function(_, opts)
@@ -54,7 +61,7 @@ return {
     mc.addKeymapLayer(function(set)
       set({ 'n', 'x' }, '<left>', mc.prevCursor)
       set({ 'n', 'x' }, '<right>', mc.nextCursor)
-      set({ 'n', 'x' }, '<leader>x', mc.deleteCursor)
+      set({ 'n', 'x' }, '@@', mc.deleteCursor)
       set('n', '<esc>', function()
         if not mc.cursorsEnabled() then
           mc.enableCursors()
