@@ -54,9 +54,30 @@ return {
       end,
     },
     {
-      '<leader>sa',
+      '<leader>A',
       function()
         require('multicursor-nvim').searchAllAddCursors()
+      end,
+    },
+    {
+      'M',
+      mode = 'x',
+      function()
+        require('multicursor-nvim').matchCursors()
+      end,
+    },
+    {
+      '<leader>M',
+      mode = 'x',
+      function()
+        local pattern = vim.fn.getreg('"')
+        require('multicursor-nvim').matchCursors(pattern)
+      end,
+    },
+    {
+      '<leader>gv',
+      function()
+        require('multicursor-nvim').restoreCursors()
       end,
     },
   },
