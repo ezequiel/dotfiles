@@ -64,6 +64,7 @@ return {
       mode = 'x',
       function()
         require('multicursor-nvim').matchCursors()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', false)
       end,
     },
     {
