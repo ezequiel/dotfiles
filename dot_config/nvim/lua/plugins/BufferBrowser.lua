@@ -30,6 +30,20 @@ return {
       end,
       desc = 'Previous Buffer',
     },
+    {
+      ']b',
+      function()
+        require('buffer_browser').next()
+      end,
+      desc = 'Next Buffer',
+    },
+    {
+      '[b',
+      function()
+        require('buffer_browser').prev()
+      end,
+      desc = 'Previous Buffer',
+    },
   },
   opts = {
     filetype_filters = {
