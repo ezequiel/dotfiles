@@ -78,8 +78,9 @@ return {
         vim.cmd('AvanteStop')
         vim.cmd('AvanteEdit')
       end,
-      mode = { 'x' },
+      mode = 'x',
     },
+    { '<leader>ac', '<cmd>AvanteClear<cr>' },
     { '<leader>at', '<cmd>AvanteToggle<cr>' },
   },
   dependencies = {
