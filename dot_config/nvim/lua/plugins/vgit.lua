@@ -98,7 +98,7 @@ return {
       end,
     },
     {
-      '<leader>hp',
+      '<leader>bh',
       function()
         require('vgit').buffer_history_preview()
       end,
