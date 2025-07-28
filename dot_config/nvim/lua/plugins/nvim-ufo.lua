@@ -31,6 +31,7 @@ return {
     provider_selector = function()
       return { 'treesitter', 'indent' }
     end,
+    close_fold_kinds_for_ft = { default = { 'import_statement' } },
   },
   config = function(_, opts)
     require('ufo').setup(opts)
