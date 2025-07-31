@@ -8,6 +8,10 @@ decorations = "None"
 startup_mode = "Maximized"
 option_as_alt = "Both"
 
+[window.padding]
+x = 210
+y = 0
+
 [cursor.style]
 blinking = "Always"
 
