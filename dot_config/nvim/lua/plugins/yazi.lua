@@ -20,6 +20,8 @@ return {
   },
   opts = {
     open_for_directories = false,
+    yazi_floating_window_border = 'none',
+    floating_window_scaling_factor = 1,
     keymaps = {
       show_help = '?',
       open_file_in_vertical_split = '<c-v>',
