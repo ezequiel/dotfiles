@@ -176,6 +176,8 @@ return {
     },
     picker = {
       layout = {
+        preset = 'ivy',
+        fullscreen = true,
         cycle = false,
       },
       enabled = true,
