@@ -81,7 +81,7 @@ return {
       mode = 'x',
     },
     { '<leader>ac', '<cmd>AvanteClear<cr>' },
-    { '<leader>at', '<cmd>AvanteToggle<cr>' },
+    { '<leader>at', '<cmd>AvanteToggle<cr>', mode = { 'x', 'n' } },
   },
   dependencies = {
     'zbirenbaum/copilot.lua',
