@@ -1,7 +1,6 @@
 vim.opt.wrapscan = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.scrolloff = 9999999
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
