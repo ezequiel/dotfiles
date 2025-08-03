@@ -168,7 +168,7 @@ return {
             ['<C-Down>'] = false,
             ['<C-Up>'] = false,
             ['<C-c>'] = { 'close', mode = { 'i', 'x', 'n' } },
-            ['<C-w>'] = { '<c-s-w>', mode = { 'i' }, expr = true, desc = 'delete word' },
+            ['<C-w>'] = false,
             ['<a-BS>'] = { '<c-s-w>', mode = { 'i' }, expr = true, desc = 'delete word' },
             ['<CR>'] = { 'confirm', mode = { 'n', 'i' } },
             ['<Down>'] = { 'list_down', mode = { 'i', 'n' } },

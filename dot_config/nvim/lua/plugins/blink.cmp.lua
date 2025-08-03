@@ -20,8 +20,9 @@ return {
       preset = 'super-tab',
       ['<C-space>'] = { 'show', 'hide' },
       ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
-      ['<C-d>'] = { 'select_next' },
-      ['<C-u>'] = { 'select_prev' },
+      ['<C-k>'] = {},
+      ['<C-d>'] = {},
+      ['<C-u>'] = {},
       ['<C-e>'] = {},
       ['<tab>'] = {
         function(cmp)
