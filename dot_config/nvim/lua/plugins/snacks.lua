@@ -85,17 +85,6 @@ return {
       end,
     },
     {
-      '<leader>rgwb',
-      function()
-        Snacks.picker.grep_word({
-          dirs = { vim.fn.expand('%') },
-          matcher = {
-            fuzzy = false,
-          },
-        })
-      end,
-    },
-    {
       '<leader>rgv',
       function()
         Snacks.picker.grep_word({
@@ -106,29 +95,6 @@ return {
         })
       end,
       mode = 'x',
-    },
-    {
-      '<leader>rgvb',
-      function()
-        Snacks.picker.grep_word({
-          dirs = { vim.fn.expand('%') },
-          matcher = {
-            fuzzy = false,
-          },
-        })
-      end,
-      mode = 'x',
-    },
-    {
-      '<leader>rgbl',
-      function()
-        Snacks.picker.lines({
-          matcher = {
-            fuzzy = false,
-          },
-        })
-      end,
-      mode = { 'n', 'x' },
     },
     {
       '<leader>bd',

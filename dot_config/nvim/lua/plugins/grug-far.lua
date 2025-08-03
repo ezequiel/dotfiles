@@ -35,18 +35,6 @@ return {
       end,
     },
     {
-      '<leader>gfwb',
-      function()
-        require('grug-far').open({
-          prefills = {
-            flags = '--case-sensitive',
-            search = '\\b' .. vim.fn.expand('<cword>') .. '\\b',
-            paths = vim.fn.expand('%'),
-          },
-        })
-      end,
-    },
-    {
       '<leader>gfv',
       function()
         require('grug-far').open({
@@ -54,19 +42,6 @@ return {
             search = vim.fn.getreg('/'),
             flags = '--case-sensitive',
             paths = get_cwd(),
-          },
-        })
-      end,
-      mode = 'x',
-    },
-    {
-      '<leader>gfvb',
-      function()
-        require('grug-far').open({
-          prefills = {
-            search = vim.fn.getreg('/'),
-            flags = '--case-sensitive',
-            paths = vim.fn.expand('%'),
           },
         })
       end,
@@ -127,5 +102,8 @@ return {
       return first_part_len, first_part_len + delta
     end,
     filePathConcealChar = '…',
+    helpWindow = { border = 'single' },
+    historyWindow = { border = 'single' },
+    previewWindow = { border = 'single' },
   },
 }
