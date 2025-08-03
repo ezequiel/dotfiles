@@ -11,7 +11,7 @@ return {
   lazy = false,
   priority = 1000,
   dependencies = {
-    'tpope/vim-sleuth',
+    'Darazaki/indent-o-matic',
   },
   keys = {
     {
