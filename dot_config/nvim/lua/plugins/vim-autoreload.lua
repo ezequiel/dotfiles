@@ -1,4 +1,4 @@
 return {
-  lazy = false,
-  'djoshea/vim-autoread',
+  -- lazy = false,
+  -- 'djoshea/vim-autoread',
 }
