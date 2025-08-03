@@ -19,7 +19,7 @@ blinking = "Always"
 size = 15
 
 [font.normal]
-family = "IntoneMono Nerd Font Mono"
+family = "Intel One Mono"
 
 [mouse]
 hide_when_typing = true
