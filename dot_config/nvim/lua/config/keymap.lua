@@ -37,7 +37,6 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.cmd('nohlsearch')
   vim.schedule(function()
     vim.cmd('fclose!')
-    vim.cmd('TSContext enable')
   end)
   require('multicursor-nvim').clearCursors()
   return '<C-c>'
