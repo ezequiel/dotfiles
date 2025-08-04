@@ -32,7 +32,6 @@
   "quicker.nvim": { "branch": "master", "commit": "51d3926f183c2d98fbc237cc237ae0926839af3a" },
   "readline.nvim": { "branch": "main", "commit": "5cb27349bc01cdcdb3d3494e5337d8b3834aef1a" },
   "remember.nvim": { "branch": "master", "commit": "1b5176283bcf91d052b5755d9ba6e8ce14dfc95b" },
-  "smear-cursor.nvim": { "branch": "main", "commit": "58e69a911e7f5296b3d7fec5e7414df5a4ac91fb" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "stay-centered.nvim": { "branch": "main", "commit": "e1a63ccaf2584e97c0ef8e64f9654c9a80d983f6" },
   "tailwind-tools": { "branch": "master", "commit": "fbe982901d4508b0dcd80e07addf0fcb6dab6c49" },
