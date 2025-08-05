@@ -1,6 +1,6 @@
 return {
   'jake-stewart/multicursor.nvim',
-  commit = 'c117b3fc537cda262a06638ca88fe6de1b53ab59',
+  commit = '29f52906692e053cd5eccde75e00cfe031d7502c',
   keys = {
     {
       '<D-Up>',
