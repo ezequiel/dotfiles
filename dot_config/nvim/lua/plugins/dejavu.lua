@@ -4,8 +4,7 @@ return {
   opts = {
     enabled = true,
     callback = function(command)
-      local key = command:sub(1, 1)
-      if key:match('^[%.fFtTgGvVhHjJkKlL]$') then
+      if command:sub(1, 1) ~= vim.g.mapleader then
         return
       end
       vim.keymap.set('n', '.', function()
