@@ -54,6 +54,8 @@ vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
 
 vim.keymap.set('n', '[q', '<cmd>cprevious<cr>')
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
+vim.keymap.set('n', '[Q', '<cmd>crewind<cr>')
+vim.keymap.set('n', ']Q', '<cmd>clast<cr>')
 
 vim.keymap.set('n', '[d', function()
   vim.diagnostic.jump({ wrap = false, count = -1, float = true })
