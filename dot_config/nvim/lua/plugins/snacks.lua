@@ -78,9 +78,6 @@ return {
       function()
         Snacks.picker.grep_word({
           cwd = get_cwd(),
-          matcher = {
-            fuzzy = false,
-          },
         })
       end,
     },
@@ -89,9 +86,6 @@ return {
       function()
         Snacks.picker.grep_word({
           cwd = get_cwd(),
-          matcher = {
-            fuzzy = false,
-          },
         })
       end,
       mode = 'x',
@@ -155,7 +149,6 @@ return {
           follow = true,
         },
       },
-      -- matcher = { cwd_bonus = true, frecency = true, sort_empty = true },
       win = {
         list = {
           wo = {
