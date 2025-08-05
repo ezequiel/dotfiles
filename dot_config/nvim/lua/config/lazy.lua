@@ -22,9 +22,11 @@ require('lazy').setup('plugins', {
     size = { width = 1, height = 1 },
   },
   checker = {
+    enabled = true,
     notify = false,
   },
   change_detection = {
+    enabled = false,
     notify = false,
   },
 })

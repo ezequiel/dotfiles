@@ -1,37 +1,13 @@
-vim.keymap.set({ 'n', 'x' }, '<C-h>', '<C-w>h')
-vim.keymap.set({ 'n', 'x' }, '<C-l>', '<C-w>l')
-vim.keymap.set({ 'n', 'x' }, '<C-j>', '<C-w>j')
-vim.keymap.set({ 'n', 'x' }, '<C-k>', '<C-w>k')
-vim.keymap.set({ 'n', 'x' }, ']q', function()
-  local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
-  local item = qf.items[qf.idx]
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
 
-  if not item then
-    return
-  end
-
-  if qf.idx < qf.size then
-    vim.cmd('cnext')
-  end
-end, { silent = true })
-
-vim.keymap.set({ 'n', 'x' }, '[q', function()
-  local qf = vim.fn.getqflist({ idx = 0, size = 0, items = 1 })
-  local item = qf.items[qf.idx]
-
-  if not item then
-    return
-  end
-
-  if qf.idx > 1 then
-    vim.cmd('cprev')
-  end
-end, { silent = true })
 vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
   vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
   vim.cmd('nohlsearch')
   return '<Esc>'
-end, { noremap = true, expr = true })
+end, { expr = true })
 vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
   vim.cmd('nohlsearch')
@@ -40,13 +16,14 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   end)
   require('multicursor-nvim').clearCursors()
   return '<C-c>'
-end, { noremap = true, expr = true })
-vim.keymap.set('n', 'J', '<nop>', { silent = true })
-vim.keymap.set('n', 'Q', '<nop>', { silent = true })
-vim.keymap.set('n', 'q', '<nop>', { silent = true })
-vim.keymap.set('n', 'vv', 'V', { noremap = true, silent = true })
-vim.keymap.set('x', '/', '<Esc>/\\%V')
-vim.keymap.set('x', 'r', [[:s/\%V]])
+end)
+
+vim.keymap.set('n', 'J', '<nop>')
+vim.keymap.set('n', 'Q', '<nop>')
+vim.keymap.set('n', 'q', '<nop>')
+
+vim.keymap.set('n', 'vv', 'V')
+
 vim.keymap.set({ 'n', 'x' }, '*', function()
   vim.fn.setreg('/', '')
   local search_text
@@ -65,32 +42,39 @@ vim.keymap.set({ 'n', 'x' }, '*', function()
   vim.fn.setreg('/', search_text)
   vim.opt.hlsearch = true
   vim.cmd('normal! nN')
-end, { silent = true })
+end)
 
-vim.keymap.set('n', '<C-W>|', '<C-W>v', { noremap = true })
-vim.keymap.set('n', '<C-W>-', '<C-W>s', { noremap = true })
-vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Move to next match' })
-vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Move to previous match' })
+vim.keymap.set('n', '<C-W>|', '<C-W>v')
+vim.keymap.set('n', '<C-W>-', '<C-W>s')
+
 vim.keymap.set('n', '<leader>ds', function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end, { desc = 'Open error diagnostics in quickfix list' })
-vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
+
+vim.keymap.set('n', '[q', '<cmd>cprevious<cr>')
+vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
+
 vim.keymap.set('n', '[d', function()
-  vim.diagnostic.goto_prev({ wrap = false })
+  vim.diagnostic.jump({ wrap = false, count = -1, float = true })
 end)
 vim.keymap.set('n', ']d', function()
-  vim.diagnostic.goto_next({ wrap = false })
+  vim.diagnostic.jump({ wrap = false, count = 1, float = true })
 end)
+
+vim.keymap.set('n', '[z', '[z^')
+vim.keymap.set('n', ']z', ']z^')
+
 vim.keymap.set('n', '[c', function()
   pcall(function()
     vim.cmd('?' .. '^=======$')
   end)
-end, { silent = true })
+end)
 vim.keymap.set('n', ']c', function()
   pcall(function()
     vim.cmd('/' .. '^=======$')
   end)
-end, { silent = true })
+end)
 
 vim.keymap.set('i', '<CR>', function()
   local line = vim.api.nvim_get_current_line()
@@ -107,10 +91,7 @@ vim.keymap.set('i', '<CR>', function()
   else
     return '<CR>'
   end
-end, { expr = true, silent = true })
+end)
 
-vim.keymap.set('n', '[z', '[z^', { noremap = true, silent = true })
-vim.keymap.set('n', ']z', ']z^', { noremap = true, silent = true })
-
-vim.keymap.set('n', '^', '0', { noremap = true, silent = true })
-vim.keymap.set('n', '0', '^', { noremap = true, silent = true })
+vim.keymap.set('n', '^', '0')
+vim.keymap.set('n', '0', '^')

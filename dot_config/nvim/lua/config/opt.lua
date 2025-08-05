@@ -1,58 +1,38 @@
-vim.opt.wrapscan = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.termguicolors = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.title = true
-vim.opt.clipboard = 'unnamed'
-vim.opt.undolevels = 9999999
-vim.opt.undoreload = 9999999
-vim.opt.modified = true
-vim.opt.showmatch = true
-vim.opt.endofline = true
-vim.opt.endoffile = true
-vim.opt.fixendofline = true
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
-vim.opt.writeany = true
-vim.opt.secure = true
-vim.opt.bufhidden = 'hide'
-vim.opt.equalalways = true
-vim.opt.autoread = true
-vim.opt.background = 'dark'
-vim.opt.belloff = 'all'
-vim.opt.hidden = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.ruler = true
-vim.opt.ttyfast = true
-vim.opt.mouse = ''
-vim.opt.mousemodel = 'popup_setpos'
-vim.opt.updatetime = 100
-vim.opt.wildmenu = true
-vim.opt.wildmode = 'longest:full,full'
-vim.opt.wildoptions = 'pum'
-vim.opt.wildignorecase = true
-vim.opt.wildignore = '*/node_modules,*/vendor,.git'
 vim.opt.backspace = 'indent,eol,start'
-vim.opt.signcolumn = 'yes:2'
-vim.opt.wrap = false
-vim.opt.errorbells = false
-vim.opt.visualbell = false
-vim.opt.numberwidth = 5
-vim.opt.shortmess:append('I')
-vim.opt.shortmess:append('F')
-vim.opt.shortmess:append('T')
-vim.opt.smoothscroll = false
-vim.opt.timeoutlen = 800
+vim.opt.bufhidden = 'hide'
+vim.opt.clipboard = 'unnamed'
 vim.opt.cmdheight = 0
-vim.opt.swapfile = true
+vim.opt.endoffile = true
 vim.opt.fillchars:append({ diff = ' ' })
-vim.opt.isfname:append('@-@')
-vim.opt.stl = "%{repeat('─',winwidth('.'))}"
-vim.opt.jumpoptions = 'stack,view'
-vim.opt.foldmethod = 'manual'
 vim.opt.foldexpr = nil
 vim.opt.foldlevel = 999
-vim.opt.foldenable = true
+vim.opt.ignorecase = true
+vim.opt.isfname:append('@-@')
+vim.opt.jumpoptions = 'stack,view'
+vim.opt.modified = true
+vim.opt.mouse = ''
+vim.opt.numberwidth = 5
+vim.opt.secure = true
+vim.opt.shortmess:append('F')
+vim.opt.shortmess:append('I')
+vim.opt.shortmess:append('T')
+vim.opt.showmatch = true
+vim.opt.signcolumn = 'yes:2'
+vim.opt.smartcase = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.stl = "%{repeat('─',winwidth('.'))}"
+vim.opt.termguicolors = true
+vim.opt.timeoutlen = 800
+vim.opt.ttyfast = true
+vim.opt.undolevels = 9999999
+vim.opt.undoreload = 9999999
+vim.opt.wildignore = '*/node_modules,*/vendor,.git'
+vim.opt.wildignorecase = true
+vim.opt.wildmode = 'longest:full,full'
+vim.opt.wildoptions = 'pum'
+vim.opt.wrap = false
+vim.opt.writeany = true
+-- vim.opt.updatetime = 100
