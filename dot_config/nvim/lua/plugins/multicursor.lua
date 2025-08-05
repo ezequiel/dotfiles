@@ -1,6 +1,6 @@
 return {
   'jake-stewart/multicursor.nvim',
-  commit = '29f52906692e053cd5eccde75e00cfe031d7502c',
+  branch = 'with-revert',
   keys = {
     {
       '<D-Up>',
@@ -64,7 +64,6 @@ return {
       mode = 'x',
       function()
         require('multicursor-nvim').matchCursors()
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', false)
       end,
     },
     {
