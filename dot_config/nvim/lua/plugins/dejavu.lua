@@ -5,7 +5,7 @@ return {
     enabled = true,
     callback = function(command)
       local key = command:sub(1, 1)
-      if key == '.' or key == 'f' or key == 't' or key == 'F' or key == 'T' then
+      if key:match('^[%.fFtTgGvVhHjJkKlL]$') then
         return
       end
       vim.keymap.set('n', '.', function()
