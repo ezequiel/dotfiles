@@ -4,6 +4,10 @@ return {
   opts = {
     enabled = true,
     callback = function(command)
+      local key = command:sub(1, 1)
+      if key == 'f' or key == 't' or key == 'F' or key == 'T' then
+        return
+      end
       vim.keymap.set('n', '.', function()
         local keys = vim.api.nvim_replace_termcodes(command, true, true, true)
         vim.api.nvim_feedkeys(keys, 'm', false)
