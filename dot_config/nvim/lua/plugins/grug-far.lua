@@ -54,7 +54,7 @@ return {
       pattern = 'grug-far',
       callback = function()
         vim.opt.signcolumn = 'no'
-        vim.keymap.set({ 'i' }, '<Enter>', '<Esc>', { buffer = true })
+        vim.keymap.set('i', '<Enter>', '<Esc>', { buffer = true })
       end,
     })
   end,

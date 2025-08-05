@@ -16,7 +16,7 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   end)
   require('multicursor-nvim').clearCursors()
   return '<C-c>'
-end)
+end, { expr = true })
 
 vim.keymap.set('n', 'J', '<nop>')
 vim.keymap.set('n', 'Q', '<nop>')
@@ -49,7 +49,7 @@ vim.keymap.set('n', '<C-W>-', '<C-W>s')
 
 vim.keymap.set('n', '<leader>ds', function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
-end, { desc = 'Open error diagnostics in quickfix list' })
+end)
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
 
 vim.keymap.set('n', '[q', '<cmd>cprevious<cr>')
@@ -91,7 +91,7 @@ vim.keymap.set('i', '<CR>', function()
   else
     return '<CR>'
   end
-end)
+end, { expr = true })
 
 vim.keymap.set('n', '^', '0')
 vim.keymap.set('n', '0', '^')
