@@ -39,6 +39,7 @@ status.missing_tools = "always"
 "ubi:cantino/mcfly" = "latest"
 "ubi:google/yamlfmt" = "latest"
 "ubi:jesseduffield/lazygit" = "latest"
+"ubi:junegunn/fzf" = "latest"
 "ubi:mvdan/sh" = { version = "latest", exe = "shfmt" }
 "ubi:nametake/golangci-lint-langserver" = "latest"
 "ubi:neovim/neovim" = { version = "latest", extract_all = true, bin_path = "bin" }
