@@ -37,10 +37,10 @@ status.missing_tools = "always"
 "ubi:mvdan/sh" = { version = "latest", exe = "shfmt" }
 "ubi:nametake/golangci-lint-langserver" = "latest"
 "ubi:neovim/neovim" = { version = "latest", extract_all = true, bin_path = "bin" }
-"ubi:rossmacarthur/sheldon" = "latest"
 "ubi:sharkdp/fd" = "latest"
 "ubi:tamasfe/taplo" = "latest"
 "ubi:twpayne/chezmoi" = "latest"
 "ubi:zellij-org/zellij" = "latest"
 go = "latest"
 node = "22"
+"npm:bash-language-server" = "latest"

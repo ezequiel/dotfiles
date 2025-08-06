@@ -18,6 +18,7 @@ return {
   },
   config = function()
     local lsp_opts = {
+      bashls = {},
       gopls = {},
       yamlls = {},
       golangci_lint_ls = {
