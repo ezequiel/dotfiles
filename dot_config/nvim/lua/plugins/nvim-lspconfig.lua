@@ -2,16 +2,8 @@ return {
   'neovim/nvim-lspconfig',
   lazy = false,
   dependencies = {
-    'WhoIsSethDaniel/mason-tool-installer',
-    'mason-org/mason.nvim',
     {
       'luckasRanarison/tailwind-tools.nvim',
-      ft = {
-        'javascript',
-        'javascriptreact',
-        'typescript',
-        'typescriptreact',
-      },
       name = 'tailwind-tools',
       build = ':UpdateRemotePlugins',
       dependencies = {
@@ -25,30 +17,6 @@ return {
     },
   },
   config = function()
-    require('mason-tool-installer').setup({
-      ensure_installed = {
-        'angular-language-server',
-        'docker-compose-language-service',
-        'dockerfile-language-server',
-        'eslint-lsp',
-        'goimports',
-        'golangci-lint-langserver',
-        'gopls',
-        'html-lsp',
-        'json-lsp',
-        'lua-language-server',
-        'marksman',
-        'shfmt',
-        'stylua',
-        'tailwindcss-language-server',
-        'vtsls',
-        'yaml-language-server',
-        'yamlfmt',
-      },
-      auto_update = true,
-    })
-    require('mason').setup()
-
     local lsp_opts = {
       gopls = {},
       yamlls = {},

@@ -1,0 +1,41 @@
+[settings]
+activate_aggressive = true
+always_keep_download = false
+always_keep_install = false
+disable_default_registry = true
+experimental = true
+global_config_file = "$HOME/.local/share/chezmoi/mise/config.toml"
+global_config_root = "$HOME/.local/share/chezmoi/mise"
+idiomatic_version_file_enable_tools = []
+paranoid = true
+status.missing_tools = "always"
+
+[tools]
+"aqua:sxyazi/yazi" = { version = "latest", postinstall = "ya pkg upgrade" }
+"go:golang.org/x/tools/cmd/goimports" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"npm:@angular/language-server" = "latest"
+"npm:@johnnymorganz/stylua-bin" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:@vtsls/language-server" = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:eslint-lsp" = "latest"
+"npm:vscode-html-languageservice" = "latest"
+"npm:vscode-json-languageservice" = "latest"
+"npm:yaml-language-server" = "latest"
+"ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
+"ubi:LuaLS/lua-language-server" = "latest"
+"ubi:ajeetdsouza/zoxide" = "latest"
+"ubi:artempyanykh/marksman" = "latest"
+"ubi:cantino/mcfly" = "latest"
+"ubi:google/yamlfmt" = "latest"
+"ubi:jesseduffield/lazygit" = "latest"
+"ubi:mvdan/sh" = { version = "latest", exe = "shfmt" }
+"ubi:nametake/golangci-lint-langserver" = "latest"
+"ubi:neovim/neovim" = { version = "latest", extract_all = true, bin_path = "bin" }
+"ubi:sharkdp/fd" = "latest"
+"ubi:tamasfe/taplo" = "latest"
+"ubi:twpayne/chezmoi" = "latest"
+"ubi:zellij-org/zellij" = "latest"
+go = "latest"
+node = "22"
