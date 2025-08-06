@@ -1,9 +1,4 @@
 [env]
-MCFLY_DELETE_WITHOUT_CONFIRM = true
-MCFLY_DISABLE_MENU = true
-MCFLY_INTERFACE_VIEW = "BOTTOM"
-MCFLY_PROMPT = "❯"
-MCFLY_RESULTS_SORT = "LAST_RUN"
 RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/.ripgreprc"
 
 [settings]
@@ -42,6 +37,7 @@ status.missing_tools = "always"
 "ubi:mvdan/sh" = { version = "latest", exe = "shfmt" }
 "ubi:nametake/golangci-lint-langserver" = "latest"
 "ubi:neovim/neovim" = { version = "latest", extract_all = true, bin_path = "bin" }
+"ubi:rossmacarthur/sheldon" = "latest"
 "ubi:sharkdp/fd" = "latest"
 "ubi:tamasfe/taplo" = "latest"
 "ubi:twpayne/chezmoi" = "latest"

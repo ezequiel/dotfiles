@@ -1,0 +1,33 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "bash"
+
+[plugins]
+
+[plugins.mcfly]
+inline = '''
+export MCFLY_DELETE_WITHOUT_CONFIRM=true
+export MCFLY_DISABLE_MENU=true
+export MCFLY_INTERFACE_VIEW="BOTTOM"
+export MCFLY_RESULTS_SORT="LAST_RUN"
+eval "$(mcfly init bash)"
+'''
+
+[plugins.mise]
+inline = 'eval "$(mise activate bash)"'
+
+[plugins.zoxide]
+inline = '''
+export _ZO_DOCTOR=0
+eval "$(zoxide init --cmd cd bash)"
+'''
