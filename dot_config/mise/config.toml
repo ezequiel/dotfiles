@@ -1,3 +1,11 @@
+[env]
+MCFLY_DELETE_WITHOUT_CONFIRM = true
+MCFLY_DISABLE_MENU = true
+MCFLY_INTERFACE_VIEW = "BOTTOM"
+MCFLY_PROMPT = "❯"
+MCFLY_RESULTS_SORT = "LAST_RUN"
+RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/.ripgreprc"
+
 [settings]
 activate_aggressive = true
 always_keep_download = false
