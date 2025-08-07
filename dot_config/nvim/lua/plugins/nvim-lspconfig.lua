@@ -18,7 +18,9 @@ return {
   },
   config = function()
     local lsp_opts = {
-      bashls = {},
+      bashls = {
+        filetypes = { 'sh', 'zsh' },
+      },
       gopls = {},
       yamlls = {},
       golangci_lint_ls = {
