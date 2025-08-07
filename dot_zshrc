@@ -4,7 +4,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-eval "$(mise activate zsh)"
+export ZSH_THEME="robbyrussell"
+export plugins=(mise git zoxide)
+source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
 export MCFLY_DELETE_WITHOUT_CONFIRM=true
 export MCFLY_DISABLE_MENU=true
@@ -14,5 +16,3 @@ eval "$(mcfly init zsh)"
 
 alias vim='nvim'
 alias vi='nvim'
-
-eval "$(zoxide init zsh --cmd cd)"
