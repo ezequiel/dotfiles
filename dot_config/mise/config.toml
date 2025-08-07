@@ -1,5 +1,5 @@
 [env]
-RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/.ripgreprc"
+RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
 
 [settings]
 activate_aggressive = true
@@ -7,8 +7,8 @@ always_keep_download = false
 always_keep_install = false
 disable_default_registry = true
 experimental = true
-global_config_file = "$HOME/.local/share/chezmoi/mise/config.toml"
-global_config_root = "$HOME/.local/share/chezmoi/mise"
+global_config_file = "$XDG_DATA_HOME/chezmoi/mise/config.toml"
+global_config_root = "$XDG_DATA_HOME/chezmoi/mise"
 idiomatic_version_file_enable_tools = []
 paranoid = true
 status.missing_tools = "always"
@@ -30,7 +30,6 @@ status.missing_tools = "always"
 "npm:vscode-html-languageservice" = "latest"
 "npm:vscode-json-languageservice" = "latest"
 "npm:yaml-language-server" = "latest"
-"ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
 "ubi:LuaLS/lua-language-server" = "latest"
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:artempyanykh/marksman" = "latest"
@@ -47,3 +46,4 @@ status.missing_tools = "always"
 "ubi:zellij-org/zellij" = "latest"
 go = "latest"
 node = "22"
+"aqua:BurntSushi/ripgrep" = "latest"
