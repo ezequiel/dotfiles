@@ -39,5 +39,5 @@
   "vgit.nvim": { "branch": "main", "commit": "a7be45a2726ade74c4c669c56c36310d840c85a8" },
   "wit.nvim": { "branch": "master", "commit": "1d9e1246554711b748fb1c8708f4b4a1631ffbad" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
-  "yazi.nvim": { "branch": "main", "commit": "eaf0d686e3d43385375ac38235a2bfae0e2f6bd1" }
+  "yazi.nvim": { "branch": "main", "commit": "9d9abcd75dc1181bb083696590c5046a443f041a" }
 }

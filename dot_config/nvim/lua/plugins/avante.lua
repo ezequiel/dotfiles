@@ -6,6 +6,11 @@ return {
   opts = {
     behaviour = { auto_set_keymaps = false, enable_token_counting = false },
     provider = 'copilot',
+    providers = {
+      copilot = {
+        model = 'gpt-5',
+      },
+    },
     windows = {
       sidebar_header = {
         enabled = false,
