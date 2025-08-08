@@ -27,7 +27,7 @@ return {
       end,
     },
     {
-      '<leader>tc',
+      '@@',
       function()
         require('multicursor-nvim').toggleCursor()
       end,
