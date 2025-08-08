@@ -10,6 +10,15 @@ return {
     { '<D-S-l>', "<cmd>lua MiniMove.move_line('right')<cr>" },
     { '<D-S-h>', "<cmd>lua MiniMove.move_selection('left')<cr>", mode = 'x' },
     { '<D-S-l>', "<cmd>lua MiniMove.move_selection('right')<cr>", mode = 'x' },
+
+    { '<D-S-Down>', "<cmd>lua MiniMove.move_line('down')<cr>" },
+    { '<D-S-Up>', "<cmd>lua MiniMove.move_line('up')<cr>" },
+    { '<D-S-Down>', "<cmd>lua MiniMove.move_selection('down')<cr>", mode = 'x' },
+    { '<D-S-Up>', "<cmd>lua MiniMove.move_selection('up')<cr>", mode = 'x' },
+    { '<D-S-Left>', "<cmd>lua MiniMove.move_line('left')<cr>" },
+    { '<D-S-Right>', "<cmd>lua MiniMove.move_line('right')<cr>" },
+    { '<D-S-Left>', "<cmd>lua MiniMove.move_selection('left')<cr>", mode = 'x' },
+    { '<D-S-Right>', "<cmd>lua MiniMove.move_selection('right')<cr>", mode = 'x' },
   },
   opts = {
     mappings = {
