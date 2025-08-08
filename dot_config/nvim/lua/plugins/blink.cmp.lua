@@ -14,7 +14,6 @@ return {
         and vim.bo.filetype ~= 'grug-far'
         and vim.bo.filetype ~= 'norg'
         and vim.bo.filetype ~= 'markdown'
-        and vim.bo.filetype ~= 'AvanteInput'
     end,
     keymap = {
       preset = 'super-tab',
