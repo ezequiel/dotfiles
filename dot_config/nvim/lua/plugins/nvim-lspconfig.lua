@@ -80,7 +80,11 @@ return {
           },
         },
       },
-      tailwindcss = {},
+      tailwindcss = {
+        root_dir = function(...)
+          return require('lspconfig.util').root_pattern('tailwind.config.ts')(...)
+        end,
+      },
       vtsls = {
         settings = {
           refactor_auto_rename = true,
