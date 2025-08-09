@@ -97,3 +97,15 @@ end, { expr = true })
 
 vim.keymap.set('n', '^', '0')
 vim.keymap.set('n', '0', '^')
+
+vim.keymap.set('n', 'go', function()
+  vim.ui.open(('https://google.com/search?q=%s'):format(vim.fn.expand('<cword>')))
+end)
+vim.keymap.set('x', 'go', function()
+  vim.ui.open(
+    ('https://google.com/search?q=%s'):format(
+      vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
+    )
+  )
+  vim.api.nvim_input('<esc>')
+end)
