@@ -78,23 +78,6 @@ vim.keymap.set('n', ']c', function()
   end)
 end)
 
-vim.keymap.set('i', '<CR>', function()
-  local line = vim.api.nvim_get_current_line()
-  local _, col = unpack(vim.api.nvim_win_get_cursor(0))
-
-  local before_cursor = line:sub(1, col)
-  local after_cursor = line:sub(col + 1)
-
-  local open_tag = before_cursor:match('<([%w:-]+)>%s*$')
-  local close_tag = after_cursor:match('^%s*</([%w:-]+)>')
-
-  if open_tag and close_tag and open_tag == close_tag then
-    return '<CR><Esc>O'
-  else
-    return '<CR>'
-  end
-end, { expr = true })
-
 vim.keymap.set('n', '^', '0')
 vim.keymap.set('n', '0', '^')
 
