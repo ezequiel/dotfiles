@@ -29,4 +29,24 @@ require('lazy').setup('plugins', {
     enabled = false,
     notify = false,
   },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        'editorconfig',
+        'gzip',
+        'man',
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
+        'osc52',
+        'rplugin',
+        'shada',
+        'spellfile',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
 })
