@@ -20,7 +20,7 @@ return {
     },
     trim_leading_whitespace = false,
     max_filename_width = function()
-      return 44
+      return 48
     end,
     keys = {
       {
