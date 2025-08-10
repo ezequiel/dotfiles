@@ -5,7 +5,6 @@ return {
   config = function()
     require('tokyonight').setup({
       style = 'night',
-      lualine_bold = true,
       plugins = {
         auto = true,
       },
