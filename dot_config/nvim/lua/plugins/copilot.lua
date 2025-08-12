@@ -28,7 +28,8 @@ return {
     panel = { enabled = false },
     server = {
       type = 'nodejs',
-      custom_server_filepath = '$XDG_DATA_HOME/mise/installs/npm-github-copilot-language-server/latest/bin/copilot-language-server',
+      custom_server_filepath = vim.env.XDG_DATA_HOME
+        .. '/mise/installs/npm-github-copilot-language-server/latest/bin/copilot-language-server',
     },
     copilot_model = 'gpt-5',
   },
