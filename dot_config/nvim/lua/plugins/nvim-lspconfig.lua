@@ -1,21 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
   lazy = false,
-  dependencies = {
-    {
-      'luckasRanarison/tailwind-tools.nvim',
-      name = 'tailwind-tools',
-      build = ':UpdateRemotePlugins',
-      dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-      },
-      opts = {
-        document_color = {
-          enabled = false,
-        },
-      },
-    },
-  },
   config = function()
     local lsp_opts = {
       bashls = {
@@ -85,55 +70,6 @@ return {
           return require('lspconfig.util').root_pattern('tailwind.config.ts')(...)
         end,
       },
-      vtsls = {
-        settings = {
-          refactor_auto_rename = true,
-          vtsls = {
-            enableMoveToFileCodeActions = true,
-            autoUseWorkspaceTsdk = true,
-            experimental = {
-              completion = {
-                enableServerSideFuzzyMatch = true,
-              },
-            },
-          },
-          typescript = {
-            reportStyleChecksAsWarnings = false,
-            format = {
-              enable = false,
-            },
-            tsserver = {
-              experimental = {
-                enableProjectDiagnostics = true,
-              },
-            },
-            preferences = {
-              includePackageJsonAutoImports = true,
-              importModuleSpecifier = 'non-relative',
-              importModuleSpecifierPreference = 'non-relative',
-              preferTypeOnlyAutoImports = false,
-            },
-            updateImportsOnFileMove = 'always',
-            -- updateImportsOnFileMove = {
-            --   enabled = 'always',
-            -- },
-          },
-          javascript = {
-            format = {
-              enable = false,
-            },
-            preferences = {
-              includePackageJsonAutoImports = true,
-              importModuleSpecifier = 'non-relative',
-              importModuleSpecifierPreference = 'non-relative',
-            },
-            updateImportsOnFileMove = 'always',
-            -- updateImportsOnFileMove = {
-            --   enabled = 'always',
-            -- },
-          },
-        },
-      },
     }
 
     for name, opts in pairs(lsp_opts) do
@@ -154,17 +90,17 @@ return {
 
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(event)
-        local vtslsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'vtsls' })
+        local tsToolsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'typescript-tools' })
         local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'angularls' })
-        if #vtslsClients > 0 and #angularLsClients > 0 then
-          vtslsClients[1].server_capabilities.referencesProvider = false
+        if #tsToolsClients > 0 and #angularLsClients > 0 then
+          tsToolsClients[1].server_capabilities.referencesProvider = false
         end
 
         vim.keymap.set('n', '<leader>rn', function()
           local current_buf = vim.api.nvim_get_current_buf()
-          local vtslsClients = vim.lsp.get_clients({ bufnr = current_buf, name = 'vtsls' })
+          local tsToolsClients = vim.lsp.get_clients({ bufnr = current_buf, name = 'typescript-tools' })
           local angularLsClients = vim.lsp.get_clients({ bufnr = current_buf, name = 'angularls' })
-          if #vtslsClients > 0 and #angularLsClients > 0 then
+          if #tsToolsClients > 0 and #angularLsClients > 0 then
             vim.lsp.buf.rename(nil, { name = 'angularls' })
             return
           end
