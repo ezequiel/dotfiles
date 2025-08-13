@@ -65,10 +65,23 @@ return {
           },
         },
       },
-      tailwindcss = {
-        root_dir = function(...)
-          return require('lspconfig.util').root_pattern('tailwind.config.ts')(...)
-        end,
+      vtsls = {
+        settings = {
+          vtsls = {
+            autoUseWorkspaceTsdk = true,
+          },
+          typescript = {
+            tsserver = {
+              experimental = {
+                -- NOTE: Some projects will crawl to a halt when this is enabled
+                -- enableProjectDiagnostics = true,
+              },
+            },
+            preferences = {
+              importModuleSpecifier = 'non-relative',
+            },
+          },
+        },
       },
     }
 
@@ -90,17 +103,17 @@ return {
 
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(event)
-        local tsToolsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'typescript-tools' })
+        local vtslsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'vtsls' })
         local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'angularls' })
-        if #tsToolsClients > 0 and #angularLsClients > 0 then
-          tsToolsClients[1].server_capabilities.referencesProvider = false
+        if #vtslsClients > 0 and #angularLsClients > 0 then
+          vtslsClients[1].server_capabilities.referencesProvider = false
         end
 
         vim.keymap.set('n', '<leader>rn', function()
           local current_buf = vim.api.nvim_get_current_buf()
-          local tsToolsClients = vim.lsp.get_clients({ bufnr = current_buf, name = 'typescript-tools' })
+          local vtslsClients = vim.lsp.get_clients({ bufnr = current_buf, name = 'vtsls' })
           local angularLsClients = vim.lsp.get_clients({ bufnr = current_buf, name = 'angularls' })
-          if #tsToolsClients > 0 and #angularLsClients > 0 then
+          if #vtslsClients > 0 and #angularLsClients > 0 then
             vim.lsp.buf.rename(nil, { name = 'angularls' })
             return
           end
