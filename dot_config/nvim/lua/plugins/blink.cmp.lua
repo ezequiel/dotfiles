@@ -1,3 +1,14 @@
+local function cmp_accept_with_copilot(cmp)
+  if cmp.accept() then
+    return true
+  end
+  local copilotSuggestion = require('copilot.suggestion')
+  if copilotSuggestion.is_visible() then
+    copilotSuggestion.accept()
+    return true
+  end
+end
+
 return {
   'saghen/blink.cmp',
   dependencies = {
@@ -16,24 +27,17 @@ return {
         and vim.bo.filetype ~= 'markdown'
     end,
     keymap = {
-      preset = 'super-tab',
+      preset = 'none',
       ['<C-space>'] = { 'show', 'hide' },
       ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
       ['<C-k>'] = {},
       ['<C-d>'] = {},
       ['<C-u>'] = {},
       ['<C-e>'] = {},
+      ['<C-n>'] = { 'select_next' },
+      ['<C-p>'] = { 'select_prev' },
       ['<tab>'] = {
-        function(cmp)
-          if cmp.accept() then
-            return true
-          end
-          local copilotSuggestion = require('copilot.suggestion')
-          if copilotSuggestion.is_visible() then
-            copilotSuggestion.accept()
-            return true
-          end
-        end,
+        cmp_accept_with_copilot,
         'fallback',
       },
       ['<CR>'] = {
@@ -41,13 +45,10 @@ return {
         'fallback',
       },
       ['<Right>'] = {
-        'accept',
+        cmp_accept_with_copilot,
         'fallback',
       },
-      ['<c-c>'] = {
-        'accept',
-        'fallback',
-      },
+      ['<c-c>'] = {},
     },
     completion = {
       documentation = {
@@ -59,7 +60,7 @@ return {
         cycle = { from_top = false, from_bottom = false },
         selection = {
           preselect = false,
-          auto_insert = true,
+          auto_insert = false,
         },
       },
       ghost_text = { enabled = false },
@@ -118,18 +119,8 @@ return {
         border = 'single',
       },
     },
-    appearance = {
-      use_nvim_cmp_as_default = false,
-      nerd_font_variant = 'mono',
-    },
-    fuzzy = { implementation = 'rust' },
     sources = {
-      providers = {
-        lsp = {
-          async = true,
-        },
-      },
-      default = { 'lsp', 'buffer' },
+      default = { 'lsp', 'path', 'buffer' },
     },
   },
   opts_extend = { 'sources.default' },
