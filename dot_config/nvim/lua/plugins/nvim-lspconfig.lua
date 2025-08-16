@@ -27,17 +27,24 @@ return {
       lua_ls = {
         settings = {
           Lua = {
+            completion = {
+              enable = true,
+            },
+            diagnostics = {
+              enable = true,
+              globals = { 'vim', 'Snacks' },
+            },
+            format = {
+              enable = false,
+            },
             runtime = {
               version = 'LuaJIT',
             },
-            diagnostics = {
-              globals = { 'vim', 'Snacks' },
-            },
+            telemetry = { enable = false },
             workspace = {
-              library = vim.api.nvim_get_runtime_file('lua', true),
+              library = { vim.fs.joinpath(vim.env.VIMRUNTIME, '/lua') },
               checkThirdParty = false,
             },
-            telemetry = { enable = false },
           },
         },
       },
