@@ -21,6 +21,7 @@ end, { expr = true })
 vim.keymap.set('n', 'J', '<nop>')
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', 'q', '<nop>')
+vim.keymap.set('x', 'r', '<nop>')
 
 vim.keymap.set('n', 'vv', 'V')
 
