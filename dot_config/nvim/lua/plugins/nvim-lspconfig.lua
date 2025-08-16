@@ -3,11 +3,34 @@ return {
   lazy = false,
   config = function()
     local lsp_opts = {
+      angularls = {
+        workspace_required = true,
+      },
       bashls = {
         filetypes = { 'sh', 'zsh' },
       },
-      gopls = {},
-      yamlls = {},
+      docker_compose_language_service = {},
+      dockerls = {},
+      eslint = {
+        filetypes = {
+          'html',
+          'htmlangular',
+          'javascript',
+          'javascriptreact',
+          'json',
+          'jsonc',
+          'typescript',
+          'typescriptreact',
+        },
+        settings = {
+          experimental = {
+            useFlatConfig = true,
+          },
+          workingDirectory = {
+            mode = 'auto',
+          },
+        },
+      },
       golangci_lint_ls = {
         init_options = {
           command = {
@@ -20,10 +43,9 @@ return {
           },
         },
       },
-      angularls = {
-        workspace_required = true,
-      },
-      marksman = {},
+      gopls = {},
+      html = { init_options = { provideFormatter = false } },
+      jsonls = { init_options = { provideFormatter = false } },
       lua_ls = {
         settings = {
           Lua = {
@@ -48,30 +70,7 @@ return {
           },
         },
       },
-      docker_compose_language_service = {},
-      dockerls = {},
-      jsonls = { init_options = { provideFormatter = false } },
-      html = { init_options = { provideFormatter = false } },
-      eslint = {
-        filetypes = {
-          'html',
-          'htmlangular',
-          'javascript',
-          'javascriptreact',
-          'json',
-          'jsonc',
-          'typescript',
-          'typescriptreact',
-        },
-        settings = {
-          experimental = {
-            useFlatConfig = true,
-          },
-          workingDirectory = {
-            mode = 'auto',
-          },
-        },
-      },
+      marksman = {},
       vtsls = {
         settings = {
           vtsls = {
@@ -90,6 +89,7 @@ return {
           },
         },
       },
+      yamlls = {},
     }
 
     for name, opts in pairs(lsp_opts) do
