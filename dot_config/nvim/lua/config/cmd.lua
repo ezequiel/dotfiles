@@ -49,3 +49,12 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.buflisted = false
   end,
 })
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    if not require('lazy.status').has_updates() then
+      return
+    end
+    require('lazy').update({ show = false })
+  end,
+})
