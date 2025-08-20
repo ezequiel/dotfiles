@@ -44,8 +44,8 @@ return {
         },
       },
       gopls = {},
-      html = { init_options = { provideFormatter = false } },
-      jsonls = { init_options = { provideFormatter = false } },
+      html = {},
+      jsonls = {},
       lua_ls = {
         settings = {
           Lua = {
