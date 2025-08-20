@@ -23,7 +23,6 @@ return {
       return vim.bo.buftype ~= 'prompt'
         and vim.b.completion ~= false
         and vim.bo.filetype ~= 'grug-far'
-        and vim.bo.filetype ~= 'norg'
         and vim.bo.filetype ~= 'markdown'
     end,
     keymap = {

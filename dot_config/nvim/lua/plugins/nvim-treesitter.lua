@@ -7,7 +7,6 @@ return {
   },
   opts = {
     auto_install = true,
-    ignore_install = { 'norg' },
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,

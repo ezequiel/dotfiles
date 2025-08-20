@@ -30,20 +30,6 @@ return {
       end,
       desc = 'Previous Buffer',
     },
-    {
-      ']b',
-      function()
-        require('buffer_browser').next()
-      end,
-      desc = 'Next Buffer',
-    },
-    {
-      '[b',
-      function()
-        require('buffer_browser').prev()
-      end,
-      desc = 'Previous Buffer',
-    },
   },
   opts = {
     filetype_filters = {
@@ -51,15 +37,10 @@ return {
       'help',
       'qf',
       'grug-far',
-      'norg',
       'snacks_picker_input',
       'no-neck-pain',
       'yazi',
-      'norg',
       '',
     },
   },
-  init = function()
-    vim.g.netrw_fastbrowse = 0
-  end,
 }
