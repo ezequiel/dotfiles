@@ -48,7 +48,7 @@ return {
       desc = 'Recent',
     },
     {
-      '<leader>bb',
+      '<S-D-a>',
       function()
         Snacks.picker.buffers()
       end,
