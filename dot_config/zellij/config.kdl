@@ -190,7 +190,7 @@ keybinds clear-defaults=true {
     // }
     shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
         bind "esc" { SwitchToMode "normal"; }
-        bind "Ctrl c" { CloseFocus; SwitchToMode "normal"; }
+        // bind "Ctrl c" { CloseFocus; SwitchToMode "normal"; }
     }
     shared_among "pane" "tmux" {
         bind "x" { CloseFocus; SwitchToMode "normal"; }
@@ -339,7 +339,7 @@ default_layout "my-layout"
 //   - true (default)
 //   - false
 //
-// mouse_mode false
+mouse_mode false
 
 // Toggle having pane frames around the panes
 // Options:
@@ -398,7 +398,7 @@ pane_frames false
 // Enable automatic copying (and clearing) of selection when releasing mouse
 // Default: true
 //
-// copy_on_select true
+copy_on_select false
 
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
