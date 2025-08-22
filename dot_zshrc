@@ -6,7 +6,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export ZSH_THEME="robbyrussell"
 export ZOXIDE_CMD_OVERRIDE="cd"
-export plugins=(mise git zoxide)
+export plugins=(brew mise git zoxide)
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
 export MCFLY_DELETE_WITHOUT_CONFIRM=true
