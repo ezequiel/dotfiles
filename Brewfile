@@ -1,0 +1,7 @@
+brew "chezmoi"
+brew "mise"
+cask "font-intel-one-mono"
+cask "google-chrome"
+cask "kitty"
+cask "licecap"
+cask "spotify"

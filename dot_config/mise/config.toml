@@ -33,7 +33,6 @@ status.missing_tools = "always"
 "aqua:sigstore/cosign" = "latest"
 "aqua:sxyazi/yazi" = { version = "latest", postinstall = "ya pkg upgrade" }
 "aqua:tamasfe/taplo" = "latest"
-"aqua:twpayne/chezmoi" = "latest"
 "aqua:zellij-org/zellij" = "latest"
 "go:github.com/golangci/golangci-lint/cmd/golangci-lint" = "1"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
