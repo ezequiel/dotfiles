@@ -9,7 +9,6 @@ return {
       bashls = {
         filetypes = { 'sh', 'zsh' },
       },
-      docker_compose_language_service = {},
       dockerls = {},
       eslint = {
         filetypes = {
