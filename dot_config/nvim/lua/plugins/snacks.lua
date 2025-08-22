@@ -15,7 +15,7 @@ return {
   },
   keys = {
     {
-      '<leader>gb',
+      '<leader>gh',
       function()
         Snacks.gitbrowse()
       end,
