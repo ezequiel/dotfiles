@@ -5,6 +5,7 @@ return {
     formatters_by_ft = {
       ['*'] = { 'trim_newlines', 'trim_whitespace' },
       css = { 'prettier' },
+      dockerfile = { 'dockerfmt' },
       go = { 'goimports' },
       html = { 'prettier' },
       htmlangular = { 'prettier' },

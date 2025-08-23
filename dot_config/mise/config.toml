@@ -29,6 +29,7 @@ status.missing_tools = "always"
 "aqua:nametake/golangci-lint-langserver" = "latest"
 "aqua:neovim/neovim" = "latest"
 "aqua:oven-sh/bun" = "latest"
+"aqua:reteps/dockerfmt" = "latest"
 "aqua:sharkdp/fd" = "latest"
 "aqua:sigstore/cosign" = "latest"
 "aqua:sxyazi/yazi" = { version = "latest", postinstall = "ya pkg upgrade" }
