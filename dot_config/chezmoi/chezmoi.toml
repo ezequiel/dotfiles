@@ -1,0 +1,4 @@
+mode = "symlink"
+
+[edit]
+apply = true
