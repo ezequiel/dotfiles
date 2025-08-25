@@ -85,6 +85,7 @@ return {
             preferences = {
               importModuleSpecifier = 'non-relative',
             },
+            updateImportsOnFileMove = 'always',
           },
         },
       },
