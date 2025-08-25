@@ -4,6 +4,12 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+fi
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 export ZSH_THEME="robbyrussell"
 export ZOXIDE_CMD_OVERRIDE="cd"
 export plugins=(brew mise git zoxide)
