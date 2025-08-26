@@ -53,25 +53,6 @@ vim.keymap.set('n', '<leader>ds', function()
 end)
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
 
-local function bprev()
-  if vim.fn.bufnr() == 1 then
-    return
-  end
-  vim.cmd.bprev()
-end
-
-local function bnext()
-  if vim.fn.bufnr() == vim.fn.bufnr('$') then
-    return
-  end
-  vim.cmd.bnext()
-end
-
-vim.keymap.set('n', '<D-S-[>', bprev)
-vim.keymap.set('n', '<D-S-]>', bnext)
-vim.keymap.set('n', '<C-S-Tab>', bprev)
-vim.keymap.set('n', '<C-Tab>', bnext)
-
 vim.keymap.set('n', '[q', '<cmd>silent! cprevious<cr>')
 vim.keymap.set('n', ']q', '<cmd>silent! cnext<cr>')
 vim.keymap.set('n', '[Q', '<cmd>silent! colder<cr>')
@@ -110,5 +91,5 @@ vim.keymap.set('x', 'go', function()
       vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
     )
   )
-  vim.api.nvim_input('<esc>')
-end)
+  return '<esc>'
+end, { expr = true })
