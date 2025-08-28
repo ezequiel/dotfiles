@@ -87,6 +87,12 @@ return {
             },
             updateImportsOnFileMove = 'always',
           },
+          javascript = {
+            preferences = {
+              importModuleSpecifier = 'non-relative',
+            },
+            updateImportsOnFileMove = 'always',
+          },
         },
       },
       yamlls = {},
