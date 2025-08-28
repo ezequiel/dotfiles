@@ -16,11 +16,11 @@
 	autoSetupRemote = true
 [core]
 	editor = nvim
-[include]
-	path = ~/.config/git/config_work
 [fetch]
 	prune = true
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
+[include]
+	path = ~/.config/git/config_work
