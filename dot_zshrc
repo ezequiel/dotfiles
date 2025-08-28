@@ -24,6 +24,11 @@ eval "$(mcfly init zsh)"
 alias vim='nvim'
 alias vi='nvim'
 alias oco='NODE_TLS_REJECT_UNAUTHORIZED=0 NODE_NO_WARNINGS=1 oco --yes'
-alias up='brew upgrade && mise upgrade'
-alias ghce='gh copilot explain'
-alias ghcs='gh copilot suggest -t shell'
+
+up() {
+  brew upgrade &&
+  mise upgrade &&
+  gh extension upgrade --all
+}
+
+eval "$(gh copilot alias -- zsh)"
