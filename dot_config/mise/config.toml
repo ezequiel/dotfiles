@@ -30,7 +30,7 @@ status.missing_tools = "always"
 "aqua:reteps/dockerfmt" = "latest"
 "aqua:sharkdp/fd" = "latest"
 "aqua:sigstore/cosign" = "latest"
-"aqua:sxyazi/yazi" = { version = "latest", postinstall = "ya pkg upgrade" }
+"aqua:sxyazi/yazi" = "latest"
 "aqua:tamasfe/taplo" = "latest"
 "aqua:zellij-org/zellij" = "latest"
 "go:github.com/golangci/golangci-lint/cmd/golangci-lint" = "1"
