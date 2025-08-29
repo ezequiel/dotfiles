@@ -36,3 +36,4 @@ vim.opt.wildmode = 'longest:full,full'
 vim.opt.wildoptions = 'pum'
 vim.opt.wrap = false
 vim.opt.writeany = true
+vim.opt.ruler = false
