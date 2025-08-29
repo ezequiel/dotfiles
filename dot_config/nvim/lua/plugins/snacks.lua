@@ -1,11 +1,3 @@
-local function get_cwd()
-  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel 2>/dev/null')[1]
-  if vim.v.shell_error ~= 0 then
-    return vim.fn.getcwd()
-  end
-  return git_root
-end
-
 return {
   'folke/snacks.nvim',
   lazy = false,
@@ -37,7 +29,7 @@ return {
     {
       '<leader>ff',
       function()
-        Snacks.picker.files({ cwd = get_cwd() })
+        Snacks.picker.files({ cwd = Snacks.git.get_root() })
       end,
     },
     {
@@ -56,7 +48,7 @@ return {
     {
       '<leader>rg',
       function()
-        Snacks.picker.grep({ cwd = get_cwd() })
+        Snacks.picker.grep({ cwd = Snacks.git.get_root() })
       end,
     },
     {
@@ -71,7 +63,7 @@ return {
       '<leader>rgw',
       function()
         Snacks.picker.grep_word({
-          cwd = get_cwd(),
+          cwd = Snacks.git.get_root(),
         })
       end,
     },
@@ -79,7 +71,7 @@ return {
       '<leader>rgv',
       function()
         Snacks.picker.grep_word({
-          cwd = get_cwd(),
+          cwd = Snacks.git.get_root(),
         })
       end,
       mode = 'x',
@@ -115,36 +107,8 @@ return {
         Snacks.picker.lsp_type_definitions()
       end,
     },
-    {
-      '<leader>lg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
-    },
-    {
-      '<leader>N',
-      desc = 'Neovim News',
-      function()
-        Snacks.win({
-          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
-          width = 0,
-          height = 0,
-          wo = {
-            spell = false,
-            wrap = false,
-            signcolumn = 'yes',
-            statuscolumn = ' ',
-            conceallevel = 3,
-          },
-        })
-      end,
-    },
   },
   opts = {
-    explorer = {
-      enabled = false,
-    },
     picker = {
       layout = {
         preset = 'ivy',
@@ -226,19 +190,6 @@ return {
       },
     },
     bufdelete = { enabled = true },
-    rename = { enabled = true },
-    dim = {
-      enabled = true,
-      animate = {
-        enabled = false,
-      },
-      scope = {
-        siblings = false,
-      },
-      -- filter = function(buf)
-      --   return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ''
-      -- end,
-    },
     gitbrowse = {
       enabled = true,
       url_patterns = {
@@ -266,10 +217,11 @@ return {
         },
       },
     },
-    terminal = {
-      enabled = false,
-    },
-    lazygit = { enabled = true },
+    explorer = { enabled = false },
+    rename = { enabled = false },
+    dim = { enabled = false },
+    terminal = { enabled = false },
+    lazygit = { enabled = false },
     animate = { enabled = false },
     bigfile = { enabled = false },
     dashboard = { enabled = false },
@@ -296,7 +248,6 @@ return {
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()
-        Snacks.toggle.line_number():map('<leader>nu')
         Snacks.toggle.dim():map('<leader>di')
         Snacks.toggle.zoom():map('<leader>zo')
       end,
