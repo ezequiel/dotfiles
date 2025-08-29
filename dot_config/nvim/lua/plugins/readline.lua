@@ -3,14 +3,14 @@ return {
   lazy = false,
   keys = {
     {
-      '<M-Left>',
+      '<M-b>',
       mode = '!',
       function()
         require('readline').backward_word()
       end,
     },
     {
-      '<M-Right>',
+      '<M-f>',
       mode = '!',
       function()
         require('readline').forward_word()
@@ -29,19 +29,6 @@ return {
       function()
         require('readline').unix_word_rubout()
       end,
-    },
-    {
-      '<C-a>',
-      mode = {
-        '!',
-        'i',
-        'n',
-        'x',
-      },
-      function()
-        require('readline').dwim_beginning_of_line()
-      end,
-      { noremap = true },
     },
     {
       '<C-e>',
@@ -68,6 +55,19 @@ return {
       function()
         require('readline').kill_line()
       end,
+    },
+    {
+      '<C-a>',
+      mode = {
+        '!',
+        'i',
+        'n',
+        'x',
+      },
+      function()
+        require('readline').dwim_beginning_of_line()
+      end,
+      { noremap = true },
     },
   },
 }
