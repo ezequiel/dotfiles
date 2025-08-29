@@ -170,6 +170,8 @@ keybinds clear-defaults=true {
     // }
     shared_except "locked" "scroll" "search" "tmux" {
         bind "Ctrl b" { SwitchToMode "tmux"; }
+        bind "Ctrl tab" { GoToNextTab; SwitchToMode "normal"; }
+        bind "Ctrl shift tab" { GoToPreviousTab; SwitchToMode "normal"; }
     }
     // shared_except "locked" "scroll" "search" {
     //     bind "Ctrl s" { SwitchToMode "scroll"; }
@@ -251,10 +253,6 @@ keybinds clear-defaults=true {
         bind "j" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "k" { MoveFocus "up"; SwitchToMode "normal"; }
         bind "l" { MoveFocus "right"; SwitchToMode "normal"; }
-        bind "]" { GoToNextTab; SwitchToMode "normal"; }
-        bind "Tab" { GoToNextTab; SwitchToMode "normal"; }
-        bind "[" { GoToPreviousTab; SwitchToMode "normal"; }
-        bind "Shift tab" { GoToPreviousTab; SwitchToMode "normal"; }
         bind "t" { ToggleFloatingPanes; SwitchToMode "normal"; }
         bind "w" { CloseTab; SwitchToMode "normal"; }
         // bind "space" { NextSwapLayout; }
