@@ -1,5 +1,6 @@
 return {
   'assistcontrol/readline.nvim',
+  lazy = false,
   keys = {
     {
       '<M-Left>',
@@ -31,14 +32,25 @@ return {
     },
     {
       '<C-a>',
-      mode = '!',
+      mode = {
+        '!',
+        'i',
+        'n',
+        'x',
+      },
       function()
         require('readline').dwim_beginning_of_line()
       end,
+      { noremap = true },
     },
     {
       '<C-e>',
-      mode = '!',
+      mode = {
+        '!',
+        'i',
+        'n',
+        'x',
+      },
       function()
         require('readline').end_of_line()
       end,
