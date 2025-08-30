@@ -10,7 +10,7 @@ vim.opt.foldexpr = nil
 vim.opt.foldlevel = 999
 vim.opt.ignorecase = true
 vim.opt.isfname:append('@-@')
-vim.opt.jumpoptions = 'stack,view'
+vim.opt.jumpoptions = 'stack'
 vim.opt.modified = true
 vim.opt.mouse = ''
 vim.opt.numberwidth = 5
