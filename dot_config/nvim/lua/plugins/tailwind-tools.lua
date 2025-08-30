@@ -10,5 +10,10 @@ return {
     document_color = {
       enabled = false,
     },
+    keymaps = {
+      smart_increment = { -- increment tailwindcss units using <C-a> and <C-x>
+        enabled = false,
+      },
+    },
   },
 }
