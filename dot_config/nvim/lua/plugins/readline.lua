@@ -1,6 +1,5 @@
 return {
   'assistcontrol/readline.nvim',
-  lazy = false,
   keys = {
     {
       '<M-b>',
