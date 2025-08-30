@@ -21,6 +21,9 @@ export MCFLY_INTERFACE_VIEW="BOTTOM"
 export MCFLY_RESULTS_SORT="LAST_RUN"
 eval "$(mcfly init zsh)"
 
+eval "$(gh copilot alias -- zsh)"
+alias sug='ghcs'
+
 alias vim='nvim'
 alias vi='nvim'
 alias oco='NODE_TLS_REJECT_UNAUTHORIZED=0 NODE_NO_WARNINGS=1 oco --yes'
@@ -35,5 +38,3 @@ up() {
     nvim --headless "+Lazy! update" +qa
   } |& less -R
 }
-
-eval "$(gh copilot alias -- zsh)"
