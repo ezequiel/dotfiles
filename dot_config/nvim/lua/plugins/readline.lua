@@ -3,14 +3,24 @@ return {
   keys = {
     {
       '<M-b>',
-      mode = '!',
+      mode = {
+        '!',
+        'i',
+        'n',
+        'x',
+      },
       function()
         require('readline').backward_word()
       end,
     },
     {
       '<M-f>',
-      mode = '!',
+      mode = {
+        '!',
+        'i',
+        'n',
+        'x',
+      },
       function()
         require('readline').forward_word()
       end,
