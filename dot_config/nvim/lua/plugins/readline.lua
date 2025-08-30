@@ -31,6 +31,19 @@ return {
       end,
     },
     {
+      '<C-a>',
+      mode = {
+        '!',
+        'i',
+        'n',
+        'x',
+      },
+      function()
+        require('readline').dwim_beginning_of_line()
+      end,
+      { noremap = true },
+    },
+    {
       '<C-e>',
       mode = {
         '!',
@@ -57,13 +70,7 @@ return {
       end,
     },
     {
-      '<C-a>',
-      mode = {
-        '!',
-        'i',
-        'n',
-        'x',
-      },
+      '0',
       function()
         require('readline').dwim_beginning_of_line()
       end,

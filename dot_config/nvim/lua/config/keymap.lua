@@ -79,9 +79,6 @@ vim.keymap.set('n', ']c', function()
   end)
 end)
 
-vim.keymap.set('n', '^', '0')
-vim.keymap.set('n', '0', '^')
-
 vim.keymap.set('n', 'go', function()
   vim.ui.open(('https://google.com/search?q=%s'):format(vim.fn.expand('<cword>')))
 end)
