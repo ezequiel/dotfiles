@@ -41,7 +41,6 @@ return {
       function()
         require('readline').dwim_beginning_of_line()
       end,
-      { noremap = true },
     },
     {
       '<C-e>',
@@ -74,7 +73,6 @@ return {
       function()
         require('readline').dwim_beginning_of_line()
       end,
-      { noremap = true },
     },
   },
 }
