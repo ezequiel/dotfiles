@@ -12,8 +12,8 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lspkind.nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
   "mini.move": { "branch": "main", "commit": "4fe4a855fee53c66b0f3255a4b54ddc2ae6b308c" },
-  "multicursor.nvim": { "branch": "with-revert", "commit": "b85af61878e3c248800ced0456796993949a400d" },
-  "nvim-lspconfig": { "branch": "master", "commit": "408cf07b97535825cca6f1afa908d98348712ba6" },
+  "multicursor.nvim": { "branch": "main", "commit": "35af2f31faf616f1b73a369cb4f695063b1ede03" },
+  "nvim-lspconfig": { "branch": "master", "commit": "f8474abbe3f0cf7cf2476331313b583207787148" },
   "nvim-surround": { "branch": "main", "commit": "a868c256c861044beb9794b4dd126480dcdfbdad" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "71385f191ec06ffc60e80e6b0c9a9d5daed4824c" },
@@ -32,5 +32,5 @@
   "treesitter-indent-object.nvim": { "branch": "master", "commit": "84feec844aa386554b6eeda2833143615346cf3e" },
   "vgit.nvim": { "branch": "main", "commit": "a7be45a2726ade74c4c669c56c36310d840c85a8" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
-  "yazi.nvim": { "branch": "main", "commit": "12409d3288683fa1836a022cc86431c1f0e3c093" }
+  "yazi.nvim": { "branch": "main", "commit": "8ce0abb50c30fdc486c465ddfab28510346e6bd7" }
 }

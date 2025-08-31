@@ -1,6 +1,5 @@
 return {
   'jake-stewart/multicursor.nvim',
-  branch = 'with-revert',
   keys = {
     {
       '<D-Up>',
