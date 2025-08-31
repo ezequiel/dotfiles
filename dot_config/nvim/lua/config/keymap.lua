@@ -26,7 +26,6 @@ vim.keymap.set({ 'n', 'x' }, 'x', '<nop>')
 vim.keymap.set({ 'n', 'x' }, '<C-x>', '<nop>')
 vim.keymap.set({ 'n', 'x' }, 'g<C-a>', '<nop>')
 vim.keymap.set({ 'n', 'x' }, 'g<C-x>', '<nop>')
-vim.keymap.set({ 'n', 'x' }, 'x', '<nop>')
 
 vim.keymap.set('n', 'vv', 'V')
 
