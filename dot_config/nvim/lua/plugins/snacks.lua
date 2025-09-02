@@ -52,14 +52,6 @@ return {
       end,
     },
     {
-      '<leader>rgb',
-      function()
-        Snacks.picker.grep({
-          dirs = { vim.fn.expand('%') },
-        })
-      end,
-    },
-    {
       '<leader>rgw',
       function()
         Snacks.picker.grep_word({
