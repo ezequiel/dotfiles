@@ -10,8 +10,10 @@ fi
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export ZSH_THEME="robbyrussell"
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_UPDATE_REPORT_NEW=1
 export ZOXIDE_CMD_OVERRIDE="cd"
+export ZSH_THEME="robbyrussell"
 export plugins=(brew mise git zoxide)
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
