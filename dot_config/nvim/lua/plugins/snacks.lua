@@ -99,6 +99,12 @@ return {
         Snacks.picker.lsp_type_definitions()
       end,
     },
+    {
+      '<leader>jj',
+      function()
+        Snacks.picker.jumps()
+      end,
+    },
   },
   opts = {
     picker = {
