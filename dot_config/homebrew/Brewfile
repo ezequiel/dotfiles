@@ -1,8 +1,12 @@
 brew "chezmoi"
 brew "mise"
+brew "mpv"
+brew "streamlink"
 brew "zsh-syntax-highlighting"
 cask "font-intel-one-mono"
 cask "google-chrome"
 cask "kitty"
 cask "licecap"
 cask "spotify"
+# https://github.com/2bc4/streamlink-ttvlol
+cask "streamlink-twitch-gui"
