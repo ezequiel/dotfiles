@@ -79,7 +79,7 @@ return {
             tsserver = {
               experimental = {
                 -- NOTE: Some projects will crawl to a halt when this is enabled
-                -- enableProjectDiagnostics = true,
+                enableProjectDiagnostics = true,
               },
             },
             preferences = {
