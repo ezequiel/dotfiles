@@ -3,6 +3,11 @@
   "autoshare": false,
   "autoupdate": false,
   "model": "github-copilot/gpt-5-mini",
+  "permission": {
+    "bash": "ask",
+    "edit": "ask",
+    "webfetch": "allow",
+  },
   // "provider": {
   //   "github-copilot": {
   //     "options": {
