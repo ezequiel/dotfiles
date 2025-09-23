@@ -1,13 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoshare": false,
+  // "autoshare": false,
   "autoupdate": false,
-  "model": "github-copilot/gpt-5-mini",
-  "permission": {
-    "bash": "ask",
-    "edit": "ask",
-    "webfetch": "allow",
-  },
+  "model": "github-copilot/grok-code-fast-1",
+  // "permission": {
+  //   "bash": "ask",
+  //   "edit": "ask",
+  //   "webfetch": "allow",
+  // },
   // "provider": {
   //   "github-copilot": {
   //     "options": {
@@ -15,8 +15,8 @@
   //     }
   //   }
   // },
-  "share": "disabled",
-  "small_model": "github-copilot/gpt-5-mini",
+  // "share": "disabled",
+  "small_model": "github-copilot/grok-code-fast-1",
   "theme": "tokyonight",
   "keybinds": {
     "messages_half_page_up": "ctrl+u",
