@@ -36,7 +36,14 @@ return {
     {
       '<leader>fr',
       function()
-        Snacks.picker.recent()
+        Snacks.picker.recent({
+          filter = {
+            cwd = Snacks.git.get_root(),
+            paths = {
+              [Snacks.git.get_root() .. '/.git/COMMIT_EDITMSG'] = false,
+            },
+          },
+        })
       end,
       desc = 'Recent',
     },
