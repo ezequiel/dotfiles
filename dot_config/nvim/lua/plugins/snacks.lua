@@ -113,6 +113,20 @@ return {
         Snacks.picker.jumps()
       end,
     },
+    {
+      '<leader>di',
+      function()
+        Snacks.toggle.dim():toggle()
+      end,
+      desc = 'Toggle dim',
+    },
+    {
+      '<leader>zo',
+      function()
+        Snacks.toggle.zoom():toggle()
+      end,
+      desc = 'Toggle zoom',
+    },
   },
   opts = {
     picker = {
@@ -250,13 +264,4 @@ return {
     zen = { enabled = false },
     statuscolumn = { enabled = false },
   },
-  init = function()
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'VeryLazy',
-      callback = function()
-        Snacks.toggle.dim():map('<leader>di')
-        Snacks.toggle.zoom():map('<leader>zo')
-      end,
-    })
-  end,
 }
