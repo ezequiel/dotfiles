@@ -1,8 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  // "autoshare": false,
+  "autoshare": false,
   "autoupdate": false,
   "model": "github-copilot/grok-code-fast-1",
+  "share": "disabled",
+  "small_model": "github-copilot/grok-code-fast-1",
+  "theme": "tokyonight",
+  "keybinds": {
+    "messages_half_page_up": "ctrl+u",
+    "messages_half_page_down": "ctrl+d",
+  },
   // "permission": {
   //   "bash": "ask",
   //   "edit": "ask",
@@ -15,11 +22,4 @@
   //     }
   //   }
   // },
-  // "share": "disabled",
-  "small_model": "github-copilot/grok-code-fast-1",
-  "theme": "tokyonight",
-  "keybinds": {
-    "messages_half_page_up": "ctrl+u",
-    "messages_half_page_down": "ctrl+d",
-  },
 }
