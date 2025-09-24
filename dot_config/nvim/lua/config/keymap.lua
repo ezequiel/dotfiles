@@ -82,10 +82,10 @@ vim.keymap.set('n', ']c', function()
   end)
 end)
 
-vim.keymap.set('n', 'go', function()
+vim.keymap.set('n', '<leader>go', function()
   vim.ui.open(('https://google.com/search?q=%s'):format(vim.fn.expand('<cword>')))
 end)
-vim.keymap.set('x', 'go', function()
+vim.keymap.set('x', '<leader>go', function()
   vim.ui.open(
     ('https://google.com/search?q=%s'):format(
       vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
