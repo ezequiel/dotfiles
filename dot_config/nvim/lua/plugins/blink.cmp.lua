@@ -73,9 +73,9 @@ return {
             { 'kind_icon', 'kind', 'label_description', gap = 1 },
           },
           components = {
-            label = { ellipsis = true, width = { max = 16, fill = false } },
+            label = { ellipsis = true, width = { max = 32, fill = false } },
             kind = { width = { fill = true } },
-            label_description = { ellipsis = true, width = { max = 16, fill = false } },
+            label_description = { ellipsis = true, width = { max = 32, fill = false } },
             kind_icon = {
               width = { fill = false },
               text = function(ctx)
