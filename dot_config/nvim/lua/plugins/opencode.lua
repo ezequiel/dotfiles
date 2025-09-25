@@ -54,6 +54,13 @@ return {
         require('opencode').append_prompt('@selection')
       end,
     },
+    {
+      '<leader>os',
+      mode = { 'n', 'x' },
+      function()
+        require('opencode').select()
+      end,
+    },
   },
   config = function()
     vim.g.opencode_opts = {
@@ -63,11 +70,6 @@ return {
         },
       },
     }
-
-    -- vim.keymap.set({ 'n', 'v' }, '<leader>os', function()
-    --   require('opencode').select()
-    -- end, { desc = 'Select opencode prompt' })
-
     -- Example: keymap for custom prompt
     -- vim.keymap.set('n', '<leader>oe', function()
     --   require('opencode').prompt('Explain @cursor and its context')
