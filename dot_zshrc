@@ -30,7 +30,6 @@ up() {
   {
     brew upgrade
     mise upgrade
-    gh extension upgrade --all
     rm -rf "$XDG_CONFIG_HOME/yazi/plugins"
     ya pkg upgrade
     nvim --headless "+Lazy! update" +qa
