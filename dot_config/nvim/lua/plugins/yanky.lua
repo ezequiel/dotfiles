@@ -10,6 +10,7 @@ return {
     { 'P', '<Plug>(YankyPutBefore)', mode = { 'n', 'x' }, desc = 'Put yanked text before cursor' },
     {
       '<leader>yh',
+      mode = { 'n', 'x' },
       function()
         Snacks.picker.yanky()
       end,
