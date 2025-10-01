@@ -30,7 +30,7 @@ alias oco='NODE_TLS_REJECT_UNAUTHORIZED=0 NODE_NO_WARNINGS=1 oco --yes'
 up() {
   {
     brew upgrade
-    mise upgrade
+    mise upgrade --bump
     rm -rf "$XDG_CONFIG_HOME/yazi/plugins"
     ya pkg upgrade
     nvim --headless "+Lazy! update" +qa
