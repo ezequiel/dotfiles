@@ -108,12 +108,6 @@ return {
       end,
     },
     {
-      '<leader>jj',
-      function()
-        Snacks.picker.jumps()
-      end,
-    },
-    {
       '<leader>di',
       function()
         Snacks.toggle.dim():toggle()
