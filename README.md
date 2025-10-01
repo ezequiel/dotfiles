@@ -22,10 +22,9 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠚⠋⠀⠀⠀⠀⠀⠀⠀⠀
 ```
 
-0. `cd ~`
 1. [https://docs.github.com/en/authentication/connecting-to-github-with-ssh](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
 2. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --ssh ezequiel`
 4. `CHSH=yes RUNZSH=yes KEEP_ZSHRC=yes OVERWRITE_CONFIRMATION=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-5. `up`
-6. Restart terminal
+5. Restart terminal
+6. `up`
