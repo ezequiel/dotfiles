@@ -4,7 +4,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+if ((!${fpath[(I) / usr / local / share / zsh / site - functions]})); then
   FPATH=/usr/local/share/zsh/site-functions:$FPATH
 fi
 
@@ -38,3 +38,6 @@ up() {
     nvim --headless "+Lazy! update" +qa
   } |& less -R
 }
+
+export CARAPACE_BRIDGES='zsh'
+source <(carapace _carapace)
