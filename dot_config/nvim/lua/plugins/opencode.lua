@@ -44,14 +44,14 @@ return {
     {
       '<leader>o+',
       function()
-        require('opencode').append_prompt('@buffer')
+        require('opencode').prompt('@buffer', { append = true })
       end,
     },
     {
       '<leader>o+',
       mode = { 'x' },
       function()
-        require('opencode').append_prompt('@selection')
+        require('opencode').prompt('@selection', { append = true })
       end,
     },
     {
@@ -70,9 +70,5 @@ return {
         },
       },
     }
-    -- Example: keymap for custom prompt
-    -- vim.keymap.set('n', '<leader>oe', function()
-    --   require('opencode').prompt('Explain @cursor and its context')
-    -- end, { desc = 'Explain this code' })
   end,
 }
