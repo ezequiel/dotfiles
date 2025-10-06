@@ -13,7 +13,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_UPDATE_REPORT_NEW=1
 export ZSH_THEME="robbyrussell"
-export plugins=(brew mise git zoxide)
+export plugins=(brew mise git zoxide chezmoi fancy-ctrl-z)
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
 export MCFLY_DELETE_WITHOUT_CONFIRM=true
