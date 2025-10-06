@@ -232,10 +232,25 @@ return {
       },
     },
     input = { enabled = true },
+    terminal = {
+      enabled = true,
+      win = {
+        keys = {
+          term_normal = {
+            '<esc>',
+            function()
+              return '<C-\\><C-n>'
+            end,
+            mode = 't',
+            expr = true,
+            desc = 'Double escape to normal mode',
+          },
+        },
+      },
+    },
+    dim = { enabled = true },
     explorer = { enabled = false },
     rename = { enabled = false },
-    dim = { enabled = false },
-    terminal = { enabled = false },
     lazygit = { enabled = false },
     animate = { enabled = false },
     bigfile = { enabled = false },
