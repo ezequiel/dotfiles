@@ -1,5 +1,6 @@
 [env]
 RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
+NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
 
 [settings]
 activate_aggressive = true
