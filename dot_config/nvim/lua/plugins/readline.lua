@@ -36,7 +36,8 @@ return {
       '<C-w>',
       mode = '!',
       function()
-        require('readline').unix_word_rubout()
+        -- require('readline').unix_word_rubout()
+        require('readline').backward_kill_word()
       end,
     },
     {
