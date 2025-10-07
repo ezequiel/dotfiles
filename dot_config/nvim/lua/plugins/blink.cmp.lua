@@ -47,7 +47,13 @@ return {
         cmp_accept_with_copilot,
         'fallback',
       },
-      ['<c-c>'] = {},
+      ['<c-c>'] = {
+        function()
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, true, true), 'n', true)
+          return true
+        end,
+        'fallback',
+      },
     },
     completion = {
       documentation = {
