@@ -5,10 +5,12 @@ return {
   },
   keys = {
     {
-      '<leader>ot',
+      '<leader>oa',
+      mode = { 'n', 'x' },
       function()
-        require('opencode').toggle()
+        require('opencode').ask('@this: ', { submit = true })
       end,
+      desc = 'Ask about this',
     },
     {
       '<leader>oA',
@@ -17,42 +19,20 @@ return {
       end,
     },
     {
-      '<leader>oa',
-      function()
-        require('opencode').ask('@cursor: ')
-      end,
-    },
-    {
-      '<leader>oa',
-      mode = { 'x' },
-      function()
-        require('opencode').ask('@selection: ')
-      end,
-    },
-    {
-      '<leader>on',
-      function()
-        require('opencode').command('session_new')
-      end,
-    },
-    {
-      '<leader>oy',
-      function()
-        require('opencode').command('messages_copy')
-      end,
-    },
-    {
       '<leader>o+',
+      mode = { 'n', 'x' },
       function()
-        require('opencode').prompt('@buffer', { append = true })
+        require('opencode').prompt('@this')
       end,
+      desc = 'Add this',
     },
     {
-      '<leader>o+',
-      mode = { 'x' },
+      '<leader>oe',
+      mode = { 'n', 'x' },
       function()
-        require('opencode').prompt('@selection', { append = true })
+        require('opencode').prompt('Explain @this and its context', { submit = true })
       end,
+      desc = 'Explain this',
     },
     {
       '<leader>os',
@@ -60,6 +40,23 @@ return {
       function()
         require('opencode').select()
       end,
+      desc = 'Select prompt',
+    },
+    {
+      '<leader>ot',
+      mode = { 'n', 't' },
+      function()
+        require('opencode').toggle()
+      end,
+      desc = 'Toggle embedded',
+    },
+    {
+      '<leader>on',
+      mode = { 'n', 't' },
+      function()
+        require('opencode').command('session_new')
+      end,
+      desc = 'New session',
     },
   },
   config = function()

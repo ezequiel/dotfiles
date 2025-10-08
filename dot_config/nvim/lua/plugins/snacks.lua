@@ -236,14 +236,11 @@ return {
       enabled = true,
       win = {
         keys = {
-          term_normal = {
-            '<esc>',
+          ['<C-h>'] = {
             function()
-              return '<C-\\><C-n>'
+              vim.cmd('wincmd h')
             end,
             mode = 't',
-            expr = true,
-            desc = 'Double escape to normal mode',
           },
         },
       },
