@@ -30,9 +30,9 @@ return {
       ['<C-space>'] = { 'show', 'hide' },
       ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
       ['<C-k>'] = {},
-      ['<C-d>'] = {},
-      ['<C-u>'] = {},
       ['<C-e>'] = {},
+      ['<C-d>'] = { 'select_next' },
+      ['<C-u>'] = { 'select_prev' },
       ['<C-n>'] = { 'select_next' },
       ['<C-p>'] = { 'select_prev' },
       ['<tab>'] = {
