@@ -64,6 +64,7 @@ return {
       terminal = {
         win = {
           enter = true,
+          width = 0.5,
         },
       },
     }
