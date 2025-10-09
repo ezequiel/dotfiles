@@ -60,3 +60,14 @@ vim.api.nvim_create_autocmd('ExitPre', {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd('TermClose', {
+  pattern = '*',
+  callback = function()
+    vim.schedule(function()
+      if vim.bo.buftype == 'terminal' and vim.v.shell_error == 0 then
+        vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
+      end
+    end)
+  end,
+})
