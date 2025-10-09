@@ -15,7 +15,7 @@ return {
     {
       '<leader>oA',
       function()
-        require('opencode').ask()
+        require('opencode').ask({ submit = true })
       end,
     },
     {
