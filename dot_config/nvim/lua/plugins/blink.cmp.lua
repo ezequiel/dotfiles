@@ -31,8 +31,8 @@ return {
       ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
       ['<C-k>'] = {},
       ['<C-e>'] = {},
-      ['<C-d>'] = { 'select_next' },
-      ['<C-u>'] = { 'select_prev' },
+      ['<C-d>'] = {},
+      ['<C-u>'] = {},
       ['<C-n>'] = { 'select_next' },
       ['<C-p>'] = { 'select_prev' },
       ['<tab>'] = {
