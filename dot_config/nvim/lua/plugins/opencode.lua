@@ -15,7 +15,7 @@ return {
     {
       '<leader>oA',
       function()
-        require('opencode').ask({ submit = true })
+        require('opencode').ask('@buffer: ', { submit = true })
       end,
     },
     {
