@@ -49,5 +49,13 @@ return {
         vim.api.nvim_exec_autocmds('User', { pattern = 'VisualLeave' })
       end,
     })
+    vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
+      vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+      return '<Esc>'
+    end, { expr = true })
+    vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
+      vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+      return '<C-c>'
+    end, { expr = true })
   end,
 }
