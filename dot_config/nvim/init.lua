@@ -21,6 +21,10 @@ vim.cmd([[
   let g:loaded_zipPlugin = 1
 ]])
 
+vim.cmd([[
+  packadd nohlsearch
+]])
+
 require('config.opt')
 require('config.keymap')
 require('config.cmd')
