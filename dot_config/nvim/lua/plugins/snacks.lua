@@ -121,6 +121,22 @@ return {
       end,
       desc = 'Toggle zoom',
     },
+    {
+      '<leader>N',
+      desc = 'Neovim News',
+      function()
+        Snacks.win({
+          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
+          wo = {
+            spell = false,
+            wrap = false,
+            signcolumn = 'yes',
+            statuscolumn = ' ',
+            conceallevel = 3,
+          },
+        })
+      end,
+    },
   },
   opts = {
     picker = {
