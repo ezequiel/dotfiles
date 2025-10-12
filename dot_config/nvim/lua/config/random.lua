@@ -17,11 +17,3 @@ vim.diagnostic.config({
   severity_sort = true,
   update_in_insert = false,
 })
-
-vim.filetype.add({
-  pattern = {
-    ['.env.*'] = 'sh',
-    ['.gitconfig.*'] = 'gitconfig',
-    ['Dockerfile.*'] = 'dockerfile',
-  },
-})

@@ -2,9 +2,6 @@ return {
   'stevearc/quicker.nvim',
   ft = 'qf',
   opts = {
-    opts = {
-      signcolumn = 'no',
-    },
     edit = {
       enabled = false,
     },
@@ -19,12 +16,9 @@ return {
       soft_end = '|',
     },
     trim_leading_whitespace = false,
-    max_filename_width = function()
-      return 48
-    end,
     keys = {
       {
-        'r',
+        'R',
         function()
           require('quicker').refresh()
         end,

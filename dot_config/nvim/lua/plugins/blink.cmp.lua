@@ -125,7 +125,7 @@ return {
       },
     },
     sources = {
-      default = { 'lsp', 'path', 'buffer' },
+      default = { 'lsp' },
     },
   },
   opts_extend = { 'sources.default' },

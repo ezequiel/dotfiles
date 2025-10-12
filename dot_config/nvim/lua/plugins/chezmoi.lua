@@ -27,9 +27,7 @@ return {
   },
   init = function()
     vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-      pattern = {
-        (vim.fn.expand('~')):gsub('\\', '/') .. '/.local/share/chezmoi/*',
-      },
+      pattern = vim.env.XDG_DATA_HOME .. '/chezmoi/*',
       callback = function(event)
         vim.schedule(function()
           require('chezmoi.commands.__edit').watch(event.buf)

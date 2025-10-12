@@ -8,6 +8,7 @@ return {
           telemetryLevel = 'off',
         },
         advanced = {
+          listCount = 1,
           inlineSuggestCount = 1,
         },
       },
@@ -18,11 +19,11 @@ return {
       hide_during_completion = true,
       keymap = {
         accept = false,
-        accept_word = false,
         accept_line = false,
+        accept_word = false,
+        dismiss = '<C-c>',
         next = false,
         prev = false,
-        dismiss = '<C-c>',
       },
     },
     panel = { enabled = false },

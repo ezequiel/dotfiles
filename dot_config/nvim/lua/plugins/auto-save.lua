@@ -26,7 +26,13 @@ return {
       },
     },
     condition = function()
-      return (vim.fn.mode() ~= 'i' and vim.bo.filetype ~= 'qf' and vim.bo.filetype ~= '' and vim.bo.buftype ~= 'nofile')
+      return (
+        vim.fn.mode() ~= 'i'
+        and vim.bo.filetype ~= 'qf'
+        and vim.bo.filetype ~= 'opencode_terminal'
+        and vim.bo.filetype ~= ''
+        and vim.bo.buftype ~= 'nofile'
+      )
     end,
     write_all_buffers = true,
   },

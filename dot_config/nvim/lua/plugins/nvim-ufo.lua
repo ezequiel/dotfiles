@@ -6,13 +6,6 @@ return {
   },
   keys = {
     {
-      'zm',
-      function()
-        require('ufo').closeFoldsWith(0)
-      end,
-      desc = 'Close folds with',
-    },
-    {
       'zR',
       function()
         require('ufo').openAllFolds()
@@ -29,7 +22,7 @@ return {
   },
   opts = {
     provider_selector = function()
-      return { 'treesitter', 'indent' }
+      return { 'indent' }
     end,
     close_fold_kinds_for_ft = { default = { 'import_statement' } },
   },

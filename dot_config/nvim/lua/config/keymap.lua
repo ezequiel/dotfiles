@@ -1,13 +1,9 @@
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-
 vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
   vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
   vim.cmd('nohlsearch')
   return '<Esc>'
 end, { expr = true })
+
 vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
   vim.cmd('nohlsearch')
@@ -18,35 +14,7 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   return '<C-c>'
 end, { expr = true })
 
-vim.keymap.set('n', 'J', '<nop>')
-vim.keymap.set('n', 'Q', '<nop>')
-vim.keymap.set('n', 'q', '<nop>')
-vim.keymap.set('x', 'r', '<nop>')
-vim.keymap.set({ 'n', 'x' }, '<C-x>', '<nop>')
-vim.keymap.set({ 'n', 'x' }, 'g<C-a>', '<nop>')
-vim.keymap.set({ 'n', 'x' }, 'g<C-x>', '<nop>')
-
 vim.keymap.set('n', 'vv', 'V')
-
-vim.keymap.set({ 'n', 'x' }, '*', function()
-  vim.fn.setreg('/', '')
-  local search_text
-  if vim.fn.mode() == 'v' or vim.fn.mode() == 'x' then
-    vim.cmd('normal! "zy')
-    search_text = vim.fn.getreg('z')
-  else
-    search_text = vim.fn.expand('<cword>')
-  end
-  search_text = vim.fn.escape(search_text, '\\^$.*[]')
-
-  if search_text:match('^%w+$') then
-    search_text = '\\<' .. search_text .. '\\>'
-  end
-
-  vim.fn.setreg('/', search_text)
-  vim.opt.hlsearch = true
-  vim.cmd('normal! nN')
-end)
 
 vim.keymap.set('n', '<C-W>|', '<C-W>v')
 vim.keymap.set('n', '<C-W>-', '<C-W>s')

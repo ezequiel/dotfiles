@@ -70,6 +70,7 @@ return {
         },
       },
       marksman = {},
+      tailwindcss = {},
       vtsls = {
         settings = {
           vtsls = {

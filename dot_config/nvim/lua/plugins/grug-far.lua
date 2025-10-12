@@ -44,22 +44,12 @@ return {
       mode = 'x',
     },
   },
-  config = function(_, opts)
-    require('grug-far').setup(opts)
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = 'grug-far',
-      callback = function()
-        vim.opt.signcolumn = 'no'
-        vim.keymap.set('i', '<Enter>', '<Esc>', { buffer = true })
-      end,
-    })
-  end,
   opts = {
     icons = { enabled = false },
     resultLocation = {
       showNumberLabel = false,
     },
-    startInInsertMode = false,
+    startInInsertMode = true,
     transient = true,
     wrap = false,
     keymaps = {
@@ -71,18 +61,23 @@ return {
       help = { n = '?' },
       historyAdd = false,
       historyOpen = false,
+      nextInput = { n = '<tab>' },
       openLocation = false,
       openNextLocation = false,
       openPrevLocation = false,
       pickHistoryEntry = false,
+      prevInput = { n = '<s-tab>' },
       previewLocation = false,
       qflist = { n = '<C-q>' },
       refresh = { n = 'R' },
       replace = { n = '<localleader>rr' },
       swapEngine = { n = '<localleader>ee' },
       swapReplacementInterpreter = false,
+      syncFile = { n = '<localleader>sf' },
       syncLine = { n = '<localleader>sl' },
       syncLocations = { n = '<localleader>sa' },
+      syncNext = false,
+      syncPrev = false,
       toggleShowCommand = false,
     },
     filePathConceal = function(params)
