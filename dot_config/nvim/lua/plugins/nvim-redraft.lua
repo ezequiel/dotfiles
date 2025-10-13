@@ -17,7 +17,13 @@ return {
         require('nvim-redraft').edit()
       end,
       mode = 'x',
-      desc = 'AI Edit Selection',
+    },
+    {
+      '<leader>oe',
+      function()
+        vim.cmd('normal! V')
+        require('nvim-redraft').edit()
+      end,
     },
   },
 }
