@@ -5,13 +5,16 @@ return {
     enabled = true,
     trigger_events = {
       immediate_save = {
+        'BufHidden',
         'BufLeave',
         'BufWinLeave',
+        'FocusLost',
         'QuitPre',
+        'TabLeave',
         'VimLeave',
         'VimSuspend',
+        'WinClosed',
         'WinLeave',
-        'FocusLost',
       },
       defer_save = {
         'TextChanged',
