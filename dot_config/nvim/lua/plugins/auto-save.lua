@@ -31,6 +31,7 @@ return {
         and vim.bo.filetype ~= 'qf'
         and vim.bo.filetype ~= 'opencode_terminal'
         and vim.bo.filetype ~= ''
+        and vim.bo.filetype ~= 'grug-far'
         and vim.bo.buftype ~= 'nofile'
       )
     end,

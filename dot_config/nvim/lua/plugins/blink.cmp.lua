@@ -24,6 +24,7 @@ return {
         and vim.b.completion ~= false
         and vim.bo.filetype ~= 'grug-far'
         and vim.bo.filetype ~= 'markdown'
+        and vim.bo.filetype ~= 'opencode_terminal'
     end,
     keymap = {
       preset = 'none',
