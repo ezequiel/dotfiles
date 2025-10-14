@@ -12,14 +12,14 @@ return {
   },
   keys = {
     {
-      '<leader>oe',
+      '<leader>ai',
       function()
         require('nvim-redraft').edit()
       end,
       mode = 'x',
     },
     {
-      '<leader>oe',
+      '<leader>ai',
       function()
         vim.cmd('normal! V')
         require('nvim-redraft').edit()
