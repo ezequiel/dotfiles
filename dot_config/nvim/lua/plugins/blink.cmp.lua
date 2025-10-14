@@ -62,7 +62,6 @@ return {
         auto_show_delay_ms = 500,
       },
       list = {
-        cycle = { from_top = false, from_bottom = false },
         selection = {
           preselect = false,
           auto_insert = false,
