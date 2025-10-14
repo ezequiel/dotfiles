@@ -25,6 +25,14 @@ vim.cmd([[
   packadd nohlsearch
 ]])
 
+require('vim._extui').enable({
+  enable = true,
+  msg = {
+    target = 'cmd',
+    timeout = 4000,
+  },
+})
+
 require('config.opt')
 require('config.keymap')
 require('config.cmd')
