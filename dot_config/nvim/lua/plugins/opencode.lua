@@ -27,6 +27,14 @@ return {
       desc = 'Add this',
     },
     {
+      '<leader>oe',
+      mode = { 'n', 'x' },
+      function()
+        require('opencode').prompt('Explain @this and its context', { submit = true })
+      end,
+      desc = 'Explain this',
+    },
+    {
       '<leader>os',
       mode = { 'n', 'x' },
       function()
