@@ -7,19 +7,19 @@ return {
   opts = {
     llm = {
       provider = 'copilot',
-      model = 'gpt-4o',
+      model = 'gpt-5',
     },
   },
   keys = {
     {
-      '<leader>ai',
+      '<leader>aa',
       function()
         require('nvim-redraft').edit()
       end,
       mode = 'x',
     },
     {
-      '<leader>ai',
+      '<leader>aa',
       function()
         vim.cmd('normal! V')
         require('nvim-redraft').edit()
