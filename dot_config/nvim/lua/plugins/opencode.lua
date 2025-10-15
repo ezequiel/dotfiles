@@ -66,6 +66,9 @@ return {
           enter = true,
           width = 0.5,
         },
+        env = {
+          NODE_TLS_REJECT_UNAUTHORIZED = 0,
+        },
       },
     }
   end,
