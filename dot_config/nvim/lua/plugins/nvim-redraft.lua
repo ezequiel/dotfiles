@@ -7,7 +7,6 @@ return {
   opts = {
     llm = {
       provider = 'copilot',
-      model = 'gpt-5',
     },
   },
   keys = {
