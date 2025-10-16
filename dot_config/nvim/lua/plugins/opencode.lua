@@ -58,6 +58,14 @@ return {
       end,
       desc = 'New session',
     },
+    {
+      '<leader>oi',
+      mode = { 'n', 't' },
+      function()
+        require('opencode').command('session_interrupt')
+      end,
+      desc = 'Interrupt session',
+    },
   },
   config = function()
     vim.g.opencode_opts = {
