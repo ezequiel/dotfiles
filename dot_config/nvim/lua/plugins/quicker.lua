@@ -38,6 +38,13 @@ return {
         end,
         desc = 'Collapse quickfix context',
       },
+      {
+        '<c-c>',
+        function()
+          require('quicker').close()
+        end,
+        desc = 'Collapse quickfix context',
+      },
     },
   },
   keys = {
