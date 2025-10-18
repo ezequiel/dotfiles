@@ -18,6 +18,13 @@ vim.api.nvim_create_autocmd('TermClose', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'help', 'checkhealth' },
+  callback = function()
+    vim.keymap.set('n', '<C-c>', '<cmd>close<CR>', { buffer = true })
+  end,
+})
+
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('QA', 'qa', {})
