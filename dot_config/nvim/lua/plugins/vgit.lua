@@ -155,6 +155,11 @@ return {
       signs = {
         priority = 1337,
       },
+      scene = {
+        keymaps = {
+          quit = '<C-c>',
+        },
+      },
       live_blame = {
         format = function(blame)
           local commit_message = blame.commit_message
