@@ -38,3 +38,5 @@ vim.keymap.set('n', '<leader>ds', function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end)
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
+
+vim.keymap.set('n', 'q:', '<nop>')
