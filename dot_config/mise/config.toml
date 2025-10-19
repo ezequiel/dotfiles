@@ -1,6 +1,7 @@
 [env]
 RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
 NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
+HOMEBREW_BUNDLE_FILE_GLOBAL = "{{env.XDG_CONFIG_HOME}}/homebrew/Brewfile"
 
 [settings]
 activate_aggressive = true
@@ -52,3 +53,15 @@ go = "latest"
 node = "22"
 shellcheck = "latest"
 yarn = "latest"
+
+[tasks.up]
+description = "Upgrade all the things"
+run = [
+  "brew cleanup --prune=all",
+  "brew bundle --global",
+  "mise prune --yes",
+  "mise upgrade",
+  "rm -rf \"$XDG_CONFIG_HOME/yazi/plugins\"",
+  "ya pkg upgrade",
+  "nvim --headless \"+Lazy! update\" +qa"
+]
