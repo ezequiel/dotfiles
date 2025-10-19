@@ -6,21 +6,14 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_UPDATE_REPORT_NEW=1
 export ZSH_THEME="robbyrussell"
 export plugins=(brew mise git zoxide chezmoi fancy-ctrl-z)
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
-export MCFLY_DELETE_WITHOUT_CONFIRM=true
-export MCFLY_DISABLE_MENU=true
-export MCFLY_INTERFACE_VIEW="BOTTOM"
-export MCFLY_RESULTS_SORT="LAST_RUN"
 eval "$(mcfly init zsh)"
 
 alias vim='nvim'
 alias vi='nvim'
 alias oco='oco --yes'
 
-export CARAPACE_BRIDGES='zsh'
 source <(carapace _carapace)

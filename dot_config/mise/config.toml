@@ -1,7 +1,14 @@
 [env]
-RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
-NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
+CARAPACE_BRIDGES = "zsh"
 HOMEBREW_BUNDLE_FILE_GLOBAL = "{{env.XDG_CONFIG_HOME}}/homebrew/Brewfile"
+HOMEBREW_NO_ANALYTICS = true
+HOMEBREW_NO_UPDATE_REPORT_NEW = true
+MCFLY_DELETE_WITHOUT_CONFIRM = true
+MCFLY_DISABLE_MENU = true
+MCFLY_INTERFACE_VIEW = "BOTTOM"
+MCFLY_RESULTS_SORT = "LAST_RUN"
+NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
+RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
 
 [settings]
 activate_aggressive = true
@@ -63,5 +70,5 @@ run = [
   "mise upgrade",
   "rm -rf \"$XDG_CONFIG_HOME/yazi/plugins\"",
   "ya pkg upgrade",
-  "nvim --headless \"+Lazy! update\" +qa"
+  "nvim --headless \"+Lazy! update\" +qa",
 ]
