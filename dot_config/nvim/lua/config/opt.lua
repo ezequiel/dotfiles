@@ -14,4 +14,3 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.wrap = false
-vim.opt.messagesopt = 'wait:0,history:500'
