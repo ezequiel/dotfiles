@@ -10,6 +10,7 @@ vim.opt.ruler = false
 vim.opt.shortmess:append('I')
 vim.opt.signcolumn = 'yes:2'
 vim.opt.smartcase = true
+vim.opt.ignorecase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
