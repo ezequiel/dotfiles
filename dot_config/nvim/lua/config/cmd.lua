@@ -18,6 +18,16 @@ vim.api.nvim_create_autocmd('TermClose', {
   end,
 })
 
+vim.api.nvim_create_autocmd('BufLeave', {
+  pattern = '*',
+  callback = function(event)
+    if vim.bo[event.buf].buftype ~= 'terminal' then
+      return
+    end
+    vim.cmd('checktime')
+  end,
+})
+
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'help', 'checkhealth' },
   callback = function()
