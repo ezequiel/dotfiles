@@ -54,11 +54,15 @@ return {
       end,
     })
     vim.keymap.set({ 'n', 'i', 'x' }, '<Esc>', function()
-      vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+      pcall(function()
+        vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+      end)
       return '<Esc>'
     end, { expr = true })
     vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
-      vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+      pcall(function()
+        vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
+      end)
       vim.schedule(function()
         vim.cmd('fclose!')
       end)
