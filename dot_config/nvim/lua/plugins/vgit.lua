@@ -161,6 +161,7 @@ return {
         },
       },
       live_blame = {
+        enabled = true,
         format = function(blame)
           local commit_message = blame.commit_message
           if not blame.committed then

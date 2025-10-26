@@ -7,6 +7,34 @@ return {
   },
   keys = {
     {
+      'gic',
+      function()
+        Snacks.picker.lsp_incoming_calls()
+      end,
+      desc = 'C[a]lls Incoming',
+    },
+    {
+      'goc',
+      function()
+        Snacks.picker.lsp_outgoing_calls()
+      end,
+      desc = 'C[a]lls Outgoing',
+    },
+    {
+      '<leader>gd',
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = 'Git Diff (Hunks)',
+    },
+    {
+      '<leader>gb',
+      function()
+        Snacks.picker.git_branches()
+      end,
+      desc = 'Git Branches',
+    },
+    {
       '<leader>gh',
       function()
         Snacks.gitbrowse()
@@ -54,7 +82,7 @@ return {
       end,
     },
     {
-      '<leader>rg',
+      '<leader>rgg',
       function()
         Snacks.picker.grep({ cwd = Snacks.git.get_root() })
       end,
@@ -233,7 +261,7 @@ return {
     },
     indent = {
       enabled = true,
-      indent = { enabled = true },
+      indent = { enabled = true, char = '┊' },
       scope = { enabled = false },
       animate = { enabled = false },
       chunk = {

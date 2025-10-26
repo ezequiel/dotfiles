@@ -16,7 +16,7 @@ return {
     'nvim-tree/nvim-web-devicons',
     'onsails/lspkind.nvim',
   },
-  lazy = false,
+  event = 'InsertEnter',
   version = '*',
   opts = {
     enabled = function()
@@ -32,8 +32,8 @@ return {
       ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
       ['<C-k>'] = {},
       ['<C-e>'] = {},
-      ['<C-d>'] = { 'select_next' },
-      ['<C-u>'] = { 'select_prev' },
+      ['<C-d>'] = {},
+      ['<C-u>'] = {},
       ['<C-n>'] = { 'select_next' },
       ['<C-p>'] = { 'select_prev' },
       ['<tab>'] = {
@@ -48,12 +48,7 @@ return {
         cmp_accept_with_copilot,
         'fallback',
       },
-      ['<c-c>'] = {
-        function()
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
-        end,
-        'fallback_to_mappings',
-      },
+      ['<c-c>'] = {},
     },
     completion = {
       documentation = {

@@ -1,10 +1,18 @@
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
-vim.opt.clipboard = 'unnamed'
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
 vim.opt.cmdheight = 0
-vim.opt.foldexpr = nil
+vim.opt.fillchars = { fold = ' ' }
+vim.opt.foldenable = false
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldlevel = 1337
+vim.opt.foldmethod = 'expr'
+vim.opt.foldtext = ''
+vim.opt.ignorecase = true
 vim.opt.modified = true
+vim.opt.scrolloff = 1337
 vim.opt.mouse = ''
 vim.opt.ruler = false
 vim.opt.shortmess:append('I')
@@ -15,3 +23,5 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.wrap = false
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300

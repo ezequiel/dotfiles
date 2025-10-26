@@ -10,6 +10,7 @@ vim.cmd([[
   let g:loaded_man = 1
   let g:loaded_matchit = 1
   let g:loaded_matchparen = 1
+  let g:loaded_net = 1
   let g:loaded_netrwPlugin = 1
   let g:loaded_osc52 = 1
   let g:loaded_rplugin = 1

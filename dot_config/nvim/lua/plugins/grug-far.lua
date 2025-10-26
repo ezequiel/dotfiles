@@ -7,7 +7,7 @@ return {
   'MagicDuck/grug-far.nvim',
   keys = {
     {
-      '<leader>gf',
+      '<leader>gff',
       function()
         require('grug-far').open({ prefills = { paths = get_cwd() } })
       end,

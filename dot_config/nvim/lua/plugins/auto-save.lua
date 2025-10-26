@@ -3,6 +3,7 @@ return {
   lazy = false,
   opts = {
     enabled = true,
+    noautocmd = true,
     trigger_events = {
       immediate_save = {
         'BufHidden',
@@ -60,6 +61,7 @@ return {
       return '<Esc>'
     end, { expr = true })
     vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
       pcall(function()
         vim.api.nvim_exec_autocmds('User', { pattern = 'EscapeHandler' })
       end)

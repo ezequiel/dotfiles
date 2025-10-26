@@ -18,20 +18,17 @@ vim.api.nvim_create_autocmd('TermClose', {
   end,
 })
 
-vim.api.nvim_create_autocmd('BufLeave', {
-  pattern = '*',
-  callback = function(event)
-    if vim.bo[event.buf].buftype ~= 'terminal' then
-      return
-    end
-    vim.cmd('checktime')
-  end,
-})
-
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'help', 'checkhealth' },
   callback = function()
     vim.keymap.set('n', '<C-c>', '<cmd>close<CR>', { buffer = true })
+  end,
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'Visual', timeout = 500 })
   end,
 })
 
