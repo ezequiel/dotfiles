@@ -95,6 +95,13 @@ return {
           mc.clearCursors()
         end
       end)
+      set('n', '<c-c>', function()
+        if mc.hasCursors() then
+          mc.clearCursors()
+        else
+          -- Default <C-c> handler.
+        end
+      end)
     end)
   end,
 }
