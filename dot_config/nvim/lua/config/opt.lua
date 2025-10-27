@@ -6,7 +6,6 @@ end)
 vim.opt.cmdheight = 0
 vim.opt.fillchars = { fold = ' ' }
 vim.opt.foldenable = false
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldlevel = 1337
 vim.opt.foldmethod = 'expr'
 vim.opt.foldtext = ''
