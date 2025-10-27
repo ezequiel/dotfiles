@@ -49,7 +49,7 @@ return {
     resultLocation = {
       showNumberLabel = false,
     },
-    startInInsertMode = true,
+    startInInsertMode = false,
     transient = true,
     wrap = false,
     keymaps = {
