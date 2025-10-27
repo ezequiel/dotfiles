@@ -15,6 +15,7 @@ vim.opt.scrolloff = 1337
 vim.opt.mouse = ''
 vim.opt.ruler = false
 vim.opt.shortmess:append('I')
+vim.opt.mps:append('<:>')
 vim.opt.signcolumn = 'yes:2'
 vim.opt.smartcase = true
 vim.opt.splitbelow = true

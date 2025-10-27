@@ -36,7 +36,6 @@ require('lazy').setup('plugins', {
         'gzip',
         'man',
         'matchit',
-        'matchparen',
         'net',
         'netrwPlugin',
         'osc52',
