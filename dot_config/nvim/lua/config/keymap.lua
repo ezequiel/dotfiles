@@ -40,3 +40,4 @@ end)
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
 
 vim.keymap.set('n', 'q:', '<nop>')
+vim.keymap.set('n', '<leader>r', '<nop>')
