@@ -1,5 +1,6 @@
 return {
   'MeanderingProgrammer/treesitter-modules.nvim',
+  lazy = false,
   dependencies = {
     {
       'nvim-treesitter/nvim-treesitter',
@@ -13,6 +14,7 @@ return {
       enable = true,
       additional_vim_regex_highlighting = false,
     },
+    fold = { enable = true },
     indent = { enable = true },
     textobjects = { enable = true },
     incremental_selection = {
