@@ -39,7 +39,7 @@ return {
         desc = 'Collapse quickfix context',
       },
       {
-        '<c-c>',
+        'q',
         function()
           require('quicker').close()
         end,

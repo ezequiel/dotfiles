@@ -19,9 +19,9 @@ vim.api.nvim_create_autocmd('TermClose', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'help', 'checkhealth' },
+  pattern = { 'help', 'checkhealth', 'qf' },
   callback = function()
-    vim.keymap.set('n', '<C-c>', '<cmd>close<CR>', { buffer = true })
+    vim.keymap.set('n', '<C-c>', '<cmd>close!<CR>', { buffer = true })
   end,
 })
 
