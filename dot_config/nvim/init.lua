@@ -1,6 +1,5 @@
 vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
-vim.deprecate = function() end
 
 vim.cmd([[
   let g:did_install_default_menus = 1
