@@ -21,9 +21,15 @@ vim.cmd([[
   let g:loaded_zipPlugin = 1
 ]])
 
-vim.cmd([[
-  packadd nohlsearch
-]])
+if vim.version().minor >= 12 then
+  require('vim._extui').enable({
+    enable = true,
+    msg = {
+      target = 'cmd',
+      timeout = 2500,
+    },
+  })
+end
 
 require('config.opt')
 require('config.keymap')
