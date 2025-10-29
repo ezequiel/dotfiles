@@ -69,10 +69,15 @@ return {
   },
   config = function()
     vim.g.opencode_opts = {
-      terminal = {
-        win = {
-          enter = true,
-          width = 0.5,
+      provider = {
+        name = 'snacks',
+        snacks = {
+          terminal = {
+            win = {
+              enter = true,
+              width = 0.5,
+            },
+          },
         },
       },
     }
