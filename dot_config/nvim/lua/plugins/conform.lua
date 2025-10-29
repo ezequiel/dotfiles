@@ -30,15 +30,6 @@ return {
       quiet = true,
       async = true,
     },
+    format_after_save = {},
   },
-  init = function()
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'AutoSaveWritePost',
-      callback = function(event)
-        require('conform').format({
-          bufnr = event.data.saved_buffer,
-        })
-      end,
-    })
-  end,
 }

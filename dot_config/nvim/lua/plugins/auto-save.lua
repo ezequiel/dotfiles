@@ -3,7 +3,6 @@ return {
   lazy = false,
   opts = {
     enabled = true,
-    noautocmd = true,
     trigger_events = {
       immediate_save = {
         'BufHidden',
