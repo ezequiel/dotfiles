@@ -70,7 +70,7 @@ return {
   config = function()
     vim.g.opencode_opts = {
       provider = {
-        name = 'snacks',
+        enabled = 'snacks',
         snacks = {
           terminal = {
             win = {
