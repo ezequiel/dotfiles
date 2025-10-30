@@ -18,7 +18,7 @@ return {
     trim_leading_whitespace = false,
     keys = {
       {
-        'R',
+        'r',
         function()
           require('quicker').refresh()
         end,
