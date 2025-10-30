@@ -8,7 +8,9 @@ return {
       'n',
       function()
         local count = vim.v.count1
-        vim.cmd('normal! ' .. count .. 'n')
+        local key = (count > 1 and count or '') .. 'n'
+        local keys = vim.api.nvim_replace_termcodes(key, true, false, true)
+        vim.api.nvim_feedkeys(keys, 'n', false)
         require('hlslens').start()
       end,
       desc = 'Next search result (lens)',
@@ -19,7 +21,9 @@ return {
       'N',
       function()
         local count = vim.v.count1
-        vim.cmd('normal! ' .. count .. 'N')
+        local key = (count > 1 and count or '') .. 'N'
+        local keys = vim.api.nvim_replace_termcodes(key, true, false, true)
+        vim.api.nvim_feedkeys(keys, 'n', false)
         require('hlslens').start()
       end,
       desc = 'Prev search result (lens)',
