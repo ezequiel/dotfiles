@@ -78,7 +78,14 @@ return {
     {
       '<S-D-a>',
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers({
+          filter = {
+            cwd = Snacks.git.get_root(),
+            paths = {
+              [Snacks.git.get_root() .. '/.git/COMMIT_EDITMSG'] = false,
+            },
+          },
+        })
       end,
     },
     {
@@ -290,11 +297,11 @@ return {
       },
     },
     dim = { enabled = true },
+    bigfile = { enabled = true },
     explorer = { enabled = false },
     rename = { enabled = false },
     lazygit = { enabled = false },
     animate = { enabled = false },
-    bigfile = { enabled = false },
     dashboard = { enabled = false },
     debug = { enabled = false },
     scope = { enabled = false },
