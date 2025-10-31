@@ -297,7 +297,7 @@ return {
       },
     },
     dim = { enabled = true },
-    bigfile = { enabled = true },
+    bigfile = { enabled = false },
     explorer = { enabled = false },
     rename = { enabled = false },
     lazygit = { enabled = false },
