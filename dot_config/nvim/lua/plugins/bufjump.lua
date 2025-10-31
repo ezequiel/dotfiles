@@ -1,9 +1,11 @@
 return {
   'kwkarlwang/bufjump.nvim',
   opts = {
-    forward_key = nil,
-    backward_key = nil,
-    on_success = nil,
+    forward_key = false,
+    backward_key = false,
+    on_success = false,
+    forward_same_buf_key = false,
+    backward_same_buf_key = false,
   },
   keys = {
     {
