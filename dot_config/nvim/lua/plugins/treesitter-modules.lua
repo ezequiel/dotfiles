@@ -14,9 +14,7 @@ return {
       enable = true,
       additional_vim_regex_highlighting = false,
     },
-    fold = { enable = true },
     indent = { enable = true },
-    textobjects = { enable = true },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -26,5 +24,7 @@ return {
         node_decremental = '<c-p>',
       },
     },
+    fold = { enable = false },
+    textobjects = { enable = false },
   },
 }

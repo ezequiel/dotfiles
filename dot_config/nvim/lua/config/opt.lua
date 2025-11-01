@@ -4,11 +4,6 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 vim.opt.cmdheight = 0
-vim.opt.fillchars = { fold = ' ' }
-vim.opt.foldenable = false
-vim.opt.foldlevel = 1337
-vim.opt.foldmethod = 'expr'
-vim.opt.foldtext = ''
 vim.opt.ignorecase = true
 vim.opt.modified = true
 vim.opt.scrolloff = 1337
