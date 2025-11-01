@@ -48,3 +48,6 @@ vim.keymap.set('i', '<D-S-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' }
 vim.keymap.set('i', '<D-S-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
 vim.keymap.set('v', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
 vim.keymap.set('v', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+
+vim.keymap.set('x', '<', '<gv')
+vim.keymap.set('x', '>', '>gv')
