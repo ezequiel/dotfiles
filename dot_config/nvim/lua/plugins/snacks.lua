@@ -266,13 +266,14 @@ return {
         },
       },
     },
+    input = { enabled = true },
     indent = {
-      enabled = true,
-      indent = { enabled = true, char = '┊' },
+      enabled = false,
+      indent = { enabled = false, char = '┊' },
       scope = { enabled = false },
       animate = { enabled = false },
       chunk = {
-        enabled = true,
+        enabled = false,
         char = {
           horizontal = '',
           arrow = '',
@@ -282,7 +283,6 @@ return {
         },
       },
     },
-    input = { enabled = true },
     terminal = {
       enabled = true,
       win = {
