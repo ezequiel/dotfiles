@@ -1,3 +1,13 @@
+local function picker_git_filter()
+  local root = Snacks.git.get_root()
+  return {
+    cwd = root,
+    paths = {
+      [root .. '/.git/COMMIT_EDITMSG'] = false,
+    },
+  }
+end
+
 return {
   'folke/snacks.nvim',
   lazy = false,
@@ -65,12 +75,7 @@ return {
       '<leader>fr',
       function()
         Snacks.picker.recent({
-          filter = {
-            cwd = Snacks.git.get_root(),
-            paths = {
-              [Snacks.git.get_root() .. '/.git/COMMIT_EDITMSG'] = false,
-            },
-          },
+          filter = picker_git_filter(),
         })
       end,
       desc = 'Recent',
@@ -79,12 +84,7 @@ return {
       '<S-D-a>',
       function()
         Snacks.picker.buffers({
-          filter = {
-            cwd = Snacks.git.get_root(),
-            paths = {
-              [Snacks.git.get_root() .. '/.git/COMMIT_EDITMSG'] = false,
-            },
-          },
+          filter = picker_git_filter(),
         })
       end,
     },
