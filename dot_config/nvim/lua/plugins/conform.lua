@@ -29,6 +29,7 @@ return {
     default_format_opts = {
       quiet = true,
       async = true,
+      undojoin = true,
     },
     format_after_save = {},
   },
