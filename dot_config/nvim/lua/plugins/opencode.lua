@@ -74,7 +74,7 @@ return {
         snacks = {
           win = {
             enter = true,
-            width = 0.5,
+            width = 0.55,
           },
         },
       },
