@@ -24,7 +24,7 @@ return {
     provider_selector = function()
       return { 'indent' }
     end,
-    close_fold_kinds_for_ft = { default = { 'import_statement' } },
+    -- close_fold_kinds_for_ft = { default = { 'import_statement' } },
   },
   init = function()
     vim.opt.foldcolumn = '0'
