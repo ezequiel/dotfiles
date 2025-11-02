@@ -72,11 +72,9 @@ return {
       provider = {
         enabled = 'snacks',
         snacks = {
-          terminal = {
-            win = {
-              enter = true,
-              width = 0.5,
-            },
+          win = {
+            enter = true,
+            width = 0.5,
           },
         },
       },
