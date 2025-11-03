@@ -51,3 +51,10 @@ vim.keymap.set('v', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)
 
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
+
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump({ wrap = false, count = -1 })
+end)
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump({ wrap = false, count = 1 })
+end)
