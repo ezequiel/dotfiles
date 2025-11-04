@@ -74,6 +74,12 @@ return {
       end,
     },
     {
+      '<leader>hS',
+      function()
+        require('vgit').buffer_stage()
+      end,
+    },
+    {
       '<leader>hr',
       function()
         require('vgit').buffer_hunk_reset()
