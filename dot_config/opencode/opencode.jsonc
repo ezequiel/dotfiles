@@ -5,6 +5,7 @@
   "model": "github-copilot/gpt-5",
   "share": "disabled",
   "small_model": "github-copilot/gpt-5",
+  "snapshot": false,
   "theme": "tokyonight",
   "keybinds": {
     "messages_half_page_up": "ctrl+u",
