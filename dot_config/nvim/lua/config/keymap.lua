@@ -1,3 +1,6 @@
+vim.keymap.set('n', '+', '<C-a>', { desc = 'Increment', noremap = true })
+vim.keymap.set('n', '-', '<C-x>', { desc = 'Decrement', noremap = true })
+
 vim.keymap.set('n', '<C-j>', '<C-W>j')
 vim.keymap.set('n', '<C-k>', '<C-W>k')
 vim.keymap.set('n', '<C-h>', '<C-W>h')
