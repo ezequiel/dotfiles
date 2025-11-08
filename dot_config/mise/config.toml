@@ -62,6 +62,8 @@ go = "latest"
 node = "22.19.0"
 shellcheck = "latest"
 yarn = "latest"
+fzf = "latest"
+"npm:@github/copilot" = "latest"
 
 [tasks.up]
 description = "Upgrade all the things"
@@ -72,5 +74,5 @@ run = [
   "mise upgrade",
   "rm -rf \"$XDG_CONFIG_HOME/yazi/plugins\"",
   "ya pkg upgrade",
-  "nvim --headless \"+Lazy! update\" +qa",
+  "nvim --headless +\"lua vim.pack.update(nil, { force = true })\" +qa",
 ]

@@ -8,6 +8,7 @@
   "snapshot": false,
   "theme": "tokyonight",
   "keybinds": {
+    "leader": "\\",
     "messages_half_page_up": "ctrl+u",
     "messages_half_page_down": "ctrl+d",
   },
