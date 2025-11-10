@@ -61,6 +61,8 @@ end, { expr = true })
 ----------------------------------------------------
 ----------------------------------------------------
 
+vim.keymap.set('n', '+', '<C-a>', { noremap = true })
+vim.keymap.set('n', '-', '<C-x>', { noremap = true })
 vim.keymap.set('n', '<D-r>', '<cmd>restart<cr>')
 vim.keymap.set('n', '<c-q>', '<cmd>q<cr>')
 vim.keymap.set('n', '<C-j>', '<C-W>j')
