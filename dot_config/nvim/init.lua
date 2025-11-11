@@ -56,7 +56,7 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
     vim.cmd('fclose!')
   end)
   return '<C-c>'
-end, { expr = true })
+end, { silent = true, expr = true })
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -850,7 +850,9 @@ local lsp_opts = {
     },
   },
   marksman = {},
-  tailwindcss = {},
+  tailwindcss = {
+    settings = { tailwindCSS = { colorDecorators = false } },
+  },
   vtsls = {
     settings = {
       vtsls = {
