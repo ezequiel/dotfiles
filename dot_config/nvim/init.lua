@@ -61,9 +61,29 @@ end, { expr = true })
 ----------------------------------------------------
 ----------------------------------------------------
 
+local session = '/tmp/_session_restart.vim'
+
+vim.keymap.set('n', '<D-r>', function()
+  vim.cmd.mksession({ session, bang = true })
+  vim.cmd.restart()
+end)
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = augroup,
+  callback = vim.schedule_wrap(function()
+    if not vim.uv.fs_stat(session) then
+      return
+    end
+    vim.cmd.source(session)
+    vim.fs.rm(session)
+  end),
+})
+
+----------------------------------------------------
+----------------------------------------------------
+
 vim.keymap.set('n', '+', '<C-a>', { noremap = true })
 vim.keymap.set('n', '-', '<C-x>', { noremap = true })
-vim.keymap.set('n', '<D-r>', '<cmd>restart<cr>')
 vim.keymap.set('n', '<c-q>', '<cmd>q<cr>')
 vim.keymap.set('n', '<C-j>', '<C-W>j')
 vim.keymap.set('n', '<C-k>', '<C-W>k')
