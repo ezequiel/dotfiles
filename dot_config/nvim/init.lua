@@ -1045,3 +1045,19 @@ vim.pack.add({ 'https://github.com/Almo7aya/openingh.nvim' })
 vim.keymap.set('n', '<leader>gH', '<cmd>OpenInGHRepo<cr>')
 vim.keymap.set('n', '<leader>gh', '<cmd>OpenInGHFile<cr>')
 vim.keymap.set('x', '<leader>gh', '<cmd>OpenInGHFileLines<cr>')
+
+----------------------------------------------------
+----------------------------------------------------
+
+vim.cmd([[
+  let g:vindent_block_ending = [ ')', ']', '}', 'end', 'else', 'elif' ]
+  let g:vindent_infer	= 1
+  let g:vindent_jumps = 1
+  let g:vindent_motion_XX_se = ']s'
+  let g:vindent_motion_XX_ss = '[s'
+  let g:vindent_object_XX_aI = 'aI'
+  let g:vindent_object_XX_ai = 'ai'
+  let g:vindent_object_XX_ii = 'ii'
+]])
+
+vim.pack.add({ 'https://github.com/jessekelighine/vindent.vim' })
