@@ -1045,6 +1045,7 @@ vim.g.coq_settings = {
     },
     statusline = { helo = false },
     icons = { mode = 'none' },
+    mark_applied_notify = false,
   },
 }
 
