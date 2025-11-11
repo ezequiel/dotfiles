@@ -910,11 +910,11 @@ end)
 vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 
-vim.keymap.set({ 'n', 'x' }, '<D-o>', function()
+vim.keymap.set({ 'n', 'x' }, '<D-s-o>', function()
   vim.lsp.buf.selection_range(vim.v.count1)
 end, { desc = 'Selection range: outer' })
 
-vim.keymap.set({ 'n', 'x' }, '<D-i>', function()
+vim.keymap.set({ 'n', 'x' }, '<D-s-i>', function()
   vim.lsp.buf.selection_range(-vim.v.count1)
 end, { desc = 'Selection range: inner' })
 
