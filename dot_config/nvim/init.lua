@@ -1055,9 +1055,9 @@ vim.api.nvim_create_autocmd('PackChanged', {
     if not (data.spec.name == 'coq_nvim' and (data.kind == 'install' or data.kind == 'update')) then
       return
     end
-    vim.system({ 'bash', '-c', 'python3 -m coq deps' }, {
-      cwd = data.path,
-    })
+    vim.schedule(function()
+      vim.cmd('COQdeps')
+    end)
   end,
 })
 
