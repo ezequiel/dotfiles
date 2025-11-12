@@ -1067,11 +1067,21 @@ vim.pack.add({ 'https://github.com/ms-jpq/coq_nvim' })
 ----------------------------------------------------
 ----------------------------------------------------
 
-vim.pack.add({ 'https://github.com/Almo7aya/openingh.nvim' })
+vim.pack.add({ 'https://github.com/trevorhauter/gitportal.nvim' })
 
-vim.keymap.set('n', '<leader>gH', '<cmd>OpenInGHRepo<cr>')
-vim.keymap.set('n', '<leader>gh', '<cmd>OpenInGHFile<cr>')
-vim.keymap.set('x', '<leader>gh', '<cmd>OpenInGHFileLines<cr>')
+require('gitportal').setup({ always_include_current_line = true })
+
+vim.keymap.set({ 'n', 'x' }, '<leader>gy', require('gitportal').copy_link_to_clipboard)
+vim.keymap.set({ 'n', 'x' }, '<leader>gh', require('gitportal').open_file_in_browser)
+
+vim.keymap.set('n', 'gH', require('gitportal').open_file_in_neovim)
+
+vim.api.nvim_create_user_command('Gh', function()
+  vim.cmd('GitPortal open_link')
+end, {
+  nargs = '*',
+  complete = 'command',
+})
 
 ----------------------------------------------------
 ----------------------------------------------------
