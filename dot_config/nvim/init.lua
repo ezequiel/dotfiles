@@ -914,11 +914,11 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 
 vim.keymap.set({ 'n', 'x' }, '<D-s-o>', function()
   vim.lsp.buf.selection_range(vim.v.count1)
-end, { desc = 'Selection range: outer' })
+end)
 
 vim.keymap.set({ 'n', 'x' }, '<D-s-i>', function()
   vim.lsp.buf.selection_range(-vim.v.count1)
-end, { desc = 'Selection range: inner' })
+end)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = augroup,
