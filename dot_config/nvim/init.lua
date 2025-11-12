@@ -287,9 +287,7 @@ vim.keymap.set('n', '<leader>oA', function()
   require('sidekick.cli').send({ name = 'opencode', focus = true, msg = '{file}' })
 end)
 
-vim.keymap.set({ 'n', 'x' }, '<leader>os', function()
-  require('sidekick.cli').prompt()
-end)
+vim.keymap.set({ 'n', 'x' }, '<leader>os', require('sidekick.cli').prompt)
 
 ----------------------------------------------------
 ----------------------------------------------------
