@@ -664,7 +664,7 @@ require('grug-far').setup({
     prevInput = { n = '<s-tab>' },
     previewLocation = false,
     qflist = { n = '<C-q>' },
-    refresh = { n = 'R' },
+    refresh = { n = 'r' },
     replace = { n = '<localleader>rr' },
     swapEngine = { n = '<localleader>ee' },
     swapReplacementInterpreter = false,
