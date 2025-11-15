@@ -1090,12 +1090,10 @@ vim.keymap.set({ 'x', 'o' }, 'ai', require('treesitter_indent_object.textobj').s
 
 vim.keymap.set({ 'x', 'o' }, 'aI', function()
   require('treesitter_indent_object.textobj').select_indent_outer(true, 'V')
-  require('treesitter_indent_object.refiner').include_surrounding_empty_lines()
 end)
 
 vim.keymap.set({ 'x', 'o' }, 'ii', require('treesitter_indent_object.textobj').select_indent_inner)
 
 vim.keymap.set({ 'x', 'o' }, 'iI', function()
   require('treesitter_indent_object.textobj').select_indent_inner(true, 'V')
-  require('treesitter_indent_object.refiner').include_surrounding_empty_lines()
 end)
