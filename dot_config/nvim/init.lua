@@ -220,6 +220,7 @@ require('fzf-lua').setup({
     rg_glob = true,
     glob_flag = '--iglob',
     glob_separator = '%s%-%-',
+    RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
   },
   winopts = {
     preview = {
