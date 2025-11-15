@@ -1084,15 +1084,18 @@ end, {
 ----------------------------------------------------
 ----------------------------------------------------
 
-vim.cmd([[
-  let g:vindent_block_ending = [ ')', ']', '}', 'end', 'else', 'elif' ]
-  let g:vindent_infer	= 1
-  let g:vindent_jumps = 1
-  let g:vindent_motion_XX_se = ']s'
-  let g:vindent_motion_XX_ss = '[s'
-  let g:vindent_object_XX_aI = 'aI'
-  let g:vindent_object_XX_ai = 'ai'
-  let g:vindent_object_XX_ii = 'ii'
-]])
+vim.pack.add({ 'https://github.com/kiyoon/treesitter-indent-object.nvim' })
 
-vim.pack.add({ 'https://github.com/jessekelighine/vindent.vim' })
+vim.keymap.set({ 'x', 'o' }, 'ai', require('treesitter_indent_object.textobj').select_indent_outer)
+
+vim.keymap.set({ 'x', 'o' }, 'aI', function()
+  require('treesitter_indent_object.textobj').select_indent_outer(true, 'V')
+  require('treesitter_indent_object.refiner').include_surrounding_empty_lines()
+end)
+
+vim.keymap.set({ 'x', 'o' }, 'ii', require('treesitter_indent_object.textobj').select_indent_inner)
+
+vim.keymap.set({ 'x', 'o' }, 'iI', function()
+  require('treesitter_indent_object.textobj').select_indent_inner(true, 'V')
+  require('treesitter_indent_object.refiner').include_surrounding_empty_lines()
+end)
