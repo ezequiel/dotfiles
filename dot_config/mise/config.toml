@@ -57,13 +57,15 @@ status.missing_tools = "always"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:yaml-language-server" = "latest"
 "ubi:neovim/neovim" = { version = "nightly", extract_all = "true", bin_path = "bin" }
+"vfox:version-fox/vfox-cmake" = "latest"
 # "aqua:neovim/neovim" = "latest"
 bun = "latest"
+fzf = "latest"
 go = "latest"
 node = "22.19.0"
+rust = "1.88"
 shellcheck = "latest"
 yarn = "latest"
-fzf = "latest"
 
 [tasks.up]
 description = "Upgrade all the things"
