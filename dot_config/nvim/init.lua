@@ -1091,9 +1091,9 @@ vim.cmd([[
   let g:vindent_jumps = 1
   let g:vindent_motion_XX_se = ']s'
   let g:vindent_motion_XX_ss = '[s'
-  let g:vindent_object_XX_aI = 'ai'
+  let g:vindent_object_XX_aI = 'aI'
   let g:vindent_object_XX_ii = 'ii'
-  " let g:vindent_object_XX_ai = 'ai'
+  let g:vindent_object_XX_ai = 'ai'
 ]])
 
 vim.pack.add({ 'https://github.com/jessekelighine/vindent.vim' })
