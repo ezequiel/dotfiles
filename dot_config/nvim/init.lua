@@ -536,6 +536,7 @@ require('copilot').setup({
     },
   },
   panel = { enabled = false },
+  nes = { enabled = false },
   server = {
     type = 'nodejs',
     custom_server_filepath = vim.env.XDG_DATA_HOME
