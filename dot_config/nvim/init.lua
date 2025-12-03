@@ -368,7 +368,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
     if not (data.spec.name == 'nvim-redraft' and (data.kind == 'install' or data.kind == 'update')) then
       return
     end
-    vim.system({ 'bash', '-c', 'npm ci && npm run build' }, {
+    vim.system({ 'bash', '-c', 'npm ci --ignore-scripts && npm run build' }, {
       cwd = data.path .. '/ts',
     })
   end,
