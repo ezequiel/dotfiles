@@ -1017,6 +1017,7 @@ vim.g.coq_settings = {
   xdg = true,
   match = { max_results = 10 },
   keymap = {
+    recommended = false,
     bigger_preview = 'K',
     manual_complete_insertion_only = true,
     jump_to_mark = '',
@@ -1062,6 +1063,15 @@ vim.api.nvim_create_autocmd('PackChanged', {
     end)
   end,
 })
+
+vim.keymap.set('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
+vim.keymap.set('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })
+vim.keymap.set(
+  'i',
+  '<cr>',
+  [[pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"]],
+  { expr = true, silent = true }
+)
 
 vim.pack.add({ 'https://github.com/ms-jpq/coq_nvim' })
 
