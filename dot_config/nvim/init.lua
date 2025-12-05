@@ -114,7 +114,7 @@ vim.keymap.set('x', '<leader>go', function()
     )
   )
 end)
-vim.keymap.set({ 'n', 't' }, '<leader>zo', function()
+vim.keymap.set('n', '<leader>zo', function()
   if vim.t.zoomed and vim.t.zoom_winrestcmd then
     vim.cmd(vim.t.zoom_winrestcmd)
     vim.t.zoomed = false
@@ -277,7 +277,7 @@ require('sidekick').setup({
   },
 })
 
-vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
+vim.keymap.set('n', '<leader>ot', function()
   require('sidekick.cli').toggle({ name = 'opencode' })
 end)
 
