@@ -216,6 +216,11 @@ require('fzf-lua').setup({
     git_icons = false,
     file_icons = false,
   },
+  lsp = {
+    code_actions = {
+      previewer = false,
+    },
+  },
   grep = {
     rg_glob = true,
     glob_flag = '--iglob',
