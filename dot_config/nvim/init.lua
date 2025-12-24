@@ -273,6 +273,7 @@ require('sidekick').setup({
     picker = 'fzf-lua',
     win = {
       keys = {
+        prompt = { '<leader>os', 'prompt', mode = 'nt' },
         hide_n = { '<c-c>', 'hide' },
         hide_ctrl_q = { '<c-c>', 'hide' },
         hide_ctrl_dot = { '<c-c>', 'hide', mode = 'nt' },
