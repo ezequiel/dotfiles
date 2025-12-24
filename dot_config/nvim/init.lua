@@ -967,7 +967,7 @@ require('gitsigns').setup({
       if vim.wo.diff then
         vim.cmd.normal({ ']c', bang = true })
       else
-        gitsigns.nav_hunk('next', { wrap = false })
+        gitsigns.nav_hunk('next', { wrap = false, target = 'all' })
       end
     end)
 
@@ -975,7 +975,7 @@ require('gitsigns').setup({
       if vim.wo.diff then
         vim.cmd.normal({ '[c', bang = true })
       else
-        gitsigns.nav_hunk('prev', { wrap = false })
+        gitsigns.nav_hunk('prev', { wrap = false, target = 'all' })
       end
     end)
 
