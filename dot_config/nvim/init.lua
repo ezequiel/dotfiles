@@ -113,6 +113,7 @@ vim.keymap.set('x', '<leader>go', function()
       vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
     )
   )
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
 end)
 vim.keymap.set('n', '<leader>zo', function()
   if vim.t.zoomed and vim.t.zoom_winrestcmd then
