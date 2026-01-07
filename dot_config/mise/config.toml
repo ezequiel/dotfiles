@@ -67,6 +67,7 @@ node = "22.19.0"
 rust = "1.88"
 shellcheck = "latest"
 yarn = "latest"
+pnpm = "latest"
 
 [tasks.up]
 description = "Upgrade all the things"
