@@ -14,6 +14,6 @@ eval "$(mcfly init zsh)"
 
 alias vim='nvim'
 alias vi='nvim'
-alias oco='oco --yes'
+alias co='copilot -p'
 
 source <(carapace _carapace)
