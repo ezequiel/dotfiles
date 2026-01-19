@@ -51,10 +51,10 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
   vim.schedule(function()
     vim.cmd('fclose!')
   end)
+  require('copilot.suggestion').dismiss()
   return '<C-c>'
 end, { silent = true, expr = true })
 
@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 
 vim.keymap.set('n', '+', '<C-a>', { noremap = true })
 vim.keymap.set('n', '-', '<C-x>', { noremap = true })
-vim.keymap.set('n', '<c-q>', '<cmd>q<cr>')
+vim.keymap.set('n', '<c-q>', '<cmd>q!<cr>')
 vim.keymap.set('n', '<C-j>', '<C-W>j')
 vim.keymap.set('n', '<C-k>', '<C-W>k')
 vim.keymap.set('n', '<C-h>', '<C-W>h')
@@ -115,7 +115,7 @@ vim.keymap.set('x', '<leader>go', function()
   )
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
 end)
-vim.keymap.set('n', '<leader>zo', function()
+vim.keymap.set({ 'n', 't' }, '<leader>zo', function()
   if vim.t.zoomed and vim.t.zoom_winrestcmd then
     vim.cmd(vim.t.zoom_winrestcmd)
     vim.t.zoomed = false
@@ -137,12 +137,6 @@ vim.keymap.set('v', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv
 vim.keymap.set('v', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
-vim.keymap.set('n', '[d', function()
-  vim.diagnostic.jump({ wrap = false, count = -1 })
-end)
-vim.keymap.set('n', ']d', function()
-  vim.diagnostic.jump({ wrap = false, count = 1 })
-end)
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -162,12 +156,8 @@ vim.opt.signcolumn = 'yes:2'
 vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.stl = "%{repeat('─',winwidth('.'))}"
 vim.opt.wrap = false
-vim.opt.pumheight = 10
 vim.opt.winborder = 'single'
-vim.opt.pumborder = 'single'
--- vim.opt.wrapscan = false
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -228,6 +218,7 @@ require('fzf-lua').setup({
     glob_separator = '%s%-%-',
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
   },
+  history = { cwd_only = true },
   winopts = {
     preview = {
       layout = 'vertical',
@@ -244,9 +235,7 @@ vim.keymap.set('n', '<D-k>', require('fzf-lua').global)
 vim.keymap.set('n', '<leader>re', require('fzf-lua').resume)
 vim.keymap.set('n', '<leader>gs', require('fzf-lua').git_status)
 vim.keymap.set('n', '<leader>ff', require('fzf-lua').files)
-vim.keymap.set('n', '<leader>fr', function()
-  require('fzf-lua').oldfiles({ include_current_session = true, cwd_only = true })
-end)
+vim.keymap.set('n', '<leader>fr', require('fzf-lua').history)
 vim.keymap.set('n', '<leader>rg', require('fzf-lua').live_grep)
 vim.keymap.set('n', '<leader>rw', require('fzf-lua').grep_cword)
 vim.keymap.set('x', '<leader>rv', require('fzf-lua').grep_visual)
@@ -257,7 +246,6 @@ vim.keymap.set('n', 'gi', require('fzf-lua').lsp_implementations)
 vim.keymap.set('n', 'gt', require('fzf-lua').lsp_typedefs)
 vim.keymap.set('n', 'gic', require('fzf-lua').lsp_incoming_calls)
 vim.keymap.set('n', 'goc', require('fzf-lua').lsp_outgoing_calls)
-vim.keymap.set('i', '<c-x><c-f>', require('fzf-lua').complete_file)
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -275,16 +263,12 @@ require('sidekick').setup({
     win = {
       keys = {
         prompt = { '<leader>os', 'prompt', mode = 'nt' },
-        hide_n = { '<c-c>', 'hide' },
-        hide_ctrl_q = { '<c-c>', 'hide' },
-        hide_ctrl_dot = { '<c-c>', 'hide', mode = 'nt' },
-        hide_ctrl_z = { '<c-c>', 'hide', mode = 'nt' },
       },
     },
   },
 })
 
-vim.keymap.set('n', '<leader>ot', function()
+vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
   require('sidekick.cli').toggle({ name = 'opencode' })
 end)
 
@@ -296,7 +280,7 @@ vim.keymap.set('n', '<leader>oA', function()
   require('sidekick.cli').send({ name = 'opencode', focus = true, msg = '{file}' })
 end)
 
-vim.keymap.set({ 'n', 'x' }, '<leader>os', require('sidekick.cli').prompt)
+vim.keymap.set({ 'n', 'x', 't' }, '<leader>os', require('sidekick.cli').prompt)
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -616,7 +600,7 @@ require('quicker').setup({
   trim_leading_whitespace = false,
   keys = {
     {
-      'r',
+      'R',
       function()
         require('quicker').refresh()
       end,
@@ -674,7 +658,7 @@ require('grug-far').setup({
     prevInput = { n = '<s-tab>' },
     previewLocation = false,
     qflist = { n = '<C-q>' },
-    refresh = { n = 'r' },
+    refresh = { n = 'R' },
     replace = { n = '<localleader>rr' },
     swapEngine = { n = '<localleader>ee' },
     swapReplacementInterpreter = false,
@@ -868,7 +852,7 @@ local lsp_opts = {
         experimental = {
           completion = {
             enableServerSideFuzzyMatch = true,
-            entriesLimit = 10,
+            entriesLimit = 1337,
           },
         },
       },
@@ -968,7 +952,7 @@ require('gitsigns').setup({
       if vim.wo.diff then
         vim.cmd.normal({ ']c', bang = true })
       else
-        gitsigns.nav_hunk('next', { wrap = false, target = 'all' })
+        gitsigns.nav_hunk('next', { target = 'all' })
       end
     end)
 
@@ -976,7 +960,7 @@ require('gitsigns').setup({
       if vim.wo.diff then
         vim.cmd.normal({ '[c', bang = true })
       else
-        gitsigns.nav_hunk('prev', { wrap = false, target = 'all' })
+        gitsigns.nav_hunk('prev', { target = 'all' })
       end
     end)
 
@@ -1002,12 +986,6 @@ require('gitsigns').setup({
       gitsigns.blame_line({ full = true })
     end)
 
-    map('n', '<leader>hd', gitsigns.diffthis)
-
-    map('n', '<leader>hD', function()
-      gitsigns.diffthis('~')
-    end)
-
     map('n', '<leader>hQ', function()
       gitsigns.setqflist('all')
     end)
@@ -1019,73 +997,7 @@ require('gitsigns').setup({
 ----------------------------------------------------
 ----------------------------------------------------
 
-vim.g.coq_settings = {
-  auto_start = 'shut-up',
-  xdg = true,
-  match = { max_results = 10 },
-  keymap = {
-    recommended = false,
-    bigger_preview = 'K',
-    manual_complete_insertion_only = true,
-    jump_to_mark = '',
-  },
-  clients = {
-    buffers = { enabled = false },
-    lsp_inline = { enabled = false },
-    registers = { enabled = false },
-    snippets = { enabled = false },
-    tags = { enabled = false },
-    third_party = { enabled = false },
-    third_party_inline = { enabled = false },
-    tmux = { enabled = false },
-    tree_sitter = { enabled = false },
-    paths = { enabled = false, resolution = { 'file' } },
-  },
-  completion = {
-    always = false,
-    sticky_manual = true,
-  },
-  display = {
-    ghost_text = { enabled = false },
-    preview = {
-      enabled = true,
-      border = 'single',
-      positions = { north = 3, south = 2, west = 4, east = 1 },
-    },
-    statusline = { helo = false },
-    icons = { mode = 'none' },
-    mark_applied_notify = false,
-  },
-}
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  group = augroup,
-  callback = function(event)
-    local data = event.data
-    if not (data.spec.name == 'coq_nvim' and (data.kind == 'install' or data.kind == 'update')) then
-      return
-    end
-    vim.schedule(function()
-      vim.cmd('COQdeps')
-    end)
-  end,
-})
-
-vim.keymap.set('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
-vim.keymap.set('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], { expr = true, noremap = true })
-vim.keymap.set(
-  'i',
-  '<cr>',
-  [[pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"]],
-  { expr = true, silent = true }
-)
-
-vim.pack.add({ 'https://github.com/ms-jpq/coq_nvim' })
-
-----------------------------------------------------
-----------------------------------------------------
-
-vim.pack.add({ 'https://github.com/trevorhauter/gitportal.nvim' })
+vim.pack.add({ 'https://codeberg.org/trevorhauter/gitportal.nvim' })
 
 require('gitportal').setup({ always_include_current_line = true })
 
@@ -1093,13 +1005,6 @@ vim.keymap.set({ 'n', 'x' }, '<leader>gy', require('gitportal').copy_link_to_cli
 vim.keymap.set({ 'n', 'x' }, '<leader>gh', require('gitportal').open_file_in_browser)
 
 vim.keymap.set('n', 'gH', require('gitportal').open_file_in_neovim)
-
-vim.api.nvim_create_user_command('Gh', function()
-  vim.cmd('GitPortal open_link')
-end, {
-  nargs = '*',
-  complete = 'command',
-})
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -1112,7 +1017,58 @@ vim.cmd([[
   let g:vindent_motion_XX_ss = '[s'
   let g:vindent_object_XX_aI = 'ai'
   let g:vindent_object_XX_ii = 'ii'
-  let g:vindent_object_XX_ai = 'ai'
 ]])
 
 vim.pack.add({ 'https://github.com/jessekelighine/vindent.vim' })
+
+----------------------------------------------------
+----------------------------------------------------
+
+vim.pack.add({ { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('1.*') } })
+
+require('blink.cmp').setup({
+  sources = {
+    default = { 'lsp', 'path' },
+  },
+  fuzzy = { implementation = 'rust' },
+  keymap = {
+    preset = 'none',
+    ['<C-space>'] = { 'show', 'hide' },
+    ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
+    ['<C-n>'] = { 'select_next' },
+    ['<C-p>'] = { 'select_prev' },
+    ['<Down>'] = { 'select_next', 'fallback' },
+    ['<Up>'] = { 'select_prev', 'fallback' },
+    ['<CR>'] = { 'accept', 'fallback' },
+  },
+  signature = {
+    enabled = true,
+    window = {
+      show_documentation = false,
+      scrollbar = true,
+    },
+  },
+  completion = {
+    list = {
+      selection = {
+        auto_insert = false,
+        preselect = false,
+      },
+    },
+    menu = {
+      auto_show = true,
+      draw = {
+        columns = {
+          { 'label' },
+          { 'kind', 'label_description', gap = 1 },
+        },
+        components = {
+          label = { ellipsis = true, width = { max = 38, fill = false } },
+          kind = { width = { fill = true } },
+          label_description = { ellipsis = true, width = { max = 38, fill = false } },
+        },
+      },
+    },
+    accept = { auto_brackets = { enabled = false } },
+  },
+})
