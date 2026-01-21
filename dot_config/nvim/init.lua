@@ -265,6 +265,10 @@ require('sidekick').setup({
         prompt = { '<leader>os', 'prompt', mode = 'nt' },
       },
     },
+    mux = {
+      backend = 'zellij',
+      enabled = true,
+    },
   },
 })
 
