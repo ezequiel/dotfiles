@@ -220,6 +220,12 @@ require('fzf-lua').setup({
   },
   history = { cwd_only = true },
   winopts = {
+    on_create = function()
+      vim.opt.timeoutlen = 0
+    end,
+    on_close = function()
+      vim.opt.timeoutlen = 1000
+    end,
     preview = {
       layout = 'vertical',
     },
