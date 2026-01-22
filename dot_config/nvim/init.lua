@@ -217,6 +217,10 @@ require('fzf-lua').setup({
     glob_flag = '--iglob',
     glob_separator = '%s%-%-',
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
+    actions = {
+      ['ctrl-g'] = false,
+      -- ['ctrl-g'] = { actions.grep_lgrep },
+    },
   },
   history = { cwd_only = true },
   winopts = {
