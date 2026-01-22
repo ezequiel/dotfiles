@@ -942,7 +942,7 @@ vim.pack.add({
 })
 
 require('gitsigns').setup({
-  sign_priority = 1337,
+  sign_priority = 0,
   current_line_blame = true,
   current_line_blame_opts = {
     delay = 0,
