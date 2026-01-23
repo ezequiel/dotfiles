@@ -505,7 +505,23 @@ require('Comment').setup({
 vim.pack.add({
   'https://github.com/okuuva/auto-save.nvim',
 })
+
 require('auto-save').setup({
+  trigger_events = {
+    immediate_save = {
+      'BufLeave',
+      'CursorHold',
+      'FocusLost',
+      'QuitPre',
+      'VimSuspend',
+    },
+    defer_save = {
+      'InsertLeave',
+      'TextChanged',
+      'TextChangedP',
+    },
+    cancel_deferred_save = { 'InsertEnter' },
+  },
   write_all_buffers = true,
 })
 
@@ -540,12 +556,19 @@ require('conform').setup({
   },
   notify_on_error = false,
   log_level = vim.log.levels.OFF,
-  default_format_opts = {
-    quiet = true,
-    async = true,
-    undojoin = true,
-  },
-  format_after_save = {},
+})
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'AutoSaveWritePost',
+  group = augroup,
+  callback = function(event)
+    require('conform').format({
+      async = true,
+      bufnr = event.buf,
+      quiet = true,
+      undojoin = true,
+    })
+  end,
 })
 
 ----------------------------------------------------
