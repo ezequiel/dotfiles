@@ -262,8 +262,11 @@ require('fzf-lua').setup({
   },
   grep = {
     rg_glob = true,
-    glob_flag = '--iglob',
-    glob_separator = '%s%-%-',
+    rg_glob_fn = function(query, opts)
+      local search_query, glob_str = query:match('(.*)' .. opts.glob_separator .. '(.*)')
+      local glob_args = glob_str:gsub('^%s+', ''):gsub('-', '%-') .. ' '
+      return search_query, glob_args
+    end,
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
     actions = {
       ['ctrl-g'] = false,
