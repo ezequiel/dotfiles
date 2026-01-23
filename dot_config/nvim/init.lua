@@ -194,11 +194,53 @@ vim.pack.add({
 })
 
 require('fzf-lua').setup({
+  actions = {
+    files = {
+      ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
+      ['ctrl-s'] = require('fzf-lua').actions.file_split,
+      ['ctrl-v'] = require('fzf-lua').actions.file_vsplit,
+      ['ctrl-t'] = false,
+      ['alt-q'] = false,
+      ['alt-Q'] = false,
+      ['alt-i'] = false,
+      ['alt-h'] = false,
+      ['alt-f'] = false,
+      -- ['ctrl-r'] = require('fzf-lua').actions.toggle_ignore,
+    },
+  },
   keymap = {
+    builtin = {
+      ['<M-Esc>'] = 'hide',
+      ['<F1>'] = false,
+      ['<F2>'] = false,
+      ['<F3>'] = false,
+      ['<F4>'] = false,
+      ['<F5>'] = false,
+      ['<F6>'] = false,
+      ['<F7>'] = false,
+      ['<F8>'] = false,
+      ['<F9>'] = false,
+      ['<S-Left>'] = false,
+      ['<S-down>'] = false,
+      ['<S-up>'] = false,
+      ['<M-S-down>'] = false,
+      ['<M-S-up>'] = false,
+    },
     fzf = {
-      ['ctrl-q'] = 'select-all+accept',
+      ['alt-G'] = false,
+      ['alt-a'] = false,
+      ['alt-g'] = false,
+      ['ctrl-a'] = false,
+      ['ctrl-b'] = false,
       ['ctrl-d'] = 'half-page-down',
+      ['ctrl-e'] = false,
+      ['ctrl-f'] = false,
       ['ctrl-u'] = 'half-page-up',
+      ['ctrl-z'] = false,
+      ['f3'] = false,
+      ['f4'] = false,
+      ['shift-down'] = false,
+      ['shift-up'] = false,
     },
   },
   defaults = {
@@ -206,6 +248,12 @@ require('fzf-lua').setup({
     follow = true,
     git_icons = false,
     file_icons = false,
+    actions = {
+      ['ctrl-q'] = {
+        fn = require('fzf-lua').actions.file_sel_to_qf,
+        prefix = 'select-all',
+      },
+    },
   },
   lsp = {
     code_actions = {
@@ -219,7 +267,6 @@ require('fzf-lua').setup({
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
     actions = {
       ['ctrl-g'] = false,
-      -- ['ctrl-g'] = { actions.grep_lgrep },
     },
   },
   history = { cwd_only = true },
@@ -247,8 +294,14 @@ vim.keymap.set('n', '<leader>gs', require('fzf-lua').git_status)
 vim.keymap.set('n', '<leader>ff', require('fzf-lua').files)
 vim.keymap.set('n', '<leader>fr', require('fzf-lua').history)
 vim.keymap.set('n', '<leader>rg', require('fzf-lua').live_grep)
-vim.keymap.set('n', '<leader>rw', require('fzf-lua').grep_cword)
-vim.keymap.set('x', '<leader>rv', require('fzf-lua').grep_visual)
+vim.keymap.set({ 'n', 'x' }, '<leader>rw', function()
+  local mode = vim.fn.mode()
+  if mode:match('^v') or mode == 'V' or mode == '\22' then
+    require('fzf-lua').grep_visual()
+  else
+    require('fzf-lua').grep_cword()
+  end
+end)
 vim.keymap.set({ 'x', 'n' }, '<leader>rb', require('fzf-lua').blines)
 vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions)
 vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references)
