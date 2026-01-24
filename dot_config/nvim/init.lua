@@ -562,6 +562,10 @@ vim.api.nvim_create_autocmd('User', {
   pattern = 'AutoSaveWritePost',
   group = augroup,
   callback = function(event)
+    if not vim.bo[event.buf].modifiable then
+      return
+    end
+
     require('conform').format({
       async = true,
       bufnr = event.buf,
