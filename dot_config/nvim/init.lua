@@ -194,6 +194,8 @@ vim.pack.add({
 })
 
 require('fzf-lua').setup({
+  fzf_bin = 'sk',
+  fzf_opts = { ['--algo'] = 'frizbee', ['--info'] = 'hidden' },
   actions = {
     files = {
       ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
