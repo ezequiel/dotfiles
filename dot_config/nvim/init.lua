@@ -266,21 +266,7 @@ require('fzf-lua').setup({
     rg_glob = true,
     rg_glob_fn = function(query, opts)
       local search_query, glob_str = query:match('(.*)' .. opts.glob_separator .. '(.*)')
-      if not glob_str then
-        return query, ''
-      end
-      -- split into tokens and wrap non-flag tokens in single quotes
-      local args = {}
-      for token in glob_str:gmatch('%S+') do
-        if token:match('^%-.+') then
-          table.insert(args, token)
-        else
-          -- escape single quotes inside the token for shell safety
-          local t = token:gsub("'", "'\\''")
-          table.insert(args, "'" .. t .. "'")
-        end
-      end
-      local glob_args = table.concat(args, ' ')
+      local glob_args = glob_str:gsub('^%s+', ''):gsub('-', '%-') .. ' '
       return search_query, glob_args
     end,
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
