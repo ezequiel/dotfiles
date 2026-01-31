@@ -84,7 +84,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
 
 vim.keymap.set('n', '+', '<C-a>', { noremap = true })
 vim.keymap.set('n', '-', '<C-x>', { noremap = true })
-vim.keymap.set('n', '<c-q>', '<cmd>q!<cr>')
+vim.keymap.set({ 'n', 'i', 'x' }, '<c-q>', '<cmd>q!<cr>')
 vim.keymap.set('n', '<C-j>', '<C-W>j')
 vim.keymap.set('n', '<C-k>', '<C-W>k')
 vim.keymap.set('n', '<C-h>', '<C-W>h')
