@@ -299,13 +299,13 @@ vim.keymap.set('n', '<leader>gs', require('fzf-lua').git_status)
 vim.keymap.set('n', '<leader>ff', require('fzf-lua').files)
 vim.keymap.set('n', '<leader>fr', require('fzf-lua').history)
 vim.keymap.set('n', '<leader>rg', require('fzf-lua').live_grep)
-vim.keymap.set({ 'n', 'x' }, '<leader>rw', function()
-  local mode = vim.fn.mode()
-  if mode:match('^v') or mode == 'V' or mode == '\22' then
-    require('fzf-lua').grep_visual()
-  else
-    require('fzf-lua').grep_cword()
-  end
+vim.keymap.set('n', '<leader>rw', function()
+  require('fzf-lua').live_grep({ search = vim.fn.expand('<cword>') })
+end)
+vim.keymap.set('x', '<leader>rw', function()
+  local search =
+    vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
+  require('fzf-lua').live_grep({ search = search })
 end)
 vim.keymap.set({ 'x', 'n' }, '<leader>rb', require('fzf-lua').blines)
 vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions)
