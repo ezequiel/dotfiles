@@ -265,9 +265,8 @@ require('fzf-lua').setup({
   grep = {
     rg_glob = true,
     rg_glob_fn = function(query, opts)
-      local search_query, glob_str = query:match('(.*)' .. opts.glob_separator .. '(.*)')
-      local glob_args = glob_str:gsub('^%s+', ''):gsub('-', '%-') .. ' '
-      return search_query, glob_args
+      local regex, flags = query:match('^(.-)%s%-%-(.*)$')
+      return (regex or query), flags
     end,
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
     actions = {
@@ -300,12 +299,25 @@ vim.keymap.set('n', '<leader>ff', require('fzf-lua').files)
 vim.keymap.set('n', '<leader>fr', require('fzf-lua').history)
 vim.keymap.set('n', '<leader>rg', require('fzf-lua').live_grep)
 vim.keymap.set('n', '<leader>rw', function()
-  require('fzf-lua').live_grep({ search = vim.fn.expand('<cword>') })
+  require('fzf-lua').live_grep({
+    query = vim.fn.expand('<cword>'),
+    rg_opts = '-w ' .. require('fzf-lua').defaults.grep.rg_opts,
+  })
 end)
 vim.keymap.set('x', '<leader>rw', function()
   local search =
     vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
-  require('fzf-lua').live_grep({ search = search })
+  require('fzf-lua').live_grep({
+    search = search,
+    rg_opts = '-w ' .. require('fzf-lua').defaults.grep.rg_opts,
+  })
+end)
+vim.keymap.set('x', '<leader>rv', function()
+  local search =
+    vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
+  require('fzf-lua').live_grep({
+    search = search,
+  })
 end)
 vim.keymap.set({ 'x', 'n' }, '<leader>rb', require('fzf-lua').blines)
 vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions)
