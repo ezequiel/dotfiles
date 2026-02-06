@@ -345,6 +345,10 @@ require('sidekick').setup({
     win = {
       keys = {
         prompt = { '<leader>os', 'prompt', mode = 'nt' },
+        hide_n = { '<c-c>', 'hide', mode = 'nt' },
+        hide_ctrl_q = { '<c-c>', 'hide', mode = 'nt' },
+        hide_ctrl_dot = { '<c-c>', 'hide', mode = 'nt' },
+        hide_ctrl_z = { '<c-c>', 'hide', mode = 'nt' },
       },
     },
     mux = {
