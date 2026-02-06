@@ -355,6 +355,9 @@ require('sidekick').setup({
       backend = 'zellij',
       enabled = true,
     },
+    tools = {
+      claude = { cmd = { 'cc' } },
+    },
   },
 })
 
