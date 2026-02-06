@@ -246,6 +246,7 @@ require('fzf-lua').setup({
     },
   },
   defaults = {
+    prompt = '→ ',
     hidden = true,
     follow = true,
     git_icons = false,
