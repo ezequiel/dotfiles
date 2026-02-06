@@ -1139,6 +1139,9 @@ vim.pack.add({ 'https://github.com/jessekelighine/vindent.vim' })
 vim.pack.add({ { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('1.*') } })
 
 require('blink.cmp').setup({
+  enabled = function()
+    return not vim.tbl_contains({ 'nofile', 'prompt' }, vim.bo.buftype) and vim.b.completion ~= false
+  end,
   sources = {
     default = { 'lsp', 'path' },
   },
