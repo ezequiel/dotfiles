@@ -362,7 +362,7 @@ require('sidekick').setup({
 })
 
 vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
-  require('sidekick.cli').toggle({ name = 'opencode' })
+  require('sidekick.cli').toggle({ name = 'opencode', focus = true })
 end)
 
 vim.keymap.set({ 'n', 'x' }, '<leader>oa', function()
