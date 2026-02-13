@@ -1,33 +1,42 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-opus-4-6",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-opus-4-6",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "true",
-    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-    "DISABLE_BUG_COMMAND": "1",
-    "CLAUDE_CODE_HIDE_ACCOUNT_INFO": "1",
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
-    "DISABLE_COST_WARNINGS": "1",
-    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false",
+    "CLAUDE_CODE_HIDE_ACCOUNT_INFO": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_COST_WARNINGS": "1"
   },
   "permissions": {
     "deny": [
-      "Bash(git *)",
+      "Bash(git push *)",
+      "Bash(git reset *)",
+      "Bash(git checkout *)",
+      "Bash(git restore *)",
+      "Bash(git clean *)",
+      "Bash(git branch *)",
+      "Bash(git commit *)",
       "Bash(rm *)",
       "Bash(sudo *)"
     ],
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "plan"
   },
   "model": "claude-opus-4-6",
+  "outputStyle": "linus-torvalds",
   "spinnerTipsEnabled": false,
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
-      "Processing"
+      "Eating the cats and dogs"
     ]
   },
   "prefersReducedMotion": true,
+  "skipDangerousModePermissionPrompt": true,
   "showTurnDuration": false,
-  "terminalProgressBarEnabled": false,
-  "skipDangerousModePermissionPrompt": true
+  "terminalProgressBarEnabled": false
 }
