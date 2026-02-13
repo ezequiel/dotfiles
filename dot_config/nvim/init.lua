@@ -143,9 +143,17 @@ vim.keymap.set('x', '>', '>gv')
 
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
+vim.opt.backup = true
+
+local backup_dir = vim.fn.stdpath('state') .. '/backup//'
+vim.opt.backup = true
+vim.opt.backupdir = backup_dir
+
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
+  vim.fn.mkdir(backup_dir:gsub('//$', ''), 'p')
 end)
+
 vim.opt.cmdheight = 0
 vim.opt.ignorecase = true
 vim.opt.modified = true
@@ -194,8 +202,8 @@ vim.pack.add({
 })
 
 require('fzf-lua').setup({
-  fzf_bin = 'sk',
-  fzf_opts = { ['--algo'] = 'frizbee', ['--info'] = 'hidden' },
+  -- fzf_bin = 'sk',
+  -- fzf_opts = { ['--algo'] = 'frizbee', ['--info'] = 'hidden' },
   actions = {
     files = {
       ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
@@ -311,7 +319,7 @@ vim.keymap.set('x', '<leader>rw', function()
     vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
   require('fzf-lua').live_grep({
     search = search,
-    rg_opts = '-w ' .. require('fzf-lua').defaults.grep.rg_opts,
+    rg_opts = require('fzf-lua').defaults.grep.rg_opts,
   })
 end)
 vim.keymap.set('x', '<leader>rv', function()
@@ -344,11 +352,14 @@ require('sidekick').setup({
     picker = 'fzf-lua',
     win = {
       keys = {
+        buffers = { '<leader>fb', 'buffers', mode = 'nt' },
+        files = { '<leader>ff', 'files', mode = 'nt' },
         prompt = { '<leader>os', 'prompt', mode = 'nt' },
         hide_n = { '<c-c>', 'hide', mode = 'nt' },
         hide_ctrl_q = { '<c-c>', 'hide', mode = 'nt' },
         hide_ctrl_dot = { '<c-c>', 'hide', mode = 'nt' },
         hide_ctrl_z = { '<c-c>', 'hide', mode = 'nt' },
+        stopinsert = { '<c-[>', 'stopinsert', mode = 't' },
       },
     },
     mux = {
@@ -356,21 +367,34 @@ require('sidekick').setup({
       enabled = true,
     },
     tools = {
-      claude = { cmd = { 'cc' } },
+      claude = {
+        env = {
+          NODE_TLS_REJECT_UNAUTHORIZED = 0,
+        },
+      },
+    },
+  },
+  copilot = {
+    status = {
+      level = vim.log.levels.OFF,
     },
   },
 })
 
 vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
-  require('sidekick.cli').toggle({ name = 'opencode', focus = true })
+  require('sidekick.cli').toggle({ name = 'claude', focus = true })
 end)
 
+-- vim.keymap.set({ 'n', 't' }, '<leader>on', function()
+--   require('sidekick.cli').({ name = 'claude' })
+-- end)
+
 vim.keymap.set({ 'n', 'x' }, '<leader>oa', function()
-  require('sidekick.cli').send({ name = 'opencode', focus = true, msg = '{this}' })
+  require('sidekick.cli').send({ name = 'claude', focus = true, msg = '{this}' })
 end)
 
 vim.keymap.set('n', '<leader>oA', function()
-  require('sidekick.cli').send({ name = 'opencode', focus = true, msg = '{file}' })
+  require('sidekick.cli').send({ name = 'claude', focus = true, msg = '{file}' })
 end)
 
 vim.keymap.set({ 'n', 'x', 't' }, '<leader>os', require('sidekick.cli').prompt)
