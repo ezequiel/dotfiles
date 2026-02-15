@@ -54,7 +54,8 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.schedule(function()
     vim.cmd('fclose!')
   end)
-  require('copilot.suggestion').dismiss()
+  local copilot = package.loaded['copilot.suggestion']
+  if copilot then copilot.dismiss() end
   return '<C-c>'
 end, { silent = true, expr = true })
 
@@ -647,37 +648,43 @@ require('nvim-surround').setup()
 ----------------------------------------------------
 ----------------------------------------------------
 
-vim.pack.add({
-  'https://github.com/zbirenbaum/copilot.lua',
-})
-require('copilot').setup({
-  server_opts_overrides = {
-    settings = {
-      telemetry = {
-        telemetryLevel = 'off',
+vim.api.nvim_create_autocmd('InsertEnter', {
+  once = true,
+  callback = function()
+    vim.pack.add({
+      'https://github.com/zbirenbaum/copilot.lua',
+    })
+
+    require('copilot').setup({
+      server_opts_overrides = {
+        settings = {
+          telemetry = {
+            telemetryLevel = 'off',
+          },
+          advanced = {
+            listCount = 1,
+            inlineSuggestCount = 1,
+          },
+        },
       },
-      advanced = {
-        listCount = 1,
-        inlineSuggestCount = 1,
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = '<tab>',
+          dismiss = false,
+          next = false,
+          prev = false,
+        },
       },
-    },
-  },
-  suggestion = {
-    auto_trigger = true,
-    keymap = {
-      accept = '<tab>',
-      dismiss = false,
-      next = false,
-      prev = false,
-    },
-  },
-  panel = { enabled = false },
-  nes = { enabled = false },
-  server = {
-    type = 'nodejs',
-    custom_server_filepath = vim.env.XDG_DATA_HOME
-      .. '/mise/installs/npm-github-copilot-language-server/latest/bin/copilot-language-server',
-  },
+      panel = { enabled = false },
+      nes = { enabled = false },
+      server = {
+        type = 'nodejs',
+        custom_server_filepath = vim.env.XDG_DATA_HOME
+          .. '/mise/installs/npm-github-copilot-language-server/latest/bin/copilot-language-server',
+      },
+    })
+  end,
 })
 
 ----------------------------------------------------
