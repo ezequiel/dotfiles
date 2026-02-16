@@ -205,55 +205,16 @@ vim.pack.add({
 })
 
 require('fzf-lua').setup({
-  -- fzf_bin = 'sk',
-  -- fzf_opts = { ['--algo'] = 'frizbee', ['--info'] = 'hidden' },
   actions = {
     files = {
-      ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
       ['ctrl-s'] = require('fzf-lua').actions.file_split,
       ['ctrl-v'] = require('fzf-lua').actions.file_vsplit,
-      ['ctrl-t'] = false,
-      ['alt-q'] = false,
-      ['alt-Q'] = false,
-      ['alt-i'] = false,
-      ['alt-h'] = false,
-      ['alt-f'] = false,
-      -- ['ctrl-r'] = require('fzf-lua').actions.toggle_ignore,
     },
   },
   keymap = {
-    builtin = {
-      ['<M-Esc>'] = 'hide',
-      ['<F1>'] = false,
-      ['<F2>'] = false,
-      ['<F3>'] = false,
-      ['<F4>'] = false,
-      ['<F5>'] = false,
-      ['<F6>'] = false,
-      ['<F7>'] = false,
-      ['<F8>'] = false,
-      ['<F9>'] = false,
-      ['<S-Left>'] = false,
-      ['<S-down>'] = false,
-      ['<S-up>'] = false,
-      ['<M-S-down>'] = false,
-      ['<M-S-up>'] = false,
-    },
     fzf = {
-      ['alt-G'] = false,
-      ['alt-a'] = false,
-      ['alt-g'] = false,
-      ['ctrl-a'] = false,
-      ['ctrl-b'] = false,
       ['ctrl-d'] = 'half-page-down',
-      ['ctrl-e'] = false,
-      ['ctrl-f'] = false,
       ['ctrl-u'] = 'half-page-up',
-      ['ctrl-z'] = false,
-      ['f3'] = false,
-      ['f4'] = false,
-      ['shift-down'] = false,
-      ['shift-up'] = false,
     },
   },
   defaults = {
@@ -270,6 +231,9 @@ require('fzf-lua').setup({
       ['ctrl-h'] = { require('fzf-lua').actions.toggle_hidden },
       ['ctrl-i'] = { require('fzf-lua').actions.toggle_ignore },
     },
+  },
+  files = {
+    cwd_prompt = false,
   },
   lsp = {
     code_actions = {
