@@ -267,6 +267,8 @@ require('fzf-lua').setup({
         fn = require('fzf-lua').actions.file_sel_to_qf,
         prefix = 'select-all',
       },
+      ['ctrl-h'] = { require('fzf-lua').actions.toggle_hidden },
+      ['ctrl-i'] = { require('fzf-lua').actions.toggle_ignore },
     },
   },
   lsp = {
@@ -281,9 +283,6 @@ require('fzf-lua').setup({
       return (regex or query), flags
     end,
     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
-    actions = {
-      ['ctrl-g'] = false,
-    },
   },
   history = { cwd_only = true },
   winopts = {
