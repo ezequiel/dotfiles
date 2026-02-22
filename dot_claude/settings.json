@@ -35,8 +35,13 @@
       "Eating the cats and dogs"
     ]
   },
-  "prefersReducedMotion": true,
   "skipDangerousModePermissionPrompt": true,
   "showTurnDuration": false,
-  "terminalProgressBarEnabled": false
+  "terminalProgressBarEnabled": false,
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  }
 }
