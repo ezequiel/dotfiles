@@ -1,22 +1,20 @@
 vim.loader.enable()
 
-vim.cmd([[
-  let g:loaded_gzip = v:true
-  let g:loaded_netrw = v:true
-  let g:loaded_netrwPlugin = v:true
-  let g:loaded_remote_plugins = v:true
-  let g:loaded_tarPlugin = v:true
-  let g:loaded_tutor_mode_plugin = v:true
-  let g:loaded_zipPlugin = v:true
-  let g:loaded_man = v:true
-  let g:loaded_remote_file_loader = v:true
-  let g:loaded_spellfile_plugin = v:true
-  let g:loaded_shada_plugin = v:true
-  let g:loaded_2html_plugin = v:true
-  let g:editorconfig = v:false
-  let g:did_install_default_menus = v:true
-  let g:did_install_syntax_menu = v:true
-]])
+vim.g.loaded_gzip = true
+vim.g.loaded_netrw = true
+vim.g.loaded_netrwPlugin = true
+vim.g.loaded_remote_plugins = true
+vim.g.loaded_tarPlugin = true
+vim.g.loaded_tutor_mode_plugin = true
+vim.g.loaded_zipPlugin = true
+vim.g.loaded_man = true
+vim.g.loaded_remote_file_loader = true
+vim.g.loaded_spellfile_plugin = true
+vim.g.loaded_shada_plugin = true
+vim.g.loaded_2html_plugin = true
+vim.g.editorconfig = false
+vim.g.did_install_default_menus = true
+vim.g.did_install_syntax_menu = true
 
 vim.diagnostic.config({
   signs = {
@@ -64,7 +62,7 @@ end, { silent = true, expr = true })
 ----------------------------------------------------
 ----------------------------------------------------
 
-local session = '/tmp/_session_restart.vim'
+local session = vim.fn.stdpath('state') .. '/session_restart.vim'
 
 vim.keymap.set('n', '<D-r>', function()
   vim.cmd.mksession({ session, bang = true })
@@ -108,12 +106,14 @@ vim.keymap.set('n', ']c', function()
   end)
 end)
 vim.keymap.set('n', '<leader>go', function()
-  vim.ui.open(('https://google.com/search?q=%s'):format(vim.fn.expand('<cword>')))
+  vim.ui.open(('https://google.com/search?q=%s'):format(vim.uri_encode(vim.fn.expand('<cword>'))))
 end)
 vim.keymap.set('x', '<leader>go', function()
   vim.ui.open(
     ('https://google.com/search?q=%s'):format(
-      vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
+      vim.uri_encode(
+        vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
+      )
     )
   )
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
@@ -136,8 +136,8 @@ vim.keymap.set('n', '<D-S-j>', "<cmd>execute 'move .+' . v:count1<cr>==")
 vim.keymap.set('n', '<D-S-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==")
 vim.keymap.set('i', '<D-S-j>', '<esc><cmd>m .+1<cr>==gi')
 vim.keymap.set('i', '<D-S-k>', '<esc><cmd>m .-2<cr>==gi')
-vim.keymap.set('v', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv")
-vim.keymap.set('v', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
+vim.keymap.set('x', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv")
+vim.keymap.set('x', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
 
@@ -149,7 +149,6 @@ vim.opt.autowriteall = true
 vim.opt.backup = true
 
 local backup_dir = vim.fn.stdpath('state') .. '/backup//'
-vim.opt.backup = true
 vim.opt.backupdir = backup_dir
 
 vim.schedule(function()
@@ -159,14 +158,13 @@ end)
 
 vim.opt.cmdheight = 0
 vim.opt.ignorecase = true
-vim.opt.modified = true
-vim.opt.mouse = ''
 vim.opt.ruler = false
 vim.opt.shortmess:append('I')
 vim.opt.signcolumn = 'yes:2'
 vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.tabstop = 2
 vim.opt.wrap = false
 vim.opt.winborder = 'single'
 
@@ -224,11 +222,11 @@ require('fzf-lua').setup({
     git_icons = false,
     file_icons = false,
     actions = {
+      ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
       ['ctrl-q'] = {
         fn = require('fzf-lua').actions.file_sel_to_qf,
         prefix = 'select-all',
       },
-      ['ctrl-h'] = { require('fzf-lua').actions.toggle_hidden },
       ['ctrl-i'] = { require('fzf-lua').actions.toggle_ignore },
     },
   },
@@ -267,7 +265,7 @@ require('fzf-lua').setup({
 
 require('fzf-lua').register_ui_select()
 
-vim.keymap.set('n', '<D-k>', require('fzf-lua').global)
+vim.keymap.set('n', '<leader>bi', require('fzf-lua').builtin)
 vim.keymap.set('n', '<leader>re', require('fzf-lua').resume)
 vim.keymap.set('n', '<leader>gs', require('fzf-lua').git_status)
 vim.keymap.set('n', '<leader>ff', require('fzf-lua').files)
@@ -325,7 +323,6 @@ require('sidekick').setup({
         hide_ctrl_q = { '<c-c>', 'hide', mode = 'nt' },
         hide_ctrl_dot = { '<c-c>', 'hide', mode = 'nt' },
         hide_ctrl_z = { '<c-c>', 'hide', mode = 'nt' },
-        stopinsert = { '<c-[>', 'stopinsert', mode = 't' },
       },
     },
     mux = {
@@ -350,10 +347,6 @@ require('sidekick').setup({
 vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
   require('sidekick.cli').toggle({ name = 'claude', focus = true })
 end)
-
--- vim.keymap.set({ 'n', 't' }, '<leader>on', function()
---   require('sidekick.cli').({ name = 'claude' })
--- end)
 
 vim.keymap.set({ 'n', 'x' }, '<leader>oa', function()
   require('sidekick.cli').send({ name = 'claude', focus = true, msg = '{this}' })
@@ -431,37 +424,6 @@ vim.keymap.set('x', '<leader>M', function()
   require('multicursor-nvim').matchCursors(pattern)
 end)
 vim.keymap.set('n', '<leader>gv', require('multicursor-nvim').restoreCursors)
-
-----------------------------------------------------
-----------------------------------------------------
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  group = augroup,
-  callback = function(event)
-    local data = event.data
-    if not (data.spec.name == 'nvim-redraft' and (data.kind == 'install' or data.kind == 'update')) then
-      return
-    end
-    vim.system({ 'bash', '-c', 'npm ci --ignore-scripts && npm run build' }, {
-      cwd = data.path .. '/ts',
-    })
-  end,
-})
-
-vim.pack.add({
-  'https://github.com/jim-at-jibba/nvim-redraft',
-})
-
-require('nvim-redraft').setup({
-  llm = { provider = 'copilot' },
-})
-
-vim.keymap.set('x', '<leader>aa', require('nvim-redraft').edit)
-
-vim.keymap.set('n', '<leader>aa', function()
-  vim.cmd('normal! V')
-  require('nvim-redraft').edit()
-end)
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -563,9 +525,9 @@ require('conform').setup({
     typescriptreact = { 'prettier' },
     yaml = { 'yamlfmt' },
     toml = { 'taplo' },
-    sh = { 'shellcheck', 'shfmt' },
-    bash = { 'shellcheck', 'shfmt' },
-    zsh = { 'shellcheck', 'shfmt' },
+    sh = { 'shfmt' },
+    bash = { 'shfmt' },
+    zsh = { 'shfmt' },
   },
   notify_on_error = false,
   log_level = vim.log.levels.OFF,
@@ -583,7 +545,6 @@ vim.api.nvim_create_autocmd('User', {
       async = true,
       bufnr = event.buf,
       quiet = true,
-      undojoin = true,
     })
   end,
 })
@@ -688,10 +649,7 @@ vim.pack.add({
   'https://github.com/kevinhwang91/nvim-ufo',
 })
 
-vim.opt.foldcolumn = '0'
-vim.opt.foldlevel = 1337
-vim.opt.foldlevelstart = 1337
-vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99
 
 require('ufo').setup({
   provider_selector = function()
@@ -793,7 +751,7 @@ vim.api.nvim_create_autocmd('FileType', {
   group = augroup,
   pattern = 'grug-far',
   callback = function()
-    vim.opt.signcolumn = 'no'
+    vim.opt_local.signcolumn = 'no'
     vim.keymap.set('i', '<CR>', '<cmd>stopinsert<CR>', { buffer = true })
   end,
 })
@@ -912,7 +870,7 @@ local lsp_opts = {
       experimental = {
         useFlatConfig = true,
       },
-      run = 'onSave',
+      run = 'onType',
       workingDirectory = {
         mode = 'auto',
       },
@@ -952,7 +910,7 @@ local lsp_opts = {
         },
         telemetry = { enable = false },
         workspace = {
-          library = vim.api.nvim_get_runtime_file('', true),
+          library = { vim.env.VIMRUNTIME },
         },
       },
     },
@@ -1084,11 +1042,11 @@ require('gitsigns').setup({
 
     map('n', '<leader>hr', gitsigns.reset_hunk)
 
-    map('v', '<leader>hs', function()
+    map('x', '<leader>hs', function()
       gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
     end)
 
-    map('v', '<leader>hr', function()
+    map('x', '<leader>hr', function()
       gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
     end)
 
