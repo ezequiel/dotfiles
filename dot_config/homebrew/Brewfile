@@ -1,6 +1,9 @@
 tap "jnsahaj/lumen"
 brew "jnsahaj/lumen/lumen"
 
+tap "neovim/neovim"
+brew "neovim/neovim/neovim", args: ["HEAD"]
+
 brew "carapace"
 brew "chezmoi"
 brew "mise"
