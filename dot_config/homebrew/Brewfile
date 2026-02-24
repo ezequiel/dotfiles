@@ -6,6 +6,7 @@ brew "neovim/neovim/neovim", args: ["HEAD"]
 
 brew "carapace"
 brew "chezmoi"
+brew "git-absorb"
 brew "mise"
 brew "mpv"
 brew "msedit"
