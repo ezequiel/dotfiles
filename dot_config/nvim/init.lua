@@ -131,7 +131,6 @@ end)
 vim.keymap.set('n', '<leader>ds', function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end)
-vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float)
 vim.keymap.set('n', '<D-S-j>', "<cmd>execute 'move .+' . v:count1<cr>==")
 vim.keymap.set('n', '<D-S-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==")
 vim.keymap.set('i', '<D-S-j>', '<esc><cmd>m .+1<cr>==gi')
@@ -295,11 +294,12 @@ vim.keymap.set('x', '<leader>rv', function()
 end)
 vim.keymap.set({ 'x', 'n' }, '<leader>rb', require('fzf-lua').blines)
 vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions)
-vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references)
-vim.keymap.set('n', 'gi', require('fzf-lua').lsp_implementations)
-vim.keymap.set('n', 'gt', require('fzf-lua').lsp_typedefs)
 vim.keymap.set('n', 'gic', require('fzf-lua').lsp_incoming_calls)
 vim.keymap.set('n', 'goc', require('fzf-lua').lsp_outgoing_calls)
+
+vim.keymap.set('n', 'gri', require('fzf-lua').lsp_implementations)
+vim.keymap.set('n', 'grr', require('fzf-lua').lsp_references)
+vim.keymap.set('n', 'grt', require('fzf-lua').lsp_typedefs)
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -974,9 +974,6 @@ vim.keymap.set('n', 'K', function()
     wrap = false,
   })
 end)
-
-vim.keymap.set({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action)
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 
 vim.keymap.set({ 'n', 'x' }, '<D-s-o>', function()
   vim.lsp.buf.selection_range(vim.v.count1)
