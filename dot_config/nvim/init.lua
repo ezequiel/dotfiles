@@ -329,6 +329,13 @@ require('sidekick').setup({
       backend = 'zellij',
       enabled = true,
     },
+    tools = {
+      claude = {
+        env = {
+          NODE_TLS_REJECT_UNAUTHORIZED = 0,
+        },
+      },
+    },
   },
   copilot = {
     status = {
