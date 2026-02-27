@@ -877,7 +877,7 @@ local lsp_opts = {
       experimental = {
         useFlatConfig = true,
       },
-      run = 'onType',
+      run = 'onSave',
       workingDirectory = {
         mode = 'auto',
       },
