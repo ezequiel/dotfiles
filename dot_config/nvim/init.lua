@@ -150,6 +150,7 @@ end)
 ----------------------------------------------------
 ----------------------------------------------------
 
+vim.opt.scrolloff = 1337
 vim.opt.autowrite = true
 vim.opt.autowriteall = true
 vim.opt.backup = true
@@ -834,17 +835,6 @@ vim.keymap.set('x', '*', function()
   require('lasterisk').search({ is_whole = false })
   require('hlslens').start()
 end)
-
-----------------------------------------------------
-----------------------------------------------------
-
-vim.pack.add({
-  'https://github.com/arnamak/stay-centered.nvim',
-})
-
-require('stay-centered').setup({
-  allow_scroll_move = false,
-})
 
 ----------------------------------------------------
 ----------------------------------------------------
