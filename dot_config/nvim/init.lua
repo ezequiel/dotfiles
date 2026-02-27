@@ -139,6 +139,13 @@ vim.keymap.set('x', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv
 vim.keymap.set('x', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
+vim.keymap.set('n', '<C-w>d', function()
+  local _, win = vim.diagnostic.open_float()
+  if not win then
+    return
+  end
+  vim.api.nvim_set_current_win(win)
+end)
 
 ----------------------------------------------------
 ----------------------------------------------------
