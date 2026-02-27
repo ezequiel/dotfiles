@@ -46,8 +46,6 @@
       "Bash(git rebase *)",
       "Bash(git push *)",
       "Bash(git reset *)",
-      "Bash(git checkout *)",
-      "Bash(git restore *)",
       "Bash(git clean *)",
       "Bash(git branch *)",
       "Bash(git commit *)",
