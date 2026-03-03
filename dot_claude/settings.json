@@ -41,16 +41,16 @@
       "Write"
     ],
     "deny": [
-      "Bash(chezmoi *)",
-      "Bash(git add *)",
-      "Bash(git rebase *)",
-      "Bash(git push *)",
-      "Bash(git reset *)",
-      "Bash(git clean *)",
-      "Bash(git branch *)",
-      "Bash(git commit *)",
-      "Bash(rm -r*)",
-      "Bash(sudo *)"
+      "Bash(*chezmoi*)",
+      "Bash(*git add*)",
+      "Bash(*git rebase*)",
+      "Bash(*git push*)",
+      "Bash(*git reset*)",
+      "Bash(*git clean*)",
+      "Bash(*git branch*)",
+      "Bash(*git commit*)",
+      "Bash(*rm -r*)",
+      "Bash(*sudo*)"
     ],
     "defaultMode": "plan"
   },
