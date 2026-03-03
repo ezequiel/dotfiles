@@ -174,24 +174,25 @@ vim.opt.splitright = true
 vim.opt.tabstop = 2
 vim.opt.wrap = false
 vim.opt.winborder = 'single'
+vim.opt.laststatus = 0
+vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
 
 ----------------------------------------------------
 ----------------------------------------------------
 
 vim.pack.add({
-  'https://github.com/folke/tokyonight.nvim',
+  'https://github.com/serhez/teide.nvim',
 })
 
-require('tokyonight').setup({
-  style = 'night',
-  plugins = {
-    auto = true,
-  },
+require('teide').setup({
+  style = 'darker',
 })
 
-vim.cmd('colorscheme tokyonight')
-vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#16161e', bg = '#1a1b26' })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#16161e', bg = '#1a1b26' })
+vim.cmd('colorscheme teide')
+
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#ffffff', bg = '#171B20' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#ffffff', bg = '#171B20' })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#ffffff', bg = '#171B20' })
 
 ----------------------------------------------------
 ----------------------------------------------------
