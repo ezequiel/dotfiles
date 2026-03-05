@@ -289,19 +289,12 @@ vim.keymap.set('n', '<leader>rw', function()
     rg_opts = '-w ' .. require('fzf-lua').defaults.grep.rg_opts,
   })
 end)
-vim.keymap.set('x', '<leader>rw', function()
-  local search =
-    vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
-  require('fzf-lua').live_grep({
-    search = search,
-    rg_opts = require('fzf-lua').defaults.grep.rg_opts,
-  })
-end)
 vim.keymap.set('x', '<leader>rv', function()
   local search =
     vim.trim(table.concat(vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() }), ' '))
   require('fzf-lua').live_grep({
     search = search,
+    rg_opts = require('fzf-lua').defaults.grep.rg_opts,
   })
 end)
 vim.keymap.set({ 'x', 'n' }, '<leader>rb', require('fzf-lua').blines)
