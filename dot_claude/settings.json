@@ -16,7 +16,6 @@
     "allow": [
       "Bash",
       "Edit",
-      "ExitPlanMode",
       "Glob",
       "Grep",
       "KillShell",
