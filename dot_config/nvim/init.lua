@@ -334,13 +334,6 @@ require('sidekick').setup({
       backend = 'zellij',
       enabled = true,
     },
-    tools = {
-      claude = {
-        env = {
-          NODE_TLS_REJECT_UNAUTHORIZED = 0,
-        },
-      },
-    },
   },
   copilot = {
     status = {
@@ -350,15 +343,15 @@ require('sidekick').setup({
 })
 
 vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
-  require('sidekick.cli').toggle({ name = 'claude', focus = true })
+  require('sidekick.cli').toggle({ name = 'opencode', focus = true })
 end)
 
 vim.keymap.set({ 'n', 'x' }, '<leader>oa', function()
-  require('sidekick.cli').send({ name = 'claude', focus = true, msg = '{this}' })
+  require('sidekick.cli').send({ name = 'opencode', focus = true, msg = '{this}' })
 end)
 
 vim.keymap.set('n', '<leader>oA', function()
-  require('sidekick.cli').send({ name = 'claude', focus = true, msg = '{file}' })
+  require('sidekick.cli').send({ name = 'opencode', focus = true, msg = '{file}' })
 end)
 
 vim.keymap.set({ 'n', 'x', 't' }, '<leader>os', require('sidekick.cli').prompt)
