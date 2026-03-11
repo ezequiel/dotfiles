@@ -481,7 +481,6 @@ require('auto-save').setup({
       'CursorHold',
       'InsertLeave',
       'TextChanged',
-      'TextChangedP',
     },
     cancel_deferred_save = { 'InsertEnter' },
   },
