@@ -942,11 +942,23 @@ end)
 vim.api.nvim_create_autocmd('LspAttach', {
   group = augroup,
   callback = function(event)
-    local vtslsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'vtsls' })
-    local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'angularls' })
-    if #vtslsClients > 0 and #angularLsClients > 0 then
-      vtslsClients[1].server_capabilities.referencesProvider = false
-      vtslsClients[1].server_capabilities.renameProvider = false
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if not client or (client.name ~= 'vtsls' and client.name ~= 'angularls') then
+      return
+    end
+
+    if client.name == 'vtsls' then
+      local angularLsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'angularls' })
+      if #angularLsClients > 0 then
+        client.server_capabilities.referencesProvider = false
+        client.server_capabilities.renameProvider = false
+      end
+    elseif client.name == 'angularls' then
+      local vtslsClients = vim.lsp.get_clients({ bufnr = event.buf, name = 'vtsls' })
+      if #vtslsClients > 0 then
+        vtslsClients[1].server_capabilities.referencesProvider = false
+        vtslsClients[1].server_capabilities.renameProvider = false
+      end
     end
   end,
 })
