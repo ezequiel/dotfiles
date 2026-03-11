@@ -474,12 +474,12 @@ require('auto-save').setup({
   trigger_events = {
     immediate_save = {
       'BufLeave',
-      'CursorHold',
       'FocusLost',
       'QuitPre',
       'VimSuspend',
     },
     defer_save = {
+      'CursorHold',
       'InsertLeave',
       'TextChanged',
       'TextChangedP',
@@ -496,6 +496,10 @@ vim.pack.add({
   'https://github.com/stevearc/conform.nvim',
 })
 require('conform').setup({
+  format_on_save = {
+    quiet = true,
+    undojoin = true,
+  },
   formatters_by_ft = {
     ['*'] = { 'trim_newlines', 'trim_whitespace' },
     css = { 'prettier' },
@@ -520,23 +524,6 @@ require('conform').setup({
   },
   notify_on_error = false,
   log_level = vim.log.levels.OFF,
-})
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'AutoSaveWritePre',
-  group = augroup,
-  callback = function(event)
-    local bufnr = event.data.saved_buffer
-    if not bufnr or not vim.bo[bufnr].modifiable then
-      return
-    end
-
-    require('conform').format({
-      bufnr = bufnr,
-      quiet = true,
-      undojoin = true,
-    })
-  end,
 })
 
 ----------------------------------------------------
