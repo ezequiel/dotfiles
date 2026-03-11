@@ -758,12 +758,8 @@ vim.pack.add({
 })
 
 require('hlslens').setup({
-  calm_down = {
-    default = true,
-  },
-  nearest_only = {
-    default = true,
-  },
+  calm_down = true,
+  nearest_only = true,
   virt_priority = 1,
   override_lens = function(render, posList, nearest, idx, _)
     local lnum, col = unpack(posList[idx])
