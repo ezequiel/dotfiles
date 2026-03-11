@@ -10,9 +10,7 @@ MCFLY_RESULTS_SORT = "LAST_RUN"
 NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
 RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
 OPENCODE_CONFIG = "{{env.XDG_CONFIG_HOME}}/opencode/opencode-work.jsonc"
-OPENCODE_DISABLE_CLAUDE_CODE = 1                                          # Disable all .claude support
-OPENCODE_DISABLE_CLAUDE_CODE_PROMPT = 1                                   # Disable only ~/.claude/CLAUDE.md
-OPENCODE_DISABLE_CLAUDE_CODE_SKILLS = 1                                   # Disable only .claude/skills
+OPENCODE_DISABLE_CLAUDE_CODE = 1
 
 [settings]
 activate_aggressive = true
