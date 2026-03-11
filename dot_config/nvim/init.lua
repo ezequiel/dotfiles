@@ -885,7 +885,7 @@ local lsp_opts = {
         experimental = {
           completion = {
             enableServerSideFuzzyMatch = true,
-            entriesLimit = '1337',
+            entriesLimit = 1337,
           },
         },
       },
