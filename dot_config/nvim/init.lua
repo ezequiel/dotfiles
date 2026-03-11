@@ -151,8 +151,6 @@ end)
 ----------------------------------------------------
 
 vim.opt.scrolloff = 1337
-vim.opt.autowrite = true
-vim.opt.autowriteall = true
 vim.opt.backup = true
 
 local backup_dir = vim.fn.stdpath('state') .. '/backup//'
@@ -522,17 +520,18 @@ require('conform').setup({
 })
 
 vim.api.nvim_create_autocmd('User', {
-  pattern = 'AutoSaveWritePost',
+  pattern = 'AutoSaveWritePre',
   group = augroup,
   callback = function(event)
-    if not vim.bo[event.buf].modifiable then
+    local bufnr = event.data.saved_buffer
+    if not bufnr or not vim.bo[bufnr].modifiable then
       return
     end
 
     require('conform').format({
-      async = true,
-      bufnr = event.buf,
+      bufnr = bufnr,
       quiet = true,
+      undojoin = true,
     })
   end,
 })
