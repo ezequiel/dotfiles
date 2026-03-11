@@ -154,10 +154,10 @@ vim.opt.backup = true
 
 local backup_dir = vim.fn.stdpath('state') .. '/backup//'
 vim.opt.backupdir = backup_dir
+vim.fn.mkdir(backup_dir:gsub('//$', ''), 'p')
 
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
-  vim.fn.mkdir(backup_dir:gsub('//$', ''), 'p')
 end)
 
 vim.opt.cmdheight = 0
