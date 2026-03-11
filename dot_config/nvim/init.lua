@@ -186,14 +186,17 @@ require('teide').setup({
   style = 'darker',
 })
 
-vim.cmd('colorscheme teide')
+vim.api.nvim_create_autocmd('ColorScheme', {
+  group = augroup,
+  pattern = 'teide',
+  callback = function()
+    vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#6A6A6A', bg = '#171B20' })
+    vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#6A6A6A', bg = '#171B20' })
+    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#6A6A6A', bg = '#171B20' })
+  end,
+})
 
--- vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#E8DCCA', bg = '#171B20' })
--- vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#E8DCCA', bg = '#171B20' })
--- vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#E8DCCA', bg = '#171B20' })
-vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#6A6A6A', bg = '#171B20' })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#6A6A6A', bg = '#171B20' })
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#6A6A6A', bg = '#171B20' })
+vim.cmd('colorscheme teide')
 
 ----------------------------------------------------
 ----------------------------------------------------
