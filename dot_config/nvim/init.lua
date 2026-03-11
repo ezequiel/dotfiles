@@ -232,6 +232,7 @@ require('fzf-lua').setup({
     follow = true,
     git_icons = false,
     file_icons = false,
+    file_ignore_patterns = { '%.git/' },
     actions = {
       ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
       ['ctrl-q'] = {
