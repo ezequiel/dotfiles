@@ -824,10 +824,6 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
 })
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
 local lsp_opts = {
   bashls = {
     filetypes = { 'sh', 'zsh' },
@@ -884,7 +880,6 @@ local lsp_opts = {
         },
         runtime = {
           version = 'LuaJIT',
-          path = runtime_path,
         },
         telemetry = { enable = false },
         workspace = {
