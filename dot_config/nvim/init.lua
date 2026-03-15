@@ -494,7 +494,8 @@ vim.pack.add({
   'https://github.com/stevearc/conform.nvim',
 })
 require('conform').setup({
-  format_on_save = {
+  format_after_save = {
+    async = true,
     quiet = true,
     undojoin = true,
   },
