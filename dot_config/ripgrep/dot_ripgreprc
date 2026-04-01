@@ -8,6 +8,5 @@
 --glob=!dist/**
 --hidden
 --smart-case
---sort=path
 --colors=line:style:bold
 --follow
