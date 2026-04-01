@@ -585,8 +585,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
       nes = { enabled = false },
       server = {
         type = 'nodejs',
-        custom_server_filepath = vim.env.XDG_DATA_HOME
-          .. '/mise/installs/npm-github-copilot-language-server/latest/bin/copilot-language-server',
+        custom_server_filepath = vim.fn.exepath('copilot-language-server'),
       },
     })
   end,
