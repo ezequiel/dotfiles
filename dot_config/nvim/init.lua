@@ -63,7 +63,7 @@ end, { silent = true, expr = true })
 
 local session = vim.fn.stdpath('state') .. '/session_restart.vim'
 
-vim.keymap.set('n', '<D-r>', function()
+vim.keymap.set('n', '<M-r>', function()
   vim.cmd.mksession({ session, bang = true })
   vim.cmd.restart()
 end)
@@ -130,12 +130,12 @@ end)
 vim.keymap.set('n', '<leader>ds', function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end)
-vim.keymap.set('n', '<D-S-j>', "<cmd>execute 'move .+' . v:count1<cr>==")
-vim.keymap.set('n', '<D-S-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==")
-vim.keymap.set('i', '<D-S-j>', '<esc><cmd>m .+1<cr>==gi')
-vim.keymap.set('i', '<D-S-k>', '<esc><cmd>m .-2<cr>==gi')
-vim.keymap.set('x', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv")
-vim.keymap.set('x', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
+vim.keymap.set('n', '<M-S-j>', "<cmd>execute 'move .+' . v:count1<cr>==")
+vim.keymap.set('n', '<M-S-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==")
+vim.keymap.set('i', '<M-S-j>', '<esc><cmd>m .+1<cr>==gi')
+vim.keymap.set('i', '<M-S-k>', '<esc><cmd>m .-2<cr>==gi')
+vim.keymap.set('x', '<M-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv")
+vim.keymap.set('x', '<M-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
 vim.keymap.set('n', '<C-w>d', function()
@@ -401,16 +401,16 @@ mc.addKeymapLayer(function(set)
   end)
 end)
 
-vim.keymap.set('n', '<D-Up>', function()
+vim.keymap.set('n', '<M-Up>', function()
   require('multicursor-nvim').lineAddCursor(-1, { skipEmpty = false })
 end)
-vim.keymap.set('n', '<D-Down>', function()
+vim.keymap.set('n', '<M-Down>', function()
   require('multicursor-nvim').lineAddCursor(1, { skipEmpty = false })
 end)
-vim.keymap.set('n', '<D-S-Up>', function()
+vim.keymap.set('n', '<M-S-Up>', function()
   require('multicursor-nvim').lineSkipCursor(-1, { skipEmpty = false })
 end)
-vim.keymap.set('n', '<D-S-Down>', function()
+vim.keymap.set('n', '<M-S-Down>', function()
   require('multicursor-nvim').lineSkipCursor(1, { skipEmpty = false })
 end)
 vim.keymap.set('n', '@@', require('multicursor-nvim').toggleCursor)
@@ -533,8 +533,8 @@ vim.pack.add({
   'https://github.com/kwkarlwang/bufjump.nvim',
 })
 require('bufjump').setup({
-  forward_key = '<D-]>',
-  backward_key = '<D-[>',
+  forward_key = '<M-]>',
+  backward_key = '<M-[>',
   on_success = false,
   forward_same_buf_key = '<C-S-I>',
   backward_same_buf_key = '<C-S-O>',
@@ -932,14 +932,6 @@ vim.keymap.set('n', 'K', function()
     silent = true,
     wrap = false,
   })
-end)
-
-vim.keymap.set({ 'n', 'x' }, '<D-s-o>', function()
-  vim.lsp.buf.selection_range(vim.v.count1)
-end)
-
-vim.keymap.set({ 'n', 'x' }, '<D-s-i>', function()
-  vim.lsp.buf.selection_range(-vim.v.count1)
 end)
 
 vim.api.nvim_create_autocmd('LspAttach', {
