@@ -4,17 +4,25 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 export ZSH_THEME="robbyrussell"
-export plugins=(brew mise git zoxide chezmoi fancy-ctrl-z)
+export plugins=(mise git fancy-ctrl-z)
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 
 eval "$(mcfly init zsh)"
+eval "$(zoxide init zsh)"
+
+tmux() {
+  if [ $# -eq 0 ]; then
+    sesh last 2>/dev/null || echo "No tmux sessions. Use 'sesh connect <name>' to create one."
+  else
+    command tmux "$@"
+  fi
+}
 
 alias vim='nvim'
 alias vi='nvim'
 alias co='copilot'
-alias claude='NODE_TLS_REJECT_UNAUTHORIZED=0 claude'
 
 source <(carapace _carapace)
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
