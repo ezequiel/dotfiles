@@ -77,7 +77,5 @@ run = [
   "mise upgrade",
   "rm -rf \"$XDG_CONFIG_HOME/yazi/plugins\"",
   "ya pkg upgrade",
-  # "rm -rf \"$XDG_DATA_HOME/nvim/site/pack/core/opt\"/*",
-  "rm -f \"$XDG_CONFIG_HOME/nvim/nvim-pack-lock.json\"",
   "nvim --headless +\"lua vim.pack.update(nil, { force = true })\" +qa",
 ]
