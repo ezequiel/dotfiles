@@ -1,26 +1,16 @@
-[".config/opencode/skills/vercel-react-best-practices/SKILL.md"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills/react-best-practices/SKILL.md"
-    refreshPeriod = "24h"
+[".config/opencode/skills"]
+    type = "archive"
+    url = "https://github.com/vercel-labs/agent-skills/archive/main.tar.gz"
+    stripComponents = 2
+    include = ["*/skills/composition-patterns/**", "*/skills/react-best-practices/**", "*/skills/web-design-guidelines/**"]
+    refreshPeriod = "168h"
 
 [".config/opencode/skills/react-doctor/SKILL.md"]
     type = "file"
     url = "https://raw.githubusercontent.com/millionco/react-doctor/main/skills/react-doctor/SKILL.md"
-    refreshPeriod = "24h"
-
-[".config/opencode/skills/web-design-guidelines/SKILL.md"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/vercel-labs/agent-skills/main/skills/web-design-guidelines/SKILL.md"
-    refreshPeriod = "24h"
+    refreshPeriod = "168h"
 
 [".config/opencode/skills/frontend-design/SKILL.md"]
     type = "file"
     url = "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md"
-    refreshPeriod = "24h"
-
-[".config/opencode/skills/vercel-composition-patterns"]
-    type = "archive"
-    url = "https://github.com/vercel-labs/agent-skills/archive/main.tar.gz"
-    stripComponents = 3
-    include = ["*/skills/composition-patterns/**"]
-    refreshPeriod = "24h"
+    refreshPeriod = "168h"
