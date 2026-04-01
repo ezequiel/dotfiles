@@ -18,23 +18,32 @@ always_keep_download = false
 always_keep_install = false
 disable_default_registry = true
 experimental = true
+http_retries = 3
 idiomatic_version_file_enable_tools = []
+install_before = "7d"
 paranoid = true
 status.missing_tools = "always"
 
 [tools]
 "aqua:BurntSushi/ripgrep" = "latest"
 "aqua:JohnnyMorganz/StyLua" = "latest"
+"aqua:Kitware/CMake" = "latest"
 "aqua:LuaLS/lua-language-server" = "latest"
 "aqua:a8m/envsubst" = "latest"
 "aqua:ajeetdsouza/zoxide" = "latest"
+"aqua:anomalyco/opencode" = "latest"
 "aqua:anthropics/claude-code" = "latest"
 "aqua:artempyanykh/marksman" = "latest"
 "aqua:ast-grep/ast-grep" = "latest"
 "aqua:cantino/mcfly" = "latest"
+"aqua:carapace-sh/carapace-bin" = "latest"
+"aqua:cli/cli" = "latest"
 "aqua:git-lfs/git-lfs" = "latest"
+"aqua:golangci/golangci-lint" = "1.64.8"
 "aqua:google/yamlfmt" = "latest"
 "aqua:jesseduffield/lazygit" = "latest"
+"aqua:junegunn/fzf" = "latest"
+"aqua:koalaman/shellcheck" = "latest"
 "aqua:mvdan/sh" = { version = "latest", exe = "shfmt" }
 "aqua:nametake/golangci-lint-langserver" = "latest"
 "aqua:pnpm/pnpm" = "latest"
@@ -45,7 +54,6 @@ status.missing_tools = "always"
 "aqua:tamasfe/taplo" = "latest"
 "aqua:tmux/tmux-builds" = "latest"
 "go:github.com/joshmedeski/sesh/v2" = "latest"
-"go:github.com/golangci/golangci-lint/cmd/golangci-lint" = "1.64.8"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "npm:@angular/language-server" = "latest"
@@ -56,24 +64,19 @@ status.missing_tools = "always"
 "npm:bash-language-server" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:npm-check-updates" = "latest"
-"npm:opencode-ai" = "latest"
 "npm:opencommit" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:yaml-language-server" = "latest"
-"vfox:version-fox/vfox-cmake" = "latest"
 bun = "latest"
-fzf = "latest"
-github-cli = "latest"
 go = "latest"
 node = "22"
-shellcheck = "latest"
 yarn = "latest"
 
 [tasks.up]
 description = "Update all the things"
 run = [
-  "brew cleanup --prune=all",
   "brew bundle --global",
+  "brew cleanup --prune=all",
   "mise prune --yes",
   "mise upgrade",
   "rm -rf \"$XDG_CONFIG_HOME/yazi/plugins\"",
