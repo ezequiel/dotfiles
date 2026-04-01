@@ -333,7 +333,7 @@ require('sidekick').setup({
       },
     },
     mux = {
-      backend = 'zellij',
+      backend = 'tmux',
       enabled = true,
     },
   },
