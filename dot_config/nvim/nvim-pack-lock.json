@@ -102,7 +102,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "e2644f2b09b7abaf941648cb20c1989920196e89",
+      "rev": "dbdebba5eb24e9046505fc3e9cbd2e25bd61baf9",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
