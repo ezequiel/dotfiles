@@ -13,6 +13,7 @@ OPENCODE_CONFIG = "{{env.XDG_CONFIG_HOME}}/opencode/opencode-work.jsonc"
 OPENCODE_DISABLE_CLAUDE_CODE = 1
 
 [settings]
+install_before = "7d"
 activate_aggressive = true
 always_keep_download = false
 always_keep_install = false
@@ -20,7 +21,6 @@ disable_default_registry = true
 experimental = true
 http_retries = 3
 idiomatic_version_file_enable_tools = []
-install_before = "7d"
 paranoid = true
 status.missing_tools = "always"
 
@@ -57,6 +57,7 @@ status.missing_tools = "always"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "npm:@angular/language-server" = "latest"
+"npm:@cucumber/language-server" = "latest"
 "npm:@github/copilot" = "latest"
 "npm:@github/copilot-language-server" = "latest"
 "npm:@tailwindcss/language-server" = "latest"
