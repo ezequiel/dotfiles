@@ -875,9 +875,6 @@ local lsp_opts = {
     },
   },
   marksman = {},
-  tailwindcss = {
-    settings = { tailwindCSS = { colorDecorators = false } },
-  },
   vtsls = {
     settings = {
       vtsls = {
@@ -924,6 +921,13 @@ vim.keymap.set('n', '<leader>ng', function()
     workspace_required = true,
   })
   vim.lsp.enable('angularls')
+end)
+
+vim.keymap.set('n', '<leader>tw', function()
+  vim.lsp.config('tailwindcss', {
+    settings = { tailwindCSS = { colorDecorators = false } },
+  })
+  vim.lsp.enable('tailwindcss')
 end)
 
 vim.keymap.set('n', 'K', function()
