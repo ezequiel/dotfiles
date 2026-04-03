@@ -907,6 +907,7 @@ local lsp_opts = {
       },
     },
   },
+  cucumber_language_server = {},
   yamlls = {},
 }
 
