@@ -810,124 +810,27 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
 })
 
-local lsp_opts = {
-  bashls = {
-    filetypes = { 'sh', 'zsh' },
-  },
-  dockerls = {},
-  eslint = {
-    filetypes = {
-      'html',
-      'htmlangular',
-      'javascript',
-      'javascriptreact',
-      'json',
-      'jsonc',
-      'typescript',
-      'typescriptreact',
-    },
-    settings = {
-      experimental = {
-        useFlatConfig = true,
-      },
-      run = 'onSave',
-      workingDirectory = {
-        mode = 'auto',
-      },
-    },
-  },
-  golangci_lint_ls = {
-    init_options = {
-      command = {
-        'golangci-lint',
-        'run',
-        '--fast',
-        '--out-format=json',
-        '--show-stats=false',
-        '--issues-exit-code=1',
-      },
-    },
-  },
-  gopls = {},
-  html = {},
-  jsonls = {},
-  lua_ls = {
-    settings = {
-      Lua = {
-        completion = {
-          enable = true,
-        },
-        diagnostics = {
-          enable = true,
-          globals = { 'vim' },
-        },
-        format = {
-          enable = false,
-        },
-        runtime = {
-          version = 'LuaJIT',
-        },
-        telemetry = { enable = false },
-        workspace = {
-          library = { vim.env.VIMRUNTIME },
-        },
-      },
-    },
-  },
-  marksman = {},
-  vtsls = {
-    settings = {
-      vtsls = {
-        autoUseWorkspaceTsdk = true,
-        experimental = {
-          completion = {
-            enableServerSideFuzzyMatch = true,
-            entriesLimit = 1337,
-          },
-        },
-      },
-      typescript = {
-        tsserver = {
-          experimental = {
-            -- NOTE: Some projects will crawl to a halt when this is enabled
-            -- enableProjectDiagnostics = true,
-          },
-          maxTsServerMemory = 8192,
-        },
-        preferences = {
-          importModuleSpecifier = 'non-relative',
-        },
-        updateImportsOnFileMove = 'always',
-      },
-      javascript = {
-        preferences = {
-          importModuleSpecifier = 'non-relative',
-        },
-        updateImportsOnFileMove = 'always',
-      },
-    },
-  },
-  cucumber_language_server = {},
-  yamlls = {},
-}
+vim.lsp.enable({
+  'bashls',
+  'cucumber_language_server',
+  'dockerls',
+  'eslint',
+  'golangci_lint_ls',
+  'gopls',
+  'html',
+  'jsonls',
+  'lua_ls',
+  'marksman',
+  'vtsls',
+  'yamlls',
+})
 
-for name, opts in pairs(lsp_opts) do
-  vim.lsp.config(name, opts)
-  vim.lsp.enable(name)
-end
-
--- Angular LSP is extremely slow and lags everything
+-- Angular and Tailwind LSPs are extremely slow and lag everything
 vim.keymap.set('n', '<leader>ng', function()
-  vim.lsp.config('angularls', {
-    workspace_required = true,
-  })
   vim.lsp.enable('angularls')
 end)
 
 vim.keymap.set('n', '<leader>tw', function()
-  vim.lsp.config('tailwindcss', {
-    settings = { tailwindCSS = { colorDecorators = false } },
-  })
   vim.lsp.enable('tailwindcss')
 end)
 
