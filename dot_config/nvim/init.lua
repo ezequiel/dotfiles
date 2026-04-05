@@ -11,7 +11,6 @@ vim.g.loaded_man = true
 vim.g.loaded_remote_file_loader = true
 vim.g.loaded_spellfile_plugin = true
 vim.g.loaded_shada_plugin = true
-vim.g.loaded_2html_plugin = true
 vim.g.editorconfig = false
 vim.g.did_install_default_menus = true
 vim.g.did_install_syntax_menu = true
@@ -33,6 +32,23 @@ vim.diagnostic.config({
   severity_sort = true,
   update_in_insert = false,
 })
+
+do
+  local orig = vim.diagnostic.handlers.signs
+  vim.diagnostic.handlers.signs = {
+    show = function(ns, bufnr, diagnostics, opts)
+      local max_per_line = {} --- @type table<integer, vim.Diagnostic>
+      for _, d in pairs(diagnostics) do
+        local m = max_per_line[d.lnum]
+        if not m or d.severity < m.severity then
+          max_per_line[d.lnum] = d
+        end
+      end
+      orig.show(ns, bufnr, vim.tbl_values(max_per_line), opts)
+    end,
+    hide = orig.hide,
+  }
+end
 
 ----------------------------------------------------
 ----------------------------------------------------
@@ -171,6 +187,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.tabstop = 2
 vim.opt.wrap = false
+vim.opt.diffopt:append('linematch:30')
 vim.opt.winborder = 'single'
 vim.opt.pumborder = 'single'
 vim.opt.laststatus = 0
