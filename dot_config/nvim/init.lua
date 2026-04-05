@@ -172,6 +172,7 @@ vim.opt.splitright = true
 vim.opt.tabstop = 2
 vim.opt.wrap = false
 vim.opt.winborder = 'single'
+vim.opt.pumborder = 'single'
 vim.opt.laststatus = 0
 vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
 

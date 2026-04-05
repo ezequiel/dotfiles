@@ -26,14 +26,6 @@ vim.keymap.set('n', '<leader>tw', function()
   vim.lsp.enable('tailwindcss')
 end)
 
-vim.keymap.set('n', 'K', function()
-  vim.lsp.buf.hover({
-    focusable = true,
-    silent = true,
-    wrap = false,
-  })
-end)
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = 'my-config',
   callback = function(event)

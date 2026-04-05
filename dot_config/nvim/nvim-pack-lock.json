@@ -1,11 +1,11 @@
 {
   "plugins": {
     "auto-save.nvim": {
-      "rev": "61892d67acd5b7c845f5da4d780b26fcd7f63e34",
+      "rev": "9aabcb8396224dcbf8d51c0c1d620d88a46e89d7",
       "src": "https://github.com/okuuva/auto-save.nvim"
     },
     "blink.cmp": {
-      "rev": "4b18c32adef2898f95cdef6192cbd5796c1a332d",
+      "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
@@ -18,19 +18,23 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "faa347cef2a9429eec14dada549e000a3b8d0fc9",
+      "rev": "07aa57148ac28986bab9f55e87ee3d929e2726b1",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
+    "fff.nvim": {
+      "rev": "b1c4f8e7d7a11cfd58ce5623bd4676a467a064b2",
+      "src": "https://github.com/dmtrKovalenko/fff.nvim"
+    },
     "fzf-lua": {
-      "rev": "30ba09afbc0eac5fc5ec8823418d1e45d0712b9f",
+      "rev": "5cbe58ca48c4c4a2fbe5e324b854596d8242711e",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
-      "rev": "9a1107e270a21114f2e8549c69c94a170e405348",
+      "rev": "928b1acdb88a260cbfa73014d8c134308cfcef2d",
       "src": "https://codeberg.org/trevorhauter/gitportal.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "0f00d07c2c3106ba6abd594ac1c17f211141b7b5",
+      "rev": "944ef13cc8d8fe8b846c91f36041c8dfb85ca000",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -46,7 +50,7 @@
       "src": "https://github.com/rapan931/lasterisk.nvim"
     },
     "multicursor.nvim": {
-      "rev": "811681faf44d8031685614cc00a148cd3ece697c",
+      "rev": "704b99f10a72cc05d370cfeb294ff83412a8ab55",
       "src": "https://github.com/jake-stewart/multicursor.nvim"
     },
     "nvim-hlslens": {
@@ -54,7 +58,7 @@
       "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
-      "rev": "8e2084bf5e40c79c1f42210a6ef96a0a4793a763",
+      "rev": "9ccd58a7949091c0cc2777d4e92a45a209c808c1",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -82,7 +86,7 @@
       "src": "https://github.com/assistcontrol/readline.nvim"
     },
     "sidekick.nvim": {
-      "rev": "c2bdf8cfcd87a6be5f8b84322c1b5052e78e302e",
+      "rev": "17447a05f9385e5f8372b61530f6f9329cb82421",
       "src": "https://github.com/folke/sidekick.nvim"
     },
     "teide.nvim": {
@@ -102,7 +106,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "dbdebba5eb24e9046505fc3e9cbd2e25bd61baf9",
+      "rev": "9c8d2e2d51fd99e49b2f3ba581d2e342a57d3c14",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
