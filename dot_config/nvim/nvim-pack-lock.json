@@ -5,7 +5,7 @@
       "src": "https://github.com/okuuva/auto-save.nvim"
     },
     "blink.cmp": {
-      "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
@@ -22,11 +22,11 @@
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "fff.nvim": {
-      "rev": "b1c4f8e7d7a11cfd58ce5623bd4676a467a064b2",
+      "rev": "29e6480ea011351fe468fdec3ee01a4ff1d760cf",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
-      "rev": "5cbe58ca48c4c4a2fbe5e324b854596d8242711e",
+      "rev": "8f5a5ae708451adc3e2ac4d965ac3452dc3ce5a6",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://codeberg.org/trevorhauter/gitportal.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "944ef13cc8d8fe8b846c91f36041c8dfb85ca000",
+      "rev": "4ed47e8c4c66c921dc1d6643977e0526e1f44396",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "9c8d2e2d51fd99e49b2f3ba581d2e342a57d3c14",
+      "rev": "6f1c97327df36feff1c829c5b949e2c981d5a1ef",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
