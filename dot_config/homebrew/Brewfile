@@ -18,6 +18,7 @@ cask "font-intel-one-mono"
 cask "google-chrome"
 cask "kitty"
 cask "licecap"
+cask "mysqlworkbench"
 cask "raycast"
 cask "spotify"
 # https://github.com/2bc4/streamlink-ttvlol
