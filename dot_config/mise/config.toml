@@ -69,6 +69,9 @@ bun = "latest"
 go = "latest"
 node = "22"
 yarn = "latest"
+pipx = "latest"
+mongosh = "latest"
+"npm:vite-plus" = "latest"
 
 [tasks.up]
 description = "Update all the things"
