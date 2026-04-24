@@ -13,7 +13,7 @@ OPENCODE_CONFIG = "{{env.XDG_CONFIG_HOME}}/opencode/opencode-work.jsonc"
 OPENCODE_DISABLE_CLAUDE_CODE = 1
 
 [settings]
-install_before = "7d"
+# install_before = "7d"
 activate_aggressive = true
 always_keep_download = false
 always_keep_install = false
