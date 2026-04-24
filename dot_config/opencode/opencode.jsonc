@@ -11,14 +11,6 @@
   },
   "autoupdate": false,
   "instructions": ["{env:XDG_CONFIG_HOME}/opencode/output-styles/linus-torvalds.md"],
-  "agent": {
-    "plan": {
-      "variant": "max"
-    },
-    "build": {
-      "variant": "max"
-    }
-  },
   "default_agent": "plan",
   "experimental": {
     "openTelemetry": false
