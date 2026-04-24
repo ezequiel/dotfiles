@@ -24,11 +24,6 @@ require('sidekick').setup({
       enabled = true,
     },
   },
-  copilot = {
-    status = {
-      level = vim.log.levels.OFF,
-    },
-  },
 })
 
 vim.keymap.set({ 'n', 't' }, '<leader>ot', function()

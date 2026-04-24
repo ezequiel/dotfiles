@@ -21,7 +21,6 @@ tmux() {
 
 alias vim='nvim'
 alias vi='nvim'
-alias co='copilot'
 
 source <(carapace _carapace)
 

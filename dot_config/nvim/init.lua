@@ -67,10 +67,6 @@ vim.keymap.set({ 'n', 'i', 'x' }, '<C-c>', function()
   vim.schedule(function()
     vim.cmd('fclose!')
   end)
-  local copilot = package.loaded['copilot.suggestion']
-  if copilot then
-    copilot.dismiss()
-  end
   return '<C-c>'
 end, { silent = true, expr = true })
 
