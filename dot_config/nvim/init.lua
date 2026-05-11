@@ -33,23 +33,6 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-do
-  local orig = vim.diagnostic.handlers.signs
-  vim.diagnostic.handlers.signs = {
-    show = function(ns, bufnr, diagnostics, opts)
-      local max_per_line = {} --- @type table<integer, vim.Diagnostic>
-      for _, d in pairs(diagnostics) do
-        local m = max_per_line[d.lnum]
-        if not m or d.severity < m.severity then
-          max_per_line[d.lnum] = d
-        end
-      end
-      orig.show(ns, bufnr, vim.tbl_values(max_per_line), opts)
-    end,
-    hide = orig.hide,
-  }
-end
-
 ----------------------------------------------------
 ----------------------------------------------------
 
