@@ -11,6 +11,7 @@ NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
 RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
 OPENCODE_CONFIG = "{{env.XDG_CONFIG_HOME}}/opencode/opencode-work.jsonc"
 OPENCODE_DISABLE_CLAUDE_CODE = 1
+# OPENCODE_CONFIG_DIR = ".claude"
 
 [settings]
 # install_before = "7d"
@@ -31,7 +32,6 @@ status.missing_tools = "always"
 "aqua:LuaLS/lua-language-server" = "latest"
 "aqua:a8m/envsubst" = "latest"
 "aqua:ajeetdsouza/zoxide" = "latest"
-"aqua:anomalyco/opencode" = "latest"
 "aqua:artempyanykh/marksman" = "latest"
 "aqua:ast-grep/ast-grep" = "latest"
 "aqua:cantino/mcfly" = "latest"
@@ -71,7 +71,7 @@ node = "22"
 yarn = "latest"
 pipx = "latest"
 mongosh = "latest"
-"npm:vite-plus" = "latest"
+"aqua:anomalyco/opencode" = "latest"
 
 [tasks.up]
 description = "Update all the things"
