@@ -18,11 +18,11 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "bb4f337a786ded8f91fc5ac5809ba54386c10605",
+      "rev": "1104a8deaf551fdb17fecadc87d6872397c98a6a",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
-      "rev": "cf4c30892644f01ebfb1e248eeca9e259856f9dc",
+      "rev": "97376e364f51f1b5ae3efaa3eb2e929430ca8419",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
-      "rev": "31026a13eefb20681124706a79fc1df6bf11ab27",
+      "rev": "75e49cfa588a89ca667d767c0afef3ceac205faa",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "aada50881aca7d13422e02a6681b8f0a0ec9a75c",
+      "rev": "25f370e6e84ca7ebca5927ec66cd93e2fa16fd3d",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
