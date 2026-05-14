@@ -5,12 +5,12 @@ vim.pack.add({
 require('auto-save').setup({
   trigger_events = {
     immediate_save = {
-      'BufLeave',
       'FocusLost',
       'QuitPre',
       'VimSuspend',
     },
     defer_save = {
+      'BufLeave',
       'CursorHold',
       'InsertLeave',
       'TextChanged',
