@@ -14,15 +14,15 @@
       "src": "https://github.com/kwkarlwang/bufjump.nvim"
     },
     "conform.nvim": {
-      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "1104a8deaf551fdb17fecadc87d6872397c98a6a",
+      "rev": "f56c38b5b82a88ab9f60fadc654078e28854ae99",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
-      "rev": "97376e364f51f1b5ae3efaa3eb2e929430ca8419",
+      "rev": "988416cc782dfe28bff3f0da9b8c943b236cd86a",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
@@ -30,11 +30,11 @@
       "src": "https://codeberg.org/trevorhauter/gitportal.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
+      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "21790e59dd0109a92a70cb874dd002af186314f5",
+      "rev": "5506c2f59dc9ab2ed6c233585412b24d31d51521",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "indent-o-matic": {
@@ -54,7 +54,7 @@
       "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
-      "rev": "75e49cfa588a89ca667d767c0afef3ceac205faa",
+      "rev": "229b79051b380377664edc4cbd534930154921a1",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -74,7 +74,7 @@
       "src": "https://github.com/kevinhwang91/promise-async"
     },
     "quicker.nvim": {
-      "rev": "063cc44da1eef8681bbd653b29d3bc961780886a",
+      "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
       "src": "https://github.com/stevearc/quicker.nvim"
     },
     "readline.nvim": {
@@ -85,12 +85,16 @@
       "rev": "208e1c5b8170c01fd1d07df0139322a76479b235",
       "src": "https://github.com/folke/sidekick.nvim"
     },
+    "smart-splits.nvim": {
+      "rev": "1865e6826b1cd90098f198acb0f5b744a7b40c22",
+      "src": "https://github.com/mrjones2014/smart-splits.nvim"
+    },
     "teide.nvim": {
       "rev": "95041d1d78e786bd88be64bca3e1771f7b6236df",
       "src": "https://github.com/serhez/teide.nvim"
     },
     "tiny-glimmer.nvim": {
-      "rev": "cc285167914e947fc130523d02927fdaf24636a6",
+      "rev": "f26728abf811324d7ed6b035a11d7b76a27c06c3",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
     },
     "vim-autoread": {
@@ -102,7 +106,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "25f370e6e84ca7ebca5927ec66cd93e2fa16fd3d",
+      "rev": "9ea49c7c59dd02d04833da126fd75cb68ef41129",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
