@@ -21,7 +21,6 @@ require('fzf-lua').setup({
     follow = true,
     git_icons = false,
     file_icons = false,
-    file_ignore_patterns = { '%.git/' },
     actions = {
       ['enter'] = require('fzf-lua').actions.file_edit_or_qf,
       ['ctrl-q'] = {
@@ -38,14 +37,6 @@ require('fzf-lua').setup({
     code_actions = {
       previewer = false,
     },
-  },
-  grep = {
-    rg_glob = true,
-    rg_glob_fn = function(query, opts)
-      local regex, flags = query:match('^(.-)%s%-%-(.*)$')
-      return (regex or query), flags
-    end,
-    RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
   },
   history = { cwd_only = true },
   winopts = {
