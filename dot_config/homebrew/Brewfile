@@ -4,6 +4,7 @@ tap "neovim/neovim"
 brew "neovim/neovim/neovim", args: ["HEAD"]
 
 brew "chezmoi"
+brew "cloc"
 brew "git-absorb"
 brew "mise"
 brew "mpv"
