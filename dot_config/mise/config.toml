@@ -72,7 +72,7 @@ node = "22"
 yarn = "latest"
 pipx = "latest"
 mongosh = "latest"
-"aqua:anomalyco/opencode" = "latest"
+"aqua:anomalyco/opencode" = "1.15.11"
 
 [tasks.up]
 description = "Update all the things"
