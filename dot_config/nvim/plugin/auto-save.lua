@@ -10,7 +10,6 @@ require('auto-save').setup({
       'VimSuspend',
     },
     defer_save = {
-      'BufLeave',
       'CursorHold',
       'InsertLeave',
       'TextChanged',
