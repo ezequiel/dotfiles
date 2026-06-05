@@ -1,5 +1,4 @@
-tap "jnsahaj/lumen"
-brew "jnsahaj/lumen/lumen"
+cask "nkzw-tech/tap/codiff"
 
 tap "neovim/neovim"
 brew "neovim/neovim/neovim", args: ["HEAD"]
