@@ -1,164 +1,56 @@
 [mgr]
 keymap = [
-  { on = [
-    "<c-c>",
-  ], run = "quit" },
-  { on = [
-    "<q>",
-  ], run = "quit" },
-  { on = [
-    "h",
-  ], run = [
-    "leave",
-    "escape --visual --select",
-  ], desc = "Go back to the parent directory" },
-  { on = [
-    "<Backspace>",
-  ], run = [
-    "leave",
-    "escape --visual --select",
-  ], desc = "Go back to the parent directory" },
-  { on = [
-    "l",
-  ], run = [
-    "enter",
-    "escape --visual --select",
-  ], desc = "Enter the child directory" },
-  { on = [
-    "<left>",
-  ], run = [
-    "leave",
-    "escape --visual --select",
-  ], desc = "Go back to the parent directory" },
-  { on = [
-    "<right>",
-  ], run = [
-    "enter",
-    "escape --visual --select",
-  ], desc = "Enter the child directory" },
-  { on = [
-    "<Enter>",
-  ], run = [
-    "plugin smart-enter",
-    "escape --visual --select",
-  ] },
-  { on = [
-    "?",
-  ], run = "help" },
-  { on = [
-    "r",
-    "n",
-  ], run = "rename" },
-  { on = [
-    "p",
-  ], run = "paste" },
-  { on = [
-    "c",
-  ], run = [
-    "yank",
-    "escape --visual --select",
-  ] },
-  { on = [
-    "y",
-    "y",
-  ], run = [
-    "yank",
-    "escape --visual --select",
-  ] },
-  { on = [
-    "y",
-    "p",
-  ], run = "copy path", desc = "Copy the absolute path" },
-  { on = [
-    "y",
-    "f",
-  ], run = "copy filename", desc = "Copy the name of the file" },
+  # Quit / escape
+  { on = "<C-c>", run = "quit" },
+  { on = "q",     run = "quit" },
+  { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
 
-  { on = [
-    "x",
-  ], run = [
-    "yank --cut",
-    "escape --visual --select",
-  ] },
-  { on = [
-    "d",
-  ], run = [
-    "remove",
-    "escape --visual --select",
-  ] },
-  { on = [
-    "a",
-  ], run = "create" },
-  { on = [
-    "k",
-  ], run = "arrow -1", desc = "Move cursor up" },
-  { on = [
-    "j",
-  ], run = "arrow 1", desc = "Move cursor down" },
+  # Navigation
+  { on = "h",           run = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+  { on = "<Backspace>", run = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+  { on = "<Left>",      run = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+  { on = "l",           run = [ "enter", "escape --visual --select" ], desc = "Enter the child directory" },
+  { on = "<Right>",     run = [ "enter", "escape --visual --select" ], desc = "Enter the child directory" },
+  { on = "<Enter>",     run = [ "plugin smart-enter", "escape --visual --select" ] },
 
-  { on = [
-    "<up>",
-  ], run = "arrow -1", desc = "Move cursor up" },
-  { on = [
-    "<down>",
-  ], run = "arrow 1", desc = "Move cursor down" },
+  # Cursor
+  { on = "k",     run = "arrow prev", desc = "Move cursor up" },
+  { on = "j",     run = "arrow next", desc = "Move cursor down" },
+  { on = "<Up>",   run = "arrow prev", desc = "Move cursor up" },
+  { on = "<Down>", run = "arrow next", desc = "Move cursor down" },
+  { on = "<C-p>", run = "arrow prev", desc = "Move cursor up" },
+  { on = "<C-n>", run = "arrow next", desc = "Move cursor down" },
+  { on = "<C-u>", run = "arrow -50%", desc = "Move cursor up half page" },
+  { on = "<C-d>", run = "arrow 50%",  desc = "Move cursor down half page" },
+  { on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+  { on = "G",          run = "arrow bot", desc = "Move cursor to the bottom" },
 
-  { on = [
-    "<c-p>",
-  ], run = "arrow -1", desc = "Move cursor up" },
-  { on = [
-    "<c-n>",
-  ], run = "arrow 1", desc = "Move cursor down" },
-  { on = [
-    "<C-u>",
-  ], run = "arrow -50%", desc = "Move cursor up half page" },
-  { on = [
-    "<C-d>",
-  ], run = "arrow 50%", desc = "Move cursor down half page" },
-  { on = [
-    "g",
-    "g",
-  ], run = "arrow top", desc = "Move cursor to the top" },
-  { on = [
-    "G",
-  ], run = "arrow bot", desc = "Move cursor to the bottom" },
-  { on = [
-    "u",
-  ], run = "undo", desc = "Undo the last operation" },
-  { on = [
-    "<C-r>",
-  ], run = "redo", desc = "Redo the last operation" },
-  { on = [
-    "P",
-  ], run = "paste --before", desc = "Paste the copied characters before the cursor" },
-  { on = [
-    "<Esc>",
-  ], run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
-  { on = [
-    "<Tab>",
-  ], run = [
-    "toggle --state=none",
-    "arrow 1",
-  ], desc = "Toggle the current selection state" },
-  { on = [
-    "<BackTab>",
-  ], run = [
-    "toggle --state=none",
-    "arrow -1",
-  ], desc = "Toggle the current selection state and move up" },
-  { on = [
-    "f",
-    "r",
-  ], run = "filter --smart", desc = "Filter the files" },
-  { on = [
-    "f",
-    "d",
-  ], run = "search fd", desc = "Search files by name using fd" },
-  { on = [
-    "r",
-    "g",
-  ], run = "search rg", desc = "Search files by content using rg" },
-  { on = [
-    "<C-a>",
-  ], run = "toggle_all --state=true", desc = "Select all files" },
+  # File ops
+  { on = "a",          run = "create", desc = "Create a file" },
+  { on = [ "r", "n" ], run = "rename", desc = "Rename" },
+  { on = "p",          run = "paste",  desc = "Paste yanked files" },
+  { on = "P",          run = "paste --before", desc = "Paste before cursor" },
+  { on = "c",          run = [ "yank",       "escape --visual --select" ], desc = "Yank (copy)" },
+  { on = [ "y", "y" ], run = [ "yank",       "escape --visual --select" ], desc = "Yank (copy)" },
+  { on = "x",          run = [ "yank --cut", "escape --visual --select" ], desc = "Yank (cut)" },
+  { on = "d",          run = [ "remove",     "escape --visual --select" ], desc = "Trash selected files" },
+  { on = [ "y", "p" ], run = "copy path",     desc = "Copy the absolute path" },
+  { on = [ "y", "f" ], run = "copy filename", desc = "Copy the name of the file" },
+
+  # Undo/Redo
+  { on = "u",     run = "undo", desc = "Undo the last operation" },
+  { on = "<C-r>", run = "redo", desc = "Redo the last operation" },
+
+  # Selection
+  { on = "<Tab>",    run = [ "toggle", "arrow next" ], desc = "Toggle the current selection state" },
+  { on = "<BackTab>", run = [ "toggle", "arrow prev" ], desc = "Toggle selection and move up" },
+  { on = "<C-a>",    run = "toggle_all --state=on", desc = "Select all files" },
+
+  # Filter / search
+  { on = [ "f", "r" ], run = "filter --smart",   desc = "Filter files" },
+  { on = [ "f", "d" ], run = "search --via=fd",  desc = "Search files by name using fd" },
+  { on = [ "r", "g" ], run = "search --via=rg",  desc = "Search files by content using rg" },
+
+  # Help
+  { on = "?", run = "help" },
 ]
