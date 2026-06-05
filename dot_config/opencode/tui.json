@@ -28,7 +28,12 @@
     "history_next": "down",
 
     "input_undo": "ctrl+z",
-    "input_redo": "ctrl+shift+z"
+    "input_redo": "ctrl+shift+z",
+
+    "terminal_suspend": "none",
+    "terminal_title_toggle": "none",
+
+    "session_compact": "none",
   },
   "scroll_acceleration": {
     "enabled": true
