@@ -22,6 +22,4 @@ tmux() {
 alias vim='nvim'
 alias vi='nvim'
 
-source <(carapace _carapace)
-
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

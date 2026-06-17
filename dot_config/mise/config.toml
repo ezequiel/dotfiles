@@ -1,5 +1,4 @@
 [env]
-CARAPACE_BRIDGES = "zsh"
 HOMEBREW_BUNDLE_FILE_GLOBAL = "{{env.XDG_CONFIG_HOME}}/homebrew/Brewfile"
 HOMEBREW_NO_ANALYTICS = true
 HOMEBREW_NO_UPDATE_REPORT_NEW = true
@@ -35,7 +34,6 @@ status.missing_tools = "always"
 "aqua:artempyanykh/marksman" = "latest"
 "aqua:ast-grep/ast-grep" = "latest"
 "aqua:cantino/mcfly" = "latest"
-"aqua:carapace-sh/carapace-bin" = "latest"
 "aqua:cli/cli" = "latest"
 "aqua:git-lfs/git-lfs" = "latest"
 "aqua:golangci/golangci-lint" = "1.64.8"
