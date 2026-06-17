@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# Refresh the cursor provider's model list in opencode-work.jsonc by querying
+# `cursor-agent --list-models`. Restart opencode after running.
+#
+# ponytail: in-place edits a JSONC file by replacing the "models": {...} block
+# inside provider.cursor. Assumes only one such block exists in the file.
+
+set -euo pipefail
+
+CONFIG="${OPENCODE_CONFIG:-${XDG_CONFIG_HOME:-$HOME/.config}/opencode/opencode-work.jsonc}"
+
+if [[ ! -f "$CONFIG" ]]; then
+  echo "config not found: $CONFIG" >&2
+  exit 1
+fi
+
+if ! command -v cursor-agent >/dev/null; then
+  echo "cursor-agent not on PATH" >&2
+  exit 1
+fi
+
+raw=$(cursor-agent --list-models 2>/dev/null)
+
+python3 - "$CONFIG" <<PY
+import json, re, sys, pathlib
+
+config_path = pathlib.Path(sys.argv[1])
+raw = """$raw"""
+
+models = {}
+for line in raw.splitlines():
+    m = re.match(r"^([a-z0-9][a-z0-9._-]*)\s+-\s+(.+?)\s*\$", line, re.I)
+    if not m:
+        continue
+    mid, name = m.group(1), m.group(2)
+    entry = {"name": name}
+    if "thinking" in mid:
+        entry["reasoning"] = True
+    models[mid] = entry
+
+if not models:
+    sys.exit("no models parsed")
+
+# Format with 2-space JSON indent, then re-indent every line to sit inside the
+# 6-space-indented "models": block.
+body = json.dumps(models, indent=2)
+indented = "\n".join("      " + line for line in body.splitlines())
+new_block = f'"models": {indented[6:]}'
+
+text = config_path.read_text()
+
+# Find "models": { ... } with brace matching (the value may itself contain
+# nested objects, so we can't rely on a simple regex).
+start_re = re.compile(r'"models"\s*:\s*\{')
+starts = list(start_re.finditer(text))
+if len(starts) != 1:
+    sys.exit(f"expected exactly 1 \\"models\\" key, found {len(starts)}")
+
+start = starts[0]
+i = start.end() - 1  # position of opening '{'
+depth = 0
+end = None
+while i < len(text):
+    c = text[i]
+    if c == "{":
+        depth += 1
+    elif c == "}":
+        depth -= 1
+        if depth == 0:
+            end = i + 1
+            break
+    i += 1
+if end is None:
+    sys.exit("unbalanced braces around \\"models\\" block")
+
+config_path.write_text(text[: start.start()] + new_block + text[end:])
+print(f"wrote {len(models)} models to {config_path}")
+PY
+
+echo "restart opencode to pick up changes"
