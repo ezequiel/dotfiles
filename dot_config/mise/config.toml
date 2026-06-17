@@ -73,6 +73,7 @@ yarn = "latest"
 pipx = "latest"
 mongosh = "latest"
 "aqua:anomalyco/opencode" = "1.15.11"
+"npm:opencode-cursor-auth" = "1.0.16"
 
 [tasks.up]
 description = "Update all the things"
