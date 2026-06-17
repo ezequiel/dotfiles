@@ -10,7 +10,10 @@
     }
   },
   "autoupdate": false,
-  "instructions": ["{env:XDG_CONFIG_HOME}/opencode/output-styles/linus-torvalds.md"],
+  "instructions": [
+    "{env:XDG_CONFIG_HOME}/opencode/output-styles/linus-torvalds.md",
+    "{env:XDG_CONFIG_HOME}/opencode/ponytail.md"
+  ],
   "default_agent": "plan",
   "experimental": {
     "openTelemetry": false

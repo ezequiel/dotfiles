@@ -17,3 +17,19 @@ refreshPeriod = "168h"
 type = "file"
 url = "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md"
 refreshPeriod = "168h"
+
+# ponytail — pulled straight from upstream, markdown only (no plugin code execution)
+[".config/opencode/ponytail.md"]
+type = "file"
+url = "https://raw.githubusercontent.com/DietrichGebert/ponytail/main/AGENTS.md"
+refreshPeriod = "168h"
+
+[".config/opencode/command/ponytail-review.md"]
+type = "file"
+url = "https://raw.githubusercontent.com/DietrichGebert/ponytail/main/.opencode/command/ponytail-review.md"
+refreshPeriod = "168h"
+
+[".config/opencode/command/ponytail-audit.md"]
+type = "file"
+url = "https://raw.githubusercontent.com/DietrichGebert/ponytail/main/.opencode/command/ponytail-audit.md"
+refreshPeriod = "168h"
