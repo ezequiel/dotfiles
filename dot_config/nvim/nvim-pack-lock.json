@@ -5,8 +5,9 @@
       "src": "https://github.com/okuuva/auto-save.nvim"
     },
     "blink.cmp": {
-      "rev": "39682a9c737920578cf68887c21eaa4ce3845c67",
-      "src": "https://github.com/saghen/blink.cmp"
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
     },
     "bufjump.nvim": {
       "rev": "ae2728a77defbd27e9e5ef64c854fb0813ffba01",
