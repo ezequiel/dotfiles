@@ -3,12 +3,7 @@
 # querying `cursor-agent --list-models`. Restart opencode after running.
 #
 # Usage:
-#   refresh-cursor-models [PATH]
-#
-# PATH resolution order:
-#   1. First positional arg, if given
-#   2. $OPENCODE_CONFIG
-#   3. Error out (no guessing)
+#   refresh-cursor-models PATH
 #
 # ponytail: in-place edits a JSONC file by replacing the "models": {...} block
 # inside provider.cursor. Assumes exactly one such block exists; preserves the
@@ -16,13 +11,12 @@
 
 set -euo pipefail
 
-CONFIG="${1:-${OPENCODE_CONFIG:-}}"
-
-if [[ -z "$CONFIG" ]]; then
-  echo "usage: $(basename "$0") [PATH]" >&2
-  echo "  pass a path, or set OPENCODE_CONFIG" >&2
+if [[ $# -ne 1 ]]; then
+  echo "usage: $(basename "$0") PATH" >&2
   exit 2
 fi
+
+CONFIG="$1"
 
 if [[ ! -f "$CONFIG" ]]; then
   echo "config not found: $CONFIG" >&2
