@@ -75,7 +75,7 @@ mongosh = "latest"
 [tasks.up]
 description = "Update all the things"
 run = [
-  "brew bundle --global",
+  "brew bundle --global --force || true",
   "brew cleanup --prune=all",
   "mise prune --yes",
   "mise upgrade",
