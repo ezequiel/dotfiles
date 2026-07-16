@@ -13,8 +13,6 @@ brew "streamlink"
 brew "tree"
 brew "zsh-syntax-highlighting"
 
-cask "cursor"
-cask "cursor-cli"
 cask "docker-desktop"
 cask "font-intel-one-mono"
 cask "google-chrome"
