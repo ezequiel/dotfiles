@@ -11,15 +11,20 @@ source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
 
-tmux() {
-  if [ $# -eq 0 ]; then
-    sesh last 2>/dev/null || echo "No tmux sessions. Use 'sesh connect <name>' to create one."
-  else
-    command tmux "$@"
-  fi
-}
-
 alias vim='nvim'
 alias vi='nvim'
+
+# herdr-automatic-rename shell hook (no-op outside herdr)
+for _f in ${HOME}/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.zsh(N); do
+  source $_f; break
+done
+
+# rename herdr workspace to current directory on cd (no-op outside herdr)
+_herdr_chpwd() {
+  [[ -z "$HERDR_ENV" || -z "$HERDR_WORKSPACE_ID" ]] && return
+  local dir="${PWD/#$HOME/~}"
+  "${HERDR_BIN_PATH:-herdr}" workspace rename "$HERDR_WORKSPACE_ID" "$dir" 2>/dev/null &!
+}
+add-zsh-hook chpwd _herdr_chpwd
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

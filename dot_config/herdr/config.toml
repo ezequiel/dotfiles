@@ -1,0 +1,42 @@
+onboarding = false
+
+[keys]
+new_tab = "ctrl+t"
+new_workspace = "cmd+t"
+next_tab = "ctrl+tab"
+previous_tab = "ctrl+shift+tab"
+next_workspace = "cmd+shift+]"
+previous_workspace = "cmd+shift+["
+
+previous_agent = "ctrl+shift+["
+next_agent = "ctrl+shift+]"
+zoom = "prefix+z"
+
+[[keys.command]]
+key = "cmd+z"
+type = "shell"
+command = "herdr pane zoom --toggle --current"
+description = "toggle pane zoom"
+
+[ui]
+prompt_new_tab_name = false
+pane_borders = false
+pane_gaps = false
+
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "priority"
+[terminal]
+shell_mode = "auto"
+
+[experimental]
+kitty_graphics = true
+
+[theme]
+name = "terminal"
+
+[ui.sidebar.agents.rows_by_agent]
+opencode = [["state_icon", "$title"]]
+
+[ui.toast]
+delivery = "system"
+delay_seconds = 1

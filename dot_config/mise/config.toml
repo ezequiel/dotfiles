@@ -49,8 +49,7 @@ status.missing_tools = "always"
 "aqua:sigstore/cosign" = "latest"
 "aqua:sxyazi/yazi" = "latest"
 "aqua:tamasfe/taplo" = "latest"
-"aqua:tmux/tmux-builds" = "latest"
-"go:github.com/joshmedeski/sesh/v2" = "latest"
+"aqua:ogulcancelik/herdr" = "latest"
 "go:golang.org/x/tools/cmd/goimports" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "npm:@angular/language-server" = "latest"
@@ -72,6 +71,14 @@ pipx = "latest"
 mongosh = "latest"
 "aqua:anomalyco/opencode" = "latest"
 
+[tasks.herdr]
+description = "Install/update Herdr plugins and integrations"
+run = [
+  "herdr integration install opencode",
+  "herdr plugin install qu8n/herdr-automatic-rename --yes",
+  "herdr plugin link \"$XDG_CONFIG_HOME/herdr/oc-titles\" 2>/dev/null || true",
+]
+
 [tasks.up]
 description = "Update all the things"
 run = [
@@ -82,4 +89,5 @@ run = [
   "rm -rf \"$XDG_CONFIG_HOME/yazi/plugins\"",
   "ya pkg upgrade",
   "nvim --headless +\"lua vim.pack.update(nil, { force = true })\" +qa",
+  "herdr plugin install qu8n/herdr-automatic-rename --yes || true",
 ]

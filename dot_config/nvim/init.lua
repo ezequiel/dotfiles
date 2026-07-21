@@ -58,7 +58,7 @@ end, { silent = true, expr = true })
 
 local session = vim.fn.stdpath('state') .. '/session_restart.vim'
 
-vim.keymap.set('n', '<M-r>', function()
+vim.keymap.set('n', '<D-r>', function()
   vim.cmd.mksession({ session, bang = true })
   vim.cmd.restart()
 end)
@@ -112,25 +112,15 @@ vim.keymap.set('x', '<leader>go', function()
   )
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
 end)
-vim.keymap.set({ 'n', 't' }, '<leader>zo', function()
-  if vim.t.zoomed and vim.t.zoom_winrestcmd then
-    vim.cmd(vim.t.zoom_winrestcmd)
-    vim.t.zoomed = false
-  else
-    vim.t.zoom_winrestcmd = vim.fn.winrestcmd()
-    vim.cmd('resize | vertical resize')
-    vim.t.zoomed = true
-  end
-end)
 vim.keymap.set('n', '<leader>ds', function()
   vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
 end)
-vim.keymap.set('n', '<M-S-j>', "<cmd>execute 'move .+' . v:count1<cr>==")
-vim.keymap.set('n', '<M-S-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==")
-vim.keymap.set('i', '<M-S-j>', '<esc><cmd>m .+1<cr>==gi')
-vim.keymap.set('i', '<M-S-k>', '<esc><cmd>m .-2<cr>==gi')
-vim.keymap.set('x', '<M-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv")
-vim.keymap.set('x', '<M-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
+vim.keymap.set('n', '<D-S-j>', "<cmd>execute 'move .+' . v:count1<cr>==")
+vim.keymap.set('n', '<D-S-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==")
+vim.keymap.set('i', '<D-S-j>', '<esc><cmd>m .+1<cr>==gi')
+vim.keymap.set('i', '<D-S-k>', '<esc><cmd>m .-2<cr>==gi')
+vim.keymap.set('x', '<D-S-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv")
+vim.keymap.set('x', '<D-S-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv")
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
 vim.keymap.set('n', '<C-w>d', function()
