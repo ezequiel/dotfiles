@@ -3,8 +3,8 @@ vim.pack.add({
 })
 
 require('bufjump').setup({
-  forward_key = '<M-]>',
-  backward_key = '<M-[>',
+  forward_key = '<D-]>',
+  backward_key = '<D-[>',
   on_success = false,
   forward_same_buf_key = '<C-S-I>',
   backward_same_buf_key = '<C-S-O>',

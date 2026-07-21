@@ -1,6 +1,7 @@
 onboarding = false
 
 [keys]
+split_vertical = "prefix+|"
 new_tab = "ctrl+t"
 new_workspace = "cmd+t"
 next_tab = "ctrl+tab"
@@ -11,6 +12,38 @@ previous_workspace = "cmd+shift+["
 previous_agent = "ctrl+shift+["
 next_agent = "ctrl+shift+]"
 zoom = "prefix+z"
+
+[[keys.command]]
+key = "alt+shift+left"
+type = "plugin_action"
+command = "herdr-splits.nav-left"
+
+[[keys.command]]
+key = "alt+shift+down"
+type = "plugin_action"
+command = "herdr-splits.nav-down"
+
+[[keys.command]]
+key = "alt+shift+up"
+type = "plugin_action"
+command = "herdr-splits.nav-up"
+
+[[keys.command]]
+key = "alt+shift+right"
+type = "plugin_action"
+command = "herdr-splits.nav-right"
+
+[[keys.command]]
+key = "ctrl+shift+="
+type = "plugin_action"
+command = "herdr-splits.resize-right"
+description = "expand pane"
+
+[[keys.command]]
+key = "ctrl+shift+minus"
+type = "plugin_action"
+command = "herdr-splits.resize-left"
+description = "shrink pane"
 
 [[keys.command]]
 key = "cmd+z"

@@ -23,7 +23,7 @@ done
 _herdr_chpwd() {
   [[ -z "$HERDR_ENV" || -z "$HERDR_WORKSPACE_ID" ]] && return
   local dir="${PWD/#$HOME/~}"
-  "${HERDR_BIN_PATH:-herdr}" workspace rename "$HERDR_WORKSPACE_ID" "$dir" 2>/dev/null &!
+  "${HERDR_BIN_PATH:-herdr}" workspace rename "$HERDR_WORKSPACE_ID" "$dir" >/dev/null 2>&1 &!
 }
 add-zsh-hook chpwd _herdr_chpwd
 

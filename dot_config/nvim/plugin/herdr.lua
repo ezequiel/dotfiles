@@ -1,6 +1,26 @@
 local herdr  = vim.env.HERDR_BIN_PATH or 'herdr'
 local socket = vim.env.HERDR_SOCKET_PATH or (vim.env.HOME .. '/.config/herdr/herdr.sock')
 
+-- herdr-splits.nvim: seamless ctrl+shift+arrow nav across nvim splits and herdr panes
+vim.pack.add({ 'https://github.com/lmilojevicc/herdr-splits.nvim' })
+if vim.env.HERDR_ENV == '1' then
+  require('herdr-splits').setup({
+    at_edge = 'stop',
+    nav_at_edge = 'stop',
+    nav_keys = {
+      left  = '<M-S-Left>',
+      down  = '<M-S-Down>',
+      up    = '<M-S-Up>',
+      right = '<M-S-Right>',
+    },
+  })
+  local hs = require('herdr-splits')
+  vim.keymap.set('n', '<M-S-Left>',  hs.move_cursor_left,  { desc = 'Navigate left' })
+  vim.keymap.set('n', '<M-S-Down>',  hs.move_cursor_down,  { desc = 'Navigate down' })
+  vim.keymap.set('n', '<M-S-Up>',    hs.move_cursor_up,    { desc = 'Navigate up' })
+  vim.keymap.set('n', '<M-S-Right>', hs.move_cursor_right, { desc = 'Navigate right' })
+end
+
 local function pane_focus(pane_id, tab_id, workspace_id)
   if workspace_id then vim.system({ herdr, 'workspace', 'focus', workspace_id }) end
   if tab_id       then vim.system({ herdr, 'tab',       'focus', tab_id       }) end
@@ -73,16 +93,18 @@ end, { desc = 'Start new opencode pane' })
 
 -- send context to opencode via herdr agent send
 local function send_to_opencode(text)
-  local oc = oc_agents()
-  if #oc == 0 then
-    vim.notify('no opencode agent running', vim.log.levels.WARN)
-    return
-  end
-  -- prefer agent in same tab, else most recent
   local nvim_tab = current_tab_id()
-  local target = oc[#oc]
+  local oc = oc_agents()
+  -- prefer agent in same tab
+  local target = nil
   for _, a in ipairs(oc) do
     if a.tab_id == nvim_tab then target = a; break end
+  end
+  if not target then
+    -- none in this tab — start one, then send once it's ready
+    oc_start_new()
+    vim.notify('started opencode — resend after it loads', vim.log.levels.INFO)
+    return
   end
   vim.system({ herdr, 'agent', 'send', target.pane_id, text })
   pane_focus(target.pane_id, target.tab_id, target.workspace_id)

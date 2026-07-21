@@ -18,7 +18,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "11a0d447a6837879cbd322123a7e1e3e2aae327c",
+      "rev": "05a35c6d4856455393a2dc8aadaeae4b2823ddf6",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
@@ -37,7 +37,10 @@
       "rev": "1cc080f55706b38aabfa97d40acb6adf59ac4a5a",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
-
+    "herdr-splits.nvim": {
+      "rev": "107273e004e4f7ef07f13c83164d2cb2c51df65d",
+      "src": "https://github.com/lmilojevicc/herdr-splits.nvim"
+    },
     "indent-o-matic": {
       "rev": "764da1f30b5bb4a49035c3abc9a586322296b812",
       "src": "https://github.com/Darazaki/indent-o-matic"
@@ -55,7 +58,7 @@
       "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
-      "rev": "7f87dbb4707f54117e98ab8f15d6a2975b3f13f0",
+      "rev": "b89138d9af0a96e6048e202a15765fc6b6416bd4",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -87,7 +90,7 @@
       "src": "https://github.com/folke/sidekick.nvim"
     },
     "smart-splits.nvim": {
-      "rev": "de39b4d75695e2377401c7d05f896657637d244b",
+      "rev": "68861c68f1cf34dab4cdb22f094d4531cd26560a",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
     },
     "teide.nvim": {
