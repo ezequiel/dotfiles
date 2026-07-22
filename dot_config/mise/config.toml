@@ -81,7 +81,7 @@ run = [
   "herdr plugin install qu8n/herdr-automatic-rename --yes",
   "herdr plugin install lmilojevicc/herdr-splits.nvim --yes",
   "herdr plugin install fullerzz/herdr-plugin-sesh --yes",
-  "herdr plugin install razajamil/herdr-plugin-workspace-manager --yes",
+
   "herdr plugin link \"$XDG_CONFIG_HOME/herdr/oc-titles\" 2>/dev/null || true",
 ]
 

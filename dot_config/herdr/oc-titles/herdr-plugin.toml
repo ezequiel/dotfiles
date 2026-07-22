@@ -11,6 +11,10 @@ placement = "split"
 command = ["opencode"]
 
 [[events]]
+on = "workspace.created"
+command = ["bash", "bootstrap.sh"]
+
+[[events]]
 on = "pane.agent_status_changed"
 command = ["bash", "index.sh"]
 
