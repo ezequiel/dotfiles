@@ -1,6 +1,7 @@
 onboarding = false
 
 [keys]
+close_workspace = "prefix+d"
 split_vertical = "prefix+|"
 new_tab = "ctrl+t"
 new_workspace = "cmd+t"
