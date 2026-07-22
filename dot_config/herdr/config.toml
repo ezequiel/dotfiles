@@ -46,6 +46,18 @@ command = "herdr-splits.resize-left"
 description = "shrink pane"
 
 [[keys.command]]
+key = "prefix+s"
+type = "plugin_action"
+command = "fullerzz.sesh.open-picker"
+description = "open workspace picker"
+
+[[keys.command]]
+key = "prefix+L"
+type = "plugin_action"
+command = "fullerzz.sesh.last"
+description = "jump to last workspace"
+
+[[keys.command]]
 key = "cmd+z"
 type = "shell"
 command = "herdr pane zoom --toggle --current"
