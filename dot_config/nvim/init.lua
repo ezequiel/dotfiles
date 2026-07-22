@@ -179,7 +179,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
     vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#6A6A6A', bg = '#171B20' })
     vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#6A6A6A', bg = '#171B20' })
-    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#6A6A6A', bg = '#171B20' })
+    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#171B20', bg = '#171B20' })
   end,
 })
 

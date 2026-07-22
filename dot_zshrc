@@ -14,6 +14,7 @@ eval "$(zoxide init zsh)"
 alias vim='nvim'
 alias vi='nvim'
 
+
 # herdr-automatic-rename shell hook (no-op outside herdr)
 for _f in ${HOME}/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.zsh(N); do
   source $_f; break

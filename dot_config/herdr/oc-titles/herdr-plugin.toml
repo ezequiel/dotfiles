@@ -1,8 +1,14 @@
 id = "oc-titles"
 name = "OC Titles"
-version = "0.1.0"
-min_herdr_version = "0.7.0"
+version = "0.2.0"
+min_herdr_version = "0.7.5"
 platforms = ["linux", "macos"]
+
+[[panes]]
+id = "opencode"
+title = "OpenCode"
+placement = "split"
+command = ["opencode"]
 
 [[events]]
 on = "pane.agent_status_changed"

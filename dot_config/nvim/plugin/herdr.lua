@@ -51,22 +51,37 @@ local function current_tab_id()
   return ((d.result or {}).pane or {}).tab_id or vim.env.HERDR_TAB_ID
 end
 
+-- returns new pane_id or nil
 local function oc_start_new()
-  local tab_id = current_tab_id()
-  if not tab_id or tab_id == '' then
-    vim.notify('could not determine current tab', vim.log.levels.ERROR)
-    return
+  -- get live pane id via socket (env var may be stale)
+  local p = '{"id":"cur","method":"pane.current","params":{"caller_pane_id":"' .. (vim.env.HERDR_PANE_ID or '') .. '"}}\n'
+  local pr = vim.system(
+    { 'sh', '-c', 'printf "%s" ' .. vim.fn.shellescape(p) .. ' | nc -U ' .. vim.fn.shellescape(socket) },
+    { text = true }
+  ):wait()
+  local nvim_pane = vim.env.HERDR_PANE_ID
+  if pr.code == 0 then
+    local ok, d = pcall(vim.json.decode, pr.stdout)
+    nvim_pane = (ok and ((d.result or {}).pane or {}).pane_id) or nvim_pane
   end
-  -- unique name to avoid agent_name_taken error
-  local name = 'opencode-' .. os.time()
-  vim.system({
-    herdr, 'agent', 'start', name,
-    '--tab', tab_id,
-    '--split', 'right',
-    '--focus',
+  if not nvim_pane or nvim_pane == '' then
+    vim.notify('could not determine current pane', vim.log.levels.ERROR)
+    return nil
+  end
+  -- use plugin pane: runs opencode directly as pane process (no shell flash, closes on exit)
+  local r = vim.system({
+    herdr, 'plugin', 'pane', 'open',
+    '--plugin', 'oc-titles',
+    '--entrypoint', 'opencode',
+    '--placement', 'split',
+    '--direction', 'right',
+    '--target-pane', nvim_pane,
     '--cwd', vim.fn.getcwd(),
-    '--', 'opencode',
-  })
+    '--focus',
+  }, { text = true }):wait()
+  if r.code ~= 0 then return nil end
+  local ok, d = pcall(vim.json.decode, r.stdout)
+  return ok and ((d.result or {}).plugin_pane or {}).pane and d.result.plugin_pane.pane.pane_id or nil
 end
 
 -- <leader>ot — focus opencode in THIS tab, or start one here if none
@@ -91,7 +106,7 @@ vim.keymap.set({ 'n', 't' }, '<leader>on', function()
   oc_start_new()
 end, { desc = 'Start new opencode pane' })
 
--- send context to opencode via herdr agent send
+-- send context to opencode via herdr agent prompt (handles bracketed paste)
 local function send_to_opencode(text)
   local nvim_tab = current_tab_id()
   local oc = oc_agents()
@@ -101,12 +116,25 @@ local function send_to_opencode(text)
     if a.tab_id == nvim_tab then target = a; break end
   end
   if not target then
-    -- none in this tab — start one, then send once it's ready
-    oc_start_new()
-    vim.notify('started opencode — resend after it loads', vim.log.levels.INFO)
+    -- start opencode, wait for input box to appear on screen, then send
+    vim.schedule(function()
+      local new_pane = oc_start_new()
+      if not new_pane then return end
+      -- wait for the input prompt characters to appear in the visible pane
+      vim.system({
+        herdr, 'pane', 'wait-output', new_pane,
+        '--source', 'visible',
+        '--regex', 'esc|interrupt|commands',
+        '--timeout', '30000',
+      }, { text = true }, function()
+        vim.defer_fn(function()
+          vim.system({ herdr, 'pane', 'send-text', new_pane, text })
+        end, 300)
+      end)
+    end)
     return
   end
-  vim.system({ herdr, 'agent', 'send', target.pane_id, text })
+  vim.system({ herdr, 'agent', 'prompt', target.pane_id, text })
   pane_focus(target.pane_id, target.tab_id, target.workspace_id)
 end
 

@@ -58,6 +58,9 @@ pane_gaps = false
 
 show_agent_labels_on_pane_borders = false
 agent_panel_sort = "priority"
+[worktrees]
+directory = "~/Projects/worktrees"
+
 [terminal]
 shell_mode = "auto"
 
@@ -66,6 +69,11 @@ kitty_graphics = true
 
 [theme]
 name = "terminal"
+
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", "workspace"],
+]
 
 [ui.sidebar.agents.rows_by_agent]
 opencode = [["state_icon", "$title"]]
