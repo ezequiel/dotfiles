@@ -81,11 +81,6 @@ run = [
   "herdr plugin install qu8n/herdr-automatic-rename --yes",
   "herdr plugin install lmilojevicc/herdr-splits.nvim --yes",
   "herdr plugin install fullerzz/herdr-plugin-sesh --yes",
-  "herdr plugin install ezcorp-org/herdr-git-status --yes",
-
-
-  "mkdir -p \"$(herdr plugin config-dir ez-corp.git-status)\" && printf 'mode = \"sidebar\"\\ninterval_seconds = 5\\nclean_checkmark = true\\n' > \"$(herdr plugin config-dir ez-corp.git-status)/config.toml\" && herdr plugin action invoke status-enable --plugin ez-corp.git-status 2>/dev/null || true",
-
   "herdr plugin link \"$XDG_CONFIG_HOME/herdr/herdr-opencode\" 2>/dev/null || true",
 ]
 
