@@ -34,7 +34,7 @@ cwd_arg=""
 [ -n "$root_cwd" ] && cwd_arg="--cwd $root_cwd"
 
 "$herdr" plugin pane open \
-  --plugin oc-titles \
+  --plugin herdr-opencode \
   --entrypoint opencode \
   --placement split \
   --direction right \

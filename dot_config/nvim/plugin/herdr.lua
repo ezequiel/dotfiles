@@ -62,7 +62,7 @@ local function oc_start_new()
   end
   local r = vim.system({
     herdr, 'plugin', 'pane', 'open',
-    '--plugin', 'oc-titles',
+    '--plugin', 'herdr-opencode',
     '--entrypoint', 'opencode',
     '--placement', 'split',
     '--direction', 'right',

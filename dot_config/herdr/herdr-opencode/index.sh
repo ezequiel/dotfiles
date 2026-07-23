@@ -19,7 +19,7 @@ for a in agents:
     title = re.sub(r'^OC \| ', '', a.get('terminal_title_stripped') or '')
     subprocess.Popen([
         herdr, 'pane', 'report-metadata', pane_id,
-        '--source', 'oc-titles',
+        '--source', 'herdr-opencode',
         '--token', f'title={title}',
     ])
 " "$agents"
