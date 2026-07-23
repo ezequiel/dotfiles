@@ -1,0 +1,8 @@
+# Local plugin config / secrets (lives in herdr's config dir, never commit)
+.env
+
+# Poller runtime state + log (used when the state dir falls back to the plugin dir)
+.state/
+
+# macOS
+.DS_Store

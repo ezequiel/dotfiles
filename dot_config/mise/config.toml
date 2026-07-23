@@ -82,6 +82,8 @@ run = [
   "herdr plugin install lmilojevicc/herdr-splits.nvim --yes",
   "herdr plugin install fullerzz/herdr-plugin-sesh --yes",
   "herdr plugin install ezcorp-org/herdr-git-status --yes",
+  "herdr plugin link \"$XDG_CONFIG_HOME/herdr/herdr-ci-status\" 2>/dev/null || true",
+  "herdr plugin action invoke gitlab-ci-status.start 2>/dev/null || true",
 
   "mkdir -p \"$(herdr plugin config-dir ez-corp.git-status)\" && printf 'mode = \"sidebar\"\\ninterval_seconds = 5\\nclean_checkmark = true\\n' > \"$(herdr plugin config-dir ez-corp.git-status)/config.toml\" && herdr plugin action invoke status-enable --plugin ez-corp.git-status 2>/dev/null || true",
 

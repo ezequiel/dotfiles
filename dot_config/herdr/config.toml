@@ -59,6 +59,18 @@ command = "fullerzz.sesh.last"
 description = "jump to last workspace"
 
 [[keys.command]]
+key = "prefix+i"
+type = "shell"
+command = "herdr plugin action invoke gitlab-ci-status.toggle"
+description = "toggle CI status dots"
+
+[[keys.command]]
+key = "prefix+shift+i"
+type = "plugin_action"
+command = "gitlab-ci-status.open"
+description = "open CI status pane"
+
+[[keys.command]]
 key = "cmd+z"
 type = "shell"
 command = "herdr pane zoom --toggle --current"
