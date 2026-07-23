@@ -15,14 +15,6 @@ on = "workspace.created"
 command = ["bash", "bootstrap.sh"]
 
 [[events]]
-on = "workspace.focused"
-command = ["bash", "gitstatus.sh"]
-
-[[events]]
-on = "pane.focused"
-command = ["bash", "gitstatus.sh"]
-
-[[events]]
 on = "pane.agent_status_changed"
 command = ["bash", "index.sh"]
 
