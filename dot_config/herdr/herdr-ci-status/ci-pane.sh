@@ -58,7 +58,7 @@ build_frame() {
   fi
 
   # Open MR/PR for this branch (the !123 / #123 is a clickable hyperlink).
-  if gci_open_pr "$REPO" "$GCI_PATH" "$GCI_BRANCH" "$GCI_PROVIDER"; then
+  if gci_open_pr "$REPO" "$GCI_PATH" "$GCI_BRANCH" "$GCI_PROVIDER" "$GCI_HOST"; then
     printf '  %-8s  %s%s%s\n' \
       "$pr_word" "$GCI_BOLD" "$(gci_hyperlink "$GCI_MR_URL" "$GCI_MR_SIGIL$GCI_MR_IID")" "$GCI_RESET"
   fi

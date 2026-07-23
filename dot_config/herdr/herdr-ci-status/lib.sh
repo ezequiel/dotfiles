@@ -328,9 +328,35 @@ gci_latest_ci() {
     GCI_CI_UPDATED="$(printf '%s' "$run" | jq -r '.updated_at // empty')"
   else
     command -v gh >/dev/null 2>&1 || { GCI_ERR="gh not found — install it (brew install gh) and run: gh auth login"; return 5; }
-    resp="$(cd "$repo" && gh api "repos/$GCI_PATH/actions/runs?branch=$GCI_BRANCH&per_page=1" 2>&1)" || { GCI_ERR="$resp"; return 5; }
+    local gh_host_flag=""
+    if [ "$GCI_HOST" != "github.com" ]; then gh_host_flag="--hostname $GCI_HOST"; fi
+    resp="$(cd "$repo" && gh api $gh_host_flag "repos/$GCI_PATH/actions/runs?branch=$GCI_BRANCH&per_page=1" 2>&1)" || { GCI_ERR="$resp"; return 5; }
     run="$(printf '%s' "$resp" | jq -c '.workflow_runs[0] // empty' 2>/dev/null)"
-    [ -n "$run" ] || return 0
+    if [ -z "$run" ]; then
+      # No branch-level runs — fall back to PR status checks (for pull_request-triggered CI)
+      local owner="${GCI_PATH%%/*}" name="${GCI_PATH#*/}" pr_resp pr_num checks overall
+      pr_resp="$(cd "$repo" && gh pr view $gh_host_flag --json number,statusCheckRollup,url 2>/dev/null)"
+      pr_num="$(printf '%s' "$pr_resp" | jq -r '.number // empty' 2>/dev/null)"
+      if [ -n "$pr_num" ]; then
+        GCI_MR_IID="$pr_num"; GCI_MR_SIGIL="#"
+        GCI_MR_URL="$(printf '%s' "$pr_resp" | jq -r '.url // empty' 2>/dev/null)"
+        checks="$(printf '%s' "$pr_resp" | jq -r '[.statusCheckRollup[].conclusion // .statusCheckRollup[].state] | map(select(. != null and . != "")) | .[]' 2>/dev/null)"
+        if [ -z "$checks" ]; then
+          GCI_STATUS="pending"
+        elif printf '%s\n' "$checks" | grep -qi "failure\|error\|timed_out"; then
+          GCI_STATUS="failed"
+        elif printf '%s\n' "$checks" | grep -qi "in_progress\|queued\|waiting\|pending"; then
+          GCI_STATUS="running"
+        elif printf '%s\n' "$checks" | grep -qiE "^(success|completed)$"; then
+          GCI_STATUS="success"
+        else
+          GCI_STATUS="pending"
+        fi
+        GCI_CI_URL="$GCI_MR_URL"
+        GCI_CI_UPDATED=""
+      fi
+      return 0
+    fi
     st="$(printf '%s' "$run" | jq -r '.status // "unknown"')"
     cc="$(printf '%s' "$run" | jq -r '.conclusion // empty')"
     GCI_STATUS="$(gci_github_status "$st" "$cc")"
@@ -347,7 +373,7 @@ gci_latest_ci() {
 # come from a prior gci_latest_ci call; <repo> supplies the CLI's host + auth context.
 # Return: 0 found | 1 missing args | 2 api-error | 3 no open MR/PR.
 gci_open_pr() {
-  local repo="$1" path="$2" branch="$3" provider="$4" enc resp owner
+  local repo="$1" path="$2" branch="$3" provider="$4" host="${5:-github.com}" enc resp owner gh_host_flag=""
   GCI_MR_IID=""; GCI_MR_URL=""; GCI_MR_SIGIL=""
   [ -n "$path" ] && [ -n "$branch" ] || return 1
   if [ "$provider" = "gitlab" ]; then
@@ -359,7 +385,8 @@ gci_open_pr() {
   elif [ "$provider" = "github" ]; then
     GCI_MR_SIGIL="#"
     owner="${path%%/*}"
-    resp="$(cd "$repo" && gh api "repos/$path/pulls?head=$owner:$branch&state=open&per_page=1" 2>/dev/null)" || return 2
+    [ "$host" != "github.com" ] && gh_host_flag="--hostname $host"
+    resp="$(cd "$repo" && gh api $gh_host_flag "repos/$path/pulls?head=$owner:$branch&state=open&per_page=1" 2>/dev/null)" || return 2
     GCI_MR_IID="$(printf '%s' "$resp" | jq -r '.[0].number // empty' 2>/dev/null)"
     GCI_MR_URL="$(printf '%s' "$resp" | jq -r '.[0].html_url // empty' 2>/dev/null)"
   else

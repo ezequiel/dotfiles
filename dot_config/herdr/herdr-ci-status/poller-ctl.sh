@@ -45,7 +45,7 @@ status_for_repo() {
       else
         SPACE_EMOJI="⚪"   # supported remote, but no pipeline/run for this branch
       fi
-      if gci_open_pr "$cwd" "$GCI_PATH" "$GCI_BRANCH" "$GCI_PROVIDER"; then
+      if gci_open_pr "$cwd" "$GCI_PATH" "$GCI_BRANCH" "$GCI_PROVIDER" "$GCI_HOST"; then
         gci_review_for_mr "$cwd" "$GCI_PATH" "$GCI_MR_IID" "$GCI_PROVIDER"
         glyph="$(gci_review_badge_glyph "$GCI_REVIEW")"
         SPACE_MR="$glyph$GCI_MR_SIGIL$GCI_MR_IID"
