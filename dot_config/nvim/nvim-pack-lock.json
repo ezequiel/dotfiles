@@ -22,7 +22,7 @@
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
-      "rev": "eced685813841391087fd65f896fc6ce6339a809",
+      "rev": "bb8f7ef06fcbf6f4b31fde344bc16f4d33c8ec7f",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
