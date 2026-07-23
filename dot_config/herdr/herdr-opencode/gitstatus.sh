@@ -59,10 +59,20 @@ for ws in workspaces:
         if untracked: parts.append(f'?{untracked}')
         token = ' '.join(parts)
 
+    if not token:
+        key, val = 'git_clean', '✓'
+    elif conflicts:
+        key, val = 'git_conflict', token
+    else:
+        key, val = 'git_dirty', token
+
     subprocess.Popen([
         herdr, 'workspace', 'report-metadata', ws_id,
         '--source', 'herdr-opencode',
-        '--token', f'git={token}',
+        '--token', f'git_clean=',
+        '--token', f'git_dirty=',
+        '--token', f'git_conflict=',
+        '--token', f'{key}={val}',
         '--ttl-ms', '30000',
     ])
 " "$workspaces" "$panes" 2>/dev/null
