@@ -59,12 +59,6 @@ command = "fullerzz.sesh.last"
 description = "jump to last workspace"
 
 [[keys.command]]
-key = "prefix+p"
-type = "plugin_action"
-command = "martinv.pr-tracker.open-board"
-description = "open PR tracker board"
-
-[[keys.command]]
 key = "cmd+z"
 type = "shell"
 command = "herdr pane zoom --toggle --current"
