@@ -85,7 +85,7 @@ name = "terminal"
 
 [ui.sidebar.spaces]
 rows = [
-  ["state_icon", "workspace"],
+  ["state_icon", "workspace", "$git"],
 ]
 
 [ui.sidebar.agents.rows_by_agent]
