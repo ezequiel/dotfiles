@@ -11,8 +11,9 @@
   },
   "autoupdate": false,
   "instructions": [
-    "{env:XDG_CONFIG_HOME}/opencode/output-styles/linus-torvalds.md",
-    "{env:XDG_CONFIG_HOME}/opencode/ponytail.md"
+    "{env:XDG_CONFIG_HOME}/opencode/stuff/linus-torvalds.md",
+    "{env:XDG_CONFIG_HOME}/opencode/stuff/ponytail.md",
+    "{env:XDG_CONFIG_HOME}/opencode/stuff/simple-english.md"
   ],
   "default_agent": "plan",
   "experimental": {
