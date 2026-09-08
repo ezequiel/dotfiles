@@ -1,3 +1,4 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -13,6 +14,32 @@ eval "$(zoxide init zsh)"
 
 alias vim='nvim'
 alias vi='nvim'
+
+wt() {
+  local branch="$1"
+  local repo_root
+  repo_root=$(git rev-parse --path-format=absolute --git-common-dir | xargs dirname)
+  git -C "$repo_root" fetch origin "$branch" || return 1
+  local wt_path
+  wt_path=$(git worktree list --porcelain | awk -v branch="refs/heads/$branch" '/^worktree /{path=$2} $0=="branch " branch {print path; exit}')
+  if [[ -n "$wt_path" ]]; then
+    local wt_head origin_head
+    wt_head=$(git -C "$wt_path" rev-parse HEAD)
+    origin_head=$(git rev-parse origin/"$branch")
+    if ! git -C "$wt_path" diff --quiet || ! git -C "$wt_path" diff --cached --quiet || [[ "$wt_head" != "$origin_head" ]]; then
+      echo "wt: $wt_path has uncommitted changes"
+      echo -n "  [o] overwrite  [a] abort > "
+      read -rk1 choice
+      echo
+      [[ "$choice" != "o" ]] && return 1
+    fi
+    git -C "$wt_path" reset --hard origin/"$branch" &&
+    herdr worktree open --cwd "$repo_root" --path "$wt_path"
+  else
+    git -C "$repo_root" branch -f "$branch" origin/"$branch" &&
+    herdr worktree create --cwd "$repo_root" --branch "$branch"
+  fi
+}
 
 
 # herdr-automatic-rename shell hook (no-op outside herdr)
