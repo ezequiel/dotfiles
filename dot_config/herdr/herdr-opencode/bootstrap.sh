@@ -27,11 +27,8 @@ import sys, json
 d = json.load(sys.stdin)
 panes = d.get('result', {}).get('panes', [])
 if panes:
-    print(panes[0].get('foreground_cwd') or panes[0].get('cwd', ''))
+    print(panes[0].get('cwd') or panes[0].get('foreground_cwd', ''))
 " 2>/dev/null)
-
-cwd_arg=""
-[ -n "$root_cwd" ] && cwd_arg="--cwd $root_cwd"
 
 "$herdr" plugin pane open \
   --plugin herdr-opencode \
@@ -39,5 +36,5 @@ cwd_arg=""
   --placement split \
   --direction right \
   --target-pane "$root_pane" \
-  ${cwd_arg:+--cwd "$root_cwd"} \
+  ${root_cwd:+--cwd "$root_cwd"} \
   --no-focus
