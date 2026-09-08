@@ -1,7 +1,6 @@
 cask "nkzw-tech/tap/codiff"
 
-tap "neovim/neovim"
-brew "neovim/neovim/neovim", args: ["HEAD"]
+brew "neovim", args: ["HEAD"]
 
 brew "chezmoi"
 brew "cloc"
