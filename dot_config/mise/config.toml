@@ -62,17 +62,16 @@ rust = "latest"
 "npm:bash-language-server" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:npm-check-updates" = "latest"
-"npm:opencommit" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:yaml-language-server" = "latest"
-"npm:hunkdiff" = "latest"
 bun = "latest"
-go = "latest"
+go = "1.25.12"
 node = "22"
 yarn = "latest"
 pipx = "latest"
 mongosh = "latest"
 "aqua:anomalyco/opencode" = "latest"
+hunk = "latest"
 
 [tasks.herdr]
 description = "Install/update Herdr plugins and integrations"
@@ -87,6 +86,7 @@ run = [
 [tasks.up]
 description = "Update all the things"
 run = [
+  "find /opt/homebrew/Caskroom -maxdepth 2 -name '*.upgrading' -exec rm -rf {} + 2>/dev/null || true",
   "brew bundle --global --force || true",
   "brew cleanup --prune=all",
   "mise prune --yes",
