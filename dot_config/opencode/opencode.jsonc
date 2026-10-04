@@ -1,36 +1,32 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoshare": false,
-  "permission": {
-    "bash": {
-      "git add *": "ask",
-      "git commit *": "ask",
-      "git push *": "ask",
-      "rm -rf *": "ask"
-    }
-  },
-  "autoupdate": false,
+  "share": "disabled",
+  "update": "disable",
+  "snapshots": false,
+  "default_agent": "plan",
   "instructions": [
     "{env:XDG_CONFIG_HOME}/opencode/stuff/linus-torvalds.md",
     "{env:XDG_CONFIG_HOME}/opencode/stuff/ponytail.md",
     "{env:XDG_CONFIG_HOME}/opencode/stuff/simple-english.md"
   ],
-  "default_agent": "plan",
-  "experimental": {
-    "openTelemetry": false
-  },
-  "share": "disabled",
-  "snapshot": false,
+  "permissions": [
+    { "action": "shell", "resource": "git add *", "effect": "ask" },
+    { "action": "shell", "resource": "git commit *", "effect": "ask" },
+    { "action": "shell", "resource": "git push *", "effect": "ask" },
+    { "action": "shell", "resource": "rm -rf *", "effect": "ask" }
+  ],
   "mcp": {
-    "chrome-devtools": {
-      "type": "local",
-      "command": [
-        "bunx",
-        "chrome-devtools-mcp@latest",
-        "--autoConnect",
-        "--no-usage-statistics"
-      ],
-      "enabled": true
+    "servers": {
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "bunx",
+          "chrome-devtools-mcp@latest",
+          "--autoConnect",
+          "--no-usage-statistics"
+        ],
+        "disabled": false
+      }
     }
   }
 }
