@@ -18,11 +18,17 @@ alias vi='nvim'
 wt() {
   local branch="$1"
   local repo_root
-  repo_root=$(git rev-parse --path-format=absolute --git-common-dir | xargs dirname)
+  repo_root=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")
   git -C "$repo_root" fetch origin "$branch" || return 1
+  # herdr's base from ~/.config/herdr/config.toml [worktrees].directory — must match its slug rule (lowercase, / -> -)
+  local expected_path="$HOME/Projects/worktrees/${repo_root:t}/${${branch//\//-}:l}"
+  local list
+  list=$(git worktree list --porcelain)
   local wt_path
-  wt_path=$(git worktree list --porcelain | awk -v branch="refs/heads/$branch" '/^worktree /{path=$2} $0=="branch " branch {print path; exit}')
+  wt_path=$(print -r -- "$list" | awk -v branch="refs/heads/$branch" '/^worktree /{path=substr($0,10)} $0=="branch " branch {print path; exit}')
   if [[ -n "$wt_path" ]]; then
+    [[ "$wt_path" != "$expected_path" ]] &&
+      echo "wt: note: $branch lives at $wt_path (expected $expected_path)"
     local wt_head origin_head
     wt_head=$(git -C "$wt_path" rev-parse HEAD)
     origin_head=$(git rev-parse origin/"$branch")
@@ -36,9 +42,82 @@ wt() {
     git -C "$wt_path" reset --hard origin/"$branch" &&
     herdr worktree open --cwd "$repo_root" --path "$wt_path"
   else
+    if [[ -e "$expected_path" ]]; then
+      echo "wt: $expected_path exists but $branch isn't checked out there; remove it or pick another branch name" >&2
+      print -r -- "$list" | awk -v p="$expected_path" '$0=="worktree "p{found=1} found&&/^branch /{print "wt: it currently holds " $2; exit}' >&2
+      return 1
+    fi
     git -C "$repo_root" branch -f "$branch" origin/"$branch" &&
-    herdr worktree create --cwd "$repo_root" --branch "$branch"
+    herdr worktree create --cwd "$repo_root" --branch "$branch" --path "$expected_path" || return 1
+    # herdr guesses when not nailed down; verify it didn't squat on a sibling directory anyway
+    local actual
+    actual=$(git worktree list --porcelain | awk -v branch="refs/heads/$branch" '/^worktree /{path=substr($0,10)} $0=="branch " branch {print path; exit}')
+    [[ -n "$actual" && "$actual" != "$expected_path" ]] &&
+      echo "wt: WARNING: herdr put $branch at $actual, not $expected_path" >&2
   fi
+}
+
+# Remove worktrees + local branches proven merged into the base branch
+# (default production). "Proven" = ancestor of origin/<base>, or a merged
+# GitHub PR into <base> (covers squash merges). Skips dirty worktrees,
+# detached HEADs, the main checkout, the cwd, and anything unproven.
+# Closes open herdr sessions of removed worktrees. Usage: purge [base-branch]
+purge() {
+  local base="${1:-production}"
+  local repo_root
+  repo_root=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)") || return 1
+  repo_root=$(git -C "$repo_root" rev-parse --show-toplevel)
+  git -C "$repo_root" fetch origin --prune || return 1
+
+  local url host_path
+  url=${$(git -C "$repo_root" remote get-url origin)%.git}
+  if [[ $url == *://* ]]; then host_path=${url#*://}; else host_path=${${url#*@}/:/\/}; fi
+
+  local -A merged_pr ws
+  local b line
+  for b in ${(f)"$(gh pr list -R "$host_path" --state merged --search "base:$base" --limit 1000 --json headRefName --jq '.[].headRefName')"}; do
+    [[ -n $b ]] && merged_pr[$b]=1
+  done
+  for line in ${(f)"$(herdr workspace list | python3 -c 'import json,sys
+for w in json.load(sys.stdin)["result"]["workspaces"]:
+    p=(w.get("worktree") or {}).get("checkout_path")
+    if p: print(p+"\t"+w["workspace_id"])')"}; do
+    ws[${line%%$'\t'*}]=${line##*$'\t'}
+  done
+
+  local _tip
+  _merged() { git -C "$repo_root" merge-base --is-ancestor "$1" "origin/$base" 2>/dev/null && return 0; [[ -n ${merged_pr[$2]-} ]]; }
+
+  local wtpath bref branch
+  git -C "$repo_root" worktree list --porcelain | awk '/^worktree /{p=substr($0,10)} /^branch /{print p "\t" substr($0,8)}' |
+  while IFS=$'\t' read -r wtpath bref; do
+    [[ $wtpath == "$repo_root" || $wtpath == "$PWD" || ${PWD#$wtpath/} != "$PWD" ]] && continue
+    branch=${bref#refs/heads/}
+    _tip=$(git -C "$wtpath" rev-parse HEAD) || continue
+    if ! _merged "$_tip" "$branch"; then
+      echo "keep  $branch (not proven merged)"
+      continue
+    fi
+    if [[ -n $(git -C "$wtpath" status --porcelain) ]]; then
+      echo "skip  $branch (dirty: $wtpath)"
+      continue
+    fi
+    [[ -n ${ws[$wtpath]-} ]] && { herdr workspace close "${ws[$wtpath]}" >/dev/null 2>&1 && echo "close session ${ws[$wtpath]}"; }
+    git -C "$repo_root" worktree remove "$wtpath" &&
+      echo "remove worktree $wtpath ($branch)"
+    git -C "$repo_root" branch -D "$branch"
+  done
+
+  local _t
+  git -C "$repo_root" for-each-ref --format='%(refname:short)' refs/heads/ |
+  while read -r b; do
+    [[ $b == "$base" ]] && continue
+    _t=$(git -C "$repo_root" rev-parse "refs/heads/$b" 2>/dev/null) || continue
+    if _merged "$_t" "$b" && git -C "$repo_root" branch -D "$b" >/dev/null 2>&1; then
+      echo "delete branch $b"
+    fi
+  done
+  echo "purge: done (base=$base)"
 }
 
 
