@@ -70,7 +70,7 @@ node = "22"
 yarn = "latest"
 pipx = "latest"
 mongosh = "latest"
-"aqua:anomalyco/opencode" = "latest"
+"npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 hunk = "latest"
 
 [tasks.herdr]
