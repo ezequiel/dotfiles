@@ -14,7 +14,7 @@ brew "zsh-syntax-highlighting"
 
 cask "docker-desktop"
 cask "font-intel-one-mono"
-cask "google-chrome"
+# cask "google-chrome"
 cask "kitty"
 cask "licecap"
 cask "mysqlworkbench"
