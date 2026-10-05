@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/v2/cli.json",
-  "plugins": ["./plugins/hide-footer"],
+  "plugins": ["./plugins/hide-footer", "./herdr-opencode"],
   "theme": {
     "name": "tokyonight"
   },
