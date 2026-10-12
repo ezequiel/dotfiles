@@ -20,12 +20,14 @@
       "chrome-devtools": {
         "type": "local",
         "command": [
-          "bunx",
-          "chrome-devtools-mcp@latest",
-          "--autoConnect",
-          "--no-usage-statistics"
+          "/Users/ezerodriguez/.cache/.bun/bin/chrome-devtools-mcp",
+          "--no-usage-statistics",
+          "--autoConnect"
         ],
-        "disabled": false
+        "disabled": false,
+        "timeout": {
+          "startup": 45000
+        }
       }
     }
   }
