@@ -18,11 +18,11 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "89c19270ea2dfc20829a7429f72022571558093e",
+      "rev": "d978416f77aec3f9928d56e00c9e56ba39ca1fda",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
-      "rev": "d5c12c6d72ed84554f0f8dacb84f20da094b6a2d",
+      "rev": "48d7c3db291a2c7c1825905c227a6bc81c83b837",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
@@ -30,7 +30,7 @@
       "src": "https://codeberg.org/trevorhauter/gitportal.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
-      "rev": "3e8d598d3b5f8338a41699c436e5fa11d2666cf0",
+      "rev": "6d27c288ff951e1e94cb5f91c800adeddf0dc0c2",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -90,7 +90,7 @@
       "src": "https://github.com/folke/sidekick.nvim"
     },
     "smart-splits.nvim": {
-      "rev": "ec76708f1617ef9e2ac353357fe52d2c997a0f06",
+      "rev": "07dbad410256f755e69ffd31cb8d122bcd6b91f7",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
     },
     "teide.nvim": {
@@ -110,7 +110,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "4bc1d0ad67abe536b7944bf374bbdd806442a4ee",
+      "rev": "a928c8c94c26ba6a9e958528376346d3705a62c1",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
