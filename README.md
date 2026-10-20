@@ -26,7 +26,8 @@
 2. `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. `eval "$(/opt/homebrew/bin/brew shellenv)"`
 4. `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --ssh ezequiel`
-5. `brew bundle --global`
-6. `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc`
-7. Restart terminal
-8. `mise run up`
+5. Restart terminal
+6. `brew bundle --global`
+7. `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc`
+8. _<setup mise gh token>_
+9. `mise run up`
