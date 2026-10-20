@@ -10,6 +10,7 @@ NODE_COMPILE_CACHE = "{{env.XDG_CACHE_HOME}}/node/compile"
 RIPGREP_CONFIG_PATH = "{{env.XDG_CONFIG_HOME}}/ripgrep/.ripgreprc"
 OPENCODE_CONFIG = "{{env.XDG_CONFIG_HOME}}/opencode/opencode-work.jsonc"
 OPENCODE_DISABLE_CLAUDE_CODE = 1
+OPENSRC_HOME = "/tmp/opensrc"
 NODE_EXTRA_CA_CERTS = ""
 # OPENCODE_CONFIG_DIR = ".claude"
 
@@ -60,6 +61,7 @@ rust = "latest"
 "npm:@tailwindcss/language-server" = "latest"
 "npm:@vtsls/language-server" = "latest"
 "npm:bash-language-server" = "latest"
+"npm:chrome-devtools-mcp" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
 "npm:npm-check-updates" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
@@ -71,6 +73,7 @@ yarn = "latest"
 pipx = "latest"
 mongosh = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
+"npm:opensrc" = "latest"
 hunk = "latest"
 
 [tasks.herdr]

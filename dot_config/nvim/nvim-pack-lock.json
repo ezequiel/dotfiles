@@ -18,11 +18,11 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff.nvim": {
-      "rev": "d978416f77aec3f9928d56e00c9e56ba39ca1fda",
+      "rev": "51649e10e1ee5502f5c110679ef3102748c18c77",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"
     },
     "fzf-lua": {
-      "rev": "48d7c3db291a2c7c1825905c227a6bc81c83b837",
+      "rev": "c67fadd9a24230417267e4f9068227e093c0be2b",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitportal.nvim": {
@@ -30,11 +30,11 @@
       "src": "https://codeberg.org/trevorhauter/gitportal.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "851a051e2bd2caba97e23314c68d69f1b1cf5d19",
+      "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
+      "rev": "bbde8ef5ae46ceee2c3bd8b21fc048c5f8ffbfc0",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "herdr-splits.nvim": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/lmilojevicc/herdr-splits.nvim"
     },
     "indent-o-matic": {
-      "rev": "81fa0e03bd2615a23b23312512371a2fc47fc0a4",
+      "rev": "0fadef43f311f673b6de0e39ceed3cc69fd49062",
       "src": "https://github.com/Darazaki/indent-o-matic"
     },
     "lasterisk.nvim": {
@@ -50,7 +50,7 @@
       "src": "https://github.com/rapan931/lasterisk.nvim"
     },
     "multicursor.nvim": {
-      "rev": "704b99f10a72cc05d370cfeb294ff83412a8ab55",
+      "rev": "c574bfc1f7e63dfea3e64b8453c9f7c660127238",
       "src": "https://github.com/jake-stewart/multicursor.nvim"
     },
     "nvim-hlslens": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/kevinhwang91/nvim-hlslens"
     },
     "nvim-lspconfig": {
-      "rev": "6d27c288ff951e1e94cb5f91c800adeddf0dc0c2",
+      "rev": "45a3a444b710511c39abca3b60bb6e23a21e3de5",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -90,7 +90,7 @@
       "src": "https://github.com/folke/sidekick.nvim"
     },
     "smart-splits.nvim": {
-      "rev": "07dbad410256f755e69ffd31cb8d122bcd6b91f7",
+      "rev": "ea553356370ea76dce189fb36947a424f124c04b",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
     },
     "teide.nvim": {
@@ -98,7 +98,7 @@
       "src": "https://github.com/serhez/teide.nvim"
     },
     "tiny-glimmer.nvim": {
-      "rev": "9a48d8a7436231cb16d47c88f924702e5602870a",
+      "rev": "b35d4f7b0eaedb75ff99fa694f4d1ea2ce8ce6c8",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
     },
     "vim-autoread": {
@@ -110,7 +110,7 @@
       "src": "https://github.com/jessekelighine/vindent.vim"
     },
     "yazi.nvim": {
-      "rev": "a928c8c94c26ba6a9e958528376346d3705a62c1",
+      "rev": "cbc61f1f33520c40688a966d9d0ecdbe962b6731",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
