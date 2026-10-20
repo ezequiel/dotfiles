@@ -29,5 +29,5 @@
 5. Restart terminal
 6. `brew bundle --global`
 7. `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc`
-8. _<setup mise gh token>_
+8. `_<setup mise gh token>_`
 9. `mise run up`
