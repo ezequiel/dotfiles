@@ -22,8 +22,7 @@
         "type": "local",
         "command": [
           "chrome-devtools-mcp",
-          "--no-usage-statistics",
-          "--autoConnect"
+          "--no-usage-statistics"
         ],
         "disabled": false,
         "timeout": {
