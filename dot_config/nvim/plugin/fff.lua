@@ -3,9 +3,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
     if name == 'fff' and (kind == 'install' or kind == 'update') then
-      if not ev.data.active then
-        vim.cmd.packadd('fff')
-      end
+      if not ev.data.active then vim.cmd.packadd('fff') end
       require('fff.download').download_or_build_binary()
     end
   end,
@@ -24,16 +22,7 @@ require('fff').setup({
   },
 })
 
-vim.keymap.set('n', '<leader>ff', function()
-  require('fff').find_files()
-end)
-vim.keymap.set('n', '<leader>re', function()
-  require('fff').find_files({ resume = true })
-end)
-vim.keymap.set('n', '<leader>rg', function()
-  require('fff').live_grep()
-end)
-vim.keymap.set({ 'n', 'x' }, '<leader>rw', function()
-  require('fff').live_grep_under_cursor()
-end)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition) -- no native default; <C-]>/:tag also routes here via tagfunc
+vim.keymap.set('n', '<leader>ff', function() require('fff').find_files() end)
+vim.keymap.set('n', '<leader>re', function() require('fff').find_files({ resume = true }) end)
+vim.keymap.set('n', '<leader>rg', function() require('fff').live_grep() end)
+vim.keymap.set({ 'n', 'x' }, '<leader>rw', function() require('fff').live_grep_under_cursor() end)
