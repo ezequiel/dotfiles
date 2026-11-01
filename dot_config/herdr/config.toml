@@ -15,24 +15,24 @@ next_agent = "ctrl+shift+]"
 zoom = "prefix+z"
 
 [[keys.command]]
-key = "alt+shift+left"
+key = "ctrl+h"
 type = "plugin_action"
-command = "herdr-splits.nav-left"
+command = "herdr-nvim-nav.left"
 
 [[keys.command]]
-key = "alt+shift+down"
+key = "ctrl+j"
 type = "plugin_action"
-command = "herdr-splits.nav-down"
+command = "herdr-nvim-nav.down"
 
 [[keys.command]]
-key = "alt+shift+up"
+key = "ctrl+k"
 type = "plugin_action"
-command = "herdr-splits.nav-up"
+command = "herdr-nvim-nav.up"
 
 [[keys.command]]
-key = "alt+shift+right"
+key = "ctrl+l"
 type = "plugin_action"
-command = "herdr-splits.nav-right"
+command = "herdr-nvim-nav.right"
 
 [[keys.command]]
 key = "ctrl+shift+="
