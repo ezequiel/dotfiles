@@ -21,5 +21,6 @@ cask "licecap"
 cask "mysqlworkbench"
 cask "raycast"
 cask "spotify"
+
 # https://github.com/2bc4/streamlink-ttvlol
-cask "streamlink-twitch-gui"
+# cask "streamlink-twitch-gui"

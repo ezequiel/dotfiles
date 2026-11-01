@@ -17,6 +17,9 @@ alias vi='nvim'
 
 wt() {
   local branch="$1"
+  if [[ "$branch" == <-> || "$branch" == \#<-> || "$branch" == https://*/pull/<->* ]]; then
+    branch=$(gh pr view "${branch#\#}" --json headRefName --jq .headRefName) || return 1
+  fi
   local repo_root
   repo_root=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")
   git -C "$repo_root" fetch origin "$branch" || return 1
@@ -118,6 +121,20 @@ for w in json.load(sys.stdin)["result"]["workspaces"]:
     fi
   done
   echo "purge: done (base=$base)"
+}
+
+# Find OpenCode sessions by PR number or text. Reopen one with: opencode -s <id>
+ocs() {
+  [[ -z "$1" ]] && { echo "usage: ocs <pr#|text>" >&2; return 1; }
+  local q=${1//\'/\'\'} msg
+  if [[ "$1" == <-> ]]; then msg="/pull/$1"; else msg=$q; fi
+  sqlite3 -readonly -separator '  ' "$(opencode debug paths db)" "
+    SELECT date(s.time_created/1000, 'unixepoch', 'localtime'), s.id, replace(s.directory, '$HOME', '~'), s.title
+    FROM session_v2 s
+    WHERE s.parent_id IS NULL AND (s.title LIKE '%$q%' OR EXISTS (
+      SELECT 1 FROM session_message m
+      WHERE m.session_id = s.id AND m.type = 'user' AND m.data LIKE '%$msg%'))
+    ORDER BY s.time_created DESC LIMIT 20;"
 }
 
 

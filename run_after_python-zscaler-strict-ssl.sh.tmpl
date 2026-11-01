@@ -1,0 +1,42 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Workaround for "CA cert does not include key usage extension" on Python 3.13+
+# behind Zscaler TLS inspection.
+#
+# The corporate Zscaler Root CA (2014) has no Key Usage extension. Python
+# 3.13+ (and urllib3 on 3.13+) enable ssl.VERIFY_X509_STRICT by default,
+# which rejects CA certs without Key Usage. This drops a .pth + module into
+# every Homebrew Python site-packages that strips the strict flag from
+# every SSLContext, restoring Python 3.12 behavior. All other certificate
+# verification stays intact.
+#
+# Delete this script and the deployed files once IT replaces the Zscaler
+# Root CA with a version that includes the Key Usage extension.
+
+set -eu
+
+for dir in /opt/homebrew/lib/python3.*/site-packages; do
+	[ -d "$dir" ] || continue
+	printf 'import _zscaler_strict_off\n' > "$dir/zzz-zscaler-strict-off.pth"
+	cat > "$dir/_zscaler_strict_off.py" <<'EOF'
+# Zscaler TLS inspection workaround: the corporate Zscaler Root CA has no
+# Key Usage extension, which Python 3.13+'s default VERIFY_X509_STRICT
+# rejects ("CA cert does not include key usage extension"). Strip that
+# flag from every SSLContext. Restores Python 3.12 verification behavior.
+# Safe to delete once the Zscaler Root CA includes Key Usage.
+import ssl as _ssl
+
+try:
+    _prop = _ssl.SSLContext.verify_flags
+    _strict = _ssl.VERIFY_X509_STRICT
+
+    if isinstance(_prop, property):  # Python 3.15+: Python-level property
+        def _strip_strict(self, value):
+            _prop.fset(self, value & ~_strict)
+
+        _ssl.SSLContext.verify_flags = property(_prop.fget, _strip_strict)
+except Exception:
+    pass
+EOF
+done
+{{ end -}}

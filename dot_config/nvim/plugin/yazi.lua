@@ -21,9 +21,11 @@ require('yazi').setup({
     show_help = '?',
   },
   integrations = {
-    grep_in_directory = 'fzf-lua',
-    grep_in_selected_files = 'fzf-lua',
-    picker_add_copy_relative_path_action = 'fzf-lua',
+    -- ponytail: selection-scope grep has no fff UI; widens to the file's directory
+    grep_in_directory = function(dir) require('fff').live_grep({ cwd = dir }) end,
+    grep_in_selected_files = function(selected_files, _)
+      require('fff').live_grep({ cwd = vim.fn.fnamemodify(tostring(selected_files[1]), ':h') })
+    end,
   },
 })
 
