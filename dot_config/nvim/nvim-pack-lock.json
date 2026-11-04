@@ -8,6 +8,10 @@
       "rev": "ae2728a77defbd27e9e5ef64c854fb0813ffba01",
       "src": "https://github.com/kwkarlwang/bufjump.nvim"
     },
+    "conform.nvim": {
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "fff": {
       "rev": "d1c7dd47130ca670ab71e7466a1a3b4a57d5348d",
       "src": "https://github.com/dmtrKovalenko/fff"
