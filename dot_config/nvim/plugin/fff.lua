@@ -18,8 +18,8 @@ require('fff').setup({
   follow_symlinks = true,
   layout = {
     prompt_position = 'top',
-    preview_position = 'top',
   },
+  preview = { enabled = false },
 })
 
 vim.keymap.set('n', '<leader>ff', function() require('fff').find_files() end)

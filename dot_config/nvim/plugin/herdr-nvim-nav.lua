@@ -5,9 +5,9 @@ vim.pack.add({
 require('herdr-nvim-nav').setup({
   with_tmux = false,
   keymaps = {
-    left = { '<C-h>' },
-    down = { '<C-j>' },
-    up = { '<C-k>' },
-    right = { '<C-l>' },
+    left = { '<M-S-Left>' },
+    down = { '<M-S-Down>' },
+    up = { '<M-S-Up>' },
+    right = { '<M-S-Right>' },
   },
 })

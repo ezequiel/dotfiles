@@ -1,12 +1,40 @@
 {
   "plugins": {
+    "auto-save.nvim": {
+      "rev": "141e5b4cb5df51e659fc039e25d227360f4dffcd",
+      "src": "https://github.com/okuuva/auto-save.nvim"
+    },
+    "bufjump.nvim": {
+      "rev": "ae2728a77defbd27e9e5ef64c854fb0813ffba01",
+      "src": "https://github.com/kwkarlwang/bufjump.nvim"
+    },
     "fff": {
       "rev": "d1c7dd47130ca670ab71e7466a1a3b4a57d5348d",
       "src": "https://github.com/dmtrKovalenko/fff"
     },
+    "gitsigns.nvim": {
+      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "herdr-nvim-nav": {
+      "rev": "ec047fd6d8d0269d54a34e9405af28d8aad4c8f0",
+      "src": "https://github.com/aimdevlee/herdr-nvim-nav"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
     "readline.nvim": {
       "rev": "5cb27349bc01cdcdb3d3494e5337d8b3834aef1a",
       "src": "https://github.com/assistcontrol/readline.nvim"
+    },
+    "tokyonight.nvim": {
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "yazi.nvim": {
+      "rev": "c691969163c8c3c0ae211814bd9c5deb2705a92c",
+      "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
 }

@@ -11,6 +11,7 @@ vim.opt.laststatus = 0
 vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
 vim.opt.ruler = false
 vim.opt.showcmd = false
+vim.opt.wrap = false
 vim.opt.shortmess:append('I')
 vim.opt.autoread = true 
 vim.opt.splitbelow = true
