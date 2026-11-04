@@ -22,7 +22,8 @@
         "type": "local",
         "command": [
           "chrome-devtools-mcp",
-          "--no-usage-statistics"
+          "--no-usage-statistics",
+          "--browser-url=http://127.0.0.1:9333"
         ],
         "disabled": false,
         "timeout": {
