@@ -15,22 +15,22 @@ next_agent = "ctrl+shift+]"
 zoom = "prefix+z"
 
 [[keys.command]]
-key = "ctrl+h"
+key = "alt+shift+left"
 type = "plugin_action"
 command = "herdr-nvim-nav.left"
 
 [[keys.command]]
-key = "ctrl+j"
+key = "alt+shift+down"
 type = "plugin_action"
 command = "herdr-nvim-nav.down"
 
 [[keys.command]]
-key = "ctrl+k"
+key = "alt+shift+up"
 type = "plugin_action"
 command = "herdr-nvim-nav.up"
 
 [[keys.command]]
-key = "ctrl+l"
+key = "alt+shift+right"
 type = "plugin_action"
 command = "herdr-nvim-nav.right"
 
@@ -49,14 +49,14 @@ description = "shrink pane"
 [[keys.command]]
 key = "prefix+s"
 type = "plugin_action"
-command = "fullerzz.sesh.open-picker"
-description = "open workspace picker"
+command = "herdr-newtab-plus.open"
+description = "new tab: pick folder + agent"
 
 [[keys.command]]
-key = "prefix+L"
+key = ["prefix+k", "ctrl+alt+k"]
 type = "plugin_action"
-command = "fullerzz.sesh.last"
-description = "jump to last workspace"
+command = "herdr-bar.open"
+description = "command bar"
 
 [[keys.command]]
 key = "cmd+z"
@@ -76,6 +76,12 @@ directory = "~/Projects/worktrees"
 
 [terminal]
 shell_mode = "auto"
+
+[session]
+# Default 100ms is too tight: on login herdr restores dozens of workspaces and
+# every opencode TUI cold-starts against the same SQLite DB at once; a transient
+# sync failure silently bounces the resumed pane to a blank home screen.
+startup_per_agent_delay_ms = 1000
 
 [experimental]
 kitty_graphics = true
