@@ -60,67 +60,158 @@ wt() {
   fi
 }
 
-# Remove worktrees + local branches proven merged into the base branch
-# (default production). "Proven" = ancestor of origin/<base>, or a merged
-# GitHub PR into <base> (covers squash merges). Skips dirty worktrees,
-# detached HEADs, the main checkout, the cwd, and anything unproven.
-# Closes open herdr sessions of removed worktrees. Usage: purge [base-branch]
+# Remove worktrees + local branches proven merged into the base branch.
+# Base = the arg if given, else the repo's default branch (origin/HEAD,
+# resolved with `git remote set-head origin -a` when unset).
+# "Proven" = ancestor of origin/<base>, or a merged GitHub PR into <base>
+# (covers squash merges). Skips dirty worktrees, detached HEADs, the main
+# checkout, the cwd, and anything unproven. Closes open herdr sessions of
+# removed worktrees.
+# Usage: purge [-a|--all] [base]
+#   purge         current repo only
+#   purge --all   every worktree under ~/Projects/worktrees, grouped by
+#                 parent repo (override root with $PURGE_WORKTREE_ROOT)
 purge() {
-  local base="${1:-production}"
-  local repo_root
-  repo_root=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)") || return 1
-  repo_root=$(git -C "$repo_root" rev-parse --show-toplevel)
-  git -C "$repo_root" fetch origin --prune || return 1
-
-  local url host_path
-  url=${$(git -C "$repo_root" remote get-url origin)%.git}
-  if [[ $url == *://* ]]; then host_path=${url#*://}; else host_path=${${url#*@}/:/\/}; fi
-
-  local -A merged_pr ws
-  local b line
-  for b in ${(f)"$(gh pr list -R "$host_path" --state merged --search "base:$base" --limit 1000 --json headRefName --jq '.[].headRefName')"}; do
-    [[ -n $b ]] && merged_pr[$b]=1
+  local all=0 base_override=""
+  local arg
+  for arg in "$@"; do
+    case $arg in
+      -a|--all) all=1 ;;
+      *) base_override=$arg ;;
+    esac
   done
-  for line in ${(f)"$(herdr workspace list | python3 -c 'import json,sys
-for w in json.load(sys.stdin)["result"]["workspaces"]:
+
+  # herdr sessions keyed by checkout path (spans all repos, built once)
+  local -A ws
+  local line
+  for line in ${(f)"$(herdr workspace list 2>/dev/null | python3 -c 'import json,sys
+try: d=json.load(sys.stdin)
+except Exception: sys.exit()
+for w in d["result"]["workspaces"]:
     p=(w.get("worktree") or {}).get("checkout_path")
     if p: print(p+"\t"+w["workspace_id"])')"}; do
     ws[${line%%$'\t'*}]=${line##*$'\t'}
   done
 
-  local _tip
-  _merged() { git -C "$repo_root" merge-base --is-ancestor "$1" "origin/$base" 2>/dev/null && return 0; [[ -n ${merged_pr[$2]-} ]]; }
+  # per-repo context, (re)set by purge_repo; zsh dynamic scoping lets the
+  # helpers below see these
+  local _repo _b _tip
+  local -A merged_pr _resolved_base
 
-  local wtpath bref branch
-  git -C "$repo_root" worktree list --porcelain | awk '/^worktree /{p=substr($0,10)} /^branch /{print p "\t" substr($0,8)}' |
-  while IFS=$'\t' read -r wtpath bref; do
-    [[ $wtpath == "$repo_root" || $wtpath == "$PWD" || ${PWD#$wtpath/} != "$PWD" ]] && continue
-    branch=${bref#refs/heads/}
-    _tip=$(git -C "$wtpath" rev-parse HEAD) || continue
-    if ! _merged "$_tip" "$branch"; then
-      echo "keep  $branch (not proven merged)"
-      continue
+  # fetch, resolve base, load merged PRs for repo $1; sets _repo/_b/merged_pr
+  purge_repo() {
+    _repo=$1
+    _b=$base_override
+    if [[ -z $_b ]]; then
+      _b=${_resolved_base[$_repo]-}
+      if [[ -z $_b ]]; then
+        _b=$(git -C "$_repo" symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+        if [[ -z $_b ]]; then
+          git -C "$_repo" remote set-head origin -a >/dev/null 2>&1
+          _b=$(git -C "$_repo" symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+        fi
+        _b=${_b#origin/}
+        [[ -z $_b ]] && { echo "skip  $_repo (no default branch found)"; return 1; }
+        _resolved_base[$_repo]=$_b
+      fi
     fi
-    if [[ -n $(git -C "$wtpath" status --porcelain) ]]; then
-      echo "skip  $branch (dirty: $wtpath)"
-      continue
+    git -C "$_repo" rev-parse --verify --quiet "refs/remotes/origin/$_b" >/dev/null ||
+      { echo "skip  ${_repo#$HOME/} (no origin/$_b)"; return 1; }
+    git -C "$_repo" fetch origin --prune || return 1
+
+    local url host_path
+    url=${$(git -C "$_repo" remote get-url origin)%.git}
+    if [[ $url == *://* ]]; then host_path=${url#*://}; else host_path=${${url#*@}/:/\/}; fi
+
+    merged_pr=()
+    local b
+    for b in ${(f)"$(gh pr list -R "$host_path" --state merged --search "base:$_b" --limit 1000 --json headRefName --jq '.[].headRefName' 2>/dev/null)"}; do
+      [[ -n $b ]] && merged_pr[$b]=1
+    done
+    echo "repo  ${_repo#$HOME/} (base=$_b)"
+  }
+
+  _merged() { git -C "$_repo" merge-base --is-ancestor "$1" "origin/$_b" 2>/dev/null && return 0; [[ -n ${merged_pr[$2]-} ]]; }
+
+  # $1 = optional: only worktrees under this directory
+  purge_worktrees() {
+    local wtpath bref branch
+    git -C "$_repo" worktree list --porcelain | awk '/^worktree /{p=substr($0,10)} /^branch /{print p "\t" substr($0,8)}' |
+    while IFS=$'\t' read -r wtpath bref; do
+      [[ $wtpath == "$_repo" || $wtpath == "$PWD" || ${PWD#$wtpath/} != "$PWD" ]] && continue
+      (( $#1 )) && [[ ${wtpath#$1/} == "$wtpath" ]] && continue
+      branch=${bref#refs/heads/}
+      _tip=$(git -C "$wtpath" rev-parse HEAD) || continue
+      if ! _merged "$_tip" "$branch"; then
+        echo "keep  $branch (not proven merged)"
+        continue
+      fi
+      if [[ -n $(git -C "$wtpath" status --porcelain) ]]; then
+        echo "skip  $branch (dirty: $wtpath)"
+        continue
+      fi
+      [[ -n ${ws[$wtpath]-} ]] && { herdr workspace close "${ws[$wtpath]}" >/dev/null 2>&1 && echo "close session ${ws[$wtpath]}"; }
+      git -C "$_repo" worktree remove "$wtpath" &&
+        echo "remove worktree $wtpath ($branch)"
+      git -C "$_repo" branch -D "$branch"
+    done
+  }
+
+  purge_branches() {
+    local _t b
+    git -C "$_repo" for-each-ref --format='%(refname:short)' refs/heads/ |
+    while read -r b; do
+      [[ $b == "$_b" ]] && continue
+      _t=$(git -C "$_repo" rev-parse "refs/heads/$b" 2>/dev/null) || continue
+      if _merged "$_t" "$b" && git -C "$_repo" branch -D "$b" >/dev/null 2>&1; then
+        echo "delete branch $b"
+      fi
+    done
+  }
+
+  if (( ! all )); then
+    local repo_root
+    repo_root=$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)") || return 1
+    repo_root=$(git -C "$repo_root" rev-parse --show-toplevel)
+    purge_repo "$repo_root" || return 1
+    purge_worktrees
+    purge_branches
+    echo "purge: done (base=$_b)"
+    unfunction purge_repo purge_worktrees purge_branches _merged
+    return
+  fi
+
+  # herdr's [worktrees].directory — same root wt() builds paths from
+  local root="${PURGE_WORKTREE_ROOT:-$HOME/Projects/worktrees}"
+  local -A repos
+  local d parent
+  for d in "$root"/*/*(N/); do
+    if git -C "$d" rev-parse --git-dir >/dev/null 2>&1; then
+      parent=$(git -C "$d" rev-parse --path-format=absolute --git-common-dir 2>/dev/null) &&
+        parent=$(git -C "${parent:h}" rev-parse --show-toplevel 2>/dev/null)
+      if [[ -n $parent ]]; then
+        repos[$parent]=1
+      else
+        echo "skip  $d (parent repo gone)"
+      fi
+    else
+      echo "skip  $d (not a git worktree)"
     fi
-    [[ -n ${ws[$wtpath]-} ]] && { herdr workspace close "${ws[$wtpath]}" >/dev/null 2>&1 && echo "close session ${ws[$wtpath]}"; }
-    git -C "$repo_root" worktree remove "$wtpath" &&
-      echo "remove worktree $wtpath ($branch)"
-    git -C "$repo_root" branch -D "$branch"
   done
 
-  local _t
-  git -C "$repo_root" for-each-ref --format='%(refname:short)' refs/heads/ |
-  while read -r b; do
-    [[ $b == "$base" ]] && continue
-    _t=$(git -C "$repo_root" rev-parse "refs/heads/$b" 2>/dev/null) || continue
-    if _merged "$_t" "$b" && git -C "$repo_root" branch -D "$b" >/dev/null 2>&1; then
-      echo "delete branch $b"
-    fi
+  local r
+  for r in ${(ko)repos}; do
+    purge_repo "$r" || continue
+    purge_worktrees "$root"
+    purge_branches
   done
-  echo "purge: done (base=$base)"
+
+  local slug
+  for slug in "$root"/*(N/); do
+    rmdir "$slug" 2>/dev/null && echo "rmdir $slug"
+  done
+  echo "purge: done (all repos)"
+  unfunction purge_repo purge_worktrees purge_branches _merged
 }
 
 # Find OpenCode sessions by PR number or text. Reopen one with: opencode -s <id>
