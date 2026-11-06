@@ -12,6 +12,10 @@ vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
 vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.wrap = false
+
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
 vim.opt.shortmess:append('I')
 vim.opt.autoread = true 
 vim.opt.splitbelow = true
