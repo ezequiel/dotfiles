@@ -31,3 +31,13 @@
 7. `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc`
 8. `_<setup mise gh token>_`
 9. `mise run up`
+
+## Ownership note
+
+This repo holds neutral, public-safe dotfiles only. Anything that names work
+internal services, hosts, or workflows (opencode agents, ghpr, work review
+kit) lives in the separate work dotfiles repo on the company git host (managed
+by `czw`) — never commit, stage, or mirror those here. If `chezmoi status`
+ever shows a work-config path under `.config/opencode/agents` or
+`.config/opencode/skills/{pr-review,verify-claims}`, it belongs to the work
+repo, not this one.
