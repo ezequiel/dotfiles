@@ -13,16 +13,24 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "fff": {
-      "rev": "d1c7dd47130ca670ab71e7466a1a3b4a57d5348d",
+      "rev": "5d21e4bbdf33a09f58975636208e30747bc8d918",
       "src": "https://github.com/dmtrKovalenko/fff"
     },
+    "gitportal.nvim": {
+      "rev": "d2efb8d1bf141c77cfa1b5311995912bc36671d0",
+      "src": "https://codeberg.org/trevorhauter/gitportal.nvim"
+    },
     "gitsigns.nvim": {
-      "rev": "4bcd99167c265f135886b282baad77afe06206b2",
+      "rev": "ef707fb93301a9b856f36eae4c8f56f5b988a794",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "herdr-nvim-nav": {
       "rev": "ec047fd6d8d0269d54a34e9405af28d8aad4c8f0",
       "src": "https://github.com/aimdevlee/herdr-nvim-nav"
+    },
+    "nvim-lspconfig": {
+      "rev": "993d048db0d83d8e8ba3f9cb376456321acdcce3",
+      "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
@@ -41,7 +49,7 @@
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "yazi.nvim": {
-      "rev": "c691969163c8c3c0ae211814bd9c5deb2705a92c",
+      "rev": "5f3e87e418fb39d6b05e426a4d69c2b275cffd63",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
