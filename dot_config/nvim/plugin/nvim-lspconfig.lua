@@ -1,0 +1,8 @@
+vim.pack.add({
+  'https://github.com/neovim/nvim-lspconfig',
+})
+
+vim.lsp.enable({
+  'cssls',
+  'vtsls',
+})
