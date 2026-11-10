@@ -9,7 +9,6 @@ require('conform').setup({
     dockerfile = { 'dockerfmt' },
     go = { 'goimports' },
     html = { 'prettier' },
-    htmlangular = { 'prettier' },
     javascript = { 'prettier' },
     javascriptreact = { 'prettier' },
     json = { 'prettier' },
